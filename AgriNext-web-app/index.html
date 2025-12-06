@@ -17,7 +17,7 @@
 
   <body>
     <!-- navbar sections starts  -->
- <header class="header">
+    <header class="header">
       <div class="logo" style="display: flex; align-items: center; gap: 8px;">
         <img src="./images/output-onlinepngtools (1).png" height="60px" alt="">
         <h1>Agri<i class="fas fa-seedling plant-icon" style="color: green;"></i>Next</h1>
@@ -28,14 +28,11 @@
         <a href="#home">Home</a>
         <a href="#features">Features</a>
         <a href="#about">About</a>
-        <a href="#footer">Contact</a>
+        <a href="#contact">Contact</a>
         <a href="explore/index.html" class="btn">EXPLORE NOW</a>
-          <a href="#" id="loginBtn" class="btn">Signout </a>
+        <a href="#" id="loginBtn" class="btn">Signout </a>
         <!-- <a href="#" id="callButton" title="Kisan Call Centre (KCC)">📞 1800-180-1551</a> -->
-
       </nav>
-      
-      
       <div class="fas fa-bars" id="menu-btn"></div>
     </header>
     <!-- navbar sections ends  -->
@@ -341,88 +338,57 @@
     <!-- about section ends -->
     <!-- contact us -->
 
-    <!-- <section class="about" id="about">
-      <div class="heading">
-        <h1>Contact Us</h1>
-        <p>Introduce the talented individuals shaping the Agri🌾Next project.</p>
-      </div>
-      <form action="https://api.web3forms.com/submit" method="POST">
-          <div class="inputBox">
-                            <input type="hidden" name="access_key" value="da7823d7-1889-4950-8437-74af7064b064">
-                            <input type="text" name="first_name"  required="required" placeholder="Full Name">
-                            <span>Full Name</span>
+    <section class="contact-section" id="contact">
+      <div class="contact-info">
+          <h2>Contact Us</h2>
+          <p>Send a message and we’ll get back to you. Want us to work on your project? tick the box and tell us more.</p>
+          
+          <ul>
+            <li><i class="fa-solid fa-phone"></i> 1800-180-1551</li>
+            <li><i class="fa-solid fa-location-dot"></i> SGBA University</li>
+            <li><i class="fa-solid fa-envelope"></i> Team@Agrinext.example</li>
+          </ul>
+
+          <div class="themes">
+            <span>Themes:</span>
+            <button id="sun">Sun</button>
+            <button id="forest">Forest</button>
+            <button id="ocean">Ocean</button>
+            <button id="black">Black</button>
+            <button id="white">White</button>
           </div>
 
-          <div class="inputBox">
-                            <input type="email" name="email" required="required" placeholder="Email">
-                            <span>Email</span>
-          </div>
-
-          <div class="inputBox">
-                            <textarea name="message" required="required"  ></textarea>
-                            <span>Type your message.....</span>
-          </div>
-
-          <div class="from-check">
-                            <input type="checkbox" class="form-check-input" id="isclient">
-                            <label  type="name" for="isclient" style="color: #007BFF;">I want you to work on project me</label>
-          </div>
-
-          <div class="inputBox">
-                    <input type="submit" name="" value="Send Message" class="btn">                 
-          </div>
-      </form>
-
-    </section> -->
-    <!-- contact us -->
-     <section class="contact-section">
-  <div class="contact-info">
-    <h2>Contact Us</h2>
-    <p>Send a message and we’ll get back to you. Want us to work on your project? tick the box and tell us more.</p>
-    
-    <ul>
-      <li><i class="fa-solid fa-phone"></i> 1800-180-1551</li>
-      <li><i class="fa-solid fa-location-dot"></i> SGBA University</li>
-      <li><i class="fa-solid fa-envelope"></i> Team@Agrinext.example</li>
-    </ul>
-
-    <div class="themes">
-      <span>Themes:</span>
-      <button id="sun">Sun</button>
-      <button id="forest">Forest</button>
-      <button id="ocean">Ocean</button>
-      <button id="black">Black</button>
-      <button id="white">White</button>
-    </div>
-
-  </div>
-
-  <div class="form-container">
-    <form>
-      <div class="input-box">
-        <i class="fa-solid fa-user"></i>
-        <input type="text" placeholder="Full Name">
       </div>
 
-      <div class="input-box">
-        <i class="fa-solid fa-envelope"></i>
-        <input type="email" placeholder="Email">
+      <div class="form-container">
+              <form action="https://api.web3forms.com/submit" method="POST">
+              <div class="inputBox">
+                                <input type="hidden" name="access_key" value="da7823d7-1889-4950-8437-74af7064b064">
+                                <input type="text" name="first_name"  required="required" placeholder="Full Name">
+                                <span>Full Name</span>
+              </div>
+
+              <div class="inputBox">
+                                <input type="email" name="email" required="required" placeholder="Email">
+                                <span>Email</span>
+              </div>
+
+              <div class="inputBox">
+                                <textarea name="message" required="required"  ></textarea>
+                                <span>Type your message.....</span>
+              </div>
+
+              <div class="from-check">
+                                <input type="checkbox" class="form-check-input" id="isclient">
+                                <label  type="name" for="isclient" style="color: #007BFF;">I want you to work on project me</label>
+              </div>
+
+              <div class="inputBox">
+                        <input type="submit" name="" value="Send Message" class="btn">                 
+              </div>
+          </form>
       </div>
-
-      <div class="input-box">
-        <i class="fa-solid fa-comment"></i>
-        <textarea placeholder="Type Your Message"></textarea>
-      </div>
-
-      <label class="check">
-        <input type="checkbox">
-        <span>I Want You To Work On Project With Me</span>
-      </label>
-
-      <button type="submit">Send Message</button>
-    </form>
-  </div>
-</section>
+    </section>
 
 
     <!-- footer section starts  -->
