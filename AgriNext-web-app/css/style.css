@@ -54,7 +54,9 @@ html {
   color: var(--Grayish-Blue);
   font-size: 1.7rem;
 }
-
+#callButton{
+  font-size: large;
+}
 .all-btn {
   padding: 1rem 3rem;
   font-size: 1.5rem;
@@ -875,6 +877,7 @@ form {
   border-radius: 6px;
   cursor: pointer;
   transition: 0.3s;
+  /* margin-right: -29px; */
 }
 
 .btn:hover {
