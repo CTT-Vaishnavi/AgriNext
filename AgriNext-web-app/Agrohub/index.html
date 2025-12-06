@@ -1,60 +1,193 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Under Development Tab</title>
-    <style>
-        body {
-            font-family: 'Roboto', sans-serif;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            height: 100vh;
-            background-color: #1e272e;
-            color: #ecf0f1;
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Krushi Kendra Dealer Search</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+      background: #eef2f3;
+    }
 
-        .development-tab {
-            background-color: #3498db;
-            color: #ffffff;
-            padding: 20px;
-            border-radius: 10px;
-            text-align: center;
-            max-width: 250px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            animation: popUp 1s ease-in-out infinite alternate;
-        }
+    .container {
+      background: white;
+      max-width: 900px;
+      margin: auto;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+    }
 
-        .development-tab .oops {
-            color: #e74c3c;
-            font-size: 24px;
-            font-weight: bold;
-            margin-bottom: 10px;
-        }
+    select, button, input {
+      padding: 10px;
+      margin-right: 10px;
+      margin-top: 10px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+      font-size: 16px;
+    }
 
-        .development-tab p {
-            margin: 0;
-            font-size: 16px;
-            line-height: 1.5;
-        }
+    button {
+      background: orange;
+      border: none;
+      cursor: pointer;
+      font-weight: bold;
+    }
 
-        @keyframes popUp {
-            from {
-                transform: scale(1);
-            }
-            to {
-                transform: scale(1.05);
-            }
-        }
-    </style>
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+    }
+
+    table th, table td {
+      border: 1px solid #ddd;
+      padding: 10px;
+    }
+
+    table th {
+      background: green;
+      color: white;
+      text-align: left;
+    }
+
+    .whatsapp-btn, .map-btn {
+      padding: 6px 10px;
+      display: inline-block;
+      color: white;
+      border-radius: 5px;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: bold;
+    }
+
+    .whatsapp-btn { background: #25D366; }
+    .map-btn { background: #4285F4; margin-left: 5px; }
+
+    .disabled {
+      background: gray !important;
+      pointer-events: none;
+    }
+  </style>
 </head>
 <body>
-    <div class="development-tab">
-        <p class="oops">Oops!</p>
-        <p>This tab is currently in the secret laboratory of development. Stay tuned for the grand reveal!</p>
-    </div>
+
+<div class="container">
+  <h2>उर्वरक डीलर खोजें | Krushi Kendra Search</h2>
+
+  <select id="districtSelect"></select>
+  <select id="talukaSelect"></select>
+
+  <button onclick="showDealers()">जाना</button>
+
+  <input type="text" id="searchInput" placeholder="डीलर खोजें..." style="display:none;width:40%;margin-top:15px;">
+
+  <table id="dealerTable" style="display:none;">
+    <thead>
+      <tr>
+        <th>सीरियल नंबर</th>
+        <th>डीलर का नाम</th>
+        <th>पता</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody id="dealerBody"></tbody>
+  </table>
+</div>
+
+<script>
+const DISTRICTS = [
+  "Buldhana","Amravati","Akola","Nagpur","Pune",
+  "Nashik","Aurangabad","Jalna","Solapur","Wardha"
+];
+
+const TALUKAS = {
+  "Buldhana": ["Buldhana","Chikhli","Deulgaon Raja","Jalgaon Jamod","Khamgaon","Lonar","Mehkar","Malkapur","Nandura","Sangrampur"],
+  "Amravati": ["Amravati","Dharni","Chandur Railway","Chandur Bazaar","Warud","Morshi","Daryapur","Teosa","Anjangaon Surji","Achalpur"],
+  "Akola": ["Akola","Balapur","Barshitakli","Murtijapur","Akot","Telhara","Patur","Mangrulpir","Washim","Karanja"],
+  "Nagpur": ["Nagpur","Hingna","Katol","Narkhed","Parseoni","Kalmeshwar","Saoner","Umred","Kuhi","Bhiwapur"],
+  "Pune": ["Pune","Baramati","Shirur","Junnar","Mulshi","Bhor","Mawal","Haveli","Purandar","Velhe"],
+  "Nashik": ["Nashik","Niphad","Sinnar","Yeola","Chandwad","Malegaon","Igatpuri","Trimbak","Deola","Satana"],
+  "Aurangabad": ["Aurangabad","Paithan","Kannad","Soygaon","Bolhegaon","Gangapur","Vaijapur","Phulambri","Sillod","Khuldabad"],
+  "Jalna": ["Jalna","Ambad","Badnapur","Bhokardan","Partur","Mantha","Ghansawangi","Jafrabad","Sindkhed Raja","Dongaon"],
+  "Solapur": ["Solapur","Pandharpur","Sangola","Mangalwedha","Akkalkot","Karmala","Barshi","Mohol","North Solapur","South Solapur"],
+  "Wardha": ["Wardha","Deoli","Seloo","Arvi","Ashti","Carona","Karanja Ghadge","Samudrapur","Hinganghat","Pulgaon"]
+};
+
+const NAME_PREFIXES = ["Shri","Sai","Gayatri","Balaji","Amar","Vaishnavi","Gurukrupa","Jai Kisan","Aarti","Ramdev"];
+const NAME_SUFFIX = ["Krushi Kendra","Agro Agency","Farmers Center","Seeds & Fertilizer","Krushi Seva Kendra"];
+
+function genPhone() {
+  return "9" + Math.floor(100000000 + Math.random() * 900000000);
+}
+
+const dealersData = {};
+
+DISTRICTS.forEach(dist => {
+  dealersData[dist] = {};
+  TALUKAS[dist].forEach((taluka, index) => {
+    const dealers = [];
+    for (let i = 1; i <= 15; i++) {
+      const dname = `${NAME_PREFIXES[(i+index)%NAME_PREFIXES.length]} ${NAME_SUFFIX[(i+index)%NAME_SUFFIX.length]}`;
+      const address = `Market Area, ${taluka}, ${dist}`;
+      const phone = genPhone();
+      const map = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(dname + ", " + taluka)}`;
+      dealers.push({ id: i, name: dname, address: address, phone: phone, map: map });
+    }
+    dealersData[dist][taluka] = dealers;
+  });
+});
+
+const districtSelect = document.getElementById("districtSelect");
+const talukaSelect = document.getElementById("talukaSelect");
+
+districtSelect.innerHTML = '<option value="">ज़िला चुनें</option>';
+DISTRICTS.forEach(d => districtSelect.innerHTML += `<option value="${d}">${d}</option>`);
+
+districtSelect.addEventListener("change", () => {
+  talukaSelect.innerHTML = '<option value="">तालुका चुनें</option>';
+  TALUKAS[districtSelect.value].forEach(t => talukaSelect.innerHTML += `<option value="${t}">${t}</option>`);
+});
+
+function showDealers() {
+  const d = districtSelect.value;
+  const t = talukaSelect.value;
+  const table = document.getElementById("dealerTable");
+  const body = document.getElementById("dealerBody");
+  const search = document.getElementById("searchInput");
+
+  body.innerHTML = "";
+
+  if (dealersData[d] && dealersData[d][t]) {
+    table.style.display = "table";
+    search.style.display = "inline";
+
+    dealersData[d][t].forEach(dd => {
+      body.innerHTML += `
+      <tr>
+        <td>${dd.id}</td>
+        <td>${dd.name}</td>
+        <td>${dd.address}</td>
+        <td>
+          <a class="whatsapp-btn" href="https://wa.me/91${dd.phone}" target="_blank">WhatsApp</a>
+          <a class="map-btn" href="${dd.map}" target="_blank">Map</a>
+        </td>
+      </tr>`;
+    });
+  } else {
+    alert("Data not available yet.");
+  }
+}
+
+document.getElementById("searchInput").addEventListener("keyup", function () {
+  const filter = this.value.toLowerCase();
+  document.querySelectorAll("#dealerBody tr").forEach(row => {
+    row.style.display = row.textContent.toLowerCase().includes(filter) ? "" : "none";
+  });
+});
+</script>
+
 </body>
 </html>
