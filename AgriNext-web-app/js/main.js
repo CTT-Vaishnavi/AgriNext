@@ -23,3 +23,37 @@ document.getElementById("callButton").addEventListener("click", function(e) {
                   alert("Please use a mobile device to make this call.");
                 }
               });
+
+// background color change
+
+  const body = document.body;
+
+  document.getElementById("sun").onclick = () => {
+    body.style.background = "linear-gradient(to bottom right, #ffeb99, #ffcc00)";
+    body.style.color = "#000";
+  };
+
+  document.getElementById("forest").onclick = () => {
+    body.style.background = "linear-gradient(to bottom right, #b7ffb7, #07a63a)";
+    body.style.color = "#000";
+  };
+
+  document.getElementById("ocean").onclick = () => {
+    body.style.background = "linear-gradient(to bottom right, #b3e5ff, #0077ff)";
+    body.style.color = "#fff";
+  };
+
+  document.getElementById("black").onclick = () => {
+    body.style.background = "#000";
+    body.style.color = "#ffffff";
+  };
+
+  document.getElementById("white").onclick = () => {
+    body.style.background = "#ffffff";
+    body.style.color = "#000";
+  };
+
+
+
+
+              

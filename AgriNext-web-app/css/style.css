@@ -890,3 +890,166 @@ form {
     padding: 25px;
   }
 }
+
+
+
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
+
+body {
+  font-family: "Poppins", sans-serif;
+  margin: 0;
+  background: linear-gradient(to bottom right, #fffdf8, #f3ede8);
+}
+
+.contact-section {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 60px;
+}
+
+.contact-info {
+  width: 40%;
+}
+
+.contact-info h2 {
+  font-size: 40px;
+  margin-bottom: 10px;
+}
+
+.contact-info p {
+  font-size: 16px;
+  color: #5f5e5e;
+  margin-bottom: 25px;
+}
+
+.contact-info ul {
+  list-style: none;
+  padding: 0;
+  margin-bottom: 30px;
+}
+
+.contact-info ul li {
+  font-size: 18px;
+  margin: 12px 0;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: #333;
+}
+
+.contact-info ul li i {
+  font-size: 22px;
+  color: #ff6d00;
+}
+
+.themes {
+  margin-top: 15px;
+}
+
+.themes button {
+  padding: 6px 14px;
+  margin-right: 10px;
+  border: none;
+  cursor: pointer;
+  border-radius: 20px;
+  background: #e5e4e4;
+  font-size: 14px;
+}
+
+.form-container {
+  width: 50%;
+  background: #ffffff;
+  padding: 40px;
+  border-radius: 20px;
+  box-shadow: 0 8px 35px rgba(0, 0, 0, 0.15);
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.input-box {
+  position: relative;
+}
+
+.input-box input,
+.input-box textarea {
+  width: 100%;
+  padding: 16px 16px 16px 50px;
+  font-size: 17px;
+  border-radius: 12px;
+  border: 1px solid #cfcfcf;
+  outline: none;
+}
+
+.input-box textarea {
+  height: 140px;
+  resize: none;
+}
+
+.input-box i {
+  position: absolute;
+  top: 50%;
+  left: 15px;
+  transform: translateY(-50%);
+  font-size: 22px;
+  color: #ff7f00;
+}
+
+.check {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 17px;
+}
+
+button {
+  background: linear-gradient(to right, #ff8c00, #ff4800);
+  padding: 18px;
+  color: #ffffff;
+  font-size: 20px;
+  font-weight: 600;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+button:hover {
+  transform: scale(1.05);
+  opacity: 0.9;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .contact-section {
+    flex-direction: column;
+    gap: 40px;
+  }
+  .contact-info, .form-container {
+    width: 100%;
+  }
+}
+
+.themes button {
+  padding: 6px 14px;
+  margin-right: 8px;
+  border: none;
+  cursor: pointer;
+  border-radius: 20px;
+  background: #e5e4e4;
+  font-size: 14px;
+  transition: 0.2s;
+}
+
+.themes button:hover {
+  transform: scale(1.1);
+  background: #ff8c00;
+  color: #fff;
+}
+
+
