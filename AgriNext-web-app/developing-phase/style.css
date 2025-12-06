@@ -1,0 +1,175 @@
+/* ===========================
+   Root Theme Colors
+=========================== */
+:root {
+  --bg: #0b1116;
+  --card: #121a21;
+  --accent: #00c4ac;
+  --text: #e8eef1;
+  --muted: #9aa0a8;
+}
+
+/* ===========================
+   Global Styles
+=========================== */
+body {
+  margin: 0;
+  background: var(--bg);
+  font-family: Poppins, sans-serif;
+  color: var(--text);
+}
+
+.container {
+  display: flex;
+  gap: 20px;
+  padding: 20px;
+}
+
+/* ===========================
+   Sidebar Form
+=========================== */
+.sidebar {
+  width: 350px;
+  background: var(--card);
+  padding: 20px;
+  border-radius: 16px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.6);
+}
+
+label {
+  margin-top: 12px;
+  display: block;
+  color: var(--muted);
+}
+
+select,
+input {
+  width: 100%;
+  padding: 12px;
+  margin-top: 5px;
+  border-radius: 10px;
+  border: 1px solid #223036;
+  background: #0e171d;
+  color: #fff;
+}
+
+/* ===========================
+   Buttons
+=========================== */
+button {
+  width: 100%;
+  padding: 12px;
+  margin-top: 12px;
+  border: none;
+  border-radius: 10px;
+  font-weight: bold;
+  background: var(--accent);
+  color: #000;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+button:hover {
+  box-shadow: 0 0 12px var(--accent);
+}
+
+/* Mic Button */
+.micBtn {
+  width: 50px;
+  height: 50px;
+  margin: 10px auto;
+  border-radius: 50%;
+  background: #063a29;
+  color: var(--accent);
+  font-size: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+/* ===========================
+   Output Panel
+=========================== */
+.output {
+  flex: 1;
+  background: var(--card);
+  padding: 20px;
+  border-radius: 16px;
+}
+
+/* Crop Image */
+#cropImage {
+  width: 180px;
+  height: 180px;
+  border-radius: 12px;
+  object-fit: cover;
+  display: none;
+}
+
+/* Result Box Animation */
+#resultBox {
+  margin-top: 20px;
+  padding: 20px;
+  border-radius: 12px;
+  background: #093424;
+  color: #d8ffe9;
+  transform: scale(0.9);
+  opacity: 0;
+  transition: 0.4s ease;
+}
+
+#resultBox.show {
+  transform: scale(1);
+  opacity: 1;
+}
+
+/* Info Cards */
+.infoCard {
+  margin-top: 20px;
+  padding: 15px;
+  border-radius: 12px;
+  background: #0f2421;
+  border-left: 5px solid var(--accent);
+}
+
+/* District Cards */
+.distCard {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+  padding: 10px;
+  border-radius: 10px;
+  background: #102a33;
+}
+
+/* Tips & Tricks */
+.tipItem {
+  display: flex;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.tipIcon {
+  width: 40px;
+  margin-right: 12px;
+}
+
+#tipsTricksBox {
+  display: none;
+  margin-top: 20px;
+  padding: 15px;
+  border-radius: 12px;
+  background: #0a2620;
+  border-left: 6px solid var(--accent);
+}
+
+
+#cropImage {
+    width: 950px;
+    border-radius: 12px;
+    margin: 10px 0;
+    display: block;
+    opacity: 1;
+    height: 473px;
+}

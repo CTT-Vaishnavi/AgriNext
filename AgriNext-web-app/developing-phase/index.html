@@ -3,28 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Smart Agriculture System</title>
+<title>Agri🌾Next-Smart System</title>
+<link rel="stylesheet" href="style.css">
 
-<style>
-:root{--bg:#0b1116;--card:#121a21;--accent:#00c4ac;--text:#e8eef1;--muted:#9aa0a8;}
-body{margin:0;background:var(--bg);font-family:Poppins,sans-serif;color:var(--text);}
-.container{display:flex;gap:20px;padding:20px;}
-.sidebar{width:350px;background:var(--card);padding:20px;border-radius:16px;box-shadow:0 10px 25px rgba(0,0,0,0.6);}
-label{margin-top:12px;display:block;color:var(--muted);}
-select,input{width:100%;padding:12px;margin-top:5px;border-radius:10px;border:1px solid #223036;background:#0e171d;color:white;}
-button{width:100%;background:var(--accent);border:none;color:black;padding:12px;margin-top:12px;font-weight:bold;border-radius:10px;cursor:pointer;}
-button:hover{box-shadow:0 0 12px var(--accent);}
-.micBtn{width:50px;height:50px;background:#063a29;border-radius:50%;font-size:20px;color:var(--accent);margin:10px auto;display:flex;align-items:center;justify-content:center;cursor:pointer;}
-.output{flex:1;background:var(--card);padding:20px;border-radius:16px;}
-#cropImage{width:180px;height:180px;border-radius:12px;object-fit:cover;display:none;}
-#resultBox{background:#093424;margin-top:20px;padding:20px;border-radius:12px;transform:scale(.9);opacity:0;transition:.4s ease;color:#d8ffe9;}
-#resultBox.show{transform:scale(1);opacity:1;}
-.infoCard{margin-top:20px;background:#0f2421;padding:15px;border-radius:12px;border-left:5px solid var(--accent);}
-.distCard{display:flex;align-items:center;background:#102a33;padding:10px;border-radius:10px;margin-bottom:10px;}
-.tipItem{display:flex;align-items:center;margin-bottom:12px;}
-.tipIcon{width:40px;margin-right:12px;}
-#tipsTricksBox{display:none;margin-top:20px;background:#0a2620;border-left:6px solid #00c4ac;padding:15px;border-radius:12px;}
-</style>
 </head>
 
 <body>
@@ -33,7 +14,7 @@ button:hover{box-shadow:0 0 12px var(--accent);}
 
 <!-- LEFT PANEL -->
 <div class="sidebar">
-<h2 style="color:var(--accent)">Smart AgriSense 🌾</h2>
+<h2 style="color:var(--accent)"> Agri🌾Next-Smart</h2>
 
 <label>Select Language</label>
 <select id="lang">
@@ -42,11 +23,11 @@ button:hover{box-shadow:0 0 12px var(--accent);}
   <option value="hi">हिंदी</option>
 </select>
 
-<label>Audio Output</label>
+<!-- <label>Audio Output</label>
 <select id="audioToggle">
   <option value="on">Audio ON</option>
   <option value="off">Audio OFF</option>
-</select>
+</select> -->
 
 <label>Select District</label>
 <select id="district">
@@ -63,6 +44,11 @@ button:hover{box-shadow:0 0 12px var(--accent);}
   <option value="Cotton">Cotton / कापूस</option>
   <option value="Soybean">Soybean / सोयाबीन</option>
   <option value="Sugarcane">Sugarcane / ऊस</option>
+  <option value="Maize">Maize / मक्का</option>
+  <option value="Jowar">Jowar / ज्वारी</option>
+  <option value="Bajra">Bajra / बाजरी</option>
+  <option value="Turmeric">Turmeric / हळद</option>
+  <option value="Onion">Onion / कांदा</option>
 </select>
 
 <label>Soil Type</label>
@@ -77,19 +63,20 @@ button:hover{box-shadow:0 0 12px var(--accent);}
 <button onclick="predict()">Predict</button>
 
 <div class="micBtn" onclick="startVoice()">🎤</div>
-<center><small>Tap mic → Speak crop (गहू, भात, कापूस...)</small></center>
+<center><small>Tap mic → Speak crop (गहू, भात, कापूस, मक्का, ज्वारी...)</small></center>
 </div>
 
 <!-- RIGHT PANEL -->
 <div class="output">
-<h2>Smart Agriculture Results</h2>
+<h2>Smart Fertilizer Recommendations Results</h2>
 
 <div id="distInfo" class="distCard">
 <img src="https://cdn-icons-png.flaticon.com/512/684/684908.png" width="40">
 <span id="distText">Select district to show information</span>
 </div>
+<img id="cropImage" src="image/fornt.png" width="50">
 
-<img id="cropImage">
+<!-- <img id="cropImage"> -->
 
 <div id="resultBox">Fill details and click Predict.</div>
 
@@ -100,6 +87,7 @@ button:hover{box-shadow:0 0 12px var(--accent);}
 <!-- TIPS -->
 <div id="tipsTricksBox" class="infoCard">
 <h3>🌱 Tips & Tricks for Better Farming</h3>
+
 
 <div class="tipItem">
 <img src="https://cdn-icons-png.flaticon.com/512/2907/2907253.png" class="tipIcon">
@@ -131,163 +119,7 @@ button:hover{box-shadow:0 0 12px var(--accent);}
 </div>
 </div>
 
-<script>
 
-/* ✅ FIXED WORKING IMAGE LINKS */
-const cropImages = {
-  Wheat: "image/4.jpg",
-  Rice: "image/5.webp",
-  Cotton: "image/5.webp",
-  Soybean: "image/4.jpg",
-  Sugarcane: "image/4.jpg"
-};
-
-
-/* LANGUAGE PACK */
-const langText={
-en:{district:"DISTRICT",crop:"CROP",soil:"SOIL",area:"AREA",
-fertilizer:"Recommended Fertilizer",tips:"Detailed Tips (35 lines)",
-buyTitle:"Buy Fertilizers Online",buyBtn:"🛒 Click Here to Buy from AgriBegri"},
-mr:{district:"जिल्हा",crop:"पीक",soil:"माती",area:"शेती क्षेत्र",
-fertilizer:"शिफारस केलेले खत",tips:"तपशीलवार सूचना (३५ मुद्दे)",
-buyTitle:"ऑनलाईन खत खरेदी करा",buyBtn:"🛒 येथे क्लिक करा - AgriBegri"},
-hi:{district:"जिला",crop:"फसल",soil:"मिट्टी",area:"खेती क्षेत्र",
-fertilizer:"अनुशंसित उर्वरक",tips:"विस्तृत सुझाव (35 लाइन)",
-buyTitle:"ऑनलाइन उर्वरक खरीदें",buyBtn:"🛒 यहाँ क्लिक करें - AgriBegri"}
-};
-
-/* LONG TIPS */
-const longTips={
-Wheat:`Seed treatment...`,
-Rice:`Water mgmt...`,
-Cotton:`Spacing...`,
-Soybean:`Root nodulation...`,
-Sugarcane:`Setts planting...`
-};
-
-/* WEATHER DATA */
-const weatherData={
-Pune:"29°C | Good for Sugarcane",
-Nashik:"Cool | Best for Grapes",
-Aurangabad:"Dry | Cotton suitable",
-Kolhapur:"Humid | Best for Rice",
-Amravati:"Hot | Soybean suitable",
-Jalgaon:"Dry | Cotton & Banana",
-Sangli:"Good for Grapes"
-};
-
-/* APMC RATES */
-const apmcRates={
-Pune:"Sugarcane ₹3000/ton | Wheat ₹2400/q",
-Nashik:"Grapes ₹55/kg | Wheat ₹2200/q",
-Aurangabad:"Cotton ₹6800/q",
-Kolhapur:"Rice ₹3200/q | Turmeric ₹140/kg",
-Amravati:"Soybean ₹4600/q",
-Jalgaon:"Banana ₹18/kg | Cotton ₹6600/q",
-Sangli:"Grapes ₹40/kg | Turmeric ₹130/kg"
-};
-
-/* SUGGESTED CROPS */
-const cropSuggest={
-Pune:"Sugarcane, Wheat, Vegetables",
-Nashik:"Grapes, Onion, Wheat",
-Aurangabad:"Cotton, Bajra, Moong",
-Kolhapur:"Rice, Sugarcane, Banana",
-Amravati:"Soybean, Wheat, Cotton",
-Jalgaon:"Cotton, Banana, Jowar",
-Sangli:"Grapes, Turmeric, Sugarcane"
-};
-
-/* AUTO DETECT */
-function detectLocation(){
-document.getElementById("district").value="Pune";
-document.getElementById("distText").innerHTML="Auto Detected District: Pune";
-}
-
-/* MAIN PREDICTION */
-function predict(){
-let crop=document.getElementById("crop").value;
-let soil=document.getElementById("soil").value;
-let area=document.getElementById("area").value;
-let district=document.getElementById("district").value;
-let lang=document.getElementById("lang").value;
-
-if(!area)return alert("Enter farm area");
-
-let fertilizer={
-Wheat:"NPK 100:50:50",Rice:"NPK 80:40:40",
-Cotton:"NPK 60:30:30",Soybean:"NPK 20:40:20",
-Sugarcane:"NPK 160:80:80"
-}[crop];
-
-let L=langText[lang];
-let tips=longTips[crop];
-
-/* UPDATE RESULT */
-let text=`
-<b>${L.district}:</b> ${district}<br>
-<b>${L.crop}:</b> ${crop}<br>
-<b>${L.soil}:</b> ${soil}<br>
-<b>${L.area}:</b> ${area} acres<br><br>
-
-<b>${L.fertilizer}:</b> ${fertilizer}<br><br>
-<b>${L.tips}:</b><br>${tips}<br><br>
-
-<div style='background:#ffe680;color:#000;padding:12px;border-radius:10px;'>
-<b>${L.buyTitle}:</b><br>
-<a href='https://agribegri.com/fertilizers' target='_blank'>
-${L.buyBtn}</a></div>`;
-
-document.getElementById("resultBox").innerHTML=text;
-document.getElementById("resultBox").classList.add("show");
-
-/* SHOW IMAGE */
-let img=document.getElementById("cropImage");
-img.src=cropImages[crop];
-img.style.display="block";
-
-/* IMAGE ERROR FIX */
-img.onerror=()=>{ img.style.display="none"; console.log("Image failed"); };
-
-document.getElementById("weatherBox").innerHTML=`<b>Weather:</b><br>${weatherData[district]}`;
-document.getElementById("apmcBox").innerHTML=`<b>APMC Rates:</b><br>${apmcRates[district]}`;
-document.getElementById("cropSuggestBox").innerHTML=`<b>Suggested Crops:</b><br>${cropSuggest[district]}`;
-
-document.getElementById("tipsTricksBox").style.display="block";
-
-speak(text,lang);
-}
-
-/* SPEAK */
-function speak(text,lang){
-if(document.getElementById("audioToggle").value==="off")return;
-let msg=new SpeechSynthesisUtterance(text);
-msg.lang=lang==="mr"?"mr-IN":lang==="hi"?"hi-IN":"en-US";
-msg.rate=.9;
-speechSynthesis.speak(msg);
-}
-
-/* VOICE INPUT */
-function startVoice(){
-let rec=new webkitSpeechRecognition();
-rec.lang="mr-IN";
-
-rec.onresult=e=>{
-let sp=e.results[0][0].transcript;
-
-/* VOICE TO CROP SELECTION */
-if(sp.includes("गहू")) document.getElementById("crop").value="Wheat";
-if(sp.includes("भात")) document.getElementById("crop").value="Rice";
-if(sp.includes("कापूस")) document.getElementById("crop").value="Cotton";
-if(sp.includes("सोयाबीन")) document.getElementById("crop").value="Soybean";
-if(sp.includes("ऊस")) document.getElementById("crop").value="Sugarcane";
-
-predict();
-};
-
-rec.start();
-}
-</script>
-
+<script src="script.js"></script>
 </body>
 </html>
