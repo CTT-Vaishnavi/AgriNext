@@ -867,7 +867,7 @@ form {
 /* Button style */
 .btn {
   margin-top: 25px;
-  width: 100%;
+  /* width: 100%; */
   padding: 12px;
   background: #007BFF;
   color: #fff;

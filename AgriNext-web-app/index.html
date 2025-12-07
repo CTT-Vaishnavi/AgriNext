@@ -346,8 +346,7 @@
           <ul>
             <li><i class="fa-solid fa-phone"></i> 1800-180-1551</li>
             <li><i class="fa-solid fa-location-dot"></i> SGBA University</li>
-            <li><i class="fa-solid fa-envelope"></i> Team@Agrinext.example</li>
-          </ul>
+            <li><i class="fa-solid fa-envelope"></i> <a href="mailto:agrinextplant@gmail.com">agrinextplant@gmail.com</a></li>          </ul>
 
           <div class="themes">
             <span>Themes:</span>
@@ -361,33 +360,34 @@
       </div>
 
       <div class="form-container">
-              <form action="https://api.web3forms.com/submit" method="POST">
-              <div class="inputBox">
-                                <input type="hidden" name="access_key" value="da7823d7-1889-4950-8437-74af7064b064">
-                                <input type="text" name="first_name"  required="required" placeholder="Full Name">
-                                <span>Full Name</span>
-              </div>
+    <form action="https://api.web3forms.com/submit" method="POST" id="contactForm" autocomplete="off">
 
-              <div class="inputBox">
-                                <input type="email" name="email" required="required" placeholder="Email">
-                                <span>Email</span>
-              </div>
+        <div class="inputBox">
+            <input type="hidden" name="access_key" value="ced1b7a1-4ccf-47df-a750-d36761ef15a8">
+            <input type="text" name="first_name" required="required" placeholder="Full Name" autocomplete="off">
+            <span>Full Name</span>
+        </div>
 
-              <div class="inputBox">
-                                <textarea name="message" required="required"  ></textarea>
-                                <span>Type your message.....</span>
-              </div>
+        <div class="inputBox">
+            <input type="email" name="email" required="required" placeholder="Email" autocomplete="off">
+            <span>Email</span>
+        </div>
 
-              <div class="from-check">
-                                <input type="checkbox" class="form-check-input" id="isclient">
-                                <label  type="name" for="isclient" style="color: #007BFF;">I want you to work on project me</label>
-              </div>
+        <div class="inputBox">
+            <textarea name="message" required="required" autocomplete="off"></textarea>
+            <span>Type your message.....</span>
+        </div>
 
-              <div class="inputBox">
-                        <input type="submit" name="" value="Send Message" class="btn">                 
-              </div>
-          </form>
-      </div>
+        <div class="from-check">
+            <input type="checkbox" class="form-check-input" id="isclient" name="client_request">
+            <label for="isclient" style="color: #007BFF;">I want you to work on project me</label>
+        </div>
+
+        <div class="inputBox">
+            <input type="submit" value="Send Message" class="btn">
+        </div>
+    </form>
+</div>
     </section>
 
 

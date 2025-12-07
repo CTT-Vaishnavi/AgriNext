@@ -56,4 +56,12 @@ document.getElementById("callButton").addEventListener("click", function(e) {
 
 
 
+
+
+  document.getElementById("contactForm").addEventListener("submit", function() {
+    setTimeout(() => {
+        this.reset();     // 🔥 Form Reset After Submit
+    }, 1000);
+});
+
               
