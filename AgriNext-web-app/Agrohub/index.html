@@ -1,62 +1,230 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Agri🌾Next-Smart System</title>
-<link rel="stylesheet" href="agrohubstyle.css">
-<link rel="shortcut icon" href="../images/output-onlinepngtools.png" type="image/x-icon">
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>AgriNext — Dealer Finder</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-<script>
-  // Toggle mode
-function toggleTheme() {
-    document.body.classList.toggle("dark-mode");
-
-    if (document.body.classList.contains("dark-mode")) {
-        localStorage.setItem("theme", "dark");
-    } else {
-        localStorage.setItem("theme", "light");
-    }
+<style>
+:root {
+  --bg:#f4f7f8; --card:#fff; --text:#1b1b1b; --muted:#888; --accent:#23cf6b;
+  --input-bg:#fff; --input-text:#000; --icon-filter:none;
 }
+.dark-mode {
+  --bg:#0b1116; --card:#121a21; --text:#e8eef1; --muted:#aab4bd; --accent:#00c4ac;
+  --input-bg:#0f1820; --input-text:#fff; --icon-filter:invert(1);
+}
+* { margin:0; padding:0; box-sizing:border-box; font-family:'Poppins', sans-serif; }
+body { background:var(--bg); color:var(--text); transition:0.3s ease-in-out; }
+nav { width:100%; background:var(--card); color:var(--text); display:flex; justify-content:space-between; align-items:center; padding:16px 40px; border-bottom:1px solid var(--muted); transition:0.3s; }
+.logo-area { display:flex; align-items:center; gap:12px; }
+.logo-area img { height:55px; }
+.logo-area h1 { font-size:28px; font-weight:600; color:var(--text); }
+.logo-area h1 span { color:var(--accent); }
+.phone { display:flex; align-items:center; gap:8px; font-size:18px; font-weight:500; color:var(--text); }
+.phone i { font-size:22px; color:var(--accent); }
+ul { display:flex; gap:40px; list-style:none; }
+ul li a { text-decoration:none; font-size:17px; font-weight:500; color:var(--text); opacity:0.8; transition:0.3s; }
+ul li a:hover { opacity:1; color:var(--accent); }
+.btns { display:flex; gap:20px; }
+.btn { background:var(--accent); padding:10px 22px; border-radius:25px; color:#fff; font-weight:600; text-decoration:none; transition:0.3s; }
+.btn:hover { opacity:0.8; }
+.theme-toggle { font-size:22px; cursor:pointer; }
+.theme-toggle i { color:var(--accent); }
 
-</script>
+.wrap { max-width:1200px; margin:24px auto; padding:18px; display:grid; grid-template-columns:320px 1fr; gap:18px; }
+.panel { background:var(--card); border-radius:12px; padding:18px; box-shadow:0 6px 22px rgba(0,0,0,0.06); transition:0.3s; }
+.brand { display:flex; align-items:center; gap:10px; margin-bottom:12px; }
+.logo { width:44px; height:44px; border-radius:10px; background:linear-gradient(135deg,#2cc36b,#08914b); display:flex; align-items:center; justify-content:center; color:#fff; font-weight:700; }
+h1 { font-size:18px; margin:0; }
+label { display:block; font-size:13px; color:var(--muted); margin:12px 0 6px; }
+select, input[type="text"], input[type="number"] { width:100%; padding:10px; border-radius:8px; border:1px solid var(--muted); background:var(--input-bg); color:var(--input-text); }
+button.btn, .btn-small { cursor:pointer; transition:0.3s; }
+button.btn { width:100%; padding:10px; border-radius:8px; border:none; background:var(--accent); color:#fff; font-weight:600; margin-top:14px; }
+.mic { display:flex; align-items:center; gap:8px; margin-top:12px; color:var(--muted); }
+.small { font-size:13px; color:var(--muted); margin-top:8px; }
+
+.content { display:flex; flex-direction:column; gap:14px; }
+.hero { height:220px; border-radius:12px; background:#ddd; overflow:hidden; display:flex; align-items:center; justify-content:center; position:relative; perspective:1000px; transition:0.3s; }
+.card3d { width:86%; height:78%; border-radius:14px; background:linear-gradient(180deg,rgba(255,255,255,0.9),rgba(255,255,255,0.75)); box-shadow:0 20px 50px rgba(7,20,12,0.12); transform-style:preserve-3d; transition:transform .15s ease; display:flex; overflow:hidden; }
+.card3d .left { flex:1; padding:22px; }
+.card3d h2 { margin:0; font-size:20px; color:#0b6b3e; }
+.card3d p { color:#2f4f3a; margin-top:8px; }
+.card3d .visual { flex:1; background-image:url('https://via.placeholder.com/200'); background-size:cover; background-position:center; filter:saturate(1.02) contrast(0.95); transform:translateZ(40px) scale(1.03); }
+
+.controls { display:flex; gap:8px; align-items:center; }
+.chip { background:#fff; padding:8px 10px; border-radius:999px; border:1px solid #eef2ee; font-weight:600; color:#2b6b3f; transition:0.3s; }
+
+.results { background:var(--card); border-radius:12px; padding:14px; box-shadow:0 6px 22px rgba(0,0,0,0.04); transition:0.3s; }
+.toolbar { display:flex; gap:8px; align-items:center; flex-wrap:wrap; }
+.search { flex:1; display:flex; gap:8px; }
+.search input { flex:1; padding:10px; border-radius:8px; border:1px solid var(--muted); background:var(--input-bg); color:var(--input-text); }
+.dealer-list { margin-top:12px; display:grid; gap:10px; }
+.dealer { display:flex; gap:12px; align-items:flex-start; padding:12px; border-radius:10px; border:1px solid #eef2f2; transition:0.3s; }
+.dealer .meta { flex:1; }
+.name { font-weight:700; color:#0b662f; }
+.addr { color:#4a5560; font-size:13px; margin-top:6px; }
+.phone { margin-top:8px; display:flex; gap:8px; align-items:center; }
+.btn-small { padding:6px 10px; border-radius:8px; border:none; background:#eef7f0; color:#0b6b3f; cursor:pointer; font-weight:600; }
+.link { color:#0b6b3f; text-decoration:none; font-weight:600; }
+
+.info-cards { display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:12px; }
+.info { padding:14px; border-radius:10px;  border:1px solid #eef2f2; transition:0.3s; }
+
+@media (max-width:920px){ .wrap{grid-template-columns:1fr; padding:10px} .hero{height:180px} .card3d{width:94%} }
+</style>
 </head>
-
 <body>
 <nav>
-    <!-- LOGO -->
-    <div class="logo-area">
-        <img src="../images/output-onlinepngtools (1).png" alt="logo">
-        <h1>Agri<i class="fas fa-seedling plant-icon" style="color: green;"></i>Next</h1>
-
-    </div>
-
-    <!-- PHONE -->
-    <div class="phone">
-        <i>📞</i> 1800-180-1551
-    </div>
-
-    <!-- NAV LINKS -->
-    <ul>
-        <li><a href="#">HOME</a></li>
-        <li><a href="#">FEATURES</a></li>
-        <li><a href="#">ABOUT</a></li>
-        <li><a href="#">CONTACT</a></li>
-    </ul>
-
-    <!-- BUTTONS -->
-    <div class="btns">
-        <a href="#" class="btn">EXPLORE NOW</a>
-        <a href="#" class="btn">SIGNOUT</a>
-    </div>
-      <!-- 🌙 DARK MODE BUTTON -->
-    <div class="theme-toggle" onclick="toggleTheme()">
-        <i class="fas fa-moon"></i>
-    </div>
+  <div class="logo-area">
+      <img src="../images/output-onlinepngtools (1).png" alt="logo">
+      <h1>Agri<i class="fas fa-seedling plant-icon" style="color: green;"></i>Next</h1>
+  </div>
+  <div class="phone"><i>📞</i> 1800-180-1551</div>
+  <ul>
+      <li><a href="#">HOME</a></li>
+      <li><a href="#">FEATURES</a></li>
+      <li><a href="#">ABOUT</a></li>
+      <li><a href="#">CONTACT</a></li>
+  </ul>
+  <div class="btns">
+      <a href="#" class="btn">EXPLORE NOW</a>
+      <a href="#" class="btn">SIGNOUT</a>
+  </div>
+  <div class="theme-toggle" onclick="toggleTheme()">
+      <i class="fas fa-moon"></i>
+  </div>
 </nav>
 
+<div class="wrap">
+  <aside class="panel" aria-label="controls">
+    <div class="brand">
+      <div class="logo">Ag</div>
+      <div>
+        <h1>AgriNext − Dealer Finder</h1>
+        <div class="small">Find fertilizer dealers by state / district / taluka</div>
+      </div>
+    </div>
 
+    <label for="lang">Language</label>
+    <select id="lang">
+      <option value="en">English</option>
+      <option value="hi">हिंदी</option>
+      <option value="mr">मराठी</option>
+    </select>
 
-<script src="script.js"></script>
+    <label for="state">Select State</label>
+    <select id="state"></select>
+
+    <label for="district">Select District</label>
+    <select id="district"></select>
+
+    <label for="taluka">Select Taluka</label>
+    <select id="taluka"></select>
+
+    <button id="autoDetect" class="btn">Auto Detect District</button>
+
+    <label for="searchFarm">Search Dealer / Crop / Name</label>
+    <input id="searchFarm" type="text" placeholder="Search">
+
+    <button id="showDealers" class="btn">Show Dealers</button>
+  </aside>
+
+  <main class="content" aria-live="polite">
+    <div class="hero" id="hero">
+      <div class="card3d" id="card3d">
+        <div class="left">
+          <h2 id="heroTitle">Smart Fertilizer Recommendations</h2>
+          <p id="heroSub">Select region on the left to get dealer list, addresses and quick links.</p>
+          <div style="margin-top:12px" class="controls">
+            <div class="chip" id="chipRegion">Region</div>
+            <div class="chip" id="chipTaluka">Taluka</div>
+          </div>
+        </div>
+        <div class="visual" aria-hidden="true"></div>
+      </div>
+    </div>
+
+    <section class="results">
+      <div class="toolbar">
+        <div style="flex:1">
+          <strong id="resultHeader">Dealers (0)</strong>
+          <div class="small" id="resultSub">Select state/district/taluka and click Show Dealers</div>
+        </div>
+      </div>
+      <div class="dealer-list" id="dealerList" aria-live="polite"></div>
+    </section>
+
+    <div class="info-cards" style="margin-top:8px">
+      <div class="info">
+        <strong>Tip</strong>
+        <p class="small">Click phone to copy number. Use language selector to change UI labels quickly.</p>
+      </div>
+      <div class="info">
+        <strong>Data Source</strong>
+        <p class="small">Sample dealer addresses shown. Replace with real entries in the JS section below.</p>
+      </div>
+    </div>
+  </main>
+</div>
+
+<script>
+// Sample data
+const data = {
+  states: {
+    "Maharashtra": {
+      districts: {
+        "Pune": { talukas: { "Haveli":[], "Baramati":[], "Shirur":[] } },
+        "Buldhana": { talukas: { "Buldana":[], "Chikhli":[] } }
+      }
+    },
+    "Karnataka": {
+      districts: {
+        "Bengaluru": { talukas: { "Bengaluru North":[], "Bengaluru South":[] } }
+      }
+    }
+  },
+  dealers: {
+    "Maharashtra": {
+      "Pune": {
+        "Haveli":[{ name:"Shree Agro Fert", address:"Plot 12, MIDC, Pune", phone:"+91-9876543210", whatsapp:"+91-9876543210", link:"#"}]
+      },
+      "Buldhana": {
+        "Buldana":[{ name:"Buldana Agro Store", address:"Main Rd, Buldana", phone:"+91-9422000001", whatsapp:"+91-9422000001", link:"#"}]
+      }
+    }
+  }
+};
+
+const i18n = {
+  en: { heroTitle:"Smart Fertilizer Recommendations", heroSub:"Select region to list fertilizer dealers and addresses.", chipRegion:"Region", chipTaluka:"Taluka", showDealers:"Show Dealers", autoDetect:"Auto Detect District", dealers:"Dealers" },
+  hi: { heroTitle:"स्मार्ट उर्वरक सुझाव", heroSub:"डीलर और पते देखने के लिए क्षेत्र चुनें।", chipRegion:"क्षेत्र", chipTaluka:"तालुका", showDealers:"डीलर दिखाएँ", autoDetect:"जिला स्वतः पहचानें", dealers:"डीलर" },
+  mr: { heroTitle:"स्मार्ट खत शिफारसी", heroSub:"डीलर व पत्ता पाहण्यासाठी प्रदेश निवडा.", chipRegion:"प्रदेश", chipTaluka:"तालुका", showDealers:"डीलर दर्शवा", autoDetect:"जिल्हा आपोआप शोधा", dealers:"डीलर" }
+};
+
+const stateSel=document.getElementById('state'), districtSel=document.getElementById('district'), talukaSel=document.getElementById('taluka'), langSel=document.getElementById('lang'), dealerList=document.getElementById('dealerList'), resultHeader=document.getElementById('resultHeader'), resultSub=document.getElementById('resultSub'), heroTitle=document.getElementById('heroTitle'), heroSub=document.getElementById('heroSub'), chipRegion=document.getElementById('chipRegion'), chipTaluka=document.getElementById('chipTaluka'), showDealersBtn=document.getElementById('showDealers'), autoBtn=document.getElementById('autoDetect'), searchInput=document.getElementById('searchFarm');
+
+function populateStates(){stateSel.innerHTML='';Object.keys(data.states).forEach(s=>{const opt=document.createElement('option');opt.value=s;opt.textContent=s;stateSel.appendChild(opt)});populateDistricts()}
+function populateDistricts(){const st=stateSel.value;districtSel.innerHTML='';const d=data.states[st].districts;Object.keys(d).forEach(x=>{const opt=document.createElement('option');opt.value=x;opt.textContent=x;districtSel.appendChild(opt)});populateTalukas()}
+function populateTalukas(){const st=stateSel.value,di=districtSel.value;talukaSel.innerHTML='';const t=data.states[st].districts[di].talukas;Object.keys(t).forEach(x=>{const opt=document.createElement('option');opt.value=x;opt.textContent=x;talukaSel.appendChild(opt)})}
+
+function updateLanguage(lang){const t=i18n[lang];heroTitle.textContent=t.heroTitle;heroSub.textContent=t.heroSub;chipRegion.textContent=t.chipRegion;chipTaluka.textContent=t.chipTaluka;showDealersBtn.textContent=t.showDealers;autoBtn.textContent=t.autoDetect;resultHeader.textContent=`${t.dealers} (0)`}
+
+function showDealers(){const st=stateSel.value,di=districtSel.value,ta=talukaSel.value,filter=searchInput.value.toLowerCase();dealerList.innerHTML='';if(!data.dealers[st]||!data.dealers[st][di]||!data.dealers[st][di][ta])return;let dealers=data.dealers[st][di][ta];if(filter)dealers=dealers.filter(d=>d.name.toLowerCase().includes(filter)||d.address.toLowerCase().includes(filter));resultHeader.textContent=`Dealers (${dealers.length})`;resultSub.textContent=dealers.length? '':'No dealers found';dealers.forEach(d=>{const div=document.createElement('div');div.className='dealer';div.innerHTML=`<div class="meta"><div class="name">${d.name}</div><div class="addr">${d.address}</div><div class="phone"><button class="btn-small" onclick="copyText('${d.phone}')">📞 ${d.phone}</button><a class="btn-small link" href="https://wa.me/${d.whatsapp.replace(/\D/g,'')}" target="_blank">💬 WhatsApp</a></div></div>`;dealerList.appendChild(div)})}
+
+function copyText(text){navigator.clipboard.writeText(text).then(()=>alert('Copied '+text))}
+
+function toggleTheme(){document.body.classList.toggle('dark-mode')}
+
+langSel.addEventListener('change',()=>updateLanguage(langSel.value));
+stateSel.addEventListener('change',populateDistricts);
+districtSel.addEventListener('change',populateTalukas);
+showDealersBtn.addEventListener('click',showDealers);
+autoBtn.addEventListener('click',()=>alert('Auto-detect not implemented, use dropdowns'));
+
+populateStates();
+updateLanguage('en');
+</script>
 </body>
 </html>
