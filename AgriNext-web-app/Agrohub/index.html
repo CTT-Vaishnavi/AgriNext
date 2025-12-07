@@ -1,239 +1,62 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Krushi Kendra Dealer Search</title>
-  <link rel="stylesheet" href="agrohubstyle.css">
-</head>
-<body>
-
-<!-- NAVBAR -->
-  <header class="header">
-          <div class="logo" style="display: flex; align-items: center; gap: 8px;">
-            <img src="./images/output-onlinepngtools (1).png" height="60px" alt="">
-            <h1>Agri🌾Next</h1>
-          </div>
-          <a href="#" id="callButton" title="Kisan Call Centre (KCC)">📞 1800-180-1551</a>
-          <nav class="navbar">
-            <a href="../index.html">Home</a>
-            <a href="../index.html#features">Features</a>
-            <a href="../index.html#about">About</a>
-            <a href="../index.html#contact">Contact</a>
-            <a href="../explore/index.html" class="btn">EXPLORE NOW</a>
-            <a href="#" id="loginBtn" class="btn">Signout </a>
-            <!-- <a href="#" id="callButton" title="Kisan Call Centre (KCC)">📞 1800-180-1551</a> -->
-          </nav>
-          <button class="theme-btn" onclick="toggleTheme()">Black Theme</button>
-          <div class="fas fa-bars" id="menu-btn"></div>
-  </header>
-
-  <!-- BANNER IMAGE -->
-<div style="width:100%; text-align:center; margin-top:90px;">
-  <img src="../images/agrohub.jpg" alt="Krushi Kendra Banner" 
-       style="width:80%; max-height:280px; object-fit:cover; border-radius:10px; box-shadow:0 4px 10px rgba(0,0,0,0.3);">
-</div>
-
- 
-<!-- MAIN CONTAINER -->
-    <div class="container">
-      <h2>Krushi Kendra Search |उर्वरक डीलर खोजें </h2>
-
-      <select id="districtSelect"></select>
-      <select id="talukaSelect"></select>
-      <button onclick="loadData()">Result</button>
-      <button id="pdfBtn" style="display:none;background:blue;color:white;" onclick="generatePDF()">Download PDF</button>
-      <input type="text" id="searchInput" placeholder="डीलर खोजें..." style="display:none;width:40%;margin-top:15px;">
-
-      <!-- 3D Loader -->
-      <div class="loader" id="loader"></div>
-
-      <table id="dealerTable" style="display:none;">
-        <thead>
-          <tr>
-            <th>Serial No</th>
-            <th>Dealer Name</th>
-            <th>Address</th>
-            <th>Actions</th>
-          </tr>
-        </thead>
-        <tbody id="dealerBody"></tbody>
-      </table>
-    </div>
-<!-- FOOTER -->
-    <footer class="footer" id="footer">
-      <div class="footer-container">
-        <div class="footer-section">
-          <h3>Agri🌾Next</h3>
-          <p>Smart Farming for Smart India</p>
-        </div>
-
-        <div class="footer-section">
-          <h4>Quick Links</h4>
-          <a href="../index.html">Home</a>
-          <a href="../index.html#features">Features</a>
-          <a href="../index.html#about">About</a>
-          <a href="../index.html#contact">Contact</a>
-        </div>
-
-        <div class="footer-section">
-          <h4>Contact</h4>
-          <p>📞 1800-180-1551</p>
-          <p>✉ agrinext@gmail.com</p>
-        </div>
-
-        <div class="footer-section">
-          <h4>Follow Us</h4>
-          <a href="https://www.facebook.com/">Facebook</a>
-          <a href="https://www.instagram.com/">Instagram</a>
-          <a href="https://www.youtube.com/">YouTube</a>
-        </div>
-      </div>
-
-      <div class="footer-bottom">
-        <p>© 2025 Agri🌾Next. All rights reserved.</p>
-      </div>
-    </footer>
-
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Agri🌾Next-Smart System</title>
+<link rel="stylesheet" href="agrohubstyle.css">
+<link rel="shortcut icon" href="../images/output-onlinepngtools.png" type="image/x-icon">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 <script>
-// menu
-let menu = document.getElementById("menu-btn");
-let navbar = document.querySelector(".navbar");
-
-menu.onclick = () => {
-  navbar.classList.toggle("active");
-  menu.classList.toggle("fa-times");
-};
-
-
-const DISTRICTS = [
-  "Buldhana","Amravati","Akola","Nagpur","Pune",
-  "Nashik","Aurangabad","Jalna","Solapur","Wardha"
-];
-
-
-const TALUKAS = {
-  "Buldhana": ["Buldhana","Chikhli","Deulgaon Raja","Jalgaon Jamod","Khamgaon","Lonar","Mehkar","Malkapur","Nandura","Sangrampur"],
-  "Amravati": ["Amravati","Dharni","Chandur Railway","Chandur Bazaar","Warud","Morshi","Daryapur","Teosa","Anjangaon Surji","Achalpur"],
-  "Akola": ["Akola","Balapur","Barshitakli","Murtijapur","Akot","Telhara","Patur","Mangrulpir","Washim","Karanja"],
-  "Nagpur": ["Nagpur","Hingna","Katol","Narkhed","Parseoni","Kalmeshwar","Saoner","Umred","Kuhi","Bhiwapur"],
-  "Pune": ["Pune","Baramati","Shirur","Junnar","Mulshi","Bhor","Mawal","Haveli","Purandar","Velhe"],
-  "Nashik": ["Nashik","Niphad","Sinnar","Yeola","Chandwad","Malegaon","Igatpuri","Trimbak","Deola","Satana"],
-  "Aurangabad": ["Aurangabad","Paithan","Kannad","Soygaon","Vaijapur","Gangapur","Phulambri","Sillod","Khuldabad","Phulambri-2"],
-  "Jalna": ["Jalna","Ambad","Badnapur","Bhokardan","Partur","Mantha","Ghansawangi","Jafrabad","Sindkhed Raja","Dongaon"],
-  "Solapur": ["Solapur","Pandharpur","Sangola","Mangalwedha","Akkalkot","Karmala","Barshi","Mohol","North Solapur","South Solapur"],
-  "Wardha": ["Wardha","Deoli","Seloo","Arvi","Ashti","Carona","Karanja Ghadge","Samudrapur","Hinganghat","Pulgaon"]
-};
-
-
-const NAME_PREFIXES = ["Shri","Sai","Gayatri","Balaji","Amar","Vaishnavi","Gurukrupa","Jai Kisan","Aarti","Ramdev"];
-const NAME_SUFFIX = ["Krushi Kendra","Agro Agency","Farmers Center","Seeds & Fertilizer","Krushi Seva Kendra"];
-
-function genPhone() {
-  return "9" + Math.floor(100000000 + Math.random() * 900000000);
-}
-
-const dealersData = {};
-DISTRICTS.forEach(dist => {
-  dealersData[dist] = {};
-  if (TALUKAS[dist]) {
-    TALUKAS[dist].forEach((taluka, index) => {
-      const dealers = [];
-      for (let i = 1; i <= 15; i++) {
-        const dname = `${NAME_PREFIXES[(i+index)%NAME_PREFIXES.length]} ${NAME_SUFFIX[(i+index)%NAME_SUFFIX.length]}`;
-        const address = `Market Area, ${taluka}, ${dist}`;
-        const phone = genPhone();
-        const map = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(dname + ", " + taluka)}`;
-        dealers.push({ id: i, name: dname, address, phone, map });
-      }
-      dealersData[dist][taluka] = dealers;
-    });
-  }
-});
-
-// Fill dropdowns
-const districtSelect = document.getElementById("districtSelect");
-const talukaSelect = document.getElementById("talukaSelect");
-districtSelect.innerHTML = '<option value="">Select District</option>';
-DISTRICTS.forEach(d => districtSelect.innerHTML += `<option value="${d}">${d}</option>`);
-
-districtSelect.addEventListener("change", () => {
-  talukaSelect.innerHTML = '<option value="">Select Taluka</option>';
-  if (TALUKAS[districtSelect.value]) {
-    TALUKAS[districtSelect.value].forEach(t => talukaSelect.innerHTML += `<option value="${t}">${t}</option>`);
-  }
-});
-
-// Show dealers with loader animation
-function loadData() {
-  const loader = document.getElementById("loader");
-  loader.style.display = "block";
-  setTimeout(showDealers, 1200);
-}
-
-function showDealers() {
-  const d = districtSelect.value;
-  const t = talukaSelect.value;
-  const table = document.getElementById("dealerTable");
-  const body = document.getElementById("dealerBody");
-  const search = document.getElementById("searchInput");
-  const pdfBtn = document.getElementById("pdfBtn");
-
-  document.getElementById("loader").style.display = "none";
-  body.innerHTML = "";
-
-  if (dealersData[d] && dealersData[d][t]) {
-    table.style.display = "table";
-    search.style.display = "inline";
-    pdfBtn.style.display = "inline";
-
-    dealersData[d][t].forEach(dd => {
-      body.innerHTML += `
-      <tr>
-        <td>${dd.id}</td>
-        <td>${dd.name}</td>
-        <td>${dd.address}</td>
-        <td>
-          <a class="whatsapp-btn" href="https://wa.me/91${dd.phone}" target="_blank">WhatsApp</a>
-          <a class="map-btn" href="${dd.map}" target="_blank">Map</a>
-        </td>
-      </tr>`;
-    });
-  } else {
-    alert("Data not available yet.");
-  }
-}
-
-document.getElementById("searchInput").addEventListener("keyup", function () {
-  const filter = this.value.toLowerCase();
-  document.querySelectorAll("#dealerBody tr").forEach(row => {
-    row.style.display = row.textContent.toLowerCase().includes(filter) ? "" : "none";
-  });
-});
-
-// PDF Generator
-function generatePDF() {
-  const { jsPDF } = window.jspdf;
-  const doc = new jsPDF();
-  doc.text("Krushi Kendra Dealer List", 10, 10);
-
-  let y = 20;
-  document.querySelectorAll("#dealerBody tr").forEach(row => {
-    doc.text(row.innerText, 10, y);
-    y += 10;
-  });
-
-  doc.save("Krushi-Kendra-Dealers.pdf");
-}
-
-// THEME
+  // Toggle mode
 function toggleTheme() {
-  document.body.classList.toggle("dark");
-}
-</script>
+    document.body.classList.toggle("dark-mode");
 
+    if (document.body.classList.contains("dark-mode")) {
+        localStorage.setItem("theme", "dark");
+    } else {
+        localStorage.setItem("theme", "light");
+    }
+}
+
+</script>
+</head>
+
+<body>
+<nav>
+    <!-- LOGO -->
+    <div class="logo-area">
+        <img src="../images/output-onlinepngtools (1).png" alt="logo">
+        <h1>Agri<i class="fas fa-seedling plant-icon" style="color: green;"></i>Next</h1>
+
+    </div>
+
+    <!-- PHONE -->
+    <div class="phone">
+        <i>📞</i> 1800-180-1551
+    </div>
+
+    <!-- NAV LINKS -->
+    <ul>
+        <li><a href="#">HOME</a></li>
+        <li><a href="#">FEATURES</a></li>
+        <li><a href="#">ABOUT</a></li>
+        <li><a href="#">CONTACT</a></li>
+    </ul>
+
+    <!-- BUTTONS -->
+    <div class="btns">
+        <a href="#" class="btn">EXPLORE NOW</a>
+        <a href="#" class="btn">SIGNOUT</a>
+    </div>
+      <!-- 🌙 DARK MODE BUTTON -->
+    <div class="theme-toggle" onclick="toggleTheme()">
+        <i class="fas fa-moon"></i>
+    </div>
+</nav>
+
+
+
+<script src="script.js"></script>
 </body>
 </html>
