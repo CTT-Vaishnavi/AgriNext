@@ -1,442 +1,496 @@
 <!DOCTYPE html>
+<!-- Coding By CodingNepal - www.codingnepalweb.com -->
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Agri🌾Next-Smart Farming</title>
-    <link rel="shortcut icon" href="./images/output-onlinepngtools.png" type="image/x-icon">
-    <link rel="stylesheet" href="css/style.css" />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
-    />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Website with Login and Registration Form | CodingNepal</title>
+    <!-- Google Fonts Link For Icons -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@48,400,0,0">
+    <style>
+        /* Importing Google font - Open Sans */
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600;700&display=swap");
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Open Sans", sans-serif;
+}
+body {
+    height: 100vh;
+    width: 100%;
+    background: url("./images/amit-front2.jpg") center/cover no-repeat;
+}
+header {
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 10;
+    padding: 0 10px;
+}
+.navbar {
+    display: flex;
+    padding: 22px 0;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    justify-content: space-between;
+}
+.navbar .hamburger-btn {
+    display: none;
+    color: #fff;
+    cursor: pointer;
+    font-size: 1.5rem;
+}
+.navbar .logo {
+    gap: 10px;
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+}
+.navbar .logo img {
+    width: 40px;
+    border-radius: 50%;
+}
+.navbar .logo h2 {
+    color: #fff;
+    font-weight: 600;
+    font-size: 1.7rem;
+}
+.navbar .links {
+    display: flex;
+    gap: 35px;
+    list-style: none;
+    align-items: center;
+}
 
-  </head>
+.navbar .close-btn {
+    position: absolute;
+    right: 20px;
+    top: 20px;
+    display: none;
+    color: #000;
+    cursor: pointer;
+}
+.navbar .links a {
+    color: #fff;
+    font-size: 1.1rem;
+    font-weight: 500;
+    text-decoration: none;
+    transition: 0.1s ease;
+}
+.navbar .links a:hover {
+    color: #19e8ff;
+}
+.navbar .login-btn {
+    border: none;
+    outline: none;
+    background: #fff;
+    color: #275360;
+    font-size: 1rem;
+    font-weight: 600;
+    padding: 10px 18px;
+    border-radius: 3px;
+    cursor: pointer;
+    transition: 0.15s ease;
+}
+.navbar .login-btn:hover {
+    background: #ddd;
+}
+.form-popup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    z-index: 10;
+    width: 100%;
+    opacity: 0;
+    pointer-events: none;
+    max-width: 720px;
+    background: #fff;
+    border: 2px solid #fff;
+    transform: translate(-50%, -70%);
+}
+.show-popup .form-popup {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translate(-50%, -50%);
+    transition: transform 0.3s ease, opacity 0.1s;
+}
+.form-popup .close-btn {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    color: #878484;
+    cursor: pointer;
+}
+.blur-bg-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 10;
+    height: 100%;
+    width: 100%;
+    opacity: 0;
+    pointer-events: none;
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    transition: 0.1s ease;
+}
+.show-popup .blur-bg-overlay {
+    opacity: 1;
+    pointer-events: auto;
+}
+.form-popup .form-box {
+    display: flex;
+}
+.form-box .form-details {
+    width: 100%;
+    color: #fff;
+    max-width: 330px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.login .form-details {
+    padding: 0 40px;
+    background: url("./images/desease-dect.jpeg");
+    background-position: center;
+    background-size: cover;
+}
+.signup .form-details {
+    padding: 0 20px;
+    background: url("./images/weather.jpg");
+    background-position: center;
+    background-size: cover;
+}
+.form-box .form-content {
+    width: 100%;
+    padding: 35px;
+}
+.form-box h2 {
+    text-align: center;
+    margin-bottom: 29px;
+}
+form .input-field {
+    position: relative;
+    height: 50px;
+    width: 100%;
+    margin-top: 20px;
+}
+.input-field input {
+    height: 100%;
+    width: 100%;
+    background: none;
+    outline: none;
+    font-size: 0.95rem;
+    padding: 0 15px;
+    border: 1px solid #717171;
+    border-radius: 3px;
+}
+.input-field input:focus {
+    border: 1px solid #00bcd4;
+}
+.input-field label {
+    position: absolute;
+    top: 50%;
+    left: 15px;
+    transform: translateY(-50%);
+    color: #4a4646;
+    pointer-events: none;
+    transition: 0.2s ease;
+}
+.input-field input:is(:focus, :valid) {
+    padding: 16px 15px 0;
+}
+.input-field input:is(:focus, :valid)~label {
+    transform: translateY(-120%);
+    color: #00bcd4;
+    font-size: 0.75rem;
+}
+.form-box a {
+    color: #00bcd4;
+    text-decoration: none;
+}
+.form-box a:hover {
+    text-decoration: underline;
+}
+form :where(.forgot-pass-link, .policy-text) {
+    display: inline-flex;
+    margin-top: 13px;
+    font-size: 0.95rem;
+}
+form button {
+    width: 100%;
+    color: #fff;
+    border: none;
+    outline: none;
+    padding: 14px 0;
+    font-size: 1rem;
+    font-weight: 500;
+    border-radius: 3px;
+    cursor: pointer;
+    margin: 25px 0;
+    background: #00bcd4;
+    transition: 0.2s ease;
+}
+form button:hover {
+    background: #0097a7;
+}
+.form-content .bottom-link {
+    text-align: center;
+}
+.form-popup .signup,
+.form-popup.show-signup .login {
+    display: none;
+}
+.form-popup.show-signup .signup {
+    display: flex;
+}
+.signup .policy-text {
+    display: flex;
+    margin-top: 14px;
+    align-items: center;
+}
+.signup .policy-text input {
+    width: 14px;
+    height: 14px;
+    margin-right: 7px;
+}
+@media (max-width: 950px) {
+    .navbar :is(.hamburger-btn, .close-btn) {
+        display: block;
+    }
+    .navbar {
+        padding: 15px 0;
+    }
+    .navbar .logo img {
+        display: none;
+    }
+    .navbar .logo h2 {
+        font-size: 1.4rem;
+    }
+    .navbar .links {
+        position: fixed;
+        top: 0;
+        z-index: 10;
+        left: -100%;
+        display: block;
+        height: 100vh;
+        width: 100%;
+        padding-top: 60px;
+        text-align: center;
+        background: #fff;
+        transition: 0.2s ease;
+    }
+    .navbar .links.show-menu {
+        left: 0;
+    }
+    .navbar .links a {
+        display: inline-flex;
+        margin: 20px 0;
+        font-size: 1.2rem;
+        color: #000;
+    }
+    .navbar .links a:hover {
+        color: #00BCD4;
+    }
+    .navbar .login-btn {
+        font-size: 0.9rem;
+        padding: 7px 10px;
+    }
+}
+@media (max-width: 760px) {
+    .form-popup {
+        width: 95%;
+    }
+    .form-box .form-details {
+        display: none;
+    }
+    .form-box .form-content {
+        padding: 30px 20px;
+    }
+}
 
-  <body>
-    <!-- navbar sections starts  -->
-    <header class="header">
-      <div class="logo" style="display: flex; align-items: center; gap: 8px;">
-        <img src="./images/output-onlinepngtools (1).png" height="60px" alt="">
-        <h1>Agri<i class="fas fa-seedling plant-icon" style="color: green;"></i>Next</h1>
-      </div>
-      <a href="#" id="callButton" title="Kisan Call Centre (KCC)">📞 1800-180-1551</a>
-      
-      <nav class="navbar">
-        <a href="#home">Home</a>
-        <a href="#features">Features</a>
-        <a href="#about">About</a>
-        <a href="#contact">Contact</a>
-        <a href="explore/index.html" class="btn">EXPLORE NOW</a>
-        <a href="#" id="loginBtn" class="btn">Signout </a>
-        
-      </nav>
-      
-      <div class="fas fa-bars" id="menu-btn"></div>
-      
+#callButton{
+    font-family: "Poppins", sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-transform: capitalize;
+    font-size: larger;
+    transition: 0.2s ease-in-out;
+    color: white;
+    text-decoration: none;
+}
+
+.but1 {
+    width: 100%;
+    color: #fff;
+    border: none;
+    outline: none;
+    padding: 14px 0;
+    font-size: 1rem;
+    font-weight: 500;
+    border-radius: 3px;
+    cursor: pointer;
+    margin: 25px 0;
+    background: #00bcd4;
+    transition: 0.2s 
+ease;}
+.pointer{
+    pointer-events: none;
+}
+    </style>
+    
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <span class="hamburger-btn material-symbols-rounded ">menu</span>
+            <a href="./index.html" class="logo pointer">
+                <img src="./images/output-onlinepngtools (1).png" alt="logo">
+                <h2>AgriNext</h2>
+            </a>
+             <a href="#" id="callButton" title="Kisan Call Centre (KCC)" class="pointer">📞 1800-180-1551</a>
+            <ul class="links pointer">
+                <span class="close-btn material-symbols-rounded">close</span>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Features</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Contact</a></li>
+                <li><a href="#">EXPLORE NOW</a></li>
+            </ul>
+            <button class="login-btn">LOG IN</button>
+        </nav>
     </header>
-    <!-- navbar sections ends  -->
+
     
-    <!-- home section stars  -->
-    
-    <section class="home" id="home">
-      <div class="content">
-        <h1>YOUR SMART FARMING ASSISTANT</h1>
-        <p>Smart Crops, Smart Choices with Agri🌾Next!</p>
+    <div class="blur-bg-overlay"></div>
+    <div class="form-popup">
+        <span class="close-btn material-symbols-rounded">close</span>
+        <div class="form-box login">
+            <div class="form-details">
+                <h2>Welcome Back</h2>
+                <p>Please log in using your personal information to stay connected with us.</p>
+            </div>
+            <div class="form-content">
+                <h2>LOGIN</h2>
+                <form>
+                     <div class="input-field">
+                        <input type="text" id="loginEmail" required>
+                        <label for="loginEmail">Email</label>
+                    </div>
+                    <div class="input-field">
+                        <input type="password" id="loginPassword" required>
+                        <label for="loginPassword">Password</label>
+                    </div> 
+                    
+                    <a href="#" class="forgot-pass-link">Forgot password?</a>
+                </form>
 
-        <a href="guide/index.html" class="home-btn" target="_blank "
-        >Smart Farming guide</a
-        >
-      </div>
+                <!-- <button type="submit" type="button" onclick="login" class="but1" >LogIn</button> -->
+                 <button type="button" onclick="login()" class="but1">LogIn</button>
 
-      <div class="image">
-        <img class="image" src="images/farming2.jpg" alt="heading-image" />
-      </div>
-    </section>
 
-    <!-- home section ends -->
-
-    <!-- features sectin starts  -->
-
-    <section class="features" id="features">
-      <div class="heading">
-        <h1>Features</h1>
-        <p>
-          AgriSens provides farmers with essential tools for smarter farming. It
-          offers personalized crop recommendations based on soil and climate,
-          helps identify plant diseases through image analysis, and provides
-          real-time weather forecasts. The app also includes features for crop
-          planning and guidance, ensuring optimal farming decisions for better
-          yields and healthier crops.
-        </p>
-      </div>
-
-      <div class="button-container0">
-        <a href="https://crop-recomm.streamlit.app/" class="buttonn active"
-        >Crop Recommendations</a
-        >
-        <a
-          href="https://agrisens-crop-disease-pred.streamlit.app/"
-          class="buttonn"
-          >Identify Plant Diseases</a
-          >
-        <a href="weather-forecast/index.html" class="buttonn"
-        >Today's Weather Forecast</a
-        >
-        <a href="developing-phase/index.html" class="buttonn"
-        >Fertilizer recommendation</a
-        >
-
-        <a href="guide/index.html" class="buttonn">Smart Farming Guidance</a>
-
-        <a href="chatbot/index.html" class="buttonn">Chatbot </a>
-        <a href="Agrohub/index.html" class="buttonn">Agri Support Hub </a>
-      </div>
-
-      <div class="row">
-        <!-- 0 Tab  -->
-        <div class="image">
-          <img
-          src="images/weather.jpg"
-            alt="crop-planning"
-            class="rounded-corner-image"
-            />
+                <div class="bottom-link">
+                    Don't have an account?
+                    <a href="#" id="signup-link">Signup</a>
+                </div>
+            </div>
         </div>
+        <div class="form-box signup">
+            <div class="form-details">
+                <h2>Create Account</h2>
+                <p>To become a part of our community, please sign up using your personal information.</p>
+            </div>
+            <div class="form-content">
+                <h2>SIGNUP</h2>
+                <form action="#">
+                    <div class="input-field">
+                        <input type="text" id="signupEmail" required>
+                        <label for="signupEmail">Enter your email</label>
+                    </div>
+                    <div class="input-field">
+                        <input type="password" id="signupPassword" required>
+                        <label for="signupPassword">Create password</label>
+                    </div> 
+                    
+                    <div class="policy-text">
+                        <input type="checkbox" id="policy">
+                        <label for="policy">
+                            I agree the
+                            <a href="#" class="option">Terms & Conditions</a>
+                        </label>
+                    </div>
+                </form>
 
-        <div class="content">
-          <h1>weather Forecast</h1>
-          <p>
-            Plan Your Farming With Precision! Check Real-Time Weather Insights
-            On Temperature, Humidity, And More. Integrated With Our
-            Crop-Prediction Model For Optimal Decisions. Explore Historical
-            Data, Get Alerts, And Access Educational Resources.
-          </p>
-          <a href="#" class="all-btn">more info</a>
+                <!-- <button type="submit" class="but1">Sign Up</button> -->
+                <button type="button" onclick="register()" class="but1">Sign Up</button>
+
+
+                <div class="bottom-link">
+                    Already have an account? 
+                    <a href="#" id="login-link" style="pointer-events:visiblePainted;">Login</a>
+                </div>
+            </div>
         </div>
-
-        <!-- 0 Tab  -->
-
-        <!-- 1 Tab  -->
-
-        <div class="content">
-          <h1>Smart Crop Planning</h1>
-          <p>
-            Harness the power of data analysis to predict crop suitability,
-            providing insights into optimal cultivation conditions. AgriSens
-            optimizes farming decisions based on comprehensive factors like soil
-            quality, weather, and more.
-          </p>
-          <a href="#" class="all-btn">more info</a>
-        </div>
-
-        <div class="image">
-          <img
-          src="images/crop-planning.jpg"
-            alt="crop-planning"
-            class="rounded-corner-image"
-            />
-        </div>
-
-        <!-- 1 Tab  -->
-
-        <!-- 2 Tab  -->
-        <div class="image">
-          <img
-          src="images/desease-dect.jpeg"
-          alt="Disease-Detection"
-          class="rounded-corner-image"
-          />
-        </div>
-
-        <div class="content">
-          <h1>Plant Disease Identification</h1>
-          <p>
-            Assist farmers in detecting plant diseases by enabling image
-            uploads, utilizing this analysis for prompt and precise
-            identification, enhancing farming efficiency and crop management.
-          </p>
-          <a href="#" class="all-btn">more info</a>
-        </div>
-
-        <!-- 2 Tab  -->
-
-        <!-- 3 Tab  -->
-
-        <div class="content">
-          <h1>Smart Farming, Simple Guidance</h1>
-          <p>
-            Smart Crop Guide offers a simple, step-by-step plan for growing
-            crops. It provides expert planting tips, tracks growth stages, and
-            sends watering reminders. The app also gives pest control advice,
-            harvest timing, weather updates, and fertilizer recommendations to
-            ensure healthy crops.
-          </p>
-
-          <a href="#" class="all-btn">more info</a>
-        </div>
-
-        <div class="image">
-          <img
-          src="images/guide.png"
-          alt="ranked-recommendations"
-          class="rounded-corner-image"
-          />
-        </div>
-
-        <!-- 3 Tab  -->
-
-        <!-- 4 Tab  -->
-
-        <div class="image">
-          <img
-          src="images/modern-farm.jpg"
-          alt="modern-farms"
-          class="rounded-corner-image"
-          />
-        </div>
-
-        <div class="content">
-          <h1>Innovations for Modern Farms</h1>
-          <p>
-            Smart Crop Tech, Precision Farming, and Customizable Solutions for
-            Sustainable and Efficient Agriculture!
-          </p>
-          <a href="#" class="all-btn">more info</a>
-        </div>
-
-        <!-- 4 Tab  -->
-
-        <!-- 5 Tab  -->
-
-        <div class="content">
-          <h1>User-Friendly Interface</h1>
-          <p>
-            Our application features a user-friendly interface designed for
-            farmers of all technological backgrounds. With simple inputs like
-            location and crop selection, users can effortlessly access detailed
-            information on crop suitability and recommended planting schedules.
-          </p>
-          <a href="#" class="all-btn">more info</a>
-        </div>
-
-        <div class="image">
-          <img
-          src="images/User-Friendly.jpeg"
-          alt="user-friendly"
-          class="rounded-corner-image"
-          />
-        </div>
-
-        <!-- 5 Tab  -->
-      </div>
-    </section>
-
-    <!-- features sectin ends -->
-
-    <!-- about section starts  -->
-
-    <section class="about" id="about">
-      <div class="heading">
-        <h1>Team Members</h1>
-        <p>Introduce the talented individuals shaping the AgriSens project.</p>
-      </div>
-
-      <div class="box-container">
-        <div class="box">
-          <img src="images/vaishnavi.jpg" alt="member-1" />
-
-          <h3>Vaishnavi Shinde</h3>
-          <p>
-            BE | CSE <br />
-            SGBA UNIVERSITY
-          </p>
-          <a href="https://www.instagram.com/_its_vaishu.s_0064/#" target="_blank">
-            <i class="fab fa-instagram"></i>
-          </a>
-          <a href="https://www.linkedin.com/in/vaishnavishinde004" target="_blank">
-            <i class="fab fa-linkedin"></i>
-          </a>
-          <a href="https://github.com/CTT-Vaishnavi" target="_blank">
-            <i class="fab fa-github"></i>
-          </a>
-        </div>
-        
-        <div class="box">
-          <img src="images/Rahul.png" alt="member-3" />
-          <h3>Rahul Patil</h3>
-          <p>
-            BE | CSE <br />
-            SGBA UNIVERSITY
-          </p>
-          <a
-          href="https://www.instagram.com/its___rahul_patil_/#"
-          target="_blank"
-          >
-            <i class="fab fa-instagram"></i>
-          </a>
-          <a href="#" target="_blank">
-            <i class="fab fa-linkedin"></i>
-          </a>
-          <a href="#" target="_blank">
-            <i class="fab fa-github"></i>
-          </a>
-        </div>
-
-        <div class="box">
-          <img src="images/Ujjwala.jpg" alt="member-2" />
-
-          <h3>Ujjwala Tekade</h3>
-          <p>
-            BE | CSE <br />
-            SGBA UNIVERSITY
-          </p>
-          <a
-          href="https://www.instagram.com/ujjukharche99/#"
-          target="_blank"
-          >
-            <i class="fab fa-instagram"></i>
-          </a>
-          <a
-          href="https://www.linkedin.com/in/ujjwala-tekade-46b252319"
-            target="_blank"
-            >
-            <i class="fab fa-linkedin"></i>
-          </a>
-          <a href="https://github.com/tekaleujjwala" target="_blank">
-            <i class="fab fa-github"></i>
-          </a>
-        </div>
+    </div>
+    <script>
+        const navbarMenu = document.querySelector(".navbar .links");
+const hamburgerBtn = document.querySelector(".hamburger-btn");
+const hideMenuBtn = navbarMenu.querySelector(".close-btn");
+const showPopupBtn = document.querySelector(".login-btn");
+const formPopup = document.querySelector(".form-popup");
+const hidePopupBtn = formPopup.querySelector(".close-btn");
+const signupLoginLink = formPopup.querySelectorAll(".bottom-link a");
+// Show mobile menu
+hamburgerBtn.addEventListener("click", () => {
+    navbarMenu.classList.toggle("show-menu");
+});
+// Hide mobile menu
+hideMenuBtn.addEventListener("click", () =>  hamburgerBtn.click());
+// Show login popup
+showPopupBtn.addEventListener("click", () => {
+    document.body.classList.toggle("show-popup");
+});
+// Hide login popup
+hidePopupBtn.addEventListener("click", () => showPopupBtn.click());
+// Show or hide signup form
+signupLoginLink.forEach(link => {
+    link.addEventListener("click", (e) => {
+        e.preventDefault();
+        formPopup.classList[link.id === 'signup-link' ? 'add' : 'remove']("show-signup");
+    });
+});
 
 
-        <div class="box">
-          <img src="./images/Viju.jpg" alt="member-4" />
+function login() {
+    const email = document.getElementById("loginEmail").value;
+    const password = document.getElementById("loginPassword").value;
 
-          <h3>Vijaya Dhoke</h3>
-          <p>
-            BE | CSE <br />
-            SGBA UNIVERSITY
-          </p>
-          <a
-            href="https://www.instagram.com/d_vijaya22/#"
-            target="_blank"
-            >
-            <i class="fab fa-instagram"></i>
-          </a>
-          <a
-          href="#"
-          target="_blank"
-          >
-            <i class="fab fa-linkedin"></i>
-          </a>
-          <a href="#" target="_blank">
-            <i class="fab fa-github"></i>
-          </a>
-        </div>
-      </div>
-    </section>
+    if (email === "agrinext@gmail.com" && password === "agri12345") {
+        alert("Login successful");
+        window.location.href = "./home.html";
+    } else {
+        alert("Invalid email or password");
+    }
+}
 
-    <!-- about section ends -->
-    <!-- contact us -->
+function register() {
+    const email = document.getElementById("signupEmail").value;
+    const password = document.getElementById("signupPassword").value;
 
-    <section class="contact-section" id="contact">
-      <div class="contact-info">
-          <h2>Contact Us</h2>
-          <p>Send a message and we’ll get back to you. Want us to work on your project? tick the box and tell us more.</p>
-          
-          <ul>
-            <li><i class="fa-solid fa-phone"></i> 1800-180-1551</li>
-            <li><i class="fa-solid fa-location-dot"></i> SGBA University</li>
-            <li><i class="fa-solid fa-envelope"></i> <a href="mailto:agrinextplant@gmail.com">agrinextplant@gmail.com</a></li>          </ul>
+    if (email && password) {
+        alert("Registration successful");
+        window.location.href = "./home.html";
+    } else {
+        alert("Please fill all fields");
+    }
+}
 
-          <div class="themes">
-            <span>Themes:</span>
-            <button id="sun">Sun</button>
-            <button id="forest">Forest</button>
-            <button id="ocean">Ocean</button>
-            <button id="black">Black</button>
-            <button id="white">White</button>
-          </div>
-
-      </div>
-
-      <div class="form-container">
-    <form action="https://api.web3forms.com/submit" method="POST" id="contactForm" autocomplete="off">
-
-        <div class="inputBox">
-            <input type="hidden" name="access_key" value="ced1b7a1-4ccf-47df-a750-d36761ef15a8">
-            <input type="text" name="first_name" required="required" placeholder="Full Name" autocomplete="off">
-            <span>Full Name</span>
-        </div>
-
-        <div class="inputBox">
-            <input type="email" name="email" required="required" placeholder="Email" autocomplete="off">
-            <span>Email</span>
-        </div>
-
-        <div class="inputBox">
-            <textarea name="message" required="required" autocomplete="off"></textarea>
-            <span>Type your message.....</span>
-        </div>
-
-        <div class="from-check">
-            <input type="checkbox" class="form-check-input" id="isclient" name="client_request">
-            <label for="isclient" style="color: #007BFF;">I want you to work on project me</label>
-        </div>
-
-        <div class="inputBox">
-            <input type="submit" value="Send Message" class="btn">
-        </div>
-    </form>
-</div>
-    </section>
-
-
-    <!-- footer section starts  -->
-
-    <section class="footer" id="footer">
-      <div class="box-container">
-        <div class="box">
-          <h3>quick links</h3>
-          <a href="#home"><i class="fas fa-chevron-right"></i>home</a>
-          <a href="#features"><i class="fas fa-chevron-right"></i>features</a>
-          <a href="#about"><i class="fas fa-chevron-right"></i>about</a>
-        </div>
-
-        <div class="box">
-          <h3>extra links</h3>
-          <a href="#"><i class="fas fa-chevron-right"></i>ask questions</a>
-          <a href="#"><i class="fas fa-chevron-right"></i>terms of use</a>
-          <a href="#"><i class="fas fa-chevron-right"></i>privacy policy</a>
-        </div>
-
-        <div class="box">
-          <h3>Helpful Resources</h3>
-          <a href="#"><i class="fas fa-chevron-right"></i> FAQs</a>
-          <a href="#"><i class="fas fa-chevron-right"></i> User Guides</a>
-          <a href="#"><i class="fas fa-chevron-right"></i> Support Center</a>
-        </div>
-
-        <div class="box">
-          <h3>Stay Connected</h3>
-          <a href="#"><i class="fas fa-chevron-right"></i> Future Scope</a>
-          <a href="#"><i class="fas fa-chevron-right"></i> Community Forum</a>
-          <a href="#"><i class="fas fa-chevron-right"></i> Newsletter</a>
-        </div>
-      </div>
-
-      <div class="credit">
-        © Copyright – All Rights Reserved
-        <a href="" target="_blank"><span>Team Agri🌾Next</span> </a>
-      </div>
-    </section>
-
-    <!-- footer section ends -->
-      <script src="script.js"></script>
-    </chat>
-
-
-    <script src="js/main.js"></script>
-  </body>
+    </script>
+</body>
 </html>
