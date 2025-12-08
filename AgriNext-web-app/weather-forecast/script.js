@@ -21,7 +21,7 @@ async function checkWeather(city){
     if(weather_data.cod === `404`){
         location_not_found.style.display = "flex";
         weather_body.style.display = "none";
-        console.log("error");
+        console.log("error");z
         return;
     }
 
