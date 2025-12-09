@@ -191,6 +191,7 @@ button {
 }
 button:hover {
     opacity: 0.9;
+    color: rgb(203, 66, 66);
 }
 
 /* Mic Button */

@@ -1,0 +1,287 @@
+/* ==============================================================  
+   GLOBAL VARIABLES (Light & Dark Theme)
+============================================================== */
+:root {
+    --bg: #f1f8f4;
+    --text: #1c1c1c;
+    --muted: #777;
+    --accent: #00A859;
+    --card: #ffffff;
+    --glass: rgba(255, 255, 255, 0.18);
+    --input-bg: #ffffff;
+    --icon-filter: none;
+}
+
+.dark-mode {
+    --bg: #0b1116;
+    --text: #e6eef2;
+    --muted: #aab4bd;
+    --accent: #00c4ac;
+    --card: #121a21;
+    --glass: rgba(24, 29, 35, 0.5);
+    --input-bg: #192229;
+    --icon-filter: invert(1);
+}
+
+/* ==============================================================  
+   GLOBAL RESET
+============================================================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Poppins, sans-serif;
+}
+
+body {
+    background: var(--bg);
+    color: var(--text);
+    text-align: center;
+    padding: 15px;
+    transition: 0.3s;
+}
+
+/* ==============================================================  
+   NAVBAR
+============================================================== */
+nav {
+    width: 100%;
+    background: var(--card);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 14px 40px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+    border-radius: 14px;
+    margin-bottom: 25px;
+}
+
+.logo-area {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.logo-area img {
+    height: 50px;
+    filter: var(--icon-filter);
+}
+
+.logo-area h1 {
+    font-size: 28px;
+}
+
+.phone {
+    font-size: 18px;
+    font-weight: 600;
+}
+
+/* Nav Links */
+nav ul {
+    display: flex;
+    gap: 35px;
+    list-style: none;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: var(--text);
+    font-weight: 600;
+    transition: 0.2s;
+}
+
+nav ul li a:hover {
+    color: var(--accent);
+    color: rgb(175, 42, 42);
+}
+
+/* Right Buttons */
+.btns {
+    display: flex;
+    gap: 15px;
+}
+
+.btns-filter {
+    background: white !important;
+    color: var(--text) !important;
+    border: 2px solid #00000033 !important;
+}
+
+.btn-filter.active {
+    background: #fd4800 !important;
+    color: white !important;
+    border-color: #000000 !important;
+}
+
+
+
+.btn {
+    padding: 10px 20px;
+    border-radius: 22px;
+    text-decoration: none;
+    background: var(--accent);
+    font-weight: 700;
+    color: #fff;
+    transition: 0.3s;
+}
+
+.btn:hover {
+    opacity: 0.8;
+    color: black;
+    background-color: white;
+    border-color: red;
+}
+
+/* Dark Mode Toggle */
+.theme-toggle {
+    cursor: pointer;
+    font-size: 22px;
+}
+
+/* ==============================================================  
+   RESPONSIVE NAVBAR
+============================================================== */
+@media (max-width: 900px) {
+    nav {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 10px;
+        padding: 18px;
+    }
+
+    nav ul {
+        flex-wrap: wrap;
+    }
+
+    .btns {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .phone {
+        width: 100%;
+        text-align: center;
+    }
+}
+
+/* ==============================================================  
+   HEADER TEXT
+============================================================== */
+.title {
+    font-size: 3rem;
+    font-weight: 800;
+    background: linear-gradient(45deg, #00A859, #3498db);
+    -webkit-background-clip: text;
+    color: transparent;
+}
+
+.subtitle {
+    font-size: 1.3rem;
+    opacity: 0.7;
+    margin-bottom: 25px;
+}
+
+/* ==============================================================  
+   FILTER BUTTONS
+============================================================== */
+.buttons {
+    margin-bottom: 25px;
+}
+
+.btn-filter {
+    padding: 10px 22px;
+    margin: 6px;
+    border-radius: 50px;
+    cursor: pointer;
+    font-weight: 600;
+    border: 2px solid var(--accent);
+    background: white;
+    transition: 0.3s;
+    color: var(--text);
+}
+
+.btn-filter:hover,
+.btn-filter.active {
+    background: var(--accent);
+    color: rgb(255, 255, 255);
+}
+
+/* ==============================================================  
+   CARD CONTAINER
+============================================================== */
+.container {
+    width: 100%;
+    display: grid;
+    gap: 25px;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    padding: 10px;
+}
+
+/* ==============================================================  
+   CARD DESIGN
+============================================================== */
+.card {
+    background: var(--glass);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255,255,255,0.3);
+    padding: 18px;
+    border-radius: 18px;
+    text-decoration: none;
+    color: var(--text);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+    transition: 0.4s;
+}
+
+.card:hover {
+    transform: perspective(800px) rotateY(10deg) rotateX(6deg) scale(1.05);
+    box-shadow: 0 22px 40px rgba(0, 168, 89, 0.4);
+}
+
+.card h2 {
+    font-size: 18px;
+    margin-top: 10px;
+}
+
+.card p {
+    font-size: 14px;
+    opacity: 0.7;
+}
+
+/* ==============================================================  
+   THUMBNAIL IMAGE (FULL FIT)
+============================================================== */
+.thumbnail {
+    height: 160px;
+    width: 100%;
+    border-radius: 14px;
+
+    background-size: cover !important;
+    background-position: center !important;
+    background-repeat: no-repeat !important;
+
+    animation: shine 2s infinite linear;
+}
+
+@keyframes shine {
+    0% { filter: brightness(0.85); }
+    50% { filter: brightness(1.2); }
+    100% { filter: brightness(0.85); }
+}
+
+/* ==============================================================  
+   CATEGORY GRADIENT BACKUP
+============================================================== */
+.spray-thumb { background: linear-gradient(135deg,#FF8C00,#FA5757); }
+.irrigation-thumb { background: linear-gradient(135deg,#0af,#00ffe7); }
+.spacing-thumb { background: linear-gradient(135deg,#2C3E50,#3498db); }
+.organic-thumb { background: linear-gradient(135deg,#00A859,#66ff99); }
+.disease-thumb { background: linear-gradient(135deg,#FA5757,#ff9a9e); }
+.fertilizer-thumb { background: linear-gradient(135deg,#FF8C00,#FF5E62); }
+
+/* Hide */
+.hide {
+    display: none !important;
+}
+
+
+

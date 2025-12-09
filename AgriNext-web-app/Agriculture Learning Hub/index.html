@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Agriculture Learning Hub | AgriNext</title>
+<link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+
+<nav>
+    <!-- LOGO -->
+    <div class="logo-area">
+        <img src="../images/output-onlinepngtools (1).png" alt="logo">
+        <h1>Agri<i class="fas fa-seedling plant-icon" style="color: green;"></i>Next</h1>
+
+    </div>
+
+    <!-- PHONE -->
+    <div class="phone">
+        <i>📞</i> 1800-180-1551
+    </div>
+
+    <!-- NAV LINKS -->
+    <ul>
+        <li><a href="../home.html">HOME</a></li>
+        <li><a href="../home.html#features">FEATURES</a></li>
+        <li><a href="../home.html#about">ABOUT</a></li>
+        <li><a href="../home.html#contact">CONTACT</a></li>
+    </ul>
+
+    <!-- BUTTONS -->
+    <div class="btns">
+        <a href="../home.html#explore" class="btn">EXPLORE NOW</a>
+        <a href="./index.html" class="btn">SIGNOUT</a>
+    </div>
+      <!-- 🌙 DARK MODE BUTTON -->
+    <div class="theme-toggle" onclick="toggleTheme()">
+        <i class="fas fa-moon"></i>
+    </div>
+</nav>
+
+
+
+<header>
+    <h1 class="title">🌾 Agriculture Learning Hub</h1>
+    <p class="subtitle">Marathi Videos • Step-by-Step Guides • Best Farming Practices</p>
+</header>
+
+
+
+<!-- Filter Buttons -->
+<div class="buttons">
+    <button class="btn active" onclick="filterVideos('all')">All</button>
+    <button class="btn" onclick="filterVideos('spray')">Spraying</button>
+    <button class="btn" onclick="filterVideos('irrigation')">Irrigation</button>
+    <button class="btn" onclick="filterVideos('spacing')">Spacing</button>
+    <button class="btn" onclick="filterVideos('organic')">Organic</button>
+    <button class="btn" onclick="filterVideos('disease')">Disease</button>
+    <button class="btn" onclick="filterVideos('fertilizer')">Fertilizer</button>
+</div>
+
+<!-- Cards Auto-Generated Here -->
+<div class="container" id="videoContainer"></div>
+<script src="script1.js"></script>
+<script src="script.js"></script>
+</body>
+</html>
