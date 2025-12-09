@@ -56,12 +56,6 @@ document.getElementById("callButton").addEventListener("click", function(e) {
 });
 
 
-// whatsapp icon
-document.querySelector(".whatsapp-float").addEventListener("click", () => {
-  if (window.navigator.vibrate) {
-    window.navigator.vibrate(120);
-  }
-});
 
 
               
