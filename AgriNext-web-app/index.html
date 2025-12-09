@@ -375,8 +375,97 @@ ease;}
     cursor: pointer;
     font-size: 20px;
 }
+/* .popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.5);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
 
-    </style>
+.popup-content {
+  background: white;
+  padding: 20px 30px;
+  border-radius: 8px;
+  text-align: center;
+  font-size: 18px;
+}
+
+#closePopup {
+  margin-top: 15px;
+  padding: 8px 20px;
+  border: none;
+  background: #007bff;
+  color: white;
+  cursor: pointer;
+  border-radius: 5px;
+} */
+ 
+.popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.5);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  animation: fadeBg 0.4s ease forwards;
+}
+
+.popup-content {
+  background: white;
+  padding: 25px 35px;
+  border-radius: 12px;
+  text-align: center;
+  font-size: 18px;
+  transform: scale(0.2) rotateX(-60deg);
+  animation: popup3D 0.4s ease forwards;
+  box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+}
+
+/* 3D animation */
+@keyframes popup3D {
+  0% {
+    transform: scale(0.2) rotateX(-60deg);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1) rotateX(0deg);
+    opacity: 1;
+  }
+}
+
+@keyframes fadeBg {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+#closePopup {
+  margin-top: 18px;
+  padding: 10px 28px;
+  border: none;
+  background: linear-gradient(to right, #007bff, #00c6ff);
+  color: white;
+  cursor: pointer;
+  border-radius: 8px;
+  font-weight: bold;
+  font-size: 16px;
+  transition: transform 0.2s ease;
+}
+
+#closePopup:hover {
+  transform: scale(1.1);
+}
+
+ </style>
     
 </head>
 <body>
@@ -511,6 +600,14 @@ ease;}
     <button id="acceptTerms" class="but1">Accept & Continue</button>
   </div>
 </div>
+
+<div id="popup" class="popup">
+  <div class="popup-content">
+    <p>Please LOG IN to access this feature.</p>
+    <button id="closePopup">OK</button>
+  </div>
+</div>
+
     
 <script>
     const navbarMenu = document.querySelector(".navbar .links");
@@ -579,12 +676,24 @@ function login() {
 }
 
 // Restricted access
+// document.querySelectorAll('.locked').forEach(link => {
+//   link.addEventListener('click', function(e){
+//      e.preventDefault();
+//      alert("Please LOG IN to access this feature.");
+//   });
+// });
+
 document.querySelectorAll('.locked').forEach(link => {
   link.addEventListener('click', function(e){
      e.preventDefault();
-     alert("Please LOG IN to access this feature.");
+     document.getElementById("popup").style.display = "flex";
   });
 });
+
+document.getElementById("closePopup").addEventListener("click", () => {
+  document.getElementById("popup").style.display = "none";
+});
+
 
 // Forgot Password popups
 const forgotLink = document.querySelector(".forgot-pass-link");
