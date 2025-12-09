@@ -50,7 +50,7 @@ header {
     text-decoration: none;
 }
 .navbar .logo img {
-    width: 40px;
+    width: 60px;
     border-radius: 50%;
 }
 .navbar .logo h2 {
@@ -340,9 +340,42 @@ form button:hover {
     background: #00bcd4;
     transition: 0.2s 
 ease;}
-.pointer{
+/* Forgot Password / Terms Popups */
+.forgot-popup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -55%);
+    background: #fff;
+    width: 350px;
+    padding: 20px;
+    border-radius: 10px;
+    z-index: 9999;
+    opacity: 0;
     pointer-events: none;
+    text-align: center;
+    transition: 0.25s ease;
 }
+.forgot-popup.show {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translate(-50%, -50%);
+}
+.forgot-box input {
+    width: 100%;
+    padding: 10px;
+    margin: 12px 0;
+    border: 1px solid #555;
+    border-radius: 5px;
+}
+.close-btn {
+    position: absolute;
+    right: 12px;
+    top: 8px;
+    cursor: pointer;
+    font-size: 20px;
+}
+
     </style>
     
 </head>
@@ -350,20 +383,21 @@ ease;}
     <header>
         <nav class="navbar">
             <span class="hamburger-btn material-symbols-rounded ">menu</span>
-            <a href="./index.html" class="logo pointer">
+            <a href="./index.html" class="logo locked">
                 <img src="./images/output-onlinepngtools (1).png" alt="logo">
                 <h2>AgriNext</h2>
             </a>
-             <a href="#" id="callButton" title="Kisan Call Centre (KCC)" class="pointer">📞 1800-180-1551</a>
-            <ul class="links pointer">
+             <a href="#" id="callButton" title="Kisan Call Centre (KCC)" class="locked">📞 1800-180-1551</a>
+            <ul class="links">
                 <span class="close-btn material-symbols-rounded">close</span>
-                <li><a href="#">Home</a></li>
-                <li><a href="#">Features</a></li>
-                <li><a href="#">About</a></li>
-                <li><a href="#">Contact</a></li>
-                <li><a href="#">EXPLORE NOW</a></li>
+                <li><a href="#" class="locked">Home</a></li>
+                <li><a href="#" class="locked">Features</a></li>
+                <li><a href="#" class="locked">About</a></li>
+                <li><a href="#" class="locked">Contact</a></li>
+                <li><a href="#" class="locked">EXPLORE NOW</a></li>
+                <!-- <button class="login-btn locked">LOG IN</button> -->
             </ul>
-            <button class="login-btn">LOG IN</button>
+            <button class="login-btn locked" id="Locked">LOG IN</button>
         </nav>
     </header>
 
@@ -390,8 +424,6 @@ ease;}
                     
                     <a href="#" class="forgot-pass-link">Forgot password?</a>
                 </form>
-
-                <!-- <button type="submit" type="button" onclick="login" class="but1" >LogIn</button> -->
                  <button type="button" onclick="login()" class="but1">LogIn</button>
 
 
@@ -401,6 +433,7 @@ ease;}
                 </div>
             </div>
         </div>
+
         <div class="form-box signup">
             <div class="form-details">
                 <h2>Create Account</h2>
@@ -438,27 +471,81 @@ ease;}
             </div>
         </div>
     </div>
-    <script>
-        const navbarMenu = document.querySelector(".navbar .links");
+    <!-- FORGOT PASSWORD POPUP -->
+<div id="forgotPopup" class="forgot-popup">
+  <div class="forgot-box">
+    <span id="closeForgot" class="close-btn">×</span>
+    <h3>Forgot Password?</h3>
+    <p>Enter your registered email</p>
+    <input type="email" id="forgotEmail" placeholder="Enter email">
+    <button id="sendReset" class="but1">Send OTP</button>
+  </div>
+</div>
+
+<!-- OTP VERIFICATION POPUP -->
+<div id="otpPopup" class="forgot-popup">
+  <div class="forgot-box">
+    <span id="closeOtp" class="close-btn">×</span>
+    <h3>Verify OTP</h3>
+    <input type="text" id="otpInput" maxlength="6" placeholder="Enter 6-digit OTP">
+    <button id="verifyOtp" class="but1">Verify</button>
+  </div>
+</div>
+
+<!-- RESET PASSWORD POPUP -->
+<div id="resetPopup" class="forgot-popup">
+  <div class="forgot-box">
+    <span id="closeReset" class="close-btn">×</span>
+    <h3>Reset Password</h3>
+    <input type="password" id="newPassword" placeholder="Enter new password">
+    <button id="savePassword" class="but1">Save Password</button>
+  </div>
+</div>
+
+<!-- TERMS & CONDITIONS POPUP -->
+<div id="termsPopup" class="forgot-popup">
+  <div class="forgot-box">
+    <span id="closeTerms" class="close-btn">×</span>
+    <h3>Terms and Conditions</h3>
+    <p style="font-size:13px; line-height:19px; margin:10px 0; text-align:left;">
+      ● We ensure secure handling of user data.<br>
+      ● Users must enter correct information during registration.<br>
+      ● Unauthorized access or misuse is prohibited.<br>
+      ● By using this platform, you accept usage monitoring.
+    </p>
+    <button id="acceptTerms" class="but1">Accept & Continue</button>
+  </div>
+</div>
+
+
+
+    
+<script>
+    const navbarMenu = document.querySelector(".navbar .links");
 const hamburgerBtn = document.querySelector(".hamburger-btn");
 const hideMenuBtn = navbarMenu.querySelector(".close-btn");
 const showPopupBtn = document.querySelector(".login-btn");
 const formPopup = document.querySelector(".form-popup");
 const hidePopupBtn = formPopup.querySelector(".close-btn");
 const signupLoginLink = formPopup.querySelectorAll(".bottom-link a");
+
 // Show mobile menu
 hamburgerBtn.addEventListener("click", () => {
     navbarMenu.classList.toggle("show-menu");
 });
+
 // Hide mobile menu
-hideMenuBtn.addEventListener("click", () =>  hamburgerBtn.click());
+hideMenuBtn.addEventListener("click", () => hamburgerBtn.click());
+
 // Show login popup
 showPopupBtn.addEventListener("click", () => {
     document.body.classList.toggle("show-popup");
 });
+
 // Hide login popup
 hidePopupBtn.addEventListener("click", () => showPopupBtn.click());
-// Show or hide signup form
+
+// Switch login/signup
 signupLoginLink.forEach(link => {
     link.addEventListener("click", (e) => {
         e.preventDefault();
@@ -466,31 +553,105 @@ signupLoginLink.forEach(link => {
     });
 });
 
-
-function login() {
-    const email = document.getElementById("loginEmail").value;
-    const password = document.getElementById("loginPassword").value;
-
-    if (email === "agrinext@gmail.com" && password === "agri12345") {
-        alert("Login successful");
-        window.location.href = "./home.html";
-    } else {
-        alert("Invalid email or password");
-    }
-}
-
+// REGISTER
 function register() {
     const email = document.getElementById("signupEmail").value;
     const password = document.getElementById("signupPassword").value;
 
-    if (email && password) {
-        alert("Registration successful");
+    if (!email || !password) {
+        alert("Please fill all fields");
+        return;
+    }
+
+    localStorage.setItem("userEmail", email);
+    localStorage.setItem("userPassword", password);
+
+    alert("Registration successful, please login now");
+    formPopup.classList.remove("show-signup");
+}
+
+// LOGIN
+function login() {
+    const email = document.getElementById("loginEmail").value;
+    const password = document.getElementById("loginPassword").value;
+
+    const storedEmail = localStorage.getItem("userEmail");
+    const storedPassword = localStorage.getItem("userPassword");
+
+    if (email === storedEmail && password === storedPassword) {
+        alert("Login Successful");
         window.location.href = "./home.html";
     } else {
-        alert("Please fill all fields");
+        alert("Invalid Email or Password");
     }
 }
 
-    </script>
+// Restricted access
+document.querySelectorAll('.locked').forEach(link => {
+  link.addEventListener('click', function(e){
+     e.preventDefault();
+     alert("Please LOG IN to access this feature.");
+  });
+});
+
+// Forgot Password popups
+const forgotLink = document.querySelector(".forgot-pass-link");
+const forgotPopup = document.getElementById("forgotPopup");
+const otpPopup = document.getElementById("otpPopup");
+const resetPopup = document.getElementById("resetPopup");
+const termsPopup = document.getElementById("termsPopup");
+
+forgotLink.addEventListener("click", (e) => {
+  e.preventDefault();
+  forgotPopup.classList.add("show");
+});
+
+document.getElementById("closeForgot").onclick = () => forgotPopup.classList.remove("show");
+document.getElementById("closeOtp").onclick = () => otpPopup.classList.remove("show");
+document.getElementById("closeReset").onclick = () => resetPopup.classList.remove("show");
+document.getElementById("closeTerms").onclick = () => termsPopup.classList.remove("show");
+
+// Generate OTP
+let generatedOtp = Math.floor(100000 + Math.random() * 900000);
+
+document.getElementById("sendReset").addEventListener("click", () => {
+  alert("OTP Sent: " + generatedOtp + " (demo)");
+  forgotPopup.classList.remove("show");
+  otpPopup.classList.add("show");
+});
+
+document.getElementById("verifyOtp").addEventListener("click", () => {
+  const enteredOtp = document.getElementById("otpInput").value;
+
+  if (enteredOtp == generatedOtp) {
+    otpPopup.classList.remove("show");
+    resetPopup.classList.add("show");
+    alert("OTP Verified");
+  } else {
+    alert("Wrong OTP");
+  }
+});
+
+// Save new password
+document.getElementById("savePassword").addEventListener("click", () => {
+  const newPassword = document.getElementById("newPassword").value;
+
+  localStorage.setItem("userPassword", newPassword);
+  alert("Password Updated Successfully");
+  resetPopup.classList.remove("show");
+  formPopup.classList.remove("show-signup");
+});
+
+// Terms accept
+document.querySelector(".option").addEventListener("click", (e) => {
+  e.preventDefault();
+  termsPopup.classList.add("show");
+});
+
+document.getElementById("acceptTerms").addEventListener("click", () => {
+  termsPopup.classList.remove("show");
+  document.getElementById("policy").checked = true;
+});
+</script>
 </body>
 </html>

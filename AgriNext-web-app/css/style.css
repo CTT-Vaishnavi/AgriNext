@@ -1052,3 +1052,95 @@ button:hover {
   color: #fff;
 }
 
+/* whatsapp */
+/* .whatsapp-float {
+  position: fixed;
+  bottom: 10%;
+  right: 3%;
+  z-index: 9999;
+  background: #25d366;
+  padding: 14px;
+  border-radius: 50%;
+  box-shadow: 0 0 18px rgba(0,0,0,0.25);
+  animation: pulse 1.8s infinite;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.whatsapp-float img {
+  width: 38px;
+  height: 38px;
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.15); }
+  100% { transform: scale(1); }
+}
+
+.whatsapp-float:hover {
+  transform: scale(1.2);
+  transition: 0.3s;
+} */
+
+/* Floating Button Common Style */
+.floating-whatsapp,
+.floating-chatbot {
+  position: fixed;
+  right: 25px;
+  width: 60px;
+  height: 60px;
+  bottom: 3%;
+  border-radius: 50%;
+  background: #25D366;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+  z-index: 999;
+  cursor: pointer;
+  transition: transform .3s ease;
+  animation: pulse 1.5s infinite;
+}
+
+.floating-whatsapp:hover,
+.floating-chatbot:hover {
+  transform: scale(1.15);
+}
+
+/* WhatsApp Icon */
+.floating-whatsapp img {
+  width: 35px;
+}
+
+/* Chatbot Icon */
+.floating-chatbot {
+  background: #007bff;
+  bottom: 3%;  /* Both aligned but slightly stacked */
+  right: 100px; /* Move chatbot left side of WhatsApp */
+}
+
+.floating-chatbot i {
+  font-size: 32px;
+  color: #fff;
+}
+
+/* Pulse Animation */
+@keyframes pulse {
+  0% { box-shadow: 0 0 0 0 rgba(0,255,0,0.5); }
+  70% { box-shadow: 0 0 0 20px rgba(0,255,0,0); }
+  100% { box-shadow: 0 0 0 0 rgba(0,255,0,0); }
+}
+
+/* Mobile Responsiveness */
+@media (max-width:600px) {
+  .floating-whatsapp, .floating-chatbot {
+    width: 52px;
+    height: 52px;
+    bottom: 12%;
+  }
+  .floating-chatbot {
+    right: 85px;
+  }
+}
