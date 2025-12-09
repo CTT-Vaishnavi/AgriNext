@@ -1041,7 +1041,7 @@ button:hover {
   border: none;
   cursor: pointer;
   border-radius: 20px;
-  background: #e5e4e4;
+  background: #050505;
   font-size: 14px;
   transition: 0.2s;
 }
@@ -1050,6 +1050,26 @@ button:hover {
   transform: scale(1.1);
   background: #ff8c00;
   color: #fff;
+}
+
+.themes {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 15px 0;
+  padding: 10px 15px;
+  background: #f2f2f2;
+  border-radius: 8px;
+}
+
+.themes span {
+  font-weight: 600;
+  font-size: 16px;
+  color: #333;
+}
+
+.themes button:active {
+  transform: scale(0.95);
 }
 
 
@@ -1089,40 +1109,6 @@ button:hover {
         opacity: 0;
     }
 }
-
-
-/* whatsapp */
-/* .whatsapp-float {
-  position: fixed;
-  bottom: 10%;
-  right: 3%;
-  z-index: 9999;
-  background: #25d366;
-  padding: 14px;
-  border-radius: 50%;
-  box-shadow: 0 0 18px rgba(0,0,0,0.25);
-  animation: pulse 1.8s infinite;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.whatsapp-float img {
-  width: 38px;
-  height: 38px;
-}
-
-@keyframes pulse {
-  0% { transform: scale(1); }
-  50% { transform: scale(1.15); }
-  100% { transform: scale(1); }
-}
-
-.whatsapp-float:hover {
-  transform: scale(1.2);
-  transition: 0.3s;
-} */
-
 /* Floating Button Common Style */
 .floating-whatsapp,
 .floating-chatbot {

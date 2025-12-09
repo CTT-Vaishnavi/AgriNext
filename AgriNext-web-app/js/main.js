@@ -43,11 +43,6 @@ document.getElementById("callButton").addEventListener("click", function(e) {
     body.style.color = "#fff";
   };
 
-  document.getElementById("black").onclick = () => {
-    body.style.background = "#000";
-    body.style.color = "#ffffff";
-  };
-
   document.getElementById("white").onclick = () => {
     body.style.background = "#ffffff";
     body.style.color = "#000";
