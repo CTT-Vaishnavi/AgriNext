@@ -294,3 +294,35 @@ document.querySelector("a.buttonn[href='https://agrisens-crop-disease-pred.strea
     window.location.href = "https://agrisens-crop-disease-pred.streamlit.app/";
   });
 };
+
+document.querySelector("a.buttonn[href='Agriculture Learning Hub/index.html']").onclick = (e) => {
+  e.preventDefault();
+  requireLogin(() => {
+    window.location.href = "Agriculture Learning Hub/index.html";
+  });
+};
+
+document.querySelector("a.buttonn[href='developing-phase/index.html']").onclick = (e) => {
+  e.preventDefault();
+  requireLogin(() => {
+    window.location.href = "developing-phase/index.html";
+  });
+};
+
+document.querySelector("a.buttonn[href='guide/index.html']").onclick = (e) => {
+  e.preventDefault();
+  requireLogin(() => {
+    window.location.href = "guide/index.html";
+  });
+};
+
+document.querySelector("a.buttonn[href='Agrohub/index.html']").onclick = (e) => {
+  e.preventDefault();
+  requireLogin(() => {
+    window.location.href = "Agrohub/index.html";
+  });
+};
+
+
+
+
