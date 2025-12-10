@@ -32,9 +32,10 @@
 
     <!-- BUTTONS -->
     <div class="btns">
-        <a href="../home.html#explore" class="btn">EXPLORE NOW</a>
-        <a href="./index.html" class="btn">SIGNOUT</a>
-    </div>
+    <a href="../home.html#explore" class="top-btn">EXPLORE NOW</a>
+    <a href="./index.html" class="top-btn">SIGNOUT</a>
+</div>
+
       <!-- 🌙 DARK MODE BUTTON -->
     <div class="theme-toggle" onclick="toggleTheme()">
         <i class="fas fa-moon"></i>
@@ -52,14 +53,15 @@
 
 <!-- Filter Buttons -->
 <div class="buttons">
-    <button class="btn active" onclick="filterVideos('all')">All</button>
-    <button class="btn" onclick="filterVideos('spray')">Spraying</button>
-    <button class="btn" onclick="filterVideos('irrigation')">Irrigation</button>
-    <button class="btn" onclick="filterVideos('spacing')">Spacing</button>
-    <button class="btn" onclick="filterVideos('organic')">Organic</button>
-    <button class="btn" onclick="filterVideos('disease')">Disease</button>
-    <button class="btn" onclick="filterVideos('fertilizer')">Fertilizer</button>
+    <button class="btn-filter active" onclick="filterVideos('all')">All</button>
+    <button class="btn-filter" onclick="filterVideos('spray')">Spraying</button>
+    <button class="btn-filter" onclick="filterVideos('irrigation')">Irrigation</button>
+    <button class="btn-filter" onclick="filterVideos('spacing')">Spacing</button>
+    <button class="btn-filter" onclick="filterVideos('organic')">Organic</button>
+    <button class="btn-filter" onclick="filterVideos('disease')">Disease</button>
+    <button class="btn-filter" onclick="filterVideos('fertilizer')">Fertilizer</button>
 </div>
+
 
 <!-- Cards Auto-Generated Here -->
 <div class="container" id="videoContainer"></div>

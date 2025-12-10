@@ -29,7 +29,7 @@ const videos = [
       cat: "irrigation", 
       link: "https://youtu.be/SCYxM4qR2Mk", 
       desc: "पाणी व्यवस्थापनाची योग्य पद्धत.",
-      img: "https://images.unsplash.com/photo-1592982351212-3f24e6daba84?w=600"
+      img: "./img/पाणी व्यवस्थापनाची योग्य पद्धत.png"
     },
 
     { 
@@ -37,7 +37,7 @@ const videos = [
       cat: "spacing", 
       link: "https://youtu.be/mfO5hbo_8pA", 
       desc: "उत्पादन वाढवण्यासाठी योग्य अंतर.",
-      img: "https://images.unsplash.com/photo-1501004318641-b39e6451bec6?w=600"
+      img: "./img/योग्य फवारणी कशी करावी.png"
     },
 
     { 
@@ -60,7 +60,7 @@ const videos = [
   cat: "spray",
   link: "https://youtu.be/E3XCTgYHvI8",
   desc: "योग्य फवारणी कशी करावी?",
-  img: "./img/spray1.png"
+  img: "./img/Spray Best Practices.png"
 },
 
 {
@@ -472,21 +472,32 @@ videos.forEach(video => {
 
 
 
-document.querySelectorAll(".btn-filter").forEach(btn => {
-    btn.addEventListener("click", function () {
-        let category = this.getAttribute("data-cat");
+const buttons = document.querySelectorAll(".btn-filter");
 
-        // active class update
-        document.querySelectorAll(".btn-filter").forEach(b => b.classList.remove("active"));
-        this.classList.add("active");
-
-        // card filter
-        document.querySelectorAll(".card").forEach(card => {
-            if (category === "all" || card.classList.contains(category)) {
-                card.classList.remove("hide");
-            } else {
-                card.classList.add("hide");
-            }
-        });
+buttons.forEach(btn => {
+    btn.addEventListener("click", () => {
+        buttons.forEach(b => b.classList.remove("active"));
+        btn.classList.add("active");
     });
 });
+
+
+
+// document.querySelectorAll(".btn-filter").forEach(btn => {
+//     btn.addEventListener("click", function () {
+//         let category = this.getAttribute("data-cat");
+
+//         // active class update
+//         document.querySelectorAll(".btn-filter").forEach(b => b.classList.remove("active"));
+//         this.classList.add("active");
+
+//         // card filter
+//         document.querySelectorAll(".card").forEach(card => {
+//             if (category === "all" || card.classList.contains(category)) {
+//                 card.classList.remove("hide");
+//             } else {
+//                 card.classList.add("hide");
+//             }
+//         });
+//     });
+// });

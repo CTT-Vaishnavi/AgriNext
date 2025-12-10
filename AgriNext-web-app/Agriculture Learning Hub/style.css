@@ -96,7 +96,7 @@ nav ul li a:hover {
 }
 
 /* Right Buttons */
-.btns {
+/* .btns {
     display: flex;
     gap: 15px;
 }
@@ -111,11 +111,11 @@ nav ul li a:hover {
     background: #fd4800 !important;
     color: white !important;
     border-color: #000000 !important;
-}
+} */
 
 
 
-.btn {
+/* .btn {
     padding: 10px 20px;
     border-radius: 22px;
     text-decoration: none;
@@ -130,7 +130,7 @@ nav ul li a:hover {
     color: black;
     background-color: white;
     border-color: red;
-}
+} */
 
 /* Dark Mode Toggle */
 .theme-toggle {
@@ -181,30 +181,6 @@ nav ul li a:hover {
     margin-bottom: 25px;
 }
 
-/* ==============================================================  
-   FILTER BUTTONS
-============================================================== */
-.buttons {
-    margin-bottom: 25px;
-}
-
-.btn-filter {
-    padding: 10px 22px;
-    margin: 6px;
-    border-radius: 50px;
-    cursor: pointer;
-    font-weight: 600;
-    border: 2px solid var(--accent);
-    background: white;
-    transition: 0.3s;
-    color: var(--text);
-}
-
-.btn-filter:hover,
-.btn-filter.active {
-    background: var(--accent);
-    color: rgb(255, 255, 255);
-}
 
 /* ==============================================================  
    CARD CONTAINER
@@ -274,7 +250,7 @@ nav ul li a:hover {
 .spray-thumb { background: linear-gradient(135deg,#FF8C00,#FA5757); }
 .irrigation-thumb { background: linear-gradient(135deg,#0af,#00ffe7); }
 .spacing-thumb { background: linear-gradient(135deg,#2C3E50,#3498db); }
-.organic-thumb { background: linear-gradient(135deg,#00A859,#66ff99); }
+.organic-thumb { background: linear-gradient(135deg,#fdfdfd,#66ff99); }
 .disease-thumb { background: linear-gradient(135deg,#FA5757,#ff9a9e); }
 .fertilizer-thumb { background: linear-gradient(135deg,#FF8C00,#FF5E62); }
 
@@ -285,3 +261,72 @@ nav ul li a:hover {
 
 
 
+/* ==============================================================  
+   FILTER BUTTONS (NEW + FIXED)
+============================================================== */
+
+.buttons {
+    margin-bottom: 25px;
+}
+
+.btn-filter {
+    padding: 10px 22px;
+    margin: 6px;
+    border-radius: 50px;
+    cursor: pointer;
+    font-weight: 600;
+    border: 2px solid var(--accent);
+    background: white;
+    transition: 0.25s ease;
+    color: var(--text);
+}
+
+/* Hover State */
+.btn-filter:hover {
+    background: var(--accent);
+    color: #fff;
+    transform: scale(1.03);
+}
+
+/* ACTIVE STATE (CLICKED BUTTON) */
+.btn-filter.active {
+    background: var(--accent) !important;
+    color: #fff !important;
+    border-color: var(--accent) !important;
+    transform: scale(1.07);
+    box-shadow: 0px 8px 18px rgba(0, 168, 89, 0.45);
+}
+
+
+.btn-filter.active {
+    background: var(--accent) !important;
+    color: #fff !important;
+}
+
+
+
+/* NAVBAR TOP BUTTONS */
+.btns {
+    display: flex;
+    gap: 15px;
+}
+
+.top-btn {
+    padding: 10px 22px;
+    background: #fa5757;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 25px;
+    font-weight: 700;
+    transition: 0.3s;
+    border-color: rgb(0, 0, 0);
+    border: 2px solid var(--accent);
+}
+
+/* Hover Effect */
+.top-btn:hover {
+    background: white;
+    color: #fa5757;
+    border-color: red;
+    transform: scale(1.05);
+}
