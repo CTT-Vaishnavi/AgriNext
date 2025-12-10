@@ -1165,7 +1165,7 @@ button:hover {
   margin-bottom: 15px;
   margin-top: 10px;
   font-size: 22px;
-  color: #008a44;
+  color: #ffffff;
   font-weight: 600;
 }
 
@@ -1329,7 +1329,7 @@ button:hover {
   font-size: 25px;
   text-align: center;
   font-weight: 700;
-  color: #007b45;
+  color: #ffffff;
   text-shadow: 0 0 10px rgba(0,168,89,0.4);
 }
 
@@ -1585,7 +1585,7 @@ button:hover {
 .profile-icon i {
     font-size: 20px;
     color: white;
-    background: #00A859;
+    background: #418a68;
     padding: 8px 10px;
     border-radius: 50%;
   }
@@ -1596,3 +1596,5 @@ button:hover {
   display: inline;
 
 }
+
+
