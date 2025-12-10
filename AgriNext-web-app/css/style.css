@@ -13,6 +13,16 @@
   text-decoration: none;
 }
 
+
+#profileBtn {
+  display: none;
+}
+#profileBtn{
+  display: inline;
+}
+
+
+
 ::selection {
   background-color: var(--Soft-Red);
   color: #fff;
@@ -1533,6 +1543,52 @@ button:hover {
     backdrop-filter: blur(4px);
 }
 
+.profile-popup {
+    position: fixed;
+    top: 100px;
+    right: 98px;
+    background: white;
+    width: 260px;
+    padding: 15px;
+    border-radius: 12px;
+    display: none;
+    box-shadow: 0 0 15px rgba(0,0,0,0.2);
+    z-index: 9999;
+}
+
+.profile-box h3 {
+    margin-bottom: 5px;
+}
+
+.profile-box p {
+    color: #555;
+    font-size: 14px;
+}
+
+.profile-login-btn, .profile-logout-btn {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    margin-top: 10px;
+    background: #00a859;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.closeProfileBtn {
+    float: right;
+    cursor: pointer;
+    font-size: 18px;
+}
+
+.profile-icon i {
+    font-size: 20px;
+    color: white;
+    background: #00A859;
+    padding: 8px 10px;
+    border-radius: 50%;
+}
 
 
 

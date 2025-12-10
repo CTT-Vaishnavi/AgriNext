@@ -14,11 +14,10 @@ window.onscroll = () => {
   navbar.classList.remove("active");
 };
 
-
 // ======================
 // CALL BUTTON
 // ======================
-document.getElementById("callButton").addEventListener("click", function(e) {
+document.getElementById("callButton").addEventListener("click", function (e) {
   e.preventDefault();
   const phone = "18001801551";
   if (/Mobi|Android/i.test(navigator.userAgent)) {
@@ -27,7 +26,6 @@ document.getElementById("callButton").addEventListener("click", function(e) {
     alert("Please use a mobile device to make this call.");
   }
 });
-
 
 // ======================
 // THEME HANDLER
@@ -52,14 +50,12 @@ document.getElementById("white").onclick = () => {
   body.style.color = "#000";
 };
 
-
 // ======================
 // CONTACT FORM RESET
 // ======================
 document.getElementById("contactForm").addEventListener("submit", function () {
   setTimeout(() => this.reset(), 1000);
 });
-
 
 // ======================
 // FIREBASE CONFIG
@@ -73,25 +69,18 @@ const firebaseConfig = {
   appId: "1:685958519850:web:3bafe3a5de1282a2547753",
   measurementId: "G-6DY3X4ZRZ3",
 };
-
 firebase.initializeApp(firebaseConfig);
 const auth = firebase.auth();
 
-
 // ======================
-// ELEMENTS
+// LOGIN POPUP
 // ======================
 const loginPopup = document.getElementById("loginPopup");
-const openLoginBtn = document.getElementById("openLogin"); 
+const openLoginBtn = document.getElementById("openLogin");
 const closePopup = document.getElementById("closePopup");
 
-
-// ======================
-// OPEN/CLOSE LOGIN POPUP
-// ======================
 openLoginBtn.onclick = () => loginPopup.style.display = "flex";
 closePopup.onclick = () => loginPopup.style.display = "none";
-
 
 // ======================
 // LOGIN / SIGNUP TABS
@@ -121,7 +110,6 @@ function showBox(show, hideBoxes) {
   hideBoxes.forEach(box => box.style.display = "none");
 }
 
-
 // ======================
 // EMAIL LOGIN
 // ======================
@@ -131,9 +119,8 @@ loginBtn2.onclick = () => {
     .catch(err => alert(err.message));
 };
 
-
 // ======================
-// SIGNUP VALIDATION & CREATION
+// SIGNUP
 // ======================
 function validateEmail(email) {
   return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
@@ -146,28 +133,18 @@ createAccountBtn.onclick = () => {
   let password = signupPassword.value.trim();
   let confirm = signupConfirm.value.trim();
 
-  // VALIDATIONS
-  if (!validateEmail(email)) {
-    showSignupMsg("Invalid Email", "red");
-    return;
-  }
+  if (!validateEmail(email))
+    return showSignupMsg("Invalid Email", "red");
 
-  if (phone.length !== 10) {
-    showSignupMsg("Phone Number must be 10 digits", "red");
-    return;
-  }
+  if (phone.length !== 10)
+    return showSignupMsg("Phone Number must be 10 digits", "red");
 
-  if (password.length < 6) {
-    showSignupMsg("Password must be at least 6 characters", "red");
-    return;
-  }
+  if (password.length < 6)
+    return showSignupMsg("Password must be at least 6 characters", "red");
 
-  if (password !== confirm) {
-    showSignupMsg("Passwords do not match", "red");
-    return;
-  }
+  if (password !== confirm)
+    return showSignupMsg("Passwords do not match", "red");
 
-  // FIREBASE ACCOUNT CREATE
   auth.createUserWithEmailAndPassword(email, password)
     .then(() => {
       showSignupMsg("Account Created Successfully ✔", "green");
@@ -185,7 +162,6 @@ function showSignupMsg(msg, color) {
   signupMsg.innerText = msg;
   signupMsg.style.color = color;
 }
-
 
 // ======================
 // PHONE OTP LOGIN
@@ -209,34 +185,112 @@ verifyOtpBtn.onclick = () => {
     .catch(() => alert("Invalid OTP ❌"));
 };
 
-
-
 // ======================
-// SUCCESS LOGIN BEHAVIOR
+// SUCCESS LOGIN
 // ======================
 function successLogin() {
   loginPopup.style.display = "none";
-  openLoginBtn.style.display = "none";
-
-  // ADD PROFILE ICON
-  const icon = document.createElement("img");
-  icon.src = "https://cdn-icons-png.flaticon.com/512/149/149071.png";
-  icon.id = "profileIcon";
-  icon.style.width = "40px";
-  icon.style.cursor = "pointer";
-
-  document.querySelector(".navbar").appendChild(icon);
-
-  icon.onclick = () => alert("Farmer Profile Coming Soon 🌾");
 }
 
+// =====================================================
+// LOGIN UI TOGGLE SYSTEM
+// =====================================================
+const profileBtn = document.getElementById("profileBtn");
+
+// MAKE PROFILE HIDDEN BY DEFAULT
+profileBtn.style.display = "none";
+
+auth.onAuthStateChanged(user => {
+  if (user) {
+    // LOGIN → PROFILE SHOW, LOGIN BUTTON HIDE
+    profileBtn.style.display = "block";
+    openLoginBtn.style.display = "none";
+  } else {
+    // LOGOUT → PROFILE HIDE, LOGIN BUTTON SHOW
+    profileBtn.style.display = "none";
+    // openLoginBtn.style.display = "block";
+  }
+});
 
 // ======================
-// LOGOUT
+// PROFILE POPUP
 // ======================
-logoutBtn.onclick = () => {
-  auth.signOut().then(() => location.reload());
+const profilePopup = document.getElementById("profilePopup");
+const closeProfile = document.getElementById("closeProfile");
+const openLoginFromProfile = document.getElementById("openLoginFromProfile");
+const logoutFromProfile = document.getElementById("logoutFromProfile");
+const profileName = document.getElementById("profileName");
+
+profileBtn.onclick = () => {
+  profilePopup.style.display = "block";
+
+  auth.onAuthStateChanged(user => {
+    if (user) {
+      profileName.innerHTML = "👨‍🌾 " + user.email;
+      openLoginFromProfile.style.display = "none";
+      logoutFromProfile.style.display = "block";
+    } else {
+      profileName.innerHTML = "You are not logged in";
+      openLoginFromProfile.style.display = "block";
+      logoutFromProfile.style.display = "none";
+    }
+  });
 };
 
+closeProfile.onclick = () => {
+  profilePopup.style.display = "none";
+};
 
+openLoginFromProfile.onclick = () => {
+  profilePopup.style.display = "none";
+  loginPopup.style.display = "flex";
+};
 
+logoutFromProfile.onclick = () => {
+  auth.signOut().then(() => {
+    alert("Logged Out Successfully!");
+    profilePopup.style.display = "none";
+  });
+};
+
+// ======================
+// LOGIN REQUIRED ON FEATURES
+// ======================
+function requireLogin(callback) {
+  auth.onAuthStateChanged(user => {
+    if (user) callback();
+    else loginPopup.style.display = "flex";
+  });
+}
+
+// EXPLORE NOW
+document.querySelector("a.btn[href='explore/index.html']").onclick = (e) => {
+  e.preventDefault();
+  requireLogin(() => {
+    window.location.href = "explore/index.html";
+  });
+};
+
+// WEATHER FORECAST
+document.querySelector("a.buttonn[href='weather-forecast/index.html']").onclick = (e) => {
+  e.preventDefault();
+  requireLogin(() => {
+    window.location.href = "weather-forecast/index.html";
+  });
+};
+
+// CROP RECOMMENDATION
+document.querySelector("a.buttonn[href='https://crop-recomm.streamlit.app/']").onclick = (e) => {
+  e.preventDefault();
+  requireLogin(() => {
+    window.location.href = "https://crop-recomm.streamlit.app/";
+  });
+};
+
+// DISEASE DETECTION
+document.querySelector("a.buttonn[href='https://agrisens-crop-disease-pred.streamlit.app/']").onclick = (e) => {
+  e.preventDefault();
+  requireLogin(() => {
+    window.location.href = "https://agrisens-crop-disease-pred.streamlit.app/";
+  });
+};
