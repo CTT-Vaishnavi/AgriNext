@@ -1,3 +1,6 @@
+// ======================
+// NAVBAR TOGGLE
+// ======================
 let menu = document.querySelector("#menu-btn");
 let navbar = document.querySelector(".navbar");
 
@@ -11,51 +14,229 @@ window.onscroll = () => {
   navbar.classList.remove("active");
 };
 
-// number
+
+// ======================
+// CALL BUTTON
+// ======================
 document.getElementById("callButton").addEventListener("click", function(e) {
-                e.preventDefault();
-                const phone = "18001801551";
-                if (/Mobi|Android/i.test(navigator.userAgent)) {
-                  // Mobile device
-                  window.location.href = "tel:" + phone;
-                } else {
-                  // Not a mobile device
-                  alert("Please use a mobile device to make this call.");
-                }
-              });
-
-// background color change
-
-  const body = document.body;
-
-  document.getElementById("sun").onclick = () => {
-    body.style.background = "linear-gradient(to bottom right, #ffeb99, #ffcc00)";
-    body.style.color = "#000";
-  };
-
-  document.getElementById("forest").onclick = () => {
-    body.style.background = "linear-gradient(to bottom right, #b7ffb7, #07a63a)";
-    body.style.color = "#000";
-  };
-
-  document.getElementById("ocean").onclick = () => {
-    body.style.background = "linear-gradient(to bottom right, #b3e5ff, #0077ff)";
-    body.style.color = "#fff";
-  };
-
-  document.getElementById("white").onclick = () => {
-    body.style.background = "#ffffff";
-    body.style.color = "#000";
-  };
-
-
-  document.getElementById("contactForm").addEventListener("submit", function() {
-    setTimeout(() => {
-        this.reset();     // 🔥 Form Reset After Submit
-    }, 1000);
+  e.preventDefault();
+  const phone = "18001801551";
+  if (/Mobi|Android/i.test(navigator.userAgent)) {
+    window.location.href = "tel:" + phone;
+  } else {
+    alert("Please use a mobile device to make this call.");
+  }
 });
 
 
+// ======================
+// THEME HANDLER
+// ======================
+const body = document.body;
+
+document.getElementById("sun").onclick = () => {
+  body.style.background = "linear-gradient(to bottom right, #ffeb99, #ffcc00)";
+};
+
+document.getElementById("forest").onclick = () => {
+  body.style.background = "linear-gradient(to bottom right, #b7ffb7, #07a63a)";
+};
+
+document.getElementById("ocean").onclick = () => {
+  body.style.background = "linear-gradient(to bottom right, #b3e5ff, #0077ff)";
+  body.style.color = "#fff";
+};
+
+document.getElementById("white").onclick = () => {
+  body.style.background = "#ffffff";
+  body.style.color = "#000";
+};
 
 
-              
+// ======================
+// CONTACT FORM RESET
+// ======================
+document.getElementById("contactForm").addEventListener("submit", function () {
+  setTimeout(() => this.reset(), 1000);
+});
+
+
+// ======================
+// FIREBASE CONFIG
+// ======================
+const firebaseConfig = {
+  apiKey: "AIzaSyBQ_cUOvn7gB2kq6R85V5WKqja4s-tCZjo",
+  authDomain: "agrinext-smart-farming.firebaseapp.com",
+  projectId: "agrinext-smart-farming",
+  storageBucket: "agrinext-smart-farming.firebasestorage.app",
+  messagingSenderId: "685958519850",
+  appId: "1:685958519850:web:3bafe3a5de1282a2547753",
+  measurementId: "G-6DY3X4ZRZ3",
+};
+
+firebase.initializeApp(firebaseConfig);
+const auth = firebase.auth();
+
+
+// ======================
+// ELEMENTS
+// ======================
+const loginPopup = document.getElementById("loginPopup");
+const openLoginBtn = document.getElementById("openLogin"); 
+const closePopup = document.getElementById("closePopup");
+
+
+// ======================
+// OPEN/CLOSE LOGIN POPUP
+// ======================
+openLoginBtn.onclick = () => loginPopup.style.display = "flex";
+closePopup.onclick = () => loginPopup.style.display = "none";
+
+
+// ======================
+// LOGIN / SIGNUP TABS
+// ======================
+emailTab.onclick = () => {
+  toggleTab(emailTab, [phoneTab, signupTab]);
+  showBox(emailBox, [phoneBox, signupBox]);
+};
+
+phoneTab.onclick = () => {
+  toggleTab(phoneTab, [emailTab, signupTab]);
+  showBox(phoneBox, [emailBox, signupBox]);
+};
+
+signupTab.onclick = () => {
+  toggleTab(signupTab, [emailTab, phoneTab]);
+  showBox(signupBox, [emailBox, phoneBox]);
+};
+
+function toggleTab(active, others) {
+  active.classList.add("active");
+  others.forEach(btn => btn.classList.remove("active"));
+}
+
+function showBox(show, hideBoxes) {
+  show.style.display = "block";
+  hideBoxes.forEach(box => box.style.display = "none");
+}
+
+
+// ======================
+// EMAIL LOGIN
+// ======================
+loginBtn2.onclick = () => {
+  auth.signInWithEmailAndPassword(email.value, password.value)
+    .then(() => successLogin())
+    .catch(err => alert(err.message));
+};
+
+
+// ======================
+// SIGNUP VALIDATION & CREATION
+// ======================
+function validateEmail(email) {
+  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+}
+
+createAccountBtn.onclick = () => {
+
+  let email = signupEmail.value.trim();
+  let phone = signupPhone.value.trim();
+  let password = signupPassword.value.trim();
+  let confirm = signupConfirm.value.trim();
+
+  // VALIDATIONS
+  if (!validateEmail(email)) {
+    showSignupMsg("Invalid Email", "red");
+    return;
+  }
+
+  if (phone.length !== 10) {
+    showSignupMsg("Phone Number must be 10 digits", "red");
+    return;
+  }
+
+  if (password.length < 6) {
+    showSignupMsg("Password must be at least 6 characters", "red");
+    return;
+  }
+
+  if (password !== confirm) {
+    showSignupMsg("Passwords do not match", "red");
+    return;
+  }
+
+  // FIREBASE ACCOUNT CREATE
+  auth.createUserWithEmailAndPassword(email, password)
+    .then(() => {
+      showSignupMsg("Account Created Successfully ✔", "green");
+
+      setTimeout(() => {
+        signupTab.classList.remove("active");
+        emailTab.classList.add("active");
+        showBox(emailBox, [signupBox, phoneBox]);
+      }, 1500);
+    })
+    .catch(err => showSignupMsg(err.message, "red"));
+};
+
+function showSignupMsg(msg, color) {
+  signupMsg.innerText = msg;
+  signupMsg.style.color = color;
+}
+
+
+// ======================
+// PHONE OTP LOGIN
+// ======================
+let recaptcha = new firebase.auth.RecaptchaVerifier("recaptcha-container");
+
+sendOtpBtn.onclick = () => {
+  auth.signInWithPhoneNumber(phone.value, recaptcha)
+    .then(res => {
+      window.confirmationResult = res;
+      otpSection.style.display = "block";
+      otpMsg.innerText = "OTP Sent ✔";
+      otpMsg.style.color = "green";
+    })
+    .catch(err => alert(err.message));
+};
+
+verifyOtpBtn.onclick = () => {
+  confirmationResult.confirm(otp.value)
+    .then(() => successLogin())
+    .catch(() => alert("Invalid OTP ❌"));
+};
+
+
+
+// ======================
+// SUCCESS LOGIN BEHAVIOR
+// ======================
+function successLogin() {
+  loginPopup.style.display = "none";
+  openLoginBtn.style.display = "none";
+
+  // ADD PROFILE ICON
+  const icon = document.createElement("img");
+  icon.src = "https://cdn-icons-png.flaticon.com/512/149/149071.png";
+  icon.id = "profileIcon";
+  icon.style.width = "40px";
+  icon.style.cursor = "pointer";
+
+  document.querySelector(".navbar").appendChild(icon);
+
+  icon.onclick = () => alert("Farmer Profile Coming Soon 🌾");
+}
+
+
+// ======================
+// LOGOUT
+// ======================
+logoutBtn.onclick = () => {
+  auth.signOut().then(() => location.reload());
+};
+
+
+

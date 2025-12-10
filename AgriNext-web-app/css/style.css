@@ -1109,3 +1109,430 @@ button:hover {
     }
 }
 
+/* ============================
+   LOGIN POPUP (Glassmorphism)
+   ============================ */
+
+#loginPopup {
+  position: fixed;
+  inset: 0;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 99999;
+  backdrop-filter: blur(10px);
+  background: rgba(0, 0, 0, 0.3);
+}
+
+/* POPUP BOX */
+.popup-box {
+  width: 360px;
+  padding: 25px;
+  background: rgba(255, 255, 255, 0.20);
+  border-radius: 18px;
+  backdrop-filter: blur(25px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 0 10px 40px rgba(0,0,0,0.25);
+  animation: scaleIn .25s ease;
+}
+
+@keyframes scaleIn {
+  from { transform: scale(0.75); opacity: 0;}
+  to   { transform: scale(1); opacity: 1;}
+}
+
+/* CLOSE BUTTON */
+.close-btn {
+  color: #333;
+  font-size: 26px;
+  cursor: pointer;
+  float: right;
+  margin-top: -10px;
+}
+
+/* POPUP HEADING */
+.popup-box h2 {
+  margin-bottom: 15px;
+  margin-top: 10px;
+  font-size: 22px;
+  color: #008a44;
+  font-weight: 600;
+}
+
+/* TAB BUTTONS */
+.tabs {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 12px;
+  margin-top: 10px;
+}
+
+.tabs button {
+  background: transparent;
+  border: none;
+  padding: 8px 15px;
+  font-size: 15px;
+  color: #555;
+  cursor: pointer;
+}
+
+.tabs button.active {
+  color: #00a859;
+  border-bottom: 2px solid #00a859;
+}
+
+/* INPUTS */
+#loginPopup input {
+  width: 92%;
+  padding: 12px;
+  margin-top: 12px;
+  font-size: 15px;
+  border-radius: 10px;
+  outline: none;
+  border: 1px solid #cfcfcf;
+  background: rgba(255,255,255,0.5);
+}
+
+#loginPopup input:focus {
+  border: 1.5px solid #00a859;
+}
+
+/* BUTTONS */
+#loginPopup button {
+  width: 92%;
+  padding: 12px;
+  margin-top: 15px;
+  background: #00a859;
+  color: white;
+  border-radius: 10px;
+  font-size: 16px;
+  cursor: pointer;
+  border: none;
+  transition: 0.3s;
+}
+
+#loginPopup button:hover {
+  background: #008a44;
+}
+
+#loginPopup .outline {
+  background: transparent;
+  color: #00a859;
+  border: 1.5px solid #00a859;
+}
+
+#loginPopup .outline:hover {
+  background: #00a859;
+  color: white;
+}
+
+/* OTP SECTION HIDE/SHOW */
+#otpSection {
+  margin-top: 15px;
+}
+
+/* MESSAGE TEXT */
+#msg, #otpMsg {
+  margin-top: 5px;
+  font-size: 14px;
+}
+
+/* MOBILE RESPONSIVE */
+@media(max-width: 420px) {
+  .popup-box {
+    width: 90%;
+  }
+}
+
+/* ============================
+   LOGIN POPUP – 3D PRO VERSION
+   ============================ */
+
+#loginPopup {
+  position: fixed;
+  inset: 0;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 99999;
+  backdrop-filter: blur(12px);
+  background: rgba(0, 0, 0, 0.35);
+  animation: fadeIn 0.4s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+/* 3D GLASS CARD */
+.popup-box {
+  width: 370px;
+  padding: 30px;
+  border-radius: 22px;
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(25px);
+  border: 1.5px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 
+      0 10px 30px rgba(0,0,0,0.25),
+      0 0 25px rgba(0,168,89,0.6); /* green glow */
+
+  /* 3D transform */
+  transform-style: preserve-3d;
+  transform: perspective(900px) translateZ(20px);
+  animation: popupEnter .6s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+@keyframes popupEnter {
+  0%   { opacity: 0; transform: perspective(900px) translateZ(-120px) rotateX(15deg); }
+  100% { opacity: 1; transform: perspective(900px) translateZ(20px) rotateX(0deg); }
+}
+
+/* 3D TILT EFFECT ON HOVER */
+.popup-box:hover {
+  transform: perspective(900px) translateZ(35px) rotateX(4deg) rotateY(4deg);
+  box-shadow: 
+      0 12px 40px rgba(0,0,0,0.30),
+      0 0 35px rgba(0,168,89,1);
+  transition: 0.4s ease;
+}
+
+/* CLOSE BUTTON */
+.close-btn {
+  float: right;
+  font-size: 28px;
+  cursor: pointer;
+  color: #004d26;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+.close-btn:hover {
+  color: #00a859;
+  transform: scale(1.3);
+}
+
+/* TITLE */
+.popup-box h2 {
+  margin-top: 10px;
+  margin-bottom: 15px;
+  font-size: 25px;
+  text-align: center;
+  font-weight: 700;
+  color: #007b45;
+  text-shadow: 0 0 10px rgba(0,168,89,0.4);
+}
+
+/* TABS */
+.tabs {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 18px;
+}
+
+.tabs button {
+  background: transparent;
+  border: none;
+  padding: 10px 15px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  color: #444;
+  transition: 0.3s ease;
+}
+
+.tabs button.active {
+  color: #00a859;
+  border-bottom: 2px solid #00a859;
+  transform: translateZ(20px);
+}
+
+/* INPUT FIELDS */
+#loginPopup input {
+  width: 92%;
+  padding: 12px;
+  margin-top: 12px;
+  font-size: 15px;
+  border-radius: 12px;
+  background: rgba(255,255,255,0.6);
+  border: 1.5px solid #d8d8d8;
+  transition: 0.3s ease;
+}
+
+#loginPopup input:focus {
+  border-color: #00a859;
+  box-shadow: 0 0 12px rgba(0,168,89,0.7);
+  transform: translateZ(12px);
+}
+
+/* BUTTONS */
+#loginPopup button {
+  width: 92%;
+  padding: 13px;
+  margin-top: 15px;
+  font-size: 16px;
+  background: linear-gradient(135deg, #00a859, #00733c);
+  color: white;
+  border-radius: 12px;
+  cursor: pointer;
+  border: none;
+  transition: 0.3s ease;
+}
+
+#loginPopup button:hover {
+  transform: translateZ(18px) scale(1.03);
+  box-shadow: 0 10px 20px rgba(0,168,89,0.4);
+}
+
+#loginPopup .outline {
+  background: transparent;
+  color: #00a859;
+  border: 2px solid #00a859;
+}
+
+#loginPopup .outline:hover {
+  background: #00a859;
+  color: white;
+}
+
+/* OTP SECTION */
+#otpSection {
+  margin-top: 20px;
+}
+
+/* TEXT MESSAGES */
+#msg, #otpMsg, #signupMsg {
+  margin-top: 8px;
+  font-size: 14px;
+  text-align: center;
+}
+
+/* MOBILE RESPONSIVE */
+@media (max-width: 420px) {
+  .popup-box {
+    width: 90%;
+  }
+}
+
+
+
+
+/* ============================
+   3D TABS (Smaller + Gap Added)
+   ============================ */
+
+.tabs {
+  display: flex;
+  justify-content: center;
+  gap: 10px; /* 🔥 Buttons ke beech spacing */
+  margin-bottom: 12px;
+}
+
+/* BUTTON STYLE */
+.tabs button {
+  background: #00a859;
+  color: #fff;
+  font-size: 14px;                 /* 🔥 Smaller text */
+  font-weight: 600;
+  padding: 10px 15px;              /* 🔥 Smaller button size */
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 3px 0 #007a3c;
+  transition: all 0.25s ease-in-out;
+  transform-style: preserve-3d;
+}
+
+/* HOVER EFFECT */
+.tabs button:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 18px rgba(0,168,89,0.4);
+}
+
+/* ACTIVE TAB */
+.tabs button.active {
+  background: linear-gradient(135deg, #00a859, #00733c);
+  color: white;
+  transform: translateY(-3px) scale(1.06);
+  box-shadow: 0 7px 12px rgba(0,168,89,0.4);
+}
+
+/* PRESS EFFECT */
+.tabs button:active {
+  transform: translateY(1px) scale(0.96);
+  box-shadow: 0 2px 0 #006b34;
+}
+
+
+
+
+
+/* ============================
+   3D ANIMATION FOR TABS BUTTONS
+   ============================ */
+
+.tabs button {
+  background: #00a859;
+  color: #fff;
+  font-size: 15px;
+  font-weight: 600;
+  padding: 12px 18px;
+  border-radius: 12px;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 4px 0 #007a3c;
+  transition: all 0.25s ease-in-out;
+  transform-style: preserve-3d;
+}
+
+/* HOVER EFFECT (Lift + Glow) */
+.tabs button:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 10px 20px rgba(0,168,89,0.5);
+}
+
+/* ACTIVE TAB (Highlight + Scale) */
+.tabs button.active {
+  background: linear-gradient(135deg, #00a859, #00733c);
+  color: white;
+  transform: translateY(-2px) scale(1.05);
+  box-shadow: 0 8px 12px rgba(0,168,89,0.4);
+}
+
+/* CLICK EFFECT (Press Down) */
+.tabs button:active {
+  transform: translateY(2px) scale(0.95);
+  box-shadow: 0 3px 0 #006b34;
+}
+
+
+
+
+/* =======================
+   FEATURE LOCK UI (BLUR)
+   ======================= */
+.feature-locked {
+    filter: blur(1px);
+    opacity: 0.55;
+    pointer-events: none;
+    position: relative;
+}
+
+/* LOCK MESSAGE OVERLAY */
+.feature-locked::after {
+    content: "🔒 Login Required";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(0,0,0,0.55);
+    padding: 6px 14px;
+    color: white;
+    font-size: 14px;
+    border-radius: 8px;
+    backdrop-filter: blur(4px);
+}
+
+
+
+

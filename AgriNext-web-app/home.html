@@ -15,6 +15,64 @@
   </head>
 
   <body>
+
+<!-- LOGIN POPUP SYSTEM START -->
+<div id="loginPopup" class="popup" style="display:none;">
+  <div class="popup-box">
+
+    <span id="closePopup" class="close-btn">×</span>
+
+    <h2>Welcome Farmer 👨‍🌾</h2>
+
+    <div class="tabs">
+        <button id="emailTab" class="active">Email Login</button>
+        <button id="phoneTab">Phone OTP</button>
+        <button id="signupTab">Sign Up</button>
+    </div>
+
+    <!-- EMAIL LOGIN -->
+    <div id="emailBox">
+      <input type="email" id="email" placeholder="Enter Email">
+      <input type="password" id="password" placeholder="Enter Password">
+      <button id="loginBtn2">Login</button>
+    </div>
+
+    <!-- PHONE OTP LOGIN -->
+    <div id="phoneBox" style="display:none;">
+      <input type="text" id="phone" placeholder="+91XXXXXXXXXX">
+      <div id="recaptcha-container"></div>
+      <button id="sendOtpBtn">Send OTP</button>
+
+      <div id="otpSection" style="display:none;">
+        <input type="text" id="otp" placeholder="Enter OTP">
+        <button id="verifyOtpBtn">Verify OTP</button>
+      </div>
+
+      <p id="otpMsg"></p>
+    </div>
+
+    <!-- SIGNUP FORM -->
+    <div id="signupBox" style="display:none;">
+      <input type="email" id="signupEmail" placeholder="Enter Email">
+      <input type="text" id="signupPhone" placeholder="Enter Phone Number">
+      <input type="password" id="signupPassword" placeholder="Enter Password">
+      <input type="password" id="signupConfirm" placeholder="Confirm Password">
+
+      <button id="createAccountBtn">Create Account</button>
+      <p id="signupMsg"></p>
+    </div>
+
+  </div>
+</div>
+<!-- LOGIN POPUP SYSTEM END -->
+
+<!-- PROFILE DASHBOARD -->
+<div id="dashboard" style="display:none; text-align:center; padding:25px;">
+  <h2>👨‍🌾 Farmer Dashboard</h2>
+  <button id="logoutBtn">Logout</button>
+</div>
+
+
     <!-- navbar sections starts  -->
     <header class="header">
       <div class="logo" style="display: flex; align-items: center; gap: 8px;">
@@ -29,8 +87,7 @@
         <a href="#about">About</a>
         <a href="#contact">Contact</a>
         <a href="explore/index.html" class="btn">EXPLORE NOW</a>
-        <a href="./index.html" id="loginBtn" class="btn">Signout </a>
-        
+<a href="#" id="openLogin" class="btn">Login</a>        
       </nav>
       
       <div class="fas fa-bars" id="menu-btn"></div>
@@ -459,6 +516,11 @@
     })();
     </script>
     <!-- End of Tawk.to Script -->
+<!-- Firebase -->
+<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+
+<script src="js/auth.js"></script>
 
     <script src="js/main.js"></script>
   </body>
