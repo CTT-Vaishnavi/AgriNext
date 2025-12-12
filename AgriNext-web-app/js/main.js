@@ -264,65 +264,83 @@ function requireLogin(callback) {
   });
 }
 
-// EXPLORE NOW
-document.querySelector("a.btn[href='explore/index.html']").onclick = (e) => {
-  e.preventDefault();
-  requireLogin(() => {
-    window.location.href = "explore/index.html";
-  });
-};
 
-// WEATHER FORECAST
-document.querySelector("a.buttonn[href='weather-forecast/index.html']").onclick = (e) => {
-  e.preventDefault();
-  requireLogin(() => {
-    window.location.href = "weather-forecast/index.html";
-  });
-};
+// ======================
+// UNIVERSAL LOGIN PROTECTION FOR ALL FEATURE BUTTONS
+// ======================
+document.querySelectorAll("a.btn, a.buttonn").forEach(link => {
+  link.addEventListener("click", function (e) {
+    const target = this.getAttribute("href");
+    
+    // Prevent opening link
+    e.preventDefault();
 
-// CROP RECOMMENDATION
-document.querySelector("a.buttonn[href='https://crop-recomm.streamlit.app/']").onclick = (e) => {
-  e.preventDefault();
-  requireLogin(() => {
-    window.location.href = "https://crop-recomm.streamlit.app/";
+    requireLogin(() => {
+      window.location.href = target;
+    });
   });
-};
+});
 
-// DISEASE DETECTION
-document.querySelector("a.buttonn[href='https://agrisens-crop-disease-pred.streamlit.app/']").onclick = (e) => {
-  e.preventDefault();
-  requireLogin(() => {
-    window.location.href = "https://agrisens-crop-disease-pred.streamlit.app/";
-  });
-};
 
-document.querySelector("a.buttonn[href='Agriculture Learning Hub/index.html']").onclick = (e) => {
-  e.preventDefault();
-  requireLogin(() => {
-    window.location.href = "Agriculture Learning Hub/index.html";
-  });
-};
+// // EXPLORE NOW
+// document.querySelector("a.btn[href='explore/index.html']").onclick = (e) => {
+//   e.preventDefault();
+//   requireLogin(() => {
+//     window.location.href = "explore/index.html";
+//   });
+// };
 
-document.querySelector("a.buttonn[href='developing-phase/index.html']").onclick = (e) => {
-  e.preventDefault();
-  requireLogin(() => {
-    window.location.href = "developing-phase/index.html";
-  });
-};
+// // WEATHER FORECAST
+// document.querySelector("a.buttonn[href='weather-forecast/index.html']").onclick = (e) => {
+//   e.preventDefault();
+//   requireLogin(() => {
+//     window.location.href = "weather-forecast/index.html";
+//   });
+// };
 
-document.querySelector("a.buttonn[href='guide/index.html']").onclick = (e) => {
-  e.preventDefault();
-  requireLogin(() => {
-    window.location.href = "guide/index.html";
-  });
-};
+// // CROP RECOMMENDATION
+// document.querySelector("a.buttonn[href='https://crop-recomm.streamlit.app/']").onclick = (e) => {
+//   e.preventDefault();
+//   requireLogin(() => {
+//     window.location.href = "https://crop-recomm.streamlit.app/";
+//   });
+// };
 
-document.querySelector("a.buttonn[href='Agrohub/index.html']").onclick = (e) => {
-  e.preventDefault();
-  requireLogin(() => {
-    window.location.href = "Agrohub/index.html";
-  });
-};
+// // DISEASE DETECTION
+// document.querySelector("a.buttonn[href='https://agrisens-crop-disease-pred.streamlit.app/']").onclick = (e) => {
+//   e.preventDefault();
+//   requireLogin(() => {
+//     window.location.href = "https://agrisens-crop-disease-pred.streamlit.app/";
+//   });
+// };
+
+// document.querySelector("a.buttonn[href='Agriculture Learning Hub/index.html']").onclick = (e) => {
+//   e.preventDefault();
+//   requireLogin(() => {
+//     window.location.href = "Agriculture Learning Hub/index.html";
+//   });
+// };
+
+// document.querySelector("a.buttonn[href='developing-phase/index.html']").onclick = (e) => {
+//   e.preventDefault();
+//   requireLogin(() => {
+//     window.location.href = "developing-phase/index.html";
+//   });
+// };
+
+// document.querySelector("a.buttonn[href='guide/index.html']").onclick = (e) => {
+//   e.preventDefault();
+//   requireLogin(() => {
+//     window.location.href = "guide/index.html";
+//   });
+// };
+
+// document.querySelector("a.buttonn[href='Agrohub/index.html']").onclick = (e) => {
+//   e.preventDefault();
+//   requireLogin(() => {
+//     window.location.href = "Agrohub/index.html";
+//   });
+// };
 
 
 
