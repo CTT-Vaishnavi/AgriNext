@@ -16,76 +16,76 @@
 
   <body>
 
-<!-- LOGIN POPUP SYSTEM START -->
-<div id="loginPopup" class="popup" style="display:none;">
-  <div class="popup-box">
+      <!-- LOGIN POPUP SYSTEM START -->
+      <div id="loginPopup" class="popup" style="display:none;">
+        <div class="popup-box">
 
-    <span id="closePopup" class="close-btn">×</span>
+          <span id="closePopup" class="close-btn">×</span>
 
-    <h2 class="farmer">Welcome Farmer 👨‍🌾</h2>
+          <h2 class="farmer">Welcome Farmer 👨‍🌾</h2>
 
-    <div class="tabs">
-        <button id="emailTab" class="active">Email Login</button>
-        <button id="phoneTab">Phone OTP</button>
-        <button id="signupTab">Sign Up</button>
-    </div>
+          <div class="tabs">
+              <button id="emailTab" class="active">Email Login</button>
+              <button id="phoneTab">Phone OTP</button>
+              <button id="signupTab">Sign Up</button>
+          </div>
 
-    <!-- EMAIL LOGIN -->
-    <div id="emailBox">
-      <input type="email" id="email" placeholder="Enter Email">
-      <input type="password" id="password" placeholder="Enter Password">
-      <button id="loginBtn2">Login</button>
-    </div>
+          <!-- EMAIL LOGIN -->
+          <div id="emailBox">
+            <input type="email" id="email" placeholder="Enter Email">
+            <input type="password" id="password" placeholder="Enter Password">
+            <button id="loginBtn2">Login</button>
+          </div>
 
-    <!-- PHONE OTP LOGIN -->
-    <div id="phoneBox" style="display:none;">
-      <input type="text" id="phone" placeholder="+91XXXXXXXXXX">
-      <div id="recaptcha-container"></div>
-      <button id="sendOtpBtn">Send OTP</button>
+          <!-- PHONE OTP LOGIN -->
+          <div id="phoneBox" style="display:none;">
+            <input type="text" id="phone" placeholder="+91XXXXXXXXXX">
+            <div id="recaptcha-container"></div>
+            <button id="sendOtpBtn">Send OTP</button>
 
-      <div id="otpSection" style="display:none;">
-        <input type="text" id="otp" placeholder="Enter OTP">
-        <button id="verifyOtpBtn">Verify OTP</button>
+            <div id="otpSection" style="display:none;">
+              <input type="text" id="otp" placeholder="Enter OTP">
+              <button id="verifyOtpBtn">Verify OTP</button>
+            </div>
+
+            <p id="otpMsg"></p>
+          </div>
+
+          <!-- SIGNUP FORM -->
+          <div id="signupBox" style="display:none;">
+            <input type="email" id="signupEmail" placeholder="Enter Email">
+            <input type="text" id="signupPhone" placeholder="Enter Phone Number">
+            <input type="password" id="signupPassword" placeholder="Enter Password">
+            <input type="password" id="signupConfirm" placeholder="Confirm Password">
+
+            <button id="createAccountBtn">Create Account</button>
+            <p id="signupMsg"></p>
+          </div>
+
+        </div>
+      </div>
+      <!-- LOGIN POPUP SYSTEM END -->
+
+      <!-- PROFILE DASHBOARD -->
+      <div id="dashboard" style="display:none; text-align:center; padding:25px;">
+        <h2>👨‍🌾 Farmer Dashboard</h2>
+        <button id="logoutBtn">Logout</button>
       </div>
 
-      <p id="otpMsg"></p>
-    </div>
 
-    <!-- SIGNUP FORM -->
-    <div id="signupBox" style="display:none;">
-      <input type="email" id="signupEmail" placeholder="Enter Email">
-      <input type="text" id="signupPhone" placeholder="Enter Phone Number">
-      <input type="password" id="signupPassword" placeholder="Enter Password">
-      <input type="password" id="signupConfirm" placeholder="Confirm Password">
+      <!-- SMALL PROFILE POPUP -->
+      <div id="profilePopup" class="profile-popup">
+          <div class="profile-box">
 
-      <button id="createAccountBtn">Create Account</button>
-      <p id="signupMsg"></p>
-    </div>
+              <span id="closeProfile" class="closeProfileBtn">×</span>
 
-  </div>
-</div>
-<!-- LOGIN POPUP SYSTEM END -->
+              <h3 id="profileTitle">Welcome Farmer 👨‍🌾</h3>
+              <p id="profileName">You are not logged in</p>
 
-<!-- PROFILE DASHBOARD -->
-<div id="dashboard" style="display:none; text-align:center; padding:25px;">
-  <h2>👨‍🌾 Farmer Dashboard</h2>
-  <button id="logoutBtn">Logout</button>
-</div>
-
-
-<!-- SMALL PROFILE POPUP -->
-<div id="profilePopup" class="profile-popup">
-    <div class="profile-box">
-
-        <span id="closeProfile" class="closeProfileBtn">×</span>
-
-        <h3 id="profileTitle">Welcome Farmer 👨‍🌾</h3>
-        <p id="profileName">You are not logged in</p>
-
-        <button id="openLoginFromProfile" class="profile-login-btn">Login</button>
-        <button id="logoutFromProfile" class="profile-logout-btn" style="display:none;">Logout</button>
-    </div>
-</div>
+              <button id="openLoginFromProfile" class="profile-login-btn">Login</button>
+              <button id="logoutFromProfile" class="profile-logout-btn" style="display:none;">Logout</button>
+          </div>
+      </div>
 
 
     <!-- navbar sections starts  -->
@@ -108,7 +108,7 @@
       <a href="#" id="profileBtn" class="profile-icon login-allowed" >
         <!-- <i class="fa-solid fa-user"></i> -->
         <i class="fa-solid fa-person-digging"></i>
-</a>
+      </a>
       
       <div class="fas fa-bars" id="menu-btn"></div>
       
@@ -470,7 +470,6 @@
 </div>
     </section>
 
-
     <!-- footer section starts  -->
 
     <section class="footer" id="footer">
@@ -520,8 +519,9 @@
 </a>
 
 
-    <!-- footer section ends -->
+    <!-- chatbot section ends -->
     <script src="script.js"></script>
+
 
     <!-- Start of Tawk.to Script -->
     <script type="text/javascript">
@@ -535,19 +535,26 @@
     s0.parentNode.insertBefore(s1,s0);
     })();
     </script>
-    <!-- End of Tawk.to Script -->
+      <!--Start of Tawk.to Script
+        <script type="text/javascript">
+          var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+          (function(){
+            var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+            s1.async=true;
+            s1.src='https://embed.tawk.to/693844e56127cb198377b52d/1jc1sq94i';
+            s1.charset='UTF-8';
+            s1.setAttribute('crossorigin','*');
+            s0.parentNode.insertBefore(s1,s0);
+          })();
+        </script> 
+      End of Tawk.to Script --> 
 <!-- Firebase -->
-<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
-<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
-
-<script src="js/auth.js"></script>
-
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+    <script src="js/auth.js"></script>
     <script src="js/main.js"></script>
   </body>
 </html>
-
-
-
 
     <script src="js/main.js"></script>
   </body>
