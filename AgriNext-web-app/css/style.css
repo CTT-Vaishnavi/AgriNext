@@ -1594,7 +1594,22 @@ button:hover {
   
   .fa-solid fa-user{
   display: inline;
-
 }
 
 
+.profile-icon {
+  width: 45px;
+  height: 45px;
+  background: #fff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 8px rgba(0,0,0,0.15);
+}
+
+.profile-icon .profile-img {
+  width: 80%;
+  height: 80%;
+  border-radius: 50%;
+}
