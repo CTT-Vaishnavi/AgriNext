@@ -1,0 +1,35 @@
+[
+  {
+    "name": "Pradhan Mantri Fasal Bima Yojana (PMFBY)",
+    "states": ["All"],
+    "crops": ["All"],
+    "categories": ["All"],
+    "land_min": 0,
+    "land_max": 500,
+    "benefit": "Crop insurance coverage at subsidized premium rates.",
+    "docs": ["Aadhaar", "Land Record", "Bank Passbook"],
+    "apply": "https://pmfby.gov.in"
+  },
+  {
+    "name": "PM-Kisan Samman Nidhi",
+    "states": ["All"],
+    "crops": ["All"],
+    "categories": ["All"],
+    "land_min": 0,
+    "land_max": 20,
+    "benefit": "₹6000 yearly financial support.",
+    "docs": ["Aadhaar", "Bank Passbook"],
+    "apply": "https://pmkisan.gov.in"
+  },
+  {
+    "name": "Kisan Credit Card (KCC Loan)",
+    "states": ["All"],
+    "crops": ["All"],
+    "categories": ["All"],
+    "land_min": 0,
+    "land_max": 500,
+    "benefit": "Low interest loan + insurance coverage.",
+    "docs": ["Aadhaar", "Land Papers"],
+    "apply": "https://pmkisan.gov.in/KCC"
+  }
+]

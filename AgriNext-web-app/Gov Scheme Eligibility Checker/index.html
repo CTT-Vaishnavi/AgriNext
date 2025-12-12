@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>AgriNext – Scheme Eligibility Checker</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- Lottie Animation Library -->
+    <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+
+    <header class="header">
+        <h1 id="title">🌾 AgriNext – Government Scheme Eligibility Checker</h1>
+
+        <select id="languageSwitcher" onchange="changeLanguage()">
+            <option value="en">English</option>
+            <option value="hi">हिन्दी</option>
+            <option value="mr">मराठी</option>
+        </select>
+    </header>
+
+    <div class="container">
+
+        <div class="form-group">
+            <label id="lbl_state">Select State</label>
+            <select id="state">
+                <option>Maharashtra</option>
+                <option>Madhya Pradesh</option>
+                <option>Uttar Pradesh</option>
+                <option>Gujarat</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label id="lbl_crop">Select Crop</label>
+            <select id="crop">
+                <option>Wheat</option>
+                <option>Rice</option>
+                <option>Soybean</option>
+                <option>Cotton</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label id="lbl_category">Farmer Category</label>
+            <select id="category">
+                <option>Small</option>
+                <option>Marginal</option>
+                <option>General</option>
+                <option>SC/ST</option>
+                <option>Women</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label id="lbl_land">Land Size (in acres)</label>
+            <input id="land" type="number" min="0.1">
+        </div>
+
+        <button class="btn" id="btn_check" onclick="checkEligibility()">Check Eligibility</button>
+
+        <h2 id="eligible_title"></h2>
+
+        <div id="result"></div>
+    </div>
+
+</body>
+<script src="script.js"></script>
+</html>
