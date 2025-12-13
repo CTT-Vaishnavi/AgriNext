@@ -1,0 +1,5 @@
+[
+  {"district":"Pune","crop":"Cotton","farmerPercent":2,"govtPercent":8},
+  {"district":"Nashik","crop":"Rice","farmerPercent":1.5,"govtPercent":8.5},
+  {"district":"Nagpur","crop":"Wheat","farmerPercent":2,"govtPercent":8}
+]

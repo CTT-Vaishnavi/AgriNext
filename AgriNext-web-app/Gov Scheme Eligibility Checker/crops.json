@@ -1,0 +1,18 @@
+{
+  "Cotton":{
+    "image":"https://upload.wikimedia.org/wikipedia/commons/2/21/Cotton_bolls.jpg",
+    "info":"Cotton is a major cash crop requiring warm climate and moderate rainfall."
+  },
+  "Rice":{
+    "image":"https://upload.wikimedia.org/wikipedia/commons/6/6f/Rice_Plants.jpg",
+    "info":"Rice is a staple food crop grown in water-rich conditions."
+  },
+  "Wheat":{
+    "image":"https://upload.wikimedia.org/wikipedia/commons/6/68/Wheat_close-up.JPG",
+    "info":"Wheat is a rabi crop grown in cool and dry climate."
+  },
+  "Sugarcane":{
+    "image":"https://upload.wikimedia.org/wikipedia/commons/0/0b/Sugarcane.jpg",
+    "info":"Sugarcane is a long duration crop requiring high water supply."
+  }
+}

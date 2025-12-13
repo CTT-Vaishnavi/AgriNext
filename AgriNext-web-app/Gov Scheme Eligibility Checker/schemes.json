@@ -1,35 +1,24 @@
 [
   {
-    "name": "Pradhan Mantri Fasal Bima Yojana (PMFBY)",
-    "states": ["All"],
-    "crops": ["All"],
-    "categories": ["All"],
-    "land_min": 0,
-    "land_max": 500,
-    "benefit": "Crop insurance coverage at subsidized premium rates.",
-    "docs": ["Aadhaar", "Land Record", "Bank Passbook"],
-    "apply": "https://pmfby.gov.in"
+    "name":"PM Kisan Samman Nidhi",
+    "type":"scheme",
+    "description":"₹6000 annual income support.",
+    "states":["Maharashtra","Gujarat","Karnataka"],
+    "crops":["Cotton","Rice","Wheat","Sugarcane"],
+    "categories":["Small","Marginal"],
+    "land":["less2","2to5"],
+    "applyLink":"https://pmkisan.gov.in/"
   },
   {
-    "name": "PM-Kisan Samman Nidhi",
-    "states": ["All"],
-    "crops": ["All"],
-    "categories": ["All"],
-    "land_min": 0,
-    "land_max": 20,
-    "benefit": "₹6000 yearly financial support.",
-    "docs": ["Aadhaar", "Bank Passbook"],
-    "apply": "https://pmkisan.gov.in"
-  },
-  {
-    "name": "Kisan Credit Card (KCC Loan)",
-    "states": ["All"],
-    "crops": ["All"],
-    "categories": ["All"],
-    "land_min": 0,
-    "land_max": 500,
-    "benefit": "Low interest loan + insurance coverage.",
-    "docs": ["Aadhaar", "Land Papers"],
-    "apply": "https://pmkisan.gov.in/KCC"
+    "name":"Pradhan Mantri Fasal Bima Yojana",
+    "type":"insurance",
+    "description":"Crop insurance against natural calamities.",
+    "states":["Maharashtra","Gujarat"],
+    "crops":["Cotton","Rice","Wheat"],
+    "categories":["Small","Marginal","Large"],
+    "land":["less2","2to5","above5"],
+    "coverage":"Flood, Drought, Pest Attack",
+    "documents":["Aadhaar","7/12 Extract","Sowing Certificate","Bank Passbook"],
+    "applyLink":"https://pmfby.gov.in/"
   }
 ]

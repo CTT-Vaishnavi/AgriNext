@@ -1,0 +1,32 @@
+{
+  "en":{
+    "title":"Government Scheme & Insurance Portal",
+    "subtitle":"Crop based eligibility & claim tracking",
+    "check":"Check Eligibility",
+    "apply":"Apply Now",
+    "download":"Download PDF",
+    "share":"WhatsApp Share",
+    "documents":"Required Documents",
+    "covered":"Risks Covered"
+  },
+  "hi":{
+    "title":"सरकारी योजना व बीमा पोर्टल",
+    "subtitle":"फसल आधारित पात्रता",
+    "check":"पात्रता जांचें",
+    "apply":"आवेदन करें",
+    "download":"PDF डाउनलोड",
+    "share":"WhatsApp शेयर",
+    "documents":"आवश्यक दस्तावेज़",
+    "covered":"कवर किए गए जोखिम"
+  },
+  "mr":{
+    "title":"शासकीय योजना व विमा पोर्टल",
+    "subtitle":"पिकानुसार पात्रता",
+    "check":"पात्रता तपासा",
+    "apply":"अर्ज करा",
+    "download":"PDF डाउनलोड",
+    "share":"WhatsApp शेअर",
+    "documents":"आवश्यक कागदपत्रे",
+    "covered":"समाविष्ट धोके"
+  }
+}

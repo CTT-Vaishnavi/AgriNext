@@ -1,88 +1,153 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>AgriNext – Smart Scheme Finder V2</title>
-    <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<title>Agri🌾Next | Gov Scheme & Insurance Portal</title>
+
+<link rel="stylesheet" href="style.css">
+<link rel="shortcut icon" href="../images/output-onlinepngtools (1).png" type="image/x-icon">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 </head>
 
 <body>
 
-<!-- Lottie Animation -->
-<script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+<!-- ================= NAVBAR ================= -->
+<header class="agri-navbar">
+  <div class="nav-container">
 
-<!-- Animated Background -->
-<div class="bg-animation"></div>
-
-<!-- Premium Hero Section -->
-<header class="hero">
-    <div class="hero-content glass">
-        <h1 id="title">🌾 AgriNext – Smart Govt Scheme Intelligence</h1>
-        <p class="subtitle">AI-powered agriculture benefits finder for farmers</p>
-
-        <select id="languageSwitcher" onchange="changeLanguage()" class="lang-select">
-            <option value="en">English</option>
-            <option value="hi">हिन्दी</option>
-            <option value="mr">मराठी</option>
-        </select>
+    <!-- Logo -->
+    <div class="nav-logo">
+      <img src="../images/output-onlinepngtools (1).png" alt="AgriNext Logo">
+      <span>Agri🌾Next</span>
     </div>
+
+    <!-- Contact -->
+    <div class="nav-phone">
+      📞 <a href="tel:18001801551">1800-180-1551</a>
+    </div>
+
+    <!-- Menu -->
+    <nav class="nav-menu" id="navMenu">
+      <a href="../index.html" class="active">Home</a>
+      <a href="../index.html#features">Features</a>
+      <a href="../index.html#about">About</a>
+      <a href="../index.html#contact">Contact</a>
+    </nav>
+
+    <!-- Actions -->
+    <div class="nav-actions">
+      <!-- Language -->
+      <select class="nav-lang" onchange="setLang(this.value)">
+        <option value="en">English</option>
+        <option value="hi">हिंदी</option>
+        <option value="mr">मराठी</option>
+      </select>
+
+      <!-- Dark Mode -->
+      <button class="dark-toggle" onclick="toggleDark()" id="darkIcon" title="Dark Mode">
+  🌙
+</button>
+
+    </div>
+
+    <!-- Mobile Menu -->
+    <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+
+  </div>
 </header>
 
-<!-- Main Input Section -->
-<div class="container glass">
 
-    <div class="form-group">
-        <label id="lbl_state">
-            <img src="icons/state.svg" class="icon"> Select State
-        </label>
-        <select id="state">
-            <option>Maharashtra</option>
-            <option>Madhya Pradesh</option>
-            <option>Uttar Pradesh</option>
-            <option>Gujarat</option>
-        </select>
-    </div>
+<!-- MAIN -->
+<main class="container">
 
-    <div class="form-group">
-        <label id="lbl_crop">
-            <img src="icons/crop.svg" class="icon"> Select Crop
-        </label>
-        <select id="crop">
-            <option>Wheat</option>
-            <option>Rice</option>
-            <option>Soybean</option>
-            <option>Cotton</option>
-        </select>
-    </div>
+<!-- PAGE TITLE -->
+<h1 id="title"></h1>
+<p id="subtitle"></p>
 
-    <div class="form-group">
-        <label id="lbl_category">
-            <img src="icons/user.svg" class="icon"> Farmer Category
-        </label>
-        <select id="category">
-            <option>Small</option>
-            <option>Marginal</option>
-            <option>General</option>
-            <option>SC/ST</option>
-            <option>Women</option>
-        </select>
-    </div>
-
-    <div class="form-group">
-        <label id="lbl_land">
-            <img src="icons/land.svg" class="icon"> Land Size (acres)
-        </label>
-        <input type="number" id="land" min="0.1">
-    </div>
-
-    <!-- Liquid Neon Button -->
-    <button class="main-btn" id="btn_check" onclick="checkEligibility()">Check Eligibility</button>
-
-    <h2 id="eligible_title"></h2>
-    <div id="result"></div>
-
+<!-- PROGRESS STEPPER -->
+<div class="gov-stepper">
+  <div class="gov-step active">1<span>Details</span></div>
+  <div class="gov-step" id="stepResult">2<span>Result</span></div>
+  <div class="gov-step" id="stepPDF">3<span>PDF</span></div>
 </div>
 
+<!-- FARMER FORM -->
+<section class="form-section">
+
+<h2>Farmer Details</h2>
+
+<div class="form-grid">
+  <div>
+    <label>State</label>
+    <select id="state" onchange="loadDistricts()"></select>
+  </div>
+
+  <div>
+    <label>District</label>
+    <select id="district"></select>
+  </div>
+
+  <div>
+    <label>Crop</label>
+    <select id="crop"></select>
+  </div>
+
+  <div>
+    <label>Irrigation Type</label>
+    <select id="irrigation">
+      <option value="">Select</option>
+      <option value="drip">Drip</option>
+      <option value="sprinkler">Sprinkler</option>
+      <option value="canal">Canal</option>
+      <option value="rainfed">Rainfed</option>
+    </select>
+  </div>
+</div>
+
+<!-- 3D SVG CROP ICONS -->
+<h3 class="section-title">Select Crop (Quick)</h3>
+
+<div class="crop-svg-grid">
+  <div class="crop-svg" onclick="selectCrop('Cotton')" data-tip="Cash Crop">🌿<span>Cotton</span></div>
+  <div class="crop-svg" onclick="selectCrop('Rice')" data-tip="Kharif Crop">🌾<span>Rice</span></div>
+  <div class="crop-svg" onclick="selectCrop('Wheat')" data-tip="Rabi Crop">🌱<span>Wheat</span></div>
+  <div class="crop-svg" onclick="selectCrop('Sugarcane')" data-tip="High Water Crop">🎋<span>Sugarcane</span></div>
+  <div class="crop-svg" onclick="selectCrop('Soybean')" data-tip="Rainfed Crop">🍃<span>Soybean</span></div>
+</div>
+
+<button class="primary-btn" onclick="checkEligibility()" id="checkBtn"></button>
+
+</section>
+
+<!-- RESULT -->
+<section id="results" class="result-section"></section>
+
+<!-- INSURANCE -->
+<section class="form-section">
+
+<h2>Crop Insurance Premium Calculator (PMFBY)</h2>
+
+<div class="form-grid">
+  <div>
+    <label>Sum Insured (₹)</label>
+    <input id="sumInsured" type="number">
+  </div>
+</div>
+
+<button class="secondary-btn" onclick="calculatePremium()">Calculate Premium</button>
+
+<div id="premiumResult"></div>
+</section>
+
+</main>
+
+<!-- FOOTER -->
+<footer class="gov-footer">
+© References: Gov of India | Smart Agriculture Advisory Platform – Agri🌾Next
+</footer>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 <script src="script.js"></script>
 </body>
 </html>
