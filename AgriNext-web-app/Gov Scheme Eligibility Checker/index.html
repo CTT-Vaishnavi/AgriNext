@@ -1,72 +1,88 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
-    <title>AgriNext – Scheme Eligibility Checker</title>
+    <title>AgriNext – Smart Scheme Finder V2</title>
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-    <!-- Lottie Animation Library -->
-    <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+<!-- Lottie Animation -->
+<script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
 
-    <header class="header">
-        <h1 id="title">🌾 AgriNext – Government Scheme Eligibility Checker</h1>
+<!-- Animated Background -->
+<div class="bg-animation"></div>
 
-        <select id="languageSwitcher" onchange="changeLanguage()">
+<!-- Premium Hero Section -->
+<header class="hero">
+    <div class="hero-content glass">
+        <h1 id="title">🌾 AgriNext – Smart Govt Scheme Intelligence</h1>
+        <p class="subtitle">AI-powered agriculture benefits finder for farmers</p>
+
+        <select id="languageSwitcher" onchange="changeLanguage()" class="lang-select">
             <option value="en">English</option>
             <option value="hi">हिन्दी</option>
             <option value="mr">मराठी</option>
         </select>
-    </header>
+    </div>
+</header>
 
-    <div class="container">
+<!-- Main Input Section -->
+<div class="container glass">
 
-        <div class="form-group">
-            <label id="lbl_state">Select State</label>
-            <select id="state">
-                <option>Maharashtra</option>
-                <option>Madhya Pradesh</option>
-                <option>Uttar Pradesh</option>
-                <option>Gujarat</option>
-            </select>
-        </div>
-
-        <div class="form-group">
-            <label id="lbl_crop">Select Crop</label>
-            <select id="crop">
-                <option>Wheat</option>
-                <option>Rice</option>
-                <option>Soybean</option>
-                <option>Cotton</option>
-            </select>
-        </div>
-
-        <div class="form-group">
-            <label id="lbl_category">Farmer Category</label>
-            <select id="category">
-                <option>Small</option>
-                <option>Marginal</option>
-                <option>General</option>
-                <option>SC/ST</option>
-                <option>Women</option>
-            </select>
-        </div>
-
-        <div class="form-group">
-            <label id="lbl_land">Land Size (in acres)</label>
-            <input id="land" type="number" min="0.1">
-        </div>
-
-        <button class="btn" id="btn_check" onclick="checkEligibility()">Check Eligibility</button>
-
-        <h2 id="eligible_title"></h2>
-
-        <div id="result"></div>
+    <div class="form-group">
+        <label id="lbl_state">
+            <img src="icons/state.svg" class="icon"> Select State
+        </label>
+        <select id="state">
+            <option>Maharashtra</option>
+            <option>Madhya Pradesh</option>
+            <option>Uttar Pradesh</option>
+            <option>Gujarat</option>
+        </select>
     </div>
 
-</body>
+    <div class="form-group">
+        <label id="lbl_crop">
+            <img src="icons/crop.svg" class="icon"> Select Crop
+        </label>
+        <select id="crop">
+            <option>Wheat</option>
+            <option>Rice</option>
+            <option>Soybean</option>
+            <option>Cotton</option>
+        </select>
+    </div>
+
+    <div class="form-group">
+        <label id="lbl_category">
+            <img src="icons/user.svg" class="icon"> Farmer Category
+        </label>
+        <select id="category">
+            <option>Small</option>
+            <option>Marginal</option>
+            <option>General</option>
+            <option>SC/ST</option>
+            <option>Women</option>
+        </select>
+    </div>
+
+    <div class="form-group">
+        <label id="lbl_land">
+            <img src="icons/land.svg" class="icon"> Land Size (acres)
+        </label>
+        <input type="number" id="land" min="0.1">
+    </div>
+
+    <!-- Liquid Neon Button -->
+    <button class="main-btn" id="btn_check" onclick="checkEligibility()">Check Eligibility</button>
+
+    <h2 id="eligible_title"></h2>
+    <div id="result"></div>
+
+</div>
+
 <script src="script.js"></script>
+</body>
 </html>
