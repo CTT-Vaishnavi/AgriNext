@@ -237,7 +237,7 @@ html {
   }
 } */
 
-.home-btn {
+/* .home-btn {
   display: inline-block;
   padding: 10px 20px;
   text-decoration: none;
@@ -253,8 +253,7 @@ html {
 
 .home-btn:hover {
   background-color: #2980b9;
-  /* Change the hover background color as needed */
-}
+} */
 
 /* Style for the image within the home section */
 .home img {
@@ -534,8 +533,11 @@ html {
 
 /*Button-0 container start*/
 .button-container0 {
-  display: flex;
-  flex-wrap: wrap;
+  /* display: flex;
+  flex-wrap: wrap; */
+  display: grid;
+  gap: 0.2rem;
+  grid-template-columns: repeat(3, 1fr);
   justify-content: center;
   margin: 10px;
   margin-left: 200px;
@@ -884,7 +886,7 @@ form {
   font-size: 16px;
   font-weight: 600;
   border: none;
-  border-radius: 6px;
+  border-radius: 26px;
   cursor: pointer;
   transition: 0.3s;
   /* margin-right: -29px; */
