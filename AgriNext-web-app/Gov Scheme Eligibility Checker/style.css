@@ -320,16 +320,21 @@ body.dark .gov-header,
 body.dark .form-section,
 body.dark .result-box,
 body.dark .gov-footer{
-  background:#020617;
+  .crop-svg{
+    background-color: #2b273b;
+  }
+  background:#191d2d;
   color:#e5e7eb;
 }
 body.dark select,
 body.dark input{
   color:#e5e7eb;
   border-color:#334155;
-background-color: black;
+  background-color: black;
 }
-
+.gov-step{
+  color: #000000;
+}
 /* ===============================
    ACCESSIBILITY
 ================================ */
