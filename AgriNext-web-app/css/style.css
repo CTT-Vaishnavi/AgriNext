@@ -1124,7 +1124,10 @@ button:hover {
 /* ============================
    LOGIN POPUP (Glassmorphism)
    ============================ */
-
+.popupImage{
+    height: 344px;
+    width: 330px;
+}
 #loginPopup {
   position: fixed;
   inset: 0;
@@ -1138,8 +1141,8 @@ button:hover {
 
 /* POPUP BOX */
 .popup-box {
-  width: 360px;
-  padding: 25px;
+  width: 755px;
+  padding: 30px;
   background: rgba(255, 255, 255, 0.20);
   border-radius: 18px;
   backdrop-filter: blur(25px);
@@ -1278,7 +1281,7 @@ button:hover {
 }
 
 /* 3D GLASS CARD */
-.popup-box {
+/* .popup-box {
   width: 370px;
   padding: 30px;
   border-radius: 22px;
@@ -1287,13 +1290,13 @@ button:hover {
   border: 1.5px solid rgba(255, 255, 255, 0.3);
   box-shadow: 
       0 10px 30px rgba(0,0,0,0.25),
-      0 0 25px rgba(0,168,89,0.6); /* green glow */
+      0 0 25px rgba(0,168,89,0.6); green glow */
 
   /* 3D transform */
-  transform-style: preserve-3d;
+  /* transform-style: preserve-3d;
   transform: perspective(900px) translateZ(20px);
   animation: popupEnter .6s cubic-bezier(0.23, 1, 0.32, 1);
-}
+} */
 
 @keyframes popupEnter {
   0%   { opacity: 0; transform: perspective(900px) translateZ(-120px) rotateX(15deg); }
@@ -1635,3 +1638,60 @@ button:hover {
   height: 80%;
   border-radius: 50%;
 }
+
+
+
+
+.popup-inner{
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+
+.popup-image{
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+
+.popup-image img{
+  width: 386px;
+  /* max-width: 260px; */
+  animation: floatImg 3s ease-in-out infinite;
+  height: 330px;
+    border-radius: 40px;
+}
+
+.popup-form{
+  flex: 1.2;
+}
+
+/* 3D floating animation */
+@keyframes floatImg{
+  0%{ transform: translateY(0); }
+  50%{ transform: translateY(-12px); }
+  100%{ transform: translateY(0); }
+}
+
+/* Mobile Responsive */
+@media(max-width:768px){
+  .popup-inner{
+    flex-direction: column;
+  }
+  .popup-image img{
+    max-width: 180px;
+    height: 473px;
+  }
+}
+
+.footerlogin{
+  display: flex;
+    align-items: center;
+    margin-left: 284px;
+    margin-top: 18px;
+    color: white;
+}
+
+
+
+

@@ -12,59 +12,76 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
     />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    
   </head>
 
   <body>
 
-      <!-- LOGIN POPUP SYSTEM START -->
-      <div id="loginPopup" class="popup" style="display:none;">
-        <div class="popup-box">
+     <!-- LOGIN POPUP SYSTEM START -->
+<div id="loginPopup" class="popup" style="display:none;">
+  <div class="popup-box">
 
-          <span id="closePopup" class="close-btn">×</span>
+    <span id="closePopup" class="close-btn">×</span>
 
-          <h2 class="farmer">Welcome Farmer 👨‍🌾</h2>
+    <!-- 🔁 NEW WRAPPER -->
+    <div class="popup-inner">
 
-          <div class="tabs">
-              <button id="emailTab" class="active">Email Login</button>
-              <button id="phoneTab">Phone OTP</button>
-              <button id="signupTab">Sign Up</button>
-          </div>
+      <!-- ✅ LEFT IMAGE SIDE -->
+     <div class="popup-image">
+  <img id="popupImage" src="./images/login1.png" alt="Farmer">
+</div>
 
-          <!-- EMAIL LOGIN -->
-          <div id="emailBox">
-            <input type="email" id="email" placeholder="Enter Email">
-            <input type="password" id="password" placeholder="Enter Password">
-            <button id="loginBtn2">Login</button>
-          </div>
 
-          <!-- PHONE OTP LOGIN -->
-          <div id="phoneBox" style="display:none;">
-            <input type="text" id="phone" placeholder="+91XXXXXXXXXX">
-            <div id="recaptcha-container"></div>
-            <button id="sendOtpBtn">Send OTP</button>
+      <!-- ✅ RIGHT FORM SIDE (YOUR OLD CODE) -->
+      <div class="popup-form">
 
-            <div id="otpSection" style="display:none;">
-              <input type="text" id="otp" placeholder="Enter OTP">
-              <button id="verifyOtpBtn">Verify OTP</button>
-            </div>
+        <h2 class="farmer">Welcome Farmer 👨‍🌾</h2>
 
-            <p id="otpMsg"></p>
-          </div>
-
-          <!-- SIGNUP FORM -->
-          <div id="signupBox" style="display:none;">
-            <input type="email" id="signupEmail" placeholder="Enter Email">
-            <input type="text" id="signupPhone" placeholder="Enter Phone Number">
-            <input type="password" id="signupPassword" placeholder="Enter Password">
-            <input type="password" id="signupConfirm" placeholder="Confirm Password">
-
-            <button id="createAccountBtn">Create Account</button>
-            <p id="signupMsg"></p>
-          </div>
-
+        <div class="tabs">
+          <button id="emailTab" class="active">Email Login</button>
+          <button id="phoneTab">Phone OTP</button>
+          <button id="signupTab">Sign Up</button>
         </div>
+
+        <!-- EMAIL LOGIN -->
+        <div id="emailBox">
+          <input type="email" id="email" placeholder="Enter Email">
+          <input type="password" id="password" placeholder="Enter Password">
+          <button id="loginBtn2">Login</button>
+        </div>
+
+        <!-- PHONE OTP LOGIN -->
+        <div id="phoneBox" style="display:none;">
+          <input type="text" id="phone" placeholder="+91XXXXXXXXXX">
+          <div id="recaptcha-container"></div>
+          <button id="sendOtpBtn">Send OTP</button>
+
+          <div id="otpSection" style="display:none;">
+            <input type="text" id="otp" placeholder="Enter OTP">
+            <button id="verifyOtpBtn">Verify OTP</button>
+          </div>
+
+          <p id="otpMsg"></p>
+        </div>
+
+        <!-- SIGNUP FORM -->
+        <div id="signupBox" style="display:none;">
+          <input type="email" id="signupEmail" placeholder="Enter Email">
+          <input type="text" id="signupPhone" placeholder="Enter Phone Number">
+          <input type="password" id="signupPassword" placeholder="Enter Password">
+          <input type="password" id="signupConfirm" placeholder="Confirm Password">
+
+          <button id="createAccountBtn">Create Account</button>
+          <p id="signupMsg"></p>
+        </div>
+
       </div>
-      <!-- LOGIN POPUP SYSTEM END -->
+    </div>
+<p class="footerlogin">Support by || Agri🌾Next Team</p>
+  </div>
+</div>
+<!-- LOGIN POPUP SYSTEM END -->
+
 
       <!-- PROFILE DASHBOARD -->
       <div id="dashboard" style="display:none; text-align:center; padding:25px;">
@@ -92,7 +109,7 @@
     <header class="header">
       <div class="logo" style="display: flex; align-items: center; gap: 8px;">
         <img src="./images/output-onlinepngtools (1).png" height="60px" alt="">
-        <h1>Agri<i class="fas fa-seedling plant-icon" style="color: green;"></i>Next</h1>
+        <h1>Agri<i class="fas fa-seedling plant-icon" style="color: rgb(76, 91, 76);"></i>Next</h1>
       </div>
       <a href="#" id="callButton" title="Kisan Call Centre (KCC)">📞 1800-180-1551</a>
       
@@ -533,11 +550,12 @@
     </section>
 
     <!-- footer section ends -->
-  <a href="https://wa.me/918698829253?text=Hello%20AgriNext!%20Mujhe%20help%20chahiye."
-   class="whatsapp_float"
-   target="_blank">
-    <i class="fa-brands fa-whatsapp whatsapp-icon"></i>
+  <a href="https://wa.me/918698829253?text=Hello%0AThank%20you%20for%20connecting%20with%20AgriNext.%0A%0AWe%20help%20farmers%20with:%0A-%20Crop%20Recommendation%0A-%20Government%20Scheme%20and%20Insurance%20Eligibility%0A-%20Weather%20and%20Market%20Advisory%0A-%20Crop%20Disease%20Guidance%0A-%20Smart%20Farming%20Solutions%0A%0AThis%20is%20an%20educational%20and%20advisory%20platform%20created%20to%20support%20Indian%20farmers%20with%20reliable%20information.%0A%0APlease%20type%20your%20question%20or%20select%20a%20service%20to%20get%20started."
+   target="_blank"
+   class="whatsapp_float">
+   <i class="fab fa-whatsapp"></i>
 </a>
+
 
 
     <!-- chatbot section ends -->
@@ -576,6 +594,54 @@
     <script src="js/main.js"></script>
   </body>
 </html>
+<script>
+const emailTab = document.getElementById("emailTab");
+const phoneTab = document.getElementById("phoneTab");
+const signupTab = document.getElementById("signupTab");
+
+const emailBox = document.getElementById("emailBox");
+const phoneBox = document.getElementById("phoneBox");
+const signupBox = document.getElementById("signupBox");
+
+const popupImage = document.getElementById("popupImage");
+
+// EMAIL LOGIN
+emailTab.onclick = () => {
+  emailBox.style.display = "block";
+  phoneBox.style.display = "none";
+  signupBox.style.display = "none";
+
+  popupImage.src = "./images/login1.png";
+  setActive(emailTab);
+};
+
+// PHONE OTP
+phoneTab.onclick = () => {
+  emailBox.style.display = "none";
+  phoneBox.style.display = "block";
+  signupBox.style.display = "none";
+
+  popupImage.src = "./images/login1.png";
+  setActive(phoneTab);
+};
+
+// SIGN UP
+signupTab.onclick = () => {
+  emailBox.style.display = "none";
+  phoneBox.style.display = "none";
+  signupBox.style.display = "block";
+
+  popupImage.src = "./images/sing1.png";
+  setActive(signupTab);
+};
+
+function setActive(activeBtn){
+  [emailTab, phoneTab, signupTab].forEach(btn => {
+    btn.classList.remove("active");
+  });
+  activeBtn.classList.add("active");
+}
+</script>
 
     <script src="js/main.js"></script>
   </body>
