@@ -1591,13 +1591,33 @@ button:hover {
     padding: 8px 10px;
     border-radius: 50%;
   }
-  
+
+  #sun:hover{
+    background: rgb(219, 219, 40);
+    color: black;
+  }
+  #forest:hover{
+    background: green;
+    color: rgb(255, 255, 255);
+  }
+  #white:hover{
+    background: white;
+    color: #000;
+
+  }
+#ocean:hover{
+  background: blue;
+  color: white;
+}
   
   
   .fa-solid fa-user{
   display: inline;
+  
 }
-
+.upper a{
+  text-transform: lowercase;
+}
 
 .profile-icon {
   width: 45px;
