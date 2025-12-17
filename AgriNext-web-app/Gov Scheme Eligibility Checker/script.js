@@ -222,82 +222,89 @@ function moveToPDF() {
   document.getElementById("stepPDF")?.classList.add("active");
 }
 
-const s = irrigationSubsidy[i];
-const d = district.value;
-const sum = sumInsured.value || 10000; // default demo amount
-const rate = districtPremiumRates[d] || 2;
-const premiumAmt = (sum * rate / 100).toFixed(0);
+// const s = irrigationSubsidy[i];
+// const d = district.value;
+// const sum = sumInsured.value || 10000; // default demo amount
+// const rate = districtPremiumRates[d] || 2;
+// const premiumAmt = (sum * rate / 100).toFixed(0);
 
-resultBox.innerHTML = `
-  <div class="result-box success">
+// resultBox.innerHTML = `
+//   <div class="result-box success">
 
-    <h3>Eligible Government Scheme</h3>
+//     <h3>Eligible Government Scheme</h3>
 
-    <!-- SCHEME INFO -->
-    <div class="result-section-block">
-      <h4>📌 Scheme Information</h4>
-      <p><b>Crop:</b> ${c}</p>
-      <p><b>Irrigation Type:</b> ${i}</p>
-      <p><b>Scheme Name:</b> ${s.scheme}</p>
-      <p><b>Subsidy:</b> ${s.percent}%</p>
-      <p><b>Scheme Type:</b> Centrally Sponsored Scheme</p>
-    </div>
+//     <!-- SCHEME INFO -->
+//     <div class="result-section-block">
+//       <h4>📌 Scheme Information</h4>
+//       <p><b>Crop:</b> ${c}</p>
+//       <p><b>Irrigation Type:</b> ${i}</p>
+//       <p><b>Scheme Name:</b> ${s.scheme}</p>
+//       <p><b>Subsidy:</b> ${s.percent}%</p>
+//       <p><b>Scheme Type:</b> Centrally Sponsored Scheme</p>
+//     </div>
 
-    <!-- ELIGIBILITY -->
-    <div class="result-section-block">
-      <h4>✅ Eligibility Conditions</h4>
-      <ul>
-        <li>Farmer must be Small / Marginal / Medium</li>
-        <li>Minimum 0.5 Acre agricultural land required</li>
-        <li>Valid land record (7/12 / Patta)</li>
-        <li>Bank account linked with Aadhaar</li>
-      </ul>
-    </div>
+//     <!-- ELIGIBILITY -->
+//     <div class="result-section-block">
+//       <h4>✅ Eligibility Conditions</h4>
+//       <ul>
+//         <li>Farmer must be Small / Marginal / Medium</li>
+//         <li>Minimum 0.5 Acre agricultural land required</li>
+//         <li>Valid land record (7/12 / Patta)</li>
+//         <li>Bank account linked with Aadhaar</li>
+//       </ul>
+//     </div>
 
-    <!-- DOCUMENTS -->
-    <div class="result-section-block">
-      <h4>📄 Required Documents</h4>
-      <ul>
-        <li>Aadhaar Card</li>
-        <li>Land Record (7/12 Extract / Patta)</li>
-        <li>Bank Passbook</li>
-        <li>Passport Size Photograph</li>
-      </ul>
-    </div>
+//     <!-- DOCUMENTS -->
+//     <div class="result-section-block">
+//       <h4>📄 Required Documents</h4>
+//       <ul>
+//         <li>Aadhaar Card</li>
+//         <li>Land Record (7/12 Extract / Patta)</li>
+//         <li>Bank Passbook</li>
+//         <li>Passport Size Photograph</li>
+//       </ul>
+//     </div>
 
-    <!-- INSURANCE INFO (NEW) -->
-    <div class="result-section-block">
-      <h4>🛡 Crop Insurance (PMFBY)</h4>
-      <p><b>District:</b> ${d}</p>
-      <p><b>Premium Rate:</b> ${rate}%</p>
-      <p><b>Estimated Farmer Share:</b> ₹${premiumAmt}</p>
-      <small>
-        * Premium amount is indicative and may vary as per government notification.
-      </small>
-    </div>
+//     <!-- INSURANCE INFO (NEW) -->
+//     <div class="result-section-block">
+//       <h4>🛡 Crop Insurance (PMFBY)</h4>
+//       <p><b>District:</b> ${d}</p>
+//       <p><b>Premium Rate:</b> ${rate}%</p>
+//       <p><b>Estimated Farmer Share:</b> ₹${premiumAmt}</p>
+//       <small>
+//         * Premium amount is indicative and may vary as per government notification.
+//       </small>
+//     </div>
 
-    <!-- ADVISORY -->
-    <div class="advisory-box">
-      <b>🌾 Advisory Note:</b><br>
-      ${i} irrigation with ${c} crop is suitable in <b>${d}</b> district.
-      Farmer is advised to apply early for subsidy and insurance benefits.
-    </div>
+//     <!-- ADVISORY -->
+//     <div class="advisory-box">
+//       <b>🌾 Advisory Note:</b><br>
+//       ${i} irrigation with ${c} crop is suitable in <b>${d}</b> district.
+//       Farmer is advised to apply early for subsidy and insurance benefits.
+//     </div>
 
-    <!-- ACTIONS -->
-    <div class="result-actions">
-      <a href="https://pmksy.gov.in" target="_blank" class="gov-btn">
-        Apply on Government Portal
-      </a>
-      <button onclick="downloadPDF()" class="gov-btn outline">
-        Download PDF
-      </button>
-      <button onclick="shareWhatsApp()" class="gov-btn outline">
-        Share
-      </button>
-    </div>
+//     <!-- ACTIONS -->
+//     <div class="result-actions">
+//       <a href="https://pmksy.gov.in" target="_blank" class="gov-btn">
+//         Apply on Government Portal
+//       </a>
+//       <button onclick="downloadPDF()" class="gov-btn outline">
+//         Download PDF
+//       </button>
+//       <button onclick="shareWhatsApp()" class="gov-btn outline">
+//         Share
+//       </button>
+//     </div>
 
-  </div>
-`;
+//   </div>
+// `;
+
+const state = document.getElementById("state");
+const crop = document.getElementById("crop");
+const irrigation = document.getElementById("irrigation");
+const district = document.getElementById("district");
+const sumInsured = document.getElementById("sumInsured");
+
 
 
 /* ===============================
@@ -324,8 +331,12 @@ function calculatePremium() {
   `;
 }
 
-
 function downloadPDF() {
+   if (!crop.value || !irrigation.value) {
+    alert("Please check eligibility first");
+    return;
+  }
+
   moveToPDF();
 
   // ⚡ UI ko free karne ke liye
@@ -464,20 +475,20 @@ function downloadPDF() {
 /* ===============================
    WHATSAPP SHARE
 ================================ */
-function shareWhatsApp() {
-  const s = irrigationSubsidy[irrigation.value];
+// function shareWhatsApp() {
+//   const s = irrigationSubsidy[irrigation.value];
 
-  const msg = `
-AgriNext – Government Advisory
-Crop: ${crop.value}
-Irrigation: ${irrigation.value}
-Scheme: ${s.scheme}
-Subsidy: ${s.percent}%
-Apply: https://pmksy.gov.in
-`;
+//   const msg = `
+// AgriNext – Government Advisory
+// Crop: ${crop.value}
+// Irrigation: ${irrigation.value}
+// Scheme: ${s.scheme}
+// Subsidy: ${s.percent}%
+// Apply: https://pmksy.gov.in
+// `;
 
-  window.open(`https://wa.me/?text=${encodeURIComponent(msg)}`, "_blank");
-}
+//   window.open(`https://wa.me/?text=${encodeURIComponent(msg)}`, "_blank");
+// }
 function checkEligibility() {
   const c = crop.value;
   const i = irrigation.value;
@@ -576,12 +587,6 @@ function checkEligibility() {
         <a href="https://pmksy.gov.in" target="_blank" class="gov-btn">
           Apply on Government Portal
         </a>
-        <button onclick="downloadPDF()" class="gov-btn outline">
-          Download PDF
-        </button>
-        <button onclick="shareWhatsApp()" class="gov-btn outline">
-          Share
-        </button>
       </div>
 
     </div>
