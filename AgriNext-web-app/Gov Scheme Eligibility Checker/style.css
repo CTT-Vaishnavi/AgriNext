@@ -896,3 +896,11 @@ body.dark .dark-toggle{
   font-weight: 600;
   font-size: 14.5px;
 }
+.whatsapp-btn{
+  color:#25D366;
+  border:none;
+  padding:10px 14px;
+  border-radius:50%;
+  font-size:35px;
+  cursor:pointer;
+}
