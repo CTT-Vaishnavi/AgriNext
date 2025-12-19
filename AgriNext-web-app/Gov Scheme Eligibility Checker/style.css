@@ -914,6 +914,7 @@ body.dark .dark-toggle{
     right: 22px;
     background: #25d366;
     color: white;
+    border-radius: 50%;
     font-size: 35px;
     display: flex;
     align-items: center;
