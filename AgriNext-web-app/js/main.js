@@ -24,7 +24,8 @@ document.getElementById("callButton").addEventListener("click", function (e) {
   if (/Mobi|Android/i.test(navigator.userAgent)) {
     window.location.href = "tel:" + phone;
   } else {
-    alert("Please use a mobile device to make this call.");
+    showToast("📲Please use a mobile device to make this call", "error");
+    // alert("Please use a mobile device to make this call.");
   }
 });
 
@@ -117,7 +118,8 @@ function showBox(show, hideBoxes) {
 loginBtn2.onclick = () => {
   auth.signInWithEmailAndPassword(email.value, password.value)
     .then(() => successLogin())
-    .catch(err => alert(err.message));
+    // .catch(err => alert(err.message));
+    .catch(err => showToast(err.message, "error"));
 };
 
 // ======================
@@ -177,13 +179,15 @@ sendOtpBtn.onclick = () => {
       otpMsg.innerText = "OTP Sent ✔";
       otpMsg.style.color = "green";
     })
-    .catch(err => alert(err.message));
+    // .catch(err => alert(err.message));
+    .catch(err => showToast(err.message, "error"));
 };
 
 verifyOtpBtn.onclick = () => {
   confirmationResult.confirm(otp.value)
     .then(() => successLogin())
-    .catch(() => alert("Invalid OTP ❌"));
+    // .catch(() => alert("Invalid OTP ❌"));
+    .catch(() => showToast("Invalid OTP ❌", "error"));
 };
 
 // ======================
@@ -191,6 +195,7 @@ verifyOtpBtn.onclick = () => {
 // ======================
 function successLogin() {
   loginPopup.style.display = "none";
+  showToast("Login Successful 👨‍🌾");
 }
 
 // =====================================================
@@ -249,7 +254,8 @@ openLoginFromProfile.onclick = () => {
 
 logoutFromProfile.onclick = () => {
   auth.signOut().then(() => {
-    alert("Logged Out Successfully!");
+    // alert("Logged Out Successfully!");
+    showToast("Logged Out Successfully 👨‍🌾");
     profilePopup.style.display = "none";
   });
 };
@@ -342,6 +348,109 @@ document.querySelectorAll("a.btn, a.buttonn").forEach(link => {
 //   });
 // };
 
+// ======================
+// FORCE TOAST (NO HTML REQUIRED)
+// ======================
+// =======================================
+// AGRINEXT PREMIUM FARMER ASSIST 🌾
+// =======================================
+function showToast(message, type = "info") {
+
+  // remove old assist card
+  const old = document.getElementById("agrinext-assist");
+  if (old) old.remove();
+
+  const toast = document.createElement("div");
+  toast.id = "agrinext-assist";
+
+  const icon =
+    type === "error" ? "🙆" :
+    type === "success" ? "🌱" :
+    "🌿";
+
+  toast.innerHTML = `
+    <div class="agri-card">
+      <div class="agri-icon">${icon}</div>
+      <div class="agri-content">
+        <div class="agri-title">AgriNext Assist</div>
+        <div class="agri-message">${message}</div>
+      </div>
+    </div>
+  `;
+
+  Object.assign(toast.style, {
+    position: "fixed",
+    top: "85px",
+    right: "28px",
+    width: "320px",
+    padding: "16px",
+    borderRadius: "20px",
+    background: "rgba(255,255,255,0.88)",
+    backdropFilter: "blur(14px)",
+    WebkitBackdropFilter: "blur(14px)",
+    boxShadow: "0 20px 50px rgba(0,0,0,0.25)",
+    borderLeft: "6px solid #2e7d32",
+    zIndex: "99999999",
+    opacity: "0",
+    transform: "translateY(-15px)",
+    transition: "all 0.5s ease"
+  });
+
+  document.body.appendChild(toast);
+
+  // animate in
+  setTimeout(() => {
+    toast.style.opacity = "1";
+    toast.style.transform = "translateY(0)";
+  }, 60);
+
+  // animate out
+  setTimeout(() => {
+    toast.style.opacity = "0";
+    toast.style.transform = "translateY(-15px)";
+    setTimeout(() => toast.remove(), 500);
+  }, 3800);
+}
 
 
+// function showToast(message, type = "success") {
+//   const toast = document.getElementById("toast");
+//   const toastMsg = document.getElementById("toastMsg");
 
+//   if (!toast || !toastMsg) {
+//     console.error("Toast HTML missing");
+//     return;
+//   }
+
+//   toastMsg.innerText = message;
+
+//   toast.classList.remove("error");
+//   if (type === "error") toast.classList.add("error");
+
+//   toast.classList.add("show");
+
+//   setTimeout(() => {
+//     toast.classList.remove("show");
+//   }, 3000);
+// }
+
+
+// ======================
+// GOOGLE LOGIN / SIGNUP
+// ======================
+const googleProvider = new firebase.auth.GoogleAuthProvider();
+
+document.getElementById("googleLoginBtn").onclick = () => {
+  auth.signInWithPopup(googleProvider)
+    .then((result) => {
+      const user = result.user;
+
+      loginPopup.style.display = "none";
+      showToast("Google Login Successful 👨‍🌾", "success");
+
+      console.log("Google User:", user.email);
+    })
+    .catch((error) => {
+      showToast(error.message, "error");
+    });
+};
