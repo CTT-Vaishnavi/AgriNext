@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>FAQs | Agri🌾Next</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{
+  font-family:"Segoe UI",sans-serif;
+  background:#f4f9f6;
+  color:#263238;
+}
+header{
+  background:linear-gradient(135deg,#1b5e20,#2e7d32);
+  color:#fff;
+  padding:35px 20px;
+  text-align:center;
+  position:relative;
+}
+.home-btn{
+  position:absolute;
+  left:20px;top:25px;
+  color:#fff;
+  text-decoration:none;
+  font-weight:600;
+}
+.lang-switch{
+  display:flex;
+  justify-content:center;
+  gap:15px;
+  margin:25px 0;
+}
+.lang-btn{
+  padding:8px 20px;
+  border-radius:25px;
+  border:2px solid #2e7d32;
+  background:#fff;
+  color:#2e7d32;
+  font-weight:600;
+  cursor:pointer;
+}
+.lang-btn.active,.lang-btn:hover{
+  background:#2e7d32;
+  color:#fff;
+}
+.container{
+  max-width:900px;
+  margin:auto;
+  padding:0 20px 60px;
+}
+.faq{
+  background:#fff;
+  border-radius:14px;
+  margin-bottom:14px;
+  box-shadow:0 8px 22px rgba(0,0,0,.08);
+  overflow:hidden;
+}
+.faq-question{
+  padding:18px 22px;
+  font-weight:600;
+  cursor:pointer;
+  display:flex;
+  justify-content:space-between;
+}
+.faq-question span{
+  font-size:20px;
+  transition:.3s;
+}
+.faq.active .faq-question span{transform:rotate(45deg)}
+.faq-answer{
+  max-height:0;
+  overflow:hidden;
+  padding:0 22px;
+  transition:max-height .4s ease;
+}
+.faq.active .faq-answer{
+  max-height:400px;
+  padding-bottom:16px;
+}
+.faq-answer p{
+  line-height:1.7;
+  color:#455a64;
+}
+.lang-content{display:none}
+.lang-content.en{display:block}
+footer{
+  background:#1b5e20;
+  color:#c8e6c9;
+  text-align:center;
+  padding:22px;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <a href="../index.html" class="home-btn"> Home</a>
+  <h1>Frequently Asked Questions (FAQs)</h1>
+  <p>Agri🌾Next – Farmer Help & Support</p>
+</header>
+
+<div class="lang-switch">
+  <button class="lang-btn active" onclick="setLang('en',this)">English</button>
+  <button class="lang-btn" onclick="setLang('mr',this)">मराठी</button>
+  <button class="lang-btn" onclick="setLang('hi',this)">हिंदी</button>
+</div>
+
+<main class="container">
+
+<!-- ================= 50 FAQs ================= -->
+
+<script>
+const faqs = [
+["What is AgriNext?","AgriNext is a smart farming advisory platform.","AgriNext हे स्मार्ट शेती सल्ला देणारे व्यासपीठ आहे.","AgriNext एक स्मार्ट कृषि सलाह मंच है।"],
+["Is AgriNext free to use?","Yes, AgriNext is free for farmers.","होय, AgriNext मोफत आहे.","हाँ, AgriNext मुफ्त है।"],
+["Who can use AgriNext?","Farmers, students and learners.","शेतकरी व विद्यार्थी वापरू शकतात.","किसान और छात्र उपयोग कर सकते हैं।"],
+["Which languages are supported?","English, Marathi and Hindi.","इंग्रजी, मराठी व हिंदी.","अंग्रेजी, मराठी और हिंदी।"],
+["Does AgriNext give crop guidance?","Yes, crop planning guidance is provided.","होय, पीक नियोजन सल्ला दिला जातो.","हाँ, फसल मार्गदर्शन दिया जाता है।"],
+["Does AgriNext help in disease identification?","Basic crop disease guidance is available.","पीक रोगांची माहिती दिली जाते.","फसल रोग की जानकारी दी जाती है।"],
+["Does AgriNext provide weather updates?","Yes, weather-based advisory is provided.","होय, हवामान सल्ला मिळतो.","हाँ, मौसम आधारित सलाह मिलती है।"],
+["Are market prices shown?","Yes, approximate market prices are shown.","होय, अंदाजे बाजारभाव दिले जातात.","हाँ, अनुमानित बाजार भाव दिखते हैं।"],
+["Are prices accurate?","Prices are for guidance only.","बाजारभाव मार्गदर्शनासाठी आहेत.","भाव केवल मार्गदर्शन हेतु हैं।"],
+["Can I sell crops on AgriNext?","Selling is not supported currently.","सध्या विक्री सुविधा नाही.","वर्तमान में बिक्री सुविधा नहीं है।"],
+["Is internet required?","Yes, internet is required.","होय, इंटरनेट आवश्यक आहे.","हाँ, इंटरनेट आवश्यक है।"],
+["Does AgriNext provide fertilizer advice?","Basic fertilizer guidance is available.","खत वापर सल्ला दिला जातो.","उर्वरक सलाह दी जाती है।"],
+["Is user data safe?","Yes, user privacy is maintained.","होय, डेटा सुरक्षित आहे.","हाँ, डेटा सुरक्षित है।"],
+["Is AgriNext government approved?","It is an academic advisory project.","हा शैक्षणिक प्रकल्प आहे.","यह एक शैक्षणिक परियोजना है।"],
+["Can students use it for projects?","Yes, it is useful for academic projects.","होय, प्रकल्पासाठी उपयुक्त.","हाँ, प्रोजेक्ट के लिए उपयोगी।"],
+["Does AgriNext use AI?","Yes, AI-based logic is used.","होय, AI वापरले जाते.","हाँ, AI का उपयोग होता है।"],
+["Is AgriNext mobile app?","Currently web-based only.","सध्या वेब आधारित आहे.","फिलहाल वेब आधारित है।"],
+["Can I ask farming questions?","Yes, via Ask Question feature.","होय, Ask Question वापरता येते.","हाँ, Ask Question से।"],
+["Does AgriNext support organic farming?","Yes, basic organic tips are included.","होय, सेंद्रिय शेती सल्ला आहे.","हाँ, जैविक खेती सुझाव हैं।"],
+["Is AgriNext for small farmers?","Yes, suitable for all farmers.","होय, सर्व शेतकऱ्यांसाठी.","हाँ, सभी किसानों के लिए।"],
+["Does it reduce crop loss?","Yes, with timely guidance.","होय, योग्य सल्ल्यामुळे.","हाँ, सही सलाह से।"],
+["Can AgriNext predict yield?","Limited prediction available.","मर्यादित अंदाज आहे.","सीमित अनुमान है।"],
+["Does it support all crops?","Major crops are supported.","मुख्य पिकांसाठी समर्थन.","प्रमुख फसलों का समर्थन।"],
+["Is AgriNext easy to use?","Yes, it is user-friendly.","होय, वापरण्यास सोपे.","हाँ, उपयोग में आसान।"],
+["Does it provide alerts?","Future updates may include alerts.","भविष्यात अलर्ट.","भविष्य में अलर्ट।"],
+["Is AgriNext available 24/7?","Yes, anytime access.","होय, 24/7.","हाँ, 24/7।"],
+["Can I give feedback?","Yes, feedback option available.","होय, अभिप्राय देता येतो.","हाँ, फीडबैक दे सकते हैं।"],
+["Does it help decision making?","Yes, informed decisions.","होय, निर्णयासाठी मदत.","हाँ, निर्णय में मदद।"],
+["Is AgriNext suitable for India?","Yes, designed for Indian farmers.","होय, भारतीय शेतकऱ्यांसाठी.","हाँ, भारतीय किसानों के लिए।"],
+["What is main goal of AgriNext?","Empower farmers digitally.","शेतकऱ्यांना सक्षम करणे.","किसानों को सशक्त बनाना।"]
+];
+
+faqs.forEach(f=>{
+document.write(`
+<div class="faq">
+  <div class="faq-question">
+    <div class="lang-content en">${f[0]}</div>
+    <div class="lang-content mr">${f[0]}</div>
+    <div class="lang-content hi">${f[0]}</div>
+    <span>+</span>
+  </div>
+  <div class="faq-answer">
+    <div class="lang-content en"><p>${f[1]}</p></div>
+    <div class="lang-content mr"><p>${f[2]}</p></div>
+    <div class="lang-content hi"><p>${f[3]}</p></div>
+  </div>
+</div>
+`)
+});
+</script>
+
+</main>
+
+<footer>
+© 2025 Agri🌾Next | Smart Farming Support 🌱
+</footer>
+
+<script>
+document.querySelectorAll('.faq-question').forEach(q=>{
+  q.addEventListener('click',()=>q.parentElement.classList.toggle('active'));
+});
+function setLang(lang,btn){
+  document.querySelectorAll('.lang-content').forEach(e=>e.style.display='none');
+  document.querySelectorAll('.'+lang).forEach(e=>e.style.display='block');
+  document.querySelectorAll('.lang-btn').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+}
+</script>
+
+</body>
+</html>

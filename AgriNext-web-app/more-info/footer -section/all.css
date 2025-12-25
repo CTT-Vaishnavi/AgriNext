@@ -1,0 +1,124 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Inter", "Segoe UI", Arial, sans-serif;
+}
+
+body {
+  background-color: #f6f7f9;
+  color: #2c2c2c;
+}
+
+/* Header */
+.fs-header {
+  background: #ffffff;
+  border-bottom: 1px solid #e0e0e0;
+  padding: 60px 20px;
+}
+
+.fs-header-content {
+  max-width: 1100px;
+  margin: auto;
+}
+
+.fs-header h1 {
+  font-size: 2.4rem;
+  font-weight: 600;
+  color: #1b5e20;
+  margin-bottom: 12px;
+}
+
+.fs-header p {
+  font-size: 1.05rem;
+  line-height: 1.7;
+  color: #555;
+}
+
+/* Main wrapper */
+.fs-wrapper {
+  max-width: 1100px;
+  margin: 50px auto;
+  padding: 0 20px;
+}
+
+/* Feature card */
+.fs-card {
+  display: flex;
+  gap: 25px;
+  background: #ffffff;
+  padding: 28px;
+  border-radius: 10px;
+  border: 1px solid #e6e6e6;
+  margin-bottom: 22px;
+  transition: box-shadow 0.25s ease;
+}
+
+.fs-card:hover {
+  box-shadow: 0 8px 22px rgba(0,0,0,0.08);
+}
+
+.fs-icon {
+  min-width: 60px;
+  height: 60px;
+  background: #e8f5e9;
+  color: #2e7d32;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.6rem;
+}
+
+.fs-text h2 {
+  font-size: 1.25rem;
+  margin-bottom: 8px;
+  color: #1b5e20;
+}
+
+.fs-text p {
+  font-size: 0.96rem;
+  line-height: 1.65;
+  color: #555;
+}
+
+/* Footer */
+.fs-footer {
+  background: #ffffff;
+  border-top: 1px solid #e0e0e0;
+  text-align: center;
+  padding: 18px;
+  font-size: 0.9rem;
+  color: #666;
+}
+/* Top navigation */
+.fs-top-nav {
+  margin-bottom: 25px;
+}
+
+/* Home button */
+.home-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 18px;
+  border-radius: 6px;
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: #1b5e20;
+  border: 1px solid #c8e6c9;
+  background-color: #f1f8f4;
+  transition: all 0.25s ease;
+}
+
+.home-btn i {
+  font-size: 0.85rem;
+}
+
+/* Hover effect */
+.home-btn:hover {
+  background-color: #1b5e20;
+  color: #ffffff;
+  border-color: #1b5e20;
+}
