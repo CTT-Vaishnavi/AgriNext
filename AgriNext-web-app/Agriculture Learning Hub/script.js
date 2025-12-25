@@ -23,7 +23,70 @@ const videos = [
       desc: "योग्य फवारणी कशी करावी?",
       img: "./img/फवारणी करण्याच्या आधुनिक पद्धती.png"
     },
-
+ {
+    title: "Neem Oil Spray Method",
+    cat: "organic",
+    link: "https://www.youtube.com/watch?v=YbJOTdZBX1g",
+    desc: "निंबोळी तेल फवारणी योग्य पद्धत.",
+    img: "https://th-i.thgim.com/public/sci-tech/agriculture/article19288876.ece/alternates/LANDSCAPE_1200/INDEXFARMERPESTICIDE"
+  },
+  {
+    title: "Jivamrut Preparation",
+    cat: "organic",
+    link: "https://www.youtube.com/watch?v=7ZK7xgQk7xA",
+    desc: "जीवामृत तयार करण्याची संपूर्ण पद्धत.",
+    img: "https://images.unsplash.com/photo-1625246333195-78d9c38ad449?auto=format&fit=crop&w=800&q=60"
+  },
+  {
+    title: "Dashparni Ark Making",
+    cat: "organic",
+    link: "https://www.youtube.com/watch?v=7mVZJ9N6bV8",
+    desc: "दशपर्णी अर्क कसा बनवावा?",
+    img: "https://images.unsplash.com/photo-1605000797499-95a51c5269ae?auto=format&fit=crop&w=800&q=60"
+  },
+  {
+    title: "Cow Urine Pest Control",
+    cat: "organic",
+    link: "https://www.youtube.com/watch?v=RzZJ6x5ZKJk",
+    desc: "गोमूत्राचा किड नियंत्रणासाठी वापर.",
+    img: "https://images.unsplash.com/photo-1501004318641-b39e6451bec6?auto=format&fit=crop&w=800&q=60"
+  },
+  {
+    title: "Vermicompost Benefits",
+    cat: "organic",
+    link: "https://www.youtube.com/watch?v=8F3FJ7d4xQk",
+    desc: "वर्मी कंपोस्टचे फायदे.",
+    img: "https://images.unsplash.com/photo-1589923188900-85dae523342b?auto=format&fit=crop&w=800&q=60"
+  },
+  {
+    title: "Organic Seed Treatment",
+    cat: "organic",
+    link: "https://www.youtube.com/watch?v=H0kQbJpG8Tg",
+    desc: "सेंद्रिय बियाणे प्रक्रिया.",
+    img: "https://agritech.tnau.ac.in/org_farm/images/practices/seed_treat1.png"
+  },
+  {
+    title: "Bio Pesticide Usage",
+    cat: "organic",
+    link: "https://www.youtube.com/watch?v=G0H1Jp7JQnE",
+    desc: "जैव किटकनाशकांचा योग्य वापर.",
+    img: "https://kaybeebio.com/wp-content/uploads/2023/05/why-india-needs-biopesticides-in-agriculture.jpg"
+  },
+  {
+    title: "Organic Fungicide Spray",
+    cat: "organic",
+    link: "https://www.youtube.com/watch?v=7n3WgiMftaU",
+    desc: "सेंद्रिय बुरशीनाशक फवारणी.",
+    img: "https://images.unsplash.com/photo-1523348837708-15d4a09cfac2?auto=format&fit=crop&w=800&q=60"
+  },
+  {
+    title: "Chilli Organic Pest Control",
+    cat: "organic",
+    link: "https://www.youtube.com/watch?v=kT1H5D9cN5M",
+    desc: "मिरची पिकासाठी सेंद्रिय किड नियंत्रण.",
+    img: "https://previews.123rf.com/images/sorn340/sorn3401905/sorn340190501169/123504976-farmer-spraying-of-pesticide-on-chili-plantation.jpg"
+  },
+ 
     { 
       title: "Irrigation Tips", 
       cat: "irrigation", 
