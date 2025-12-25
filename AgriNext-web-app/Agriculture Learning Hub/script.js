@@ -26,7 +26,7 @@ const videos = [
  {
     title: "Neem Oil Spray Method",
     cat: "organic",
-    link: "https://www.youtube.com/watch?v=YbJOTdZBX1g",
+    link: "https://youtu.be/pnNivy2yVh8?si=S-83sUucbS8CVeBP",
     desc: "निंबोळी तेल फवारणी योग्य पद्धत.",
     img: "https://th-i.thgim.com/public/sci-tech/agriculture/article19288876.ece/alternates/LANDSCAPE_1200/INDEXFARMERPESTICIDE"
   },
@@ -697,3 +697,25 @@ buttons.forEach(btn => {
 //         });
 //     });
 // });
+
+// ---------------- SEARCH BAR SYSTEM ----------------
+const searchInput = document.getElementById("searchInput");
+
+if (searchInput) {
+  searchInput.addEventListener("input", function () {
+    const value = this.value.toLowerCase();
+    const cards = document.querySelectorAll(".card");
+
+    cards.forEach(card => {
+      const title = card.querySelector("h2").innerText.toLowerCase();
+      const desc = card.querySelector("p").innerText.toLowerCase();
+
+      if (title.includes(value) || desc.includes(value)) {
+        card.classList.remove("hide");
+      } else {
+        card.classList.add("hide");
+      }
+    });
+  });
+}
+
