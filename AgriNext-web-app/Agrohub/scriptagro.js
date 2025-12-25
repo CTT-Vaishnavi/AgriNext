@@ -639,7 +639,8 @@ const data = {
         ],
       },
       "Jalgaon": {
-        "Jalgaon": [  
+        "Jalgaon": [
+
         ],
         "Bhusawal": [],
         "Chalisgaon": [],
@@ -957,7 +958,7 @@ function initMapIfAvailable() {
     // optionally add sample markers for visible dealers
   } else {
     // google maps not loaded or API key missing — show fallback message
-    document.getElementById('map').textContent = 'Map not available (missing or invalid API key).';
+    document.getElementById('map').textContent = '🌍📍🌍';
   }
 }
 
