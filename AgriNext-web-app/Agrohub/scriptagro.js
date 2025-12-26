@@ -954,8 +954,195 @@ const data = {
     "Gondia":"441614","Tirora":"441848","Deori":"441862","Arjuni Morgaon":"441912",
     "Akola":"444001","Murtizapur":"444107","Patur":"444205","Barshitakli":"444304",
     "Beed":"431122","Ashti":"431209","Kaij":"431203","Wadwani":"431217",
-    "Satara":"415001","Karad":"415110","Wai":"412803","Phaltan":"415523",
-    "Washim":"444505","Mangrulpir":"444505","Karanja":"444105","Manora":"444105"
+    "Satara":"415001","Karad":"415110","Wai":"412803","Phaltan":"415523","Wardha":"442001",
+    "Washim":"444505","Mangrulpir":"444505","Karanja":"444105","Manora":"444105",
+  "Mumbai City":"400001",
+  "Andheri":"400058",
+  "Bandra":"400050",
+  "Borivali":"400067",
+
+  "Pune":"411001",
+  "Baramati":"413102",
+  "Indapur":"413106",
+  "Daund":"413801",
+  "Junnar":"410502",
+  "Ambegaon":"410503",
+  "Khed Rajgurunagar":"410505",
+  "Mulshi Paud":"412108",
+  "Shirur":"412210",
+  "Bhor":"412206",
+  "Velhe":"412212",
+
+  "Nashik":"422001",
+  "Igatpuri":"422403",
+  "Dindori":"422202",
+  "Sinnar":"422103",
+  "Yeola":"423401",
+  "Niphad":"422303",
+  "Kalwan":"423501",
+  "Chandwad":"423101",
+  "Satana":"423301",
+
+  "Ahmednagar":"414001",
+  "Shrirampur":"413709",
+  "Rahata":"423107",
+  "Sangamner":"422605",
+  "Akole":"422601",
+  "Parner":"414302",
+  "Jamkhed":"413201",
+  "Pathardi":"414102",
+  "Shegaon":"414502",
+
+  "Aurangabad":"431001",
+  "Paithan":"431107",
+  "Gangapur":"431109",
+  "Sillod":"431112",
+  "Kannad":"431103",
+  "Khuldabad":"431101",
+  "Soegaon":"431120",
+  "Vaijapur":"423701",
+
+  "Jalna":"431203",
+  "Ambad":"431204",
+  "Partur":"431501",
+  "Bhokardan":"431114",
+  "Badnapur":"431202",
+
+  "Latur":"413512",
+  "Ausa":"413520",
+  "Nilanga":"413521",
+  "Udgir":"413517",
+  "Renapur":"413527",
+  "Chakur":"413513",
+
+  "Osmanabad":"413501",
+  "Tuljapur":"413601",
+  "Umarga":"413606",
+  "Kalamb":"413507",
+  "Bhum":"413504",
+  "Paranda":"413502",
+  "Lohara":"413608",
+
+  "Nanded":"431601",
+  "Degloor":"431717",
+  "Mukhed":"431715",
+  "Kinwat":"431804",
+  "Hadgaon":"431712",
+  "Bhokar":"431801",
+  "Kandhar":"431714",
+
+  "Parbhani":"431401",
+  "Gangakhed":"431514",
+  "Jintur":"431509",
+  "Selu":"431503",
+  "Pathri":"431506",
+  "Manwath":"431505",
+  "Sonpeth":"431516",
+
+  "Hingoli":"431513",
+  "Kalamnuri":"431702",
+  "Sengaon":"431703",
+  "Basmat":"431512",
+
+  "Solapur":"413001",
+  "Pandharpur":"413304",
+  "Barshi":"413401",
+  "Akkalkot":"413216",
+  "Sangola":"413307",
+  "Mangalvedha":"413305",
+  "Karmala":"413203",
+  "Mohol":"413213",
+  "Malshiras":"413107",
+
+  "Sangli":"416416",
+  "Miraj":"416410",
+  "Tasgaon":"416312",
+  "Vita":"415311",
+  "Jat":"416404",
+  "Atpadi":"415301",
+
+  "Ratnagiri":"415612",
+  "Chiplun":"415605",
+  "Guhagar":"415703",
+  "Khed Ratnagiri":"415709",
+  "Dapoli":"415712",
+  "Lanja":"416701",
+
+  "Sindhudurg Oros":"416812",
+  "Kudal":"416520",
+  "Sawantwadi":"416510",
+  "Malvan":"416606",
+  "Vengurla":"416516",
+  "Devgad":"416613",
+
+  "Alibag":"402201",
+  "Panvel":"410206",
+  "Karjat Raigad":"410201",
+  "Pen":"402107",
+  "Uran":"400702",
+  "Mahad":"402301",
+  "Mangaon":"402104",
+  "Shrivardhan":"402110",
+  "Murud":"402401",
+
+  "Thane":"400601",
+  "Kalyan":"421301",
+  "Ulhasnagar":"421003",
+  "Bhiwandi":"421302",
+  "Shahapur":"421601",
+  "Murbad":"421401",
+
+  "Palghar":"401404",
+  "Vasai":"401202",
+  "Dahanu":"401602",
+  "Jawhar":"401603",
+  "Mokhada":"401604",
+  "Vikramgad":"401605",
+  "Wada":"421303",
+
+  "Amravati":"444601",
+  "Achalpur":"444805",
+  "Daryapur":"444803",
+  "Anjangaon":"444705",
+  "Morshi":"444905",
+  "Warud":"444906",
+
+  "Yavatmal":"445001",
+  "Pusad":"445204",
+  "Umarkhed":"445206",
+  "Darwha":"445202",
+  "Digras":"445203",
+  "Ghatanji":"445301",
+  "Pandharkawada":"445302",
+
+  "Bhandara":"441904",
+  "Tumsar":"441912",
+  "Sakoli":"441802",
+  "Pauni":"441910",
+
+  "Chandrapur":"442401",
+  "Ballarpur":"442701",
+  "Warora":"442907",
+  "Brahmapuri":"441206",
+  "Mul":"441224",
+  "Chimur":"442903",
+  "Rajura":"442905",
+
+  "Gadchiroli":"442605",
+  "Aheri":"442705",
+  "Sironcha":"442504",
+  "Armori":"441208",
+  "Desaiganj":"441207",
+
+  "Nagpur":"440001",
+  "Kamptee":"441001",
+  "Katol":"441302",
+  "Narkhed":"441304",
+  "Ramtek":"441106",
+  "Saoner":"441107",
+  "Umred":"441203",
+  "Kalameshwar":"441501"
+
   };
 
   const typeKeywords = [
@@ -1175,7 +1362,40 @@ function printPDF() {
         <title>${st} - ${di} - ${ta} Dealers</title>
         <style>
           body { font-family: Arial, sans-serif; margin: 20px; }
-          h1 { text-align: center; color: #2c5f2d; }
+          h1 { text-align: center; color: #2c5f2d;font-size: 28px; }
+          .logo {
+  display: flex;
+  align-items: center;
+  justify-content: center; 
+  gap: 100px;padding: 10px 20px;background-color: #f9f9f9;}
+
+.logo img {
+  width: auto;
+  height: 80px;
+}
+
+.logo h1 {
+  margin: 10px;
+  font-size: 34px;
+  color: #2c3e50;
+  font-weight: 600;
+}
+
+.logo p {
+  margin: 4px 0 8px 0;
+  font-size: 20px;
+  color: #555;
+}
+
+.hr {
+  width: 100%;
+  height: 3px;
+  background-color: #4caf50;
+  border: none;
+}
+
+          h3{text-align: center; color: #2c5f2d;}
+          p{text-align: center;}
           .dealer { 
             margin: 15px 0; 
             padding: 12px; 
@@ -1190,28 +1410,38 @@ function printPDF() {
         </style>
       </head>
       <body>
+      <div class="logo" style="display: flex; align-items: center; gap: 8px;">
+        <img src="../images/output-onlinepngtools (1).png" alt="logo">
+        <div>
+        <h1>Fertilizer Dealers List Report</h1>
+        <p>AgriNext – Fertilizer Dealers List Portal (Educational Project)</p> 
+        </div>  
+      </div>
+      <hr class="hr">
         <h1>${st} - ${di} - ${ta}</h1>
         <h2>Fertilizer Dealers List</h2>
-        <hr>
-  `;
+        `;
+        
+        list.forEach((d, idx) => {
+          printContent += `
+            <div class="dealer">
+              <div class="dealer-name">${idx + 1}. ${escapeHtml(d.name)}</div>
+              <div class="dealer-info">
+                <div><span class="label">Address:</span> ${escapeHtml(d.address)}</div>
+                <div><span class="label">Phone:</span> ${escapeHtml(d.phone)}</div>
+                <div><span class="label">WhatsApp:</span> ${escapeHtml(d.whatsapp || 'N/A')}</div>
+                <div><span class="label">Pincode:</span> ${escapeHtml(d.pincode || 'N/A')}</div>
+                <div><span class="label">Type:</span> ${escapeHtml(d.type || 'N/A')}</div>
+              </div>
+            </div>
+          `;
+          if ((idx + 1) % 5 === 0) printContent += '<div class="page-break"></div>';
+        });
   
-  list.forEach((d, idx) => {
-    printContent += `
-      <div class="dealer">
-        <div class="dealer-name">${idx + 1}. ${escapeHtml(d.name)}</div>
-        <div class="dealer-info">
-          <div><span class="label">Address:</span> ${escapeHtml(d.address)}</div>
-          <div><span class="label">Phone:</span> ${escapeHtml(d.phone)}</div>
-          <div><span class="label">WhatsApp:</span> ${escapeHtml(d.whatsapp || 'N/A')}</div>
-          <div><span class="label">Pincode:</span> ${escapeHtml(d.pincode || 'N/A')}</div>
-          <div><span class="label">Type:</span> ${escapeHtml(d.type || 'N/A')}</div>
-        </div>
-      </div>
-    `;
-    if ((idx + 1) % 5 === 0) printContent += '<div class="page-break"></div>';
-  });
-  
-  printContent += `
+         printContent += `
+
+        <hr class="hr">
+        <p>Generated by AgriNext | For Academic & Educational Use Only</p>
       </body>
     </html>
   `;
@@ -1221,7 +1451,6 @@ function printPDF() {
   printWindow.document.close();
   setTimeout(() => printWindow.print(), 250);
 }
-
 /* -----------------------------
    Map initialization (safe)
 ----------------------------- */
