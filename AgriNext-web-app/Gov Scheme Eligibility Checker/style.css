@@ -651,6 +651,10 @@ button,
 .nav-phone{
   font-weight:600;
   color:#444;
+  cursor: pointer;
+}
+.nav-phone:hover{
+  color: rgb(226, 70, 70);
 }
 .nav-phone a{
   text-decoration:none;

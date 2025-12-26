@@ -13,6 +13,17 @@ function filterVideos(category) {
 }
 
 
+// Toggle mode
+function toggleTheme() {
+    document.body.classList.toggle("dark-mode");
+
+    if (document.body.classList.contains("dark-mode")) {
+        localStorage.setItem("theme", "dark");
+    } else {
+        localStorage.setItem("theme", "light");
+    }
+}
+
 
 // ------------------ 210 Video List ---------------------
 const videos = [
@@ -652,6 +663,7 @@ const videos = [
 
 
 // -------------------- AUTO CARD GENERATOR -------------------
+
 const container = document.getElementById("videoContainer");
 
 videos.forEach(video => {
@@ -719,3 +731,23 @@ if (searchInput) {
   });
 }
 
+
+// phone no
+const phoneNumber = "18001801551";
+
+function isMobile() {
+  return /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+}
+
+// 📞 Call handler
+document.getElementById("callSupport").addEventListener("click", () => {
+  if (!isMobile()) {
+    alert("Calling is supported on mobile devices only.");
+    return;
+  }
+
+  const confirmCall = confirm("Do you want to call Farmer Support?");
+  if (confirmCall) {
+    window.location.href = `tel:${phoneNumber}`;
+  }
+});

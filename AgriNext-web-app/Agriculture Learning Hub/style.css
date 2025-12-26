@@ -72,8 +72,13 @@ nav {
 }
 
 .phone {
+    cursor: pointer;
     font-size: 18px;
     font-weight: 600;
+}
+.phone:hover{
+      color: var(--accent);
+    color: rgb(175, 42, 42);
 }
 
 /* Nav Links */

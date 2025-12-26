@@ -1461,7 +1461,7 @@ function initMapIfAvailable() {
     // optionally add sample markers for visible dealers
   } else {
     // google maps not loaded or API key missing — show fallback message
-    document.getElementById('map').textContent = '🌍';
+    document.getElementById('map').innerHTML += '<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3867615.203633482!2d74.12786929511361!3d18.79958061586077!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bcfc41e9c9cd6f9%3A0x1b2f22924be04fb6!2sMaharashtra!5e0!3m2!1sen!2sin!4v1766759901858!5m2!1sen!2sin" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>';
   }
 }
 
@@ -1575,3 +1575,22 @@ function toggleTheme() {
     }
 }
 
+// phone no
+const phoneNumber = "18001801551";
+
+function isMobile() {
+  return /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+}
+
+// 📞 Call handler
+document.getElementById("callSupport").addEventListener("click", () => {
+  if (!isMobile()) {
+    alert("Calling is supported on mobile devices only.");
+    return;
+  }
+
+  const confirmCall = confirm("Do you want to call Farmer Support?");
+  if (confirmCall) {
+    window.location.href = `tel:${phoneNumber}`;
+  }
+});

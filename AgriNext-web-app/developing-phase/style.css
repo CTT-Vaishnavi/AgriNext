@@ -82,6 +82,11 @@ nav {
     font-size: 18px;
     font-weight: 500;
     color: var(--text);
+    cursor: pointer;
+}
+.phone:hover{
+    opacity: 1;
+    color: var(--accent);
 }
 .phone i {
     font-size: 22px;

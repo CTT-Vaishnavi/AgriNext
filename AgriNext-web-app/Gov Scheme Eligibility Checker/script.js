@@ -528,9 +528,9 @@ function checkEligibility() {
   ============================== */
   resultBox.innerHTML = `
     <div class="result-box success">
+    
 
       <h3>Eligible Government Scheme</h3>
-
       <!-- Scheme Info -->
       <div class="result-section-block">
         <h4>📌 Scheme Information</h4>
@@ -598,15 +598,12 @@ function checkEligibility() {
    WHATSAPP SHARE (FULL RESULT)
 ================================ */
 function shareWhatsApp() {
-
   const c = crop.value;
   const i = irrigation.value;
   const d = district.value || "Pune";
-
   const sum = Number(sumInsured.value) || 10000;
   const rate = districtPremiumRates[d] || 2;
   const premiumAmt = (sum * rate / 100).toFixed(0);
-
   const s = irrigationSubsidy[i];
 
   const msg = `
@@ -656,3 +653,23 @@ PMFBY insurance is recommended for risk protection.
 function toggleMenu(){
   document.getElementById("navMenu").classList.toggle("show");
 }
+
+// phone no
+const phoneNumber = "18001801551";
+
+function isMobile() {
+  return /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+}
+
+// 📞 Call handler
+document.getElementById("callSupport").addEventListener("click", () => {
+  if (!isMobile()) {
+    alert("Calling is supported on mobile devices only.");
+    return;
+  }
+
+  const confirmCall = confirm("Do you want to call Farmer Support?");
+  if (confirmCall) {
+    window.location.href = `tel:${phoneNumber}`;
+  }
+});

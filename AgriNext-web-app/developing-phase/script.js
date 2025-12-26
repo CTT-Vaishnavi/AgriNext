@@ -238,5 +238,23 @@ function toggleTheme() {
     }
 }
 
+// phone no
+const phoneNumber = "18001801551";
 
+function isMobile() {
+  return /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+}
+
+// 📞 Call handler
+document.getElementById("callSupport").addEventListener("click", () => {
+  if (!isMobile()) {
+    alert("Calling is supported on mobile devices only.");
+    return;
+  }
+
+  const confirmCall = confirm("Do you want to call Farmer Support?");
+  if (confirmCall) {
+    window.location.href = `tel:${phoneNumber}`;
+  }
+});
 
