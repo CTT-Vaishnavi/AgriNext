@@ -488,3 +488,28 @@ p {
     font-size: 12px;
   }
 }
+
+/* Top Navigation */
+.top-nav {
+  background: linear-gradient(90deg, #2e7d32, #66bb6a);
+  padding: 12px 20px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+}
+
+.home-btn {
+  color: #fff;
+  text-decoration: none;
+  font-size: 18px;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  border-radius: 8px;
+  transition: 0.3s;
+}
+
+.home-btn:hover {
+  background: rgba(255,255,255,0.2);
+  transform: translateY(-2px);
+}
