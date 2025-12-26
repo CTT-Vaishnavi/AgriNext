@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Agri🌾Next | Community Forum</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="ct.css">
+</head>
+
+<body>
+
+<!-- Header -->
+<header class="cf-header">
+  <div class="cf-header-content">
+
+    <div class="cf-top-nav">
+      <a href="/AgriNext-web-app/index.html" class="home-btn">
+        <i class="fa-solid fa-house"></i> Home
+      </a>
+    </div>
+
+    <h1>Agri🌾Next Community Forum</h1>
+    <p>
+      A collaborative platform where farmers can ask questions,
+      share experiences, and learn from experts and fellow farmers.
+    </p>
+
+  </div>
+</header>
+
+<!-- Main -->
+<main class="cf-wrapper">
+
+  <!-- Ask Question -->
+  <section class="ask-box">
+    <h2>Ask a Question</h2>
+    <p>Post your farming-related question and get guidance from the community.</p>
+
+    <form id="questionForm">
+      <input type="text" id="qTitle" placeholder="Enter question title" required>
+      <textarea id="qDesc" placeholder="Describe your problem in detail..." required></textarea>
+      <button type="submit">Post Question</button>
+    </form>
+  </section>
+
+  <!-- Forum List -->
+  <section class="forum-list" id="forumList">
+    <!-- Questions will appear here -->
+  </section>
+
+</main>
+
+<!-- Footer -->
+<footer class="cf-footer">
+  <p>© 2025 Agri🌾Next | Farmer Knowledge Sharing Platform</p>
+</footer>
+
+<script src="ct.js"></script>
+</body>
+</html>

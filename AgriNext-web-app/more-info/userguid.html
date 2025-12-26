@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Agri🌾Next – User Guide</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+:root{
+  --green:#2e7d32;
+  --light:#f1fff4;
+  --dark:#1b4332;
+  --card:#ffffff;
+}
+
+body{
+  margin:0;
+  font-family: "Segoe UI", Arial, sans-serif;
+  background: linear-gradient(135deg,#eefcf2,#e6f5ea);
+  color:#333;
+}
+
+/* HEADER */
+header{
+  background:var(--green);
+  color:#fff;
+  padding:18px 25px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  position:sticky;
+  top:0;
+  z-index:100;
+}
+
+header h1{
+  margin:0;
+  font-size:22px;
+}
+
+.actions{
+  display:flex;
+  gap:10px;
+}
+
+.actions a, .actions select{
+  background:#fff;
+  color:var(--green);
+  border:none;
+  padding:8px 14px;
+  border-radius:20px;
+  font-weight:600;
+  cursor:pointer;
+  text-decoration:none;
+}
+
+/* CONTAINER */
+.container{
+  max-width:1100px;
+  margin:auto;
+  padding:30px 20px;
+}
+
+/* CARD */
+.card{
+  background:var(--card);
+  border-radius:16px;
+  padding:25px;
+  margin-bottom:25px;
+  box-shadow:0 10px 25px rgba(0,0,0,0.08);
+}
+
+.card h2{
+  color:var(--green);
+  margin-bottom:12px;
+}
+
+.card h3{
+  margin-top:15px;
+  color:#1b4332;
+}
+
+.card ul{
+  padding-left:20px;
+}
+
+.card li{
+  margin-bottom:8px;
+}
+
+/* FOOTER */
+footer{
+  background:var(--dark);
+  color:#fff;
+  text-align:center;
+  padding:15px;
+  margin-top:30px;
+  font-size:14px;
+}
+
+/* RESPONSIVE */
+@media(max-width:600px){
+  header{
+    flex-direction:column;
+    gap:10px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <h1>Agri🌾Next – User Guide</h1>
+  <div class="actions">
+    <a href="../index.html"> Home</a>
+    <select onchange="changeLang(this.value)">
+      <option value="en">English</option>
+      <option value="hi">हिंदी</option>
+      <option value="mr">मराठी</option>
+    </select>
+  </div>
+</header>
+
+<div class="container">
+
+<!-- ================= ENGLISH ================= -->
+<div class="lang en">
+
+<div class="card">
+<h2>🌱 About Agri🌾Next</h2>
+<p>
+Agri🌾Next is a smart farming advisory platform designed to help Indian farmers
+make better agricultural decisions using modern technology.
+It combines crop recommendation, weather forecasting, disease detection,
+market price prediction and farming guidance in one system.
+</p>
+
+<h3>Who can use this platform?</h3>
+<ul>
+<li>Small and medium farmers</li>
+<li>Agriculture students</li>
+<li>Rural entrepreneurs</li>
+<li>Anyone interested in smart farming</li>
+</ul>
+</div>
+
+<div class="card">
+<h2>🔐 Login & Account Guide</h2>
+<ul>
+<li><b>Email Login:</b> Login using registered email and password</li>
+<li><b>Mobile OTP Login:</b> Secure login using OTP</li>
+<li><b>Google Login:</b> Quick access using Google account</li>
+<li><b>Sign Up:</b> New users can easily create an account</li>
+</ul>
+<p>Your personal data is handled securely.</p>
+</div>
+
+<div class="card">
+<h2>🌾 Crop Recommendation System</h2>
+<p>
+Suggests suitable crops based on soil conditions, weather and region.
+</p>
+<ul>
+<li>Enter required soil details</li>
+<li>Submit information</li>
+<li>Get recommended crops</li>
+</ul>
+</div>
+
+<div class="card">
+<h2>🦠 Plant Disease Identification</h2>
+<p>
+Upload an image of the affected plant leaf to identify possible diseases
+and get basic guidance.
+</p>
+</div>
+
+<div class="card">
+<h2>🌦️ Weather Forecast</h2>
+<p>
+Provides real-time weather updates to help farmers plan irrigation,
+sowing and harvesting.
+</p>
+</div>
+
+<div class="card">
+<h2>📈 Market Price Prediction</h2>
+<p>
+Helps farmers understand crop price trends and decide the best selling time.
+</p>
+</div>
+
+<div class="card">
+<h2>📞 Help & Support</h2>
+<ul>
+<li>Kisan Call Centre: <b>1800-180-1551</b></li>
+<li>WhatsApp Support</li>
+<li>Live Chat Assistance</li>
+<li>Email: agrinextplant@gmail.com</li>
+</ul>
+</div>
+
+<div class="card">
+<h2>⚠️ Disclaimer</h2>
+<p>
+Agri🌾Next is an educational and advisory platform.
+Information provided should be used for guidance only.
+</p>
+</div>
+
+</div>
+
+<!-- ================= HINDI ================= -->
+<div class="lang hi" style="display:none">
+
+<div class="card">
+<h2>🌱 Agri🌾Next क्या है?</h2>
+<p>
+Agri🌾Next एक स्मार्ट कृषि सलाह मंच है जो भारतीय किसानों को
+फसल चयन, मौसम जानकारी, रोग पहचान और बाजार मूल्य से जुड़ी
+सहायता प्रदान करता है।
+</p>
+
+<ul>
+<li>छोटे और मध्यम किसान</li>
+<li>कृषि छात्र</li>
+<li>ग्रामीण उद्यमी</li>
+</ul>
+</div>
+
+<div class="card">
+<h2>🔐 लॉगिन और खाता</h2>
+<ul>
+<li>ईमेल और पासवर्ड लॉगिन</li>
+<li>मोबाइल OTP लॉगिन</li>
+<li>Google लॉगिन</li>
+<li>नया खाता बनाना</li>
+</ul>
+</div>
+
+<div class="card">
+<h2>🌾 फसल सिफारिश प्रणाली</h2>
+<p>
+मिट्टी और मौसम के आधार पर उपयुक्त फसलों की जानकारी देती है।
+</p>
+</div>
+
+<div class="card">
+<h2>🦠 पौधों की बीमारी पहचान</h2>
+<p>
+पत्तियों की फोटो अपलोड करके बीमारी की पहचान की जाती है।
+</p>
+</div>
+
+<div class="card">
+<h2>🌦️ मौसम पूर्वानुमान</h2>
+<p>
+मौसम की जानकारी देकर खेती की योजना बनाने में मदद करता है।
+</p>
+</div>
+
+<div class="card">
+<h2>📞 सहायता</h2>
+<ul>
+<li>किसान कॉल सेंटर: 1800-180-1551</li>
+<li>व्हाट्सएप सहायता</li>
+<li>लाइव चैट</li>
+</ul>
+</div>
+
+</div>
+
+<!-- ================= MARATHI ================= -->
+<div class="lang mr" style="display:none">
+
+<div class="card">
+<h2>🌱 Agri🌾Next म्हणजे काय?</h2>
+<p>
+Agri🌾Next हे स्मार्ट शेती सल्ला व्यासपीठ आहे
+जे शेतकऱ्यांना पीक निवड, हवामान, रोग ओळख
+आणि बाजारभाव याबाबत मदत करते.
+</p>
+</div>
+
+<div class="card">
+<h2>🔐 लॉगिन व खाते माहिती</h2>
+<ul>
+<li>ईमेल व पासवर्ड लॉगिन</li>
+<li>मोबाइल OTP लॉगिन</li>
+<li>Google द्वारे लॉगिन</li>
+<li>नवीन खाते तयार करणे</li>
+</ul>
+</div>
+
+<div class="card">
+<h2>🌾 पीक शिफारस प्रणाली</h2>
+<p>
+माती व हवामानानुसार योग्य पिकांची शिफारस करते.
+</p>
+</div>
+
+<div class="card">
+<h2>🦠 वनस्पती रोग ओळख</h2>
+<p>
+पानाचा फोटो अपलोड करून रोग ओळखता येतो.
+</p>
+</div>
+
+<div class="card">
+<h2>🌦️ हवामान अंदाज</h2>
+<p>
+तापमान, पाऊस व आर्द्रतेची माहिती देते.
+</p>
+</div>
+
+<div class="card">
+<h2>📞 मदत</h2>
+<ul>
+<li>किसान कॉल सेंटर: 1800-180-1551</li>
+<li>WhatsApp मदत</li>
+<li>Live Chat</li>
+</ul>
+</div>
+
+</div>
+
+</div>
+
+<footer>
+© 2025 Team Agri🌾Next | Smart Farming for Smart Farmers
+</footer>
+
+<script>
+function changeLang(lang){
+  document.querySelectorAll(".lang").forEach(el => el.style.display = "none");
+  document.querySelector("." + lang).style.display = "block";
+}
+</script>
+
+</body>
+</html>

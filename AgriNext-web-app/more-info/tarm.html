@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Privacy Policy & Terms | AgriNext</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+/* ------------------ BASE ------------------ */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Segoe UI", sans-serif;
+  background: linear-gradient(135deg, #eef7f0, #f9fdfb);
+  color: #263238;
+}
+
+/* ------------------ HEADER ------------------ */
+header {
+  background: linear-gradient(135deg, #1b5e20, #2e7d32);
+  color: white;
+  padding: 40px 20px;
+  text-align: center;
+  position: relative;
+}
+
+header h1 {
+  font-size: 2.4rem;
+  margin-bottom: 8px;
+}
+
+header p {
+  opacity: 0.9;
+}
+
+.home-btn {
+  position: absolute;
+  left: 20px;
+  top: 25px;
+  color: white;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+/* ------------------ LANGUAGE SWITCH ------------------ */
+.lang-switch {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin: 30px 0;
+}
+
+.lang-btn {
+  padding: 8px 20px;
+  border-radius: 25px;
+  border: 2px solid #2e7d32;
+  background: white;
+  color: #2e7d32;
+  cursor: pointer;
+  font-weight: 600;
+  transition: 0.3s;
+}
+
+.lang-btn:hover {
+  background: #2e7d32;
+  color: white;
+}
+
+.lang-btn.active {
+  background: linear-gradient(135deg, #2e7d32, #66bb6a);
+  color: white;
+  box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+}
+
+/* ------------------ CONTAINER ------------------ */
+.container {
+  max-width: 1000px;
+  margin: auto;
+  padding: 0 20px 60px;
+  display: grid;
+  gap: 40px;
+}
+
+/* ------------------ 3D CARD ------------------ */
+.card {
+  background: white;
+  padding: 30px;
+  border-radius: 16px;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.12);
+  transform-style: preserve-3d;
+  transition: transform 0.6s ease, box-shadow 0.6s ease;
+}
+
+.card:hover {
+  transform: rotateX(4deg) rotateY(-4deg) scale(1.02);
+  box-shadow: 0 30px 60px rgba(0,0,0,0.18);
+}
+
+.card h2 {
+  color: #2e7d32;
+  margin-bottom: 20px;
+}
+
+.card p {
+  line-height: 1.7;
+  color: #37474f;
+}
+
+/* ------------------ LANGUAGE CONTENT ------------------ */
+.lang-content {
+  display: none;
+  animation: fade 0.5s ease;
+}
+
+.lang-content.en {
+  display: block;
+}
+
+@keyframes fade {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ------------------ FOOTER ------------------ */
+footer {
+  background: #1b5e20;
+  color: #c8e6c9;
+  text-align: center;
+  padding: 25px;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <a href="../index.html" class="home-btn"> Home</a>
+  <h1>Privacy Policy & Terms of Use</h1>
+  <p>AgriNext – Smart Farming Advisory Platform</p>
+</header>
+
+<!-- Language Switch -->
+<div class="lang-switch">
+  <button class="lang-btn active" onclick="setLang('en', this)">English</button>
+  <button class="lang-btn" onclick="setLang('mr', this)">मराठी</button>
+  <button class="lang-btn" onclick="setLang('hi', this)">हिंदी</button>
+</div>
+
+<main class="container">
+
+  <!-- PRIVACY POLICY -->
+  <section class="card">
+    <h2>🔐 Privacy Policy</h2>
+
+    <div class="lang-content en">
+      <p>
+        AgriNext respects user privacy. We collect only essential information
+        such as name and farming-related queries to provide advisory support.
+        Personal data is never sold or shared. Market prices and predictions
+        are for guidance purposes only.
+      </p>
+    </div>
+
+    <div class="lang-content mr">
+      <p>
+        AgriNext वापरकर्त्यांच्या गोपनीयतेचा आदर करते. शेतीविषयक सल्ल्यासाठी
+        केवळ आवश्यक माहिती (नाव व प्रश्न) घेतली जाते. वैयक्तिक माहिती कोणालाही
+        दिली जात नाही.
+      </p>
+    </div>
+
+    <div class="lang-content hi">
+      <p>
+        AgriNext उपयोगकर्ताओं की गोपनीयता का सम्मान करता है। केवल आवश्यक
+        जानकारी (नाम और प्रश्न) एकत्र की जाती है। कोई भी व्यक्तिगत जानकारी
+        साझा नहीं की जाती।
+      </p>
+    </div>
+  </section>
+
+  <!-- TERMS OF USE -->
+  <section class="card">
+    <h2>📜 Terms of Use</h2>
+
+    <div class="lang-content en">
+      <p>
+        AgriNext is an advisory and educational platform for farmers.
+        All information and predictions are for reference only.
+        Users must verify details before applying them in real farming.
+      </p>
+    </div>
+
+    <div class="lang-content mr">
+      <p>
+        AgriNext हे शेतकऱ्यांसाठी मार्गदर्शक व्यासपीठ आहे.
+        दिलेली माहिती व अंदाज केवळ संदर्भासाठी आहेत.
+        प्रत्यक्ष वापरापूर्वी खात्री करणे आवश्यक आहे.
+      </p>
+    </div>
+
+    <div class="lang-content hi">
+      <p>
+        AgriNext एक कृषि मार्गदर्शन मंच है।
+        इसमें दी गई जानकारी केवल संदर्भ हेतु है।
+        वास्तविक उपयोग से पहले सत्यापन आवश्यक है।
+      </p>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  © 2025 AgriNext | Smart Farming for Better Tomorrow 🌱
+</footer>
+
+<script>
+function setLang(lang, btn) {
+  document.querySelectorAll('.lang-content').forEach(el => {
+    el.style.display = 'none';
+  });
+
+  document.querySelectorAll('.' + lang).forEach(el => {
+    el.style.display = 'block';
+  });
+
+  document.querySelectorAll('.lang-btn').forEach(b => {
+    b.classList.remove('active');
+  });
+
+  btn.classList.add('active');
+}
+</script>
+
+</body>
+</html>
