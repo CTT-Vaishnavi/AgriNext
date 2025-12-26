@@ -350,23 +350,179 @@ function downloadPDF() {
     /* ===============================
        HEADER
     ============================== */
-    doc.setFont("Times", "Bold");
-    doc.setFontSize(16);
-    doc.text("Eligible Government Scheme Report", 105, y, { align: "center" });
 
-    y += 10;
-    doc.setFont("Times", "Normal");
-    doc.setFontSize(11);
-    doc.text(
-      "AgriNext – Smart Government Scheme & Insurance Portal (Educational Project)",
-      105,
-      y,
-      { align: "center", maxWidth: 180 }
-    );
+// const logo = new Image();
+// logo.src = "../images/output-onlinepngtools (1).png"; // path to your icon image
 
-    y += 8;
-    doc.line(15, y, 195, y);
-    y += 10;
+//     // Add logo at top center
+// doc.addImage(logo, "PNG", 90, y, 30, 30); // x, y, width, height
+
+// y += 40; // space after logo
+//     doc.setFont("Times", "Bold");
+//     doc.setFontSize(16);
+//     doc.text("Eligible Government Scheme Report", 105, y, { align: "center" });
+
+//     y += 10;
+//     doc.setFont("Times", "Normal");
+//     doc.setFontSize(11);
+//     doc.text(
+//       "AgriNext – Smart Government Scheme & Insurance Portal (Educational Project)",
+//       105,
+//       y,
+//       { align: "center", maxWidth: 180 }
+//     );
+
+//     y += 8;
+//     doc.line(15, y, 195, y);
+//     y += 10;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// const logo = new Image();
+// logo.src = "../images/output-onlinepngtools (1).png";
+
+// // Header Y position
+// const headerY = y;
+
+// // Add logo (left side)
+// // doc.addImage(logo, "PNG", 20, headerY - 5, 25, 25); 
+// doc.addImage(logo, "PNG", 20, headerY - 5, 18, 18);
+
+// // logo x = 20
+
+// // Text starts after logo + 100px gap
+// const textX = 20 + 20 + 20; // logoX + logoWidth + gap
+
+// doc.setFont("Times", "Bold");
+// doc.setFontSize(16);
+// doc.text("Eligible Government Scheme Report", textX, headerY + 12);
+
+// // Move Y below header
+// y = headerY + 20;
+
+// doc.setFont("Times", "Normal");
+// doc.setFontSize(11);
+// doc.text(
+//   "AgriNext – Smart Government Scheme & Insurance Portal (Educational Project)",
+//   105,
+//   y,
+//   { align: "center", maxWidth: 180 }
+// );
+
+// y += 8;
+// doc.line(15, y, 195, y);
+// y += 10;
+
+
+
+
+
+
+
+
+
+
+
+
+
+const logo = new Image();
+logo.src = "../images/output-onlinepngtools (1).png";
+
+// Header base Y
+
+// const headerY = y;
+// // Logo size
+// const logoX = 20;
+// const logoY = headerY;
+// const logoSize = 18;
+
+// // Add logo
+// doc.addImage(logo, "PNG", logoX, logoY, logoSize, logoSize);
+
+// // 👉 20px gap after logo
+// const gap = 20;
+// const textX = logoX + logoSize + gap;
+
+// // 👉 Vertically center text relative to logo
+// // Text baseline ≈ logoY + (logoHeight / 2) + (fontSize / 3)
+// doc.setFont("Times", "Bold");
+// doc.setFontSize(16);
+// const textY = logoY + (logoSize / 2) + 4;
+// doc.text("Eligible Government Scheme Report", textX, textY);
+// // 🔽 reduced gap here
+// y = logoY + logoSize + 5;
+
+// doc.setFont("Times", "Normal");
+// doc.setFontSize(11);
+// doc.text(
+//   "AgriNext – Smart Government Scheme & Insurance Portal (Educational Project)",
+//   105,
+//   y,
+//   { align: "center", maxWidth: 180 }
+// );
+// y += 6;   // reduced line gap
+// doc.line(15, y, 195, y);
+// y += 8;
+
+
+// Page height
+const pageHeight = doc.internal.pageSize.getHeight();
+
+// 👉 5% top margin
+y = pageHeight * 0.05;
+
+const headerY = y;
+
+// Logo config
+const logoX = 20;
+const logoSize = 18;
+
+// Add logo
+doc.addImage(logo, "PNG", logoX, headerY, logoSize, logoSize);
+
+// 20px gap after logo
+const gap = 20;
+const textX = logoX + logoSize + gap;
+
+// Title
+doc.setFont("Times", "Bold");
+doc.setFontSize(16);
+
+// Vertically centered text
+const textY = headerY + (logoSize / 2) + 1;
+doc.text("Eligible Government Scheme Report", textX, textY);
+
+// Subtitle position (tight)
+y = headerY + logoSize - 1;
+
+doc.setFont("Times", "Normal");
+doc.setFontSize(11);
+doc.text(
+  "AgriNext – Smart Government Scheme & Insurance Portal (Educational Project)",
+  105,
+  y,
+  { align: "center", maxWidth: 180 }
+);
+
+// Divider line
+y += 6;
+doc.line(15, y, 195, y);
+y += 8;
 
     /* ===============================
        SCHEME INFORMATION
