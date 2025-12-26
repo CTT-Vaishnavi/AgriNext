@@ -640,93 +640,248 @@ const data = {
       },
       "Jalgaon": {
         "Jalgaon": [
-
+          { name: "Jalgaon Agro Store", address: "Main Rd, Jalgaon - 425001", phone: "+91-9123456900", whatsapp: "+919123456900", lat:21.7845, lon:75.5625 },
+          { name: "Green Fields Jalgaon", address: "Market Yard, Jalgaon", phone: "+91-9123456901", whatsapp: "+919123456901", lat:21.7860, lon:75.5650 },
+          { name: "Krushi Mitra Jalgaon", address: "Near Bus Stand, Jalgaon", phone: "+91-9123456902", whatsapp: "+919123456902", lat:21.7820, lon:75.5590 }
         ],
-        "Bhusawal": [],
-        "Chalisgaon": [],
-        "Raver": [],
-        "YaWal": []
+        "Bhusawal": [
+          { name: "Bhusawal Agro Hub", address: "Main Rd, Bhusawal - 425201", phone: "+91-9123456903", whatsapp: "+919123456903", lat:21.0300, lon:75.9500 },
+          { name: "Farmers' Choice Bhusawal", address: "Gandhi Market, Bhusawal", phone: "+91-9123456904", whatsapp: "+919123456904", lat:21.0320, lon:75.9550 },
+          { name: "Agro World Bhusawal", address: "Station Rd, Bhusawal", phone: "+91-9123456905", whatsapp: "+919123456905", lat:21.0280, lon:75.9450 }
+        ],
+        "Chalisgaon": [
+          { name: "Chalisgaon Agro Store", address: "Main Rd, Chalisgaon - 424101", phone: "+91-9123456906", whatsapp: "+919123456906", lat:21.1800, lon:75.0500 },
+          { name: "Green Leaf Chalisgaon", address: "Market Yard, Chalisgaon", phone: "+91-9123456907", whatsapp: "+919123456907", lat:21.1820, lon:75.0550 },
+          { name: "Krushi Kendra Chalisgaon", address: "Near Bus Stand, Chalisgaon", phone: "+91-9123456908", whatsapp: "+919123456908", lat:21.1780, lon:75.0480 }
+        ],
+        "Raver": [
+          { name: "Raver Agro Hub", address: "Main Rd, Raver - 424202", phone: "+91-9123456909", whatsapp: "+919123456909", lat:21.2500, lon:75.4000 },
+          { name: "Farmers' Choice Raver", address: "Market Yard, Raver", phone: "+91-9123456910", whatsapp: "+919123456910", lat:21.2520, lon:75.4050 }
+        ],
+        "Yawal": [
+          { name: "Yawal Agro Store", address: "Main Rd, Yawal - 424401", phone: "+91-9123456911", whatsapp: "+919123456911", lat:21.3500, lon:75.9000 },
+          { name: "Green Fields Yawal", address: "Gandhi Market, Yawal", phone: "+91-9123456912", whatsapp: "+919123456912", lat:21.3520, lon:75.9050 }
+        ]
       },
       "Kolhapur": {
-        "Kolhapur": [],
-        "Panhala": [],
-        "Hatkanangale": [],
-        "Gadhinglaj": []
+        "Kolhapur": [
+          { name: "Kolhapur Agro Hub", address: "Main Rd, Kolhapur - 416001", phone: "+91-9123456913", whatsapp: "+919123456913", lat:16.7050, lon:74.2300 },
+          { name: "Farmers' Choice Kolhapur", address: "Market Yard, Kolhapur", phone: "+91-9123456914", whatsapp: "+919123456914", lat:16.7070, lon:74.2350 }
+        ],
+        "Panhala": [
+          { name: "Panhala Agro Store", address: "Main Rd, Panhala - 416113", phone: "+91-9123456915", whatsapp: "+919123456915", lat:16.7800, lon:74.1500 },
+          { name: "Green Fields Panhala", address: "Gandhi Market, Panhala", phone: "+91-9123456916", whatsapp: "+919123456916", lat:16.7820, lon:74.1550 }
+        ],
+        "Hatkanangale": [
+          { name: "Hatkanangale Agro", address: "Main Rd, Hatkanangale - 416109", phone: "+91-9123456917", whatsapp: "+919123456917", lat:16.5800, lon:73.9500 },
+          { name: "Farmers' Hub Hatkanangale", address: "Market Yard, Hatkanangale", phone: "+91-9123456918", whatsapp: "+919123456918", lat:16.5820, lon:73.9550 }
+        ],
+        "Gadhinglaj": [
+          { name: "Gadhinglaj Agro Store", address: "Main Rd, Gadhinglaj - 416503", phone: "+91-9123456919", whatsapp: "+919123456919", lat:16.2500, lon:74.5000 },
+          { name: "Green Leaf Gadhinglaj", address: "Gandhi Market, Gadhinglaj", phone: "+91-9123456920", whatsapp: "+919123456920", lat:16.2520, lon:74.5050 }
+        ]
       },
       "Dhule": {
-        "Dhule": [],
-        "Shirpur": [],
-        "Sakri": [],
-        "Nardana": []
+        "Dhule": [
+          { name: "Dhule Agro Hub", address: "Main Rd, Dhule - 424001", phone: "+91-9123456921", whatsapp: "+919123456921", lat:21.0297, lon:74.8400 },
+          { name: "Farmers' Choice Dhule", address: "Market Yard, Dhule", phone: "+91-9123456922", whatsapp: "+919123456922", lat:21.0317, lon:74.8450 }
+        ],
+        "Shirpur": [
+          { name: "Shirpur Agro Store", address: "Main Rd, Shirpur - 425405", phone: "+91-9123456923", whatsapp: "+919123456923", lat:21.0500, lon:74.4800 },
+          { name: "Green Fields Shirpur", address: "Gandhi Market, Shirpur", phone: "+91-9123456924", whatsapp: "+919123456924", lat:21.0520, lon:74.4850 }
+        ],
+        "Sakri": [
+          { name: "Sakri Agro Hub", address: "Main Rd, Sakri - 424306", phone: "+91-9123456925", whatsapp: "+919123456925", lat:21.3500, lon:74.3000 },
+          { name: "Farmers' Choice Sakri", address: "Market Yard, Sakri", phone: "+91-9123456926", whatsapp: "+919123456926", lat:21.3520, lon:74.3050 }
+        ],
+        "Nardana": [
+          { name: "Nardana Agro Store", address: "Main Rd, Nardana - 424410", phone: "+91-9123456927", whatsapp: "+919123456927", lat:21.2000, lon:74.6500 },
+          { name: "Green Fields Nardana", address: "Gandhi Market, Nardana", phone: "+91-9123456928", whatsapp: "+919123456928", lat:21.2020, lon:74.6550 }
+        ]
       },
       "Gondia":{
-        "Gondia": [],
-        "Tirora": [],
-        "Deori": [],
-        "Arjuni Morgaon": []
+        "Gondia": [
+          { name: "Gondia Agro Hub", address: "Main Rd, Gondia - 441614", phone: "+91-9123456929", whatsapp: "+919123456929", lat:21.4686, lon:80.1945 },
+          { name: "Farmers' Choice Gondia", address: "Market Yard, Gondia", phone: "+91-9123456930", whatsapp: "+919123456930", lat:21.4706, lon:80.1995 }
+        ],
+        "Tirora": [
+          { name: "Tirora Agro Store", address: "Main Rd, Tirora - 441848", phone: "+91-9123456931", whatsapp: "+919123456931", lat:21.4200, lon:80.5000 },
+          { name: "Green Fields Tirora", address: "Gandhi Market, Tirora", phone: "+91-9123456932", whatsapp: "+919123456932", lat:21.4220, lon:80.5050 }
+        ],
+        "Deori": [
+          { name: "Deori Agro Hub", address: "Main Rd, Deori - 441862", phone: "+91-9123456933", whatsapp: "+919123456933", lat:21.6000, lon:80.4000 },
+          { name: "Farmers' Choice Deori", address: "Market Yard, Deori", phone: "+91-9123456934", whatsapp: "+919123456934", lat:21.6020, lon:80.4050 }
+        ],
+        "Arjuni Morgaon": [
+          { name: "Arjuni Morgaon Agro", address: "Main Rd, Arjuni Morgaon - 441912", phone: "+91-9123456935", whatsapp: "+919123456935", lat:21.2000, lon:80.1000 },
+          { name: "Green Fields Arjuni", address: "Gandhi Market, Arjuni Morgaon", phone: "+91-9123456936", whatsapp: "+919123456936", lat:21.2020, lon:80.1050 }
+        ]
       },
       "Akola":{
-        "Akola": [],
-        "Murtizapur": [],
-        "Patur": [],
-        "Barshitakli": []
+        "Akola": [
+          { name: "Akola Agro Hub", address: "Main Rd, Akola - 444001", phone: "+91-9123456937", whatsapp: "+919123456937", lat:20.7158, lon:77.0745 },
+          { name: "Farmers' Choice Akola", address: "Market Yard, Akola", phone: "+91-9123456938", whatsapp: "+919123456938", lat:20.7178, lon:77.0795 }
+        ],
+        "Murtizapur": [
+          { name: "Murtizapur Agro Store", address: "Main Rd, Murtizapur - 444107", phone: "+91-9123456939", whatsapp: "+919123456939", lat:20.5500, lon:77.7500 },
+          { name: "Green Fields Murtizapur", address: "Gandhi Market, Murtizapur", phone: "+91-9123456940", whatsapp: "+919123456940", lat:20.5520, lon:77.7550 }
+        ],
+        "Patur": [
+          { name: "Patur Agro Hub", address: "Main Rd, Patur - 444205", phone: "+91-9123456941", whatsapp: "+919123456941", lat:20.9000, lon:77.3000 },
+          { name: "Farmers' Choice Patur", address: "Market Yard, Patur", phone: "+91-9123456942", whatsapp: "+919123456942", lat:20.9020, lon:77.3050 }
+        ],
+        "Barshitakli": [
+          { name: "Barshitakli Agro Store", address: "Main Rd, Barshitakli - 444304", phone: "+91-9123456943", whatsapp: "+919123456943", lat:20.3500, lon:77.4500 },
+          { name: "Green Fields Barshitakli", address: "Gandhi Market, Barshitakli", phone: "+91-9123456944", whatsapp: "+919123456944", lat:20.3520, lon:77.4550 }
+        ]
       },
       "Beed":{
-        "Beed": [],
-        "Ashti": [],
-        "Kaij": [],
-        "Wadwani": []
+        "Beed": [
+          { name: "Beed Agro Hub", address: "Main Rd, Beed - 431122", phone: "+91-9123456945", whatsapp: "+919123456945", lat:18.9922, lon:76.7836 },
+          { name: "Farmers' Choice Beed", address: "Market Yard, Beed", phone: "+91-9123456946", whatsapp: "+919123456946", lat:18.9942, lon:76.7886 }
+        ],
+        "Ashti": [
+          { name: "Ashti Agro Store", address: "Main Rd, Ashti - 431209", phone: "+91-9123456947", whatsapp: "+919123456947", lat:18.8500, lon:77.0000 },
+          { name: "Green Fields Ashti", address: "Gandhi Market, Ashti", phone: "+91-9123456948", whatsapp: "+919123456948", lat:18.8520, lon:77.0050 }
+        ],
+        "Kaij": [
+          { name: "Kaij Agro Hub", address: "Main Rd, Kaij - 431203", phone: "+91-9123456949", whatsapp: "+919123456949", lat:19.0500, lon:76.4000 },
+          { name: "Farmers' Choice Kaij", address: "Market Yard, Kaij", phone: "+91-9123456950", whatsapp: "+919123456950", lat:19.0520, lon:76.4050 }
+        ],
+        "Wadwani": [
+          { name: "Wadwani Agro Store", address: "Main Rd, Wadwani - 431217", phone: "+91-9123456951", whatsapp: "+919123456951", lat:18.7000, lon:76.8500 },
+          { name: "Green Fields Wadwani", address: "Gandhi Market, Wadwani", phone: "+91-9123456952", whatsapp: "+919123456952", lat:18.7020, lon:76.8550 }
+        ]
       },
       "Bandara":{
-        "Lakhani": [],
-        "Tumsar": [],
-        "Bhandara": [],
-        "Sakoli": []
+        "Lakhani": [
+          { name: "Lakhani Agro Store", address: "Main Rd, Lakhani", phone: "+91-9000000001", whatsapp: "+919000000001", lat:20.0000, lon:79.0000 }
+        ],
+        "Tumsar": [
+          { name: "Tumsar Krushi Kendra", address: "Market Rd, Tumsar", phone: "+91-9000000002", whatsapp: "+919000000002", lat:20.1000, lon:79.1000 }
+        ],
+        "Bhandara": [
+          { name: "Bhandara Agro Hub", address: "Station Rd, Bhandara", phone: "+91-9000000003", whatsapp: "+919000000003", lat:21.1700, lon:79.6500 }
+        ],
+        "Sakoli": [
+          { name: "Sakoli Farmers' Mart", address: "Main Rd, Sakoli", phone: "+91-9000000004", whatsapp: "+919000000004", lat:21.2000, lon:79.7000 }
+        ]
       },
       "Chadrapur":{
-        "Chandrapur": [],
-        "Ballarpur": [],
-        "Warora": [],
-        "Rajura": []
+        "Chandrapur": [
+          { name: "Chandrapur Agro Store", address: "Main Rd, Chandrapur", phone: "+91-9000000005", whatsapp: "+919000000005", lat:19.9500, lon:79.3000 }
+        ],
+        "Ballarpur": [
+          { name: "Ballarpur Krushi Kendra", address: "Market Rd, Ballarpur", phone: "+91-9000000006", whatsapp: "+919000000006", lat:20.0000, lon:79.2000 }
+        ],
+        "Warora": [
+          { name: "Warora Agro Hub", address: "Station Rd, Warora", phone: "+91-9000000007", whatsapp: "+919000000007", lat:20.0500, lon:79.2500 }
+        ],
+        "Rajura": [
+          { name: "Rajura Farmers' Mart", address: "Main Rd, Rajura", phone: "+91-9000000008", whatsapp: "+919000000008", lat:20.1000, lon:79.3500 }
+        ]
       },
       "Gadchiroli":{
-        "Gadchiroli": [],
-        "Aheri": [],
-        "Etapalli": [],
-        "Chamorshi": []
+        "Gadchiroli": [
+          { name: "Gadchiroli Agro Store", address: "Main Rd, Gadchiroli", phone: "+91-9000000009", whatsapp: "+919000000009", lat:20.1000, lon:80.0800 }
+        ],
+        "Aheri": [
+          { name: "Aheri Krushi Kendra", address: "Market Rd, Aheri", phone: "+91-9000000010", whatsapp: "+919000000010", lat:20.2000, lon:80.1800 }
+        ],
+        "Etapalli": [
+          { name: "Etapalli Agro Hub", address: "Station Rd, Etapalli", phone: "+91-9000000011", whatsapp: "+919000000011", lat:20.3000, lon:80.2800 }
+        ],
+        "Chamorshi": [
+          { name: "Chamorshi Farmers' Mart", address: "Main Rd, Chamorshi", phone: "+91-9000000012", whatsapp: "+919000000012", lat:20.4000, lon:80.3800 }
+        ]
       },
       "Jalna":{
-        "Jalna": [],
-        "Bhokardan": [],
-        "Ambad": [],
-        "Badnapur": []
+        "Jalna": [
+          { name: "Jalna Agro Store", address: "Main Rd, Jalna", phone: "+91-9000000013", whatsapp: "+919000000013", lat:19.8200, lon:75.8800 }
+        ],
+        "Bhokardan": [
+          { name: "Bhokardan Krushi Kendra", address: "Market Rd, Bhokardan", phone: "+91-9000000014", whatsapp: "+919000000014", lat:19.9000, lon:75.9200 }
+        ],
+        "Ambad": [
+          { name: "Ambad Agro Hub", address: "Station Rd, Ambad", phone: "+91-9000000015", whatsapp: "+919000000015", lat:19.9400, lon:75.9500 }
+        ],
+        "Badnapur": [
+          { name: "Badnapur Farmers' Mart", address: "Main Rd, Badnapur", phone: "+91-9000000016", whatsapp: "+919000000016", lat:19.9600, lon:75.9800 }
+        ]
       },
       "Nanded":{
-        "Nanded": [],
-        "Deglur": [],
-        "Mukhed": [],
-        "Himayatnagar": []
+        "Nanded": [
+          { name: "Nanded Agro Store", address: "Main Rd, Nanded", phone: "+91-9000000017", whatsapp: "+919000000017", lat:19.1500, lon:77.3000 }
+        ],
+        "Deglur": [
+          { name: "Deglur Krushi Kendra", address: "Market Rd, Deglur", phone: "+91-9000000018", whatsapp: "+919000000018", lat:18.6000, lon:77.6000 }
+        ],
+        "Mukhed": [
+          { name: "Mukhed Agro Hub", address: "Station Rd, Mukhed", phone: "+91-9000000019", whatsapp: "+919000000019", lat:18.7000, lon:77.7000 }
+        ],
+        "Himayatnagar": [
+          { name: "Himayatnagar Farmers' Mart", address: "Main Rd, Himayatnagar", phone: "+91-9000000020", whatsapp: "+919000000020", lat:18.8000, lon:77.8000 }
+        ]
       },
       "Mumbai":{
-        "Mumbai City":[],
-        "Mumbai Suburban":[],
-        "Andheri":[],
-        "Bandra":[],
+        "Mumbai City":[
+          { name: "Mumbai City Agro", address: "Fort, Mumbai - 400001", phone: "+91-9000000021", whatsapp: "+919000000021", lat:18.9310, lon:72.8336 }
+        ],
+        "Mumbai Suburban":[
+          { name: "Mumbai Suburban Krushi Kendra", address: "Borivali, Mumbai", phone: "+91-9000000022", whatsapp: "+919000000022", lat:19.2183, lon:72.8567 }
+        ],
+        "Andheri":[
+          { name: "Andheri Agro Hub", address: "Andheri West, Mumbai", phone: "+91-9000000023", whatsapp: "+919000000023", lat:19.1190, lon:72.8465 }
+        ],
+        "Bandra":[
+          { name: "Bandra Farmers' Mart", address: "Bandra West, Mumbai", phone: "+91-9000000024", whatsapp: "+919000000024", lat:19.0550, lon:72.8400 }
+        ]
       },
       "Dharashiv":{
-        "Dharashiv":[],
-        "Osmanabad":[],
-        "Tuljapur":[],
-        "Lohara":[],
+        "Dharashiv":[
+          { name: "Dharashiv Agro Store", address: "Main Rd, Dharashiv", phone: "+91-9000000025", whatsapp: "+919000000025", lat:18.1667, lon:76.1333 }
+        ],
+        "Osmanabad":[
+          { name: "Osmanabad Krushi Kendra", address: "Market Rd, Osmanabad", phone: "+91-9000000026", whatsapp: "+919000000026", lat:18.1660, lon:76.0710 }
+        ],
+        "Tuljapur":[
+          { name: "Tuljapur Agro Hub", address: "Station Rd, Tuljapur", phone: "+91-9000000027", whatsapp: "+919000000027", lat:18.0333, lon:76.3333 }
+        ],
+        "Lohara":[
+          { name: "Lohara Farmers' Mart", address: "Main Rd, Lohara", phone: "+91-9000000028", whatsapp: "+919000000028", lat:18.2167, lon:76.2167 }
+        ]
       },
       "Palghar":{
-        "Palghar":[],
+        "Palghar":[
+          { name: "Palghar Agro Store", address: "Main Rd, Palghar", phone: "+91-9000000029", whatsapp: "+919000000029", lat:19.6870, lon:72.7720 }
+        ]
 
       },
-      "Ratnagiri":{},
-      "Sindhudurg":{},
-      "Washim":{},
-      "Satara":{}
+      "Ratnagiri":{
+        "Ratnagiri":[ { name: "Ratnagiri Agro Hub", address: "Main Rd, Ratnagiri", phone: "+91-9000000030", whatsapp: "+919000000030", lat:16.9930, lon:73.3000 } ]
+      },
+      "Sindhudurg":{
+        "Sindhudurg":[ { name: "Sindhudurg Agro Store", address: "Main Rd, Sindhudurg", phone: "+91-9000000031", whatsapp: "+919000000031", lat:16.1000, lon:73.5000 } ]
+      },
+      "Washim":{
+        "Washim":[ { name: "Washim Krushi Kendra", address: "Main Rd, Washim", phone: "+91-9000000032", whatsapp: "+919000000032", lat:20.1000, lon:76.1000 } ],
+        "Mangrulpir":[ { name: "Mangrulpir Agro Store", address: "Main Rd, Mangrulpir", phone: "+91-9000000040", whatsapp: "+919000000040", lat:20.1500, lon:76.1500 } ],
+        "Karanja":[ { name: "Karanja Krushi Kendra", address: "Market Rd, Karanja", phone: "+91-9000000041", whatsapp: "+919000000041", lat:20.2000, lon:76.2000 } ],
+        "Manora":[ { name: "Manora Agro Hub", address: "Station Rd, Manora", phone: "+91-9000000042", whatsapp: "+919000000042", lat:20.2500, lon:76.2500 } ],
+        "Risod":[ { name: "Risod Farmers' Mart", address: "Main Rd, Risod", phone: "+91-9000000043", whatsapp: "+919000000043", lat:20.3000, lon:76.3000 } ],
+        "Shirala":[ { name: "Shirala Agro Store", address: "Main Rd, Shirala", phone: "+91-9000000044", whatsapp: "+919000000044", lat:17.0000, lon:74.5000 } ],
+        "Malegaon":[ { name: "Malegaon Krushi Kendra", address: "Market Rd, Malegaon", phone: "+91-9000000045", whatsapp: "+919000000045", lat:20.5000, lon:76.5000 } ]
+      },
+      "Satara":{
+        "Satara":[ { name: "Satara Farmers' Mart", address: "Main Rd, Satara", phone: "+91-9000000033", whatsapp: "+919000000033", lat:17.6800, lon:73.9900 } ],
+        "Karad":[ { name: "Karad Agro Store", address: "Main Rd, Karad", phone: "+91-9000000046", whatsapp: "+919000000046", lat:17.2800, lon:74.1800 } ],
+        "Wai":[ { name: "Wai Krushi Kendra", address: "Market Rd, Wai", phone: "+91-9000000047", whatsapp: "+919000000047", lat:17.9500, lon:73.8800 } ],
+        "Phaltan":[ { name: "Phaltan Agro Hub", address: "Station Rd, Phaltan", phone: "+91-9000000048", whatsapp: "+919000000048", lat:17.9700, lon:74.4700 } ],
+        "Khandala":[ { name: "Khandala Farmers' Mart", address: "Main Rd, Khandala", phone: "+91-9000000049", whatsapp: "+919000000049", lat:18.0200, lon:73.6500 } ],
+        "Mahabaleshwar":[ { name: "Mahabaleshwar Agro Store", address: "Main Rd, Mahabaleshwar", phone: "+91-9000000050", whatsapp: "+919000000050", lat:17.9230, lon:73.6580 } ],
+        "Jaoli":[ { name: "Jaoli Krushi Kendra", address: "Market Rd, Jaoli", phone: "+91-9000000051", whatsapp: "+919000000051", lat:17.1500, lon:73.8000 } ],
+        "Koregaon":[ { name: "Koregaon Agro Hub", address: "Station Rd, Koregaon", phone: "+91-9000000052", whatsapp: "+919000000052", lat:17.4500, lon:74.0000 } ]
+      }
     },
     "Karnataka": {
       "Bengaluru Urban": {
@@ -757,7 +912,9 @@ const data = {
           { name: "Agro World Mysuru", address: "Chamundi Hill Rd, Mysuru", phone: "+91-4433221100", whatsapp: "+914433221100", lat:12.2950, lon:76.6500 },
           { name: "Rural Agro Center Mysuru", address: "Hunsur Rd, Mysuru", phone: "+91-3322110099", whatsapp: "+913322110099", lat:12.2800, lon:76.6200 }
         ],
-        "Nanjangud": []
+        "Nanjangud": [
+          { name: "Nanjangud Agro Store", address: "Main Rd, Nanjangud - 571301", phone: "+91-9000000034", whatsapp: "+919000000034", lat:12.1318, lon:76.7496 }
+        ]
       },
       "Dharwad": {
         "Dharwad": [
@@ -787,6 +944,63 @@ const data = {
 /* -----------------------------
    Elements
 ----------------------------- */
+// Ensure every dealer object has `pincode` and `type` at runtime
+(function enrichDealersWithPincodeAndType(){
+  const talukaZipMap = {
+    "Buldana":"443001","Chikhli":"443201","Khamgaon":"444303","Nandura":"444203","Malkapur":"443101",
+    "Jalgaon":"425001","Bhusawal":"425201","Chalisgaon":"424101","Raver":"424202","Yawal":"424401",
+    "Kolhapur":"416001","Panhala":"416113","Hatkanangale":"416109","Gadhinglaj":"416503",
+    "Dhule":"424001","Shirpur":"425405","Sakri":"424306","Nardana":"424410",
+    "Gondia":"441614","Tirora":"441848","Deori":"441862","Arjuni Morgaon":"441912",
+    "Akola":"444001","Murtizapur":"444107","Patur":"444205","Barshitakli":"444304",
+    "Beed":"431122","Ashti":"431209","Kaij":"431203","Wadwani":"431217",
+    "Satara":"415001","Karad":"415110","Wai":"412803","Phaltan":"415523",
+    "Washim":"444505","Mangrulpir":"444505","Karanja":"444105","Manora":"444105"
+  };
+
+  const typeKeywords = [
+    ["Hub","Wholesale"],["Kendra","Distributor"],["Supplies","Retail"],["Fertilizer","Fertilizer Dealer"],
+    ["Solutions","Agro Solutions"],["Mart","Retail"],["Seva","Service Center"],["World","Multi-purpose"],["Choice","Retail"]
+  ];
+
+  let updated = 0, total = 0;
+  try {
+    const states = data && data.dealers ? Object.keys(data.dealers) : [];
+    states.forEach(st => {
+      const districts = data.dealers[st] || {};
+      Object.keys(districts).forEach(di => {
+        const talukas = districts[di] || {};
+        Object.keys(talukas).forEach(ta => {
+          const list = talukas[ta] || [];
+          if (!Array.isArray(list)) return;
+          list.forEach(dealer => {
+            total++;
+            // add pincode from taluka map if missing
+            if (!dealer.pincode) {
+              const p = talukaZipMap[ta] || talukaZipMap[di] || 'N/A';
+              dealer.pincode = p;
+              updated++;
+            }
+            // add type inferred from name if missing
+            if (!dealer.type) {
+              const name = (dealer.name || '').toString();
+              let inferred = 'Fertilizer Dealer';
+              for (const [kw, t] of typeKeywords) {
+                if (name.indexOf(kw) !== -1) { inferred = t; break; }
+              }
+              dealer.type = inferred;
+              updated++;
+            }
+          });
+        });
+      });
+    });
+  } catch (e) {
+    console.warn('Failed to enrich dealers:', e);
+  }
+  console.log(`Dealer enrichment: updated ${updated} fields across ${total} dealers.`);
+})();
+
 const stateSel = document.getElementById('state');
 const districtSel = document.getElementById('district');
 const talukaSel = document.getElementById('taluka');
@@ -801,6 +1015,11 @@ const autoBtn = document.getElementById('autoDetect');
 const downloadCSV = document.getElementById('downloadCSV');
 const downloadPDF = document.getElementById('downloadPDF');
 const themeBtn = document.getElementById('themeBtn');
+
+// Disable mic button early if SpeechRecognition API not available
+if (!(window.SpeechRecognition || window.webkitSpeechRecognition)) {
+  micBtn && (micBtn.disabled = true);
+}
 
 let map = null;
 let mapMarkers = [];
@@ -937,15 +1156,70 @@ function downloadCSVFile() {
   const list = safeGet(data, ['dealers', st, di, ta]) || [];
   if(!list.length) return alert('No dealers to export');
 
-  const rows = [['Name','Address','Phone']];
-  list.forEach(d => rows.push([d.name, d.address, d.phone]));
+  const rows = [['Name','Address','Phone','WhatsApp','Pincode','Type']];
+  list.forEach(d => rows.push([d.name, d.address, d.phone, d.whatsapp || '', d.pincode || '', d.type || '']));
   const csv = rows.map(r => r.map(c => `"${String(c||'').replace(/"/g,'""')}"`).join(',')).join('\n');
   const blob = new Blob([csv], { type:'text/csv' });
   const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = `${st}_${di}_${ta}_dealers.csv`; a.click();
 }
 
 function printPDF() {
-  window.print();
+  const st = stateSel.value, di = districtSel.value, ta = talukaSel.value;
+  const list = safeGet(data, ['dealers', st, di, ta]) || [];
+  
+  if(!list.length) return alert('No dealers to print');
+  
+  let printContent = `
+    <html>
+      <head>
+        <title>${st} - ${di} - ${ta} Dealers</title>
+        <style>
+          body { font-family: Arial, sans-serif; margin: 20px; }
+          h1 { text-align: center; color: #2c5f2d; }
+          .dealer { 
+            margin: 15px 0; 
+            padding: 12px; 
+            border: 1px solid #ddd; 
+            border-radius: 5px;
+            background: #f9f9f9;
+          }
+          .dealer-name { font-weight: bold; font-size: 16px; color: #2c5f2d; }
+          .dealer-info { margin-top: 8px; line-height: 1.6; }
+          .label { font-weight: bold; color: #555; }
+          // .page-break { page-break-after: always; }
+        </style>
+      </head>
+      <body>
+        <h1>${st} - ${di} - ${ta}</h1>
+        <h2>Fertilizer Dealers List</h2>
+        <hr>
+  `;
+  
+  list.forEach((d, idx) => {
+    printContent += `
+      <div class="dealer">
+        <div class="dealer-name">${idx + 1}. ${escapeHtml(d.name)}</div>
+        <div class="dealer-info">
+          <div><span class="label">Address:</span> ${escapeHtml(d.address)}</div>
+          <div><span class="label">Phone:</span> ${escapeHtml(d.phone)}</div>
+          <div><span class="label">WhatsApp:</span> ${escapeHtml(d.whatsapp || 'N/A')}</div>
+          <div><span class="label">Pincode:</span> ${escapeHtml(d.pincode || 'N/A')}</div>
+          <div><span class="label">Type:</span> ${escapeHtml(d.type || 'N/A')}</div>
+        </div>
+      </div>
+    `;
+    if ((idx + 1) % 5 === 0) printContent += '<div class="page-break"></div>';
+  });
+  
+  printContent += `
+      </body>
+    </html>
+  `;
+  
+  const printWindow = window.open('', '', 'width=800,height=600');
+  printWindow.document.write(printContent);
+  printWindow.document.close();
+  setTimeout(() => printWindow.print(), 250);
 }
 
 /* -----------------------------
@@ -958,7 +1232,7 @@ function initMapIfAvailable() {
     // optionally add sample markers for visible dealers
   } else {
     // google maps not loaded or API key missing — show fallback message
-    document.getElementById('map').textContent = '🌍📍🌍';
+    document.getElementById('map').textContent = '🌍';
   }
 }
 
@@ -988,21 +1262,31 @@ function autoDetectLocation() {
 ----------------------------- */
 function startVoiceSearch() {
   const Speech = window.SpeechRecognition || window.webkitSpeechRecognition;
-  if (!Speech) return alert('SpeechRecognition not supported in this browser');
-  const rec = new Speech();
-  rec.lang = 'en-IN';
-  rec.interimResults = false;
-  rec.maxAlternatives = 1;
-  rec.onresult = (e) => {
-    const text = e.results[0][0].transcript || '';
-    searchInput.value = text;
-    showDealers();
-  };
-  rec.onerror = (ev) => {
-    console.error('Speech error', ev);
-    alert('Voice recognition error');
-  };
-  rec.start();
+  if (!Speech) {
+    micBtn && (micBtn.disabled = true);
+    return alert('SpeechRecognition not supported in this browser or insecure origin. Use Chrome/Edge on HTTPS or localhost.');
+  }
+  try {
+    const rec = new Speech();
+    rec.lang = 'en-IN';
+    rec.interimResults = false;
+    rec.maxAlternatives = 1;
+    rec.onresult = (e) => {
+      const text = (e.results && e.results[0] && e.results[0][0] && e.results[0][0].transcript) ? e.results[0][0].transcript : '';
+      searchInput.value = text;
+      showDealers();
+    };
+    rec.onerror = (ev) => {
+      console.error('SpeechRecognition error', ev);
+      const detail = ev && (ev.error || ev.message) ? (ev.error || ev.message) : JSON.stringify(ev);
+      alert('Voice recognition error: ' + detail);
+    };
+    rec.onend = () => { console.log('SpeechRecognition ended'); };
+    rec.start();
+  } catch (err) {
+    console.error('Failed to start SpeechRecognition', err);
+    alert('Unable to start voice recognition: ' + (err && (err.message || err.name) ? (err.message || err.name) : 'unknown error'));
+  }
 }
 
 /* -----------------------------
