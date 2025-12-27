@@ -216,3 +216,27 @@ body{
       font-size: 12px;
     }
   }
+
+
+  .home-btn {
+    position: absolute;
+    left: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    text-decoration: none;
+    color: #fff;
+    background: rgba(255,255,255,0.15);
+    padding: 8px 14px;
+    border-radius: 8px;
+    font-size: 14px;
+    transition: 0.3s ease;
+}
+
+.home-btn i {
+    margin-right: 6px;
+}
+
+.home-btn:hover {
+    background: #fff;
+    color: #1e3c72;
+}
