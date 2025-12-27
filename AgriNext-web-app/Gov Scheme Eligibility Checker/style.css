@@ -946,3 +946,73 @@ body.dark .dark-toggle{
         opacity: 0;
     }
 }
+/* ===============================
+   Government Official Alert
+================================ */
+.gov-alert-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.45);
+  display: none;
+  align-items: baseline;
+  justify-content: center;
+  z-index: 10000;
+}
+
+.gov-alert-box {
+  width: 380px;
+  max-width: 92%;
+  background: #ffffff;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 20px 45px rgba(0,0,0,0.3);
+  animation: govFade 0.25s ease;
+  border: 1px solid #dbeafe;
+}
+
+.gov-alert-header {
+  background: linear-gradient(90deg,#0f766e,#115e59);
+  color: #fff;
+  padding: 12px 16px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 600;
+  font-size: 15px;
+}
+
+.gov-emblem {
+  font-size: 18px;
+}
+
+.gov-alert-body {
+  padding: 18px;
+  font-size: 14px;
+  color: #1f2937;
+  line-height: 1.6;
+}
+
+.gov-alert-footer {
+  padding: 12px 16px;
+  background: #f8fafc;
+  text-align: right;
+}
+
+.gov-alert-footer button {
+  padding: 6px 18px;
+  background: #0f766e;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.gov-alert-footer button:hover {
+  background: #115e59;
+}
+
+@keyframes govFade {
+  from { opacity: 0; transform: translateY(-8px); }
+  to { opacity: 1; transform: translateY(0); }
+}

@@ -316,7 +316,7 @@ function calculatePremium() {
   const premiumBox = document.getElementById("premiumResult");
 
   if (!d || !sum) {
-    alert(LANG[CURRENT_LANG].alert);
+showGovAlert(LANG[CURRENT_LANG].alert);
     return;
   }
 
@@ -652,7 +652,7 @@ function checkEligibility() {
   const resultBox = document.getElementById("results");
 
   if (!c || !i) {
-    alert(LANG[CURRENT_LANG].alert);
+showGovAlert(LANG[CURRENT_LANG].alert);
     return;
   }
 
@@ -829,3 +829,12 @@ document.getElementById("callSupport").addEventListener("click", () => {
     window.location.href = `tel:${phoneNumber}`;
   }
 });
+
+function showGovAlert(message) {
+  document.getElementById("govAlertMsg").innerText = message;
+  document.getElementById("govAlert").style.display = "flex";
+}
+
+function closeGovAlert() {
+  document.getElementById("govAlert").style.display = "none";
+}
