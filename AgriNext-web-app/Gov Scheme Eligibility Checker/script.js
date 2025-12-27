@@ -331,202 +331,71 @@ showGovAlert(LANG[CURRENT_LANG].alert);
   `;
 }
 
+
 function downloadPDF() {
-   if (!crop.value || !irrigation.value) {
+  if (!crop.value || !irrigation.value) {
     alert("Please check eligibility first");
     return;
   }
 
-  moveToPDF();
+  const { jsPDF } = window.jspdf;
+  const doc = new jsPDF("p", "mm", "a4");
 
-  // ⚡ UI ko free karne ke liye
-  setTimeout(() => {
+  // ===============================
+  // BACKGROUND LOGO (WATERMARK)
+  // ===============================
+  const logo = new Image();
+  logo.src = "../images/output-onlinepngtools (1).png";
 
-    const { jsPDF } = window.jspdf;
-    const doc = new jsPDF("p", "mm", "a4");
+  logo.onload = () => {
 
+    function addBackgroundLogo() {
+      const pageWidth = doc.internal.pageSize.getWidth();
+      const pageHeight = doc.internal.pageSize.getHeight();
+
+      const imgWidth = 120;
+      const imgHeight = 120;
+
+      const x = (pageWidth - imgWidth) / 2;
+      const y = (pageHeight - imgHeight) / 2;
+
+      doc.saveGraphicsState();
+      doc.setGState(new doc.GState({ opacity: 0.08 })); // 🔥 watermark opacity
+      doc.addImage(logo, "PNG", x, y, imgWidth, imgHeight);
+      doc.restoreGraphicsState();
+    }
+
+    // ✅ Add watermark
+    addBackgroundLogo();
+
+    // ===============================
+    // HEADER
+    // ===============================
     let y = 20;
-
-    /* ===============================
-       HEADER
-    ============================== */
-
-// const logo = new Image();
-// logo.src = "../images/output-onlinepngtools (1).png"; // path to your icon image
-
-//     // Add logo at top center
-// doc.addImage(logo, "PNG", 90, y, 30, 30); // x, y, width, height
-
-// y += 40; // space after logo
-//     doc.setFont("Times", "Bold");
-//     doc.setFontSize(16);
-//     doc.text("Eligible Government Scheme Report", 105, y, { align: "center" });
-
-//     y += 10;
-//     doc.setFont("Times", "Normal");
-//     doc.setFontSize(11);
-//     doc.text(
-//       "AgriNext – Smart Government Scheme & Insurance Portal (Educational Project)",
-//       105,
-//       y,
-//       { align: "center", maxWidth: 180 }
-//     );
-
-//     y += 8;
-//     doc.line(15, y, 195, y);
-//     y += 10;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// const logo = new Image();
-// logo.src = "../images/output-onlinepngtools (1).png";
-
-// // Header Y position
-// const headerY = y;
-
-// // Add logo (left side)
-// // doc.addImage(logo, "PNG", 20, headerY - 5, 25, 25); 
-// doc.addImage(logo, "PNG", 20, headerY - 5, 18, 18);
-
-// // logo x = 20
-
-// // Text starts after logo + 100px gap
-// const textX = 20 + 20 + 20; // logoX + logoWidth + gap
-
-// doc.setFont("Times", "Bold");
-// doc.setFontSize(16);
-// doc.text("Eligible Government Scheme Report", textX, headerY + 12);
-
-// // Move Y below header
-// y = headerY + 20;
-
-// doc.setFont("Times", "Normal");
-// doc.setFontSize(11);
-// doc.text(
-//   "AgriNext – Smart Government Scheme & Insurance Portal (Educational Project)",
-//   105,
-//   y,
-//   { align: "center", maxWidth: 180 }
-// );
-
-// y += 8;
-// doc.line(15, y, 195, y);
-// y += 10;
-
-
-
-
-
-
-
-
-
-
-
-
-
-const logo = new Image();
-logo.src = "../images/output-onlinepngtools (1).png";
-
-// Header base Y
-
-// const headerY = y;
-// // Logo size
-// const logoX = 20;
-// const logoY = headerY;
-// const logoSize = 18;
-
-// // Add logo
-// doc.addImage(logo, "PNG", logoX, logoY, logoSize, logoSize);
-
-// // 👉 20px gap after logo
-// const gap = 20;
-// const textX = logoX + logoSize + gap;
-
-// // 👉 Vertically center text relative to logo
-// // Text baseline ≈ logoY + (logoHeight / 2) + (fontSize / 3)
-// doc.setFont("Times", "Bold");
-// doc.setFontSize(16);
-// const textY = logoY + (logoSize / 2) + 4;
-// doc.text("Eligible Government Scheme Report", textX, textY);
-// // 🔽 reduced gap here
-// y = logoY + logoSize + 5;
-
-// doc.setFont("Times", "Normal");
-// doc.setFontSize(11);
-// doc.text(
-//   "AgriNext – Smart Government Scheme & Insurance Portal (Educational Project)",
-//   105,
-//   y,
-//   { align: "center", maxWidth: 180 }
-// );
-// y += 6;   // reduced line gap
-// doc.line(15, y, 195, y);
-// y += 8;
-
-
-// Page height
-const pageHeight = doc.internal.pageSize.getHeight();
-
-// 👉 5% top margin
-y = pageHeight * 0.05;
-
-const headerY = y;
-
-// Logo config
-const logoX = 20;
-const logoSize = 18;
-
-// Add logo
-doc.addImage(logo, "PNG", logoX, headerY, logoSize, logoSize);
-
-// 20px gap after logo
-const gap = 20;
-const textX = logoX + logoSize + gap;
-
-// Title
-doc.setFont("Times", "Bold");
-doc.setFontSize(16);
-
-// Vertically centered text
-const textY = headerY + (logoSize / 2) + 1;
-doc.text("Eligible Government Scheme Report", textX, textY);
-
-// Subtitle position (tight)
-y = headerY + logoSize - 1;
-
-doc.setFont("Times", "Normal");
-doc.setFontSize(11);
-doc.text(
-  "AgriNext – Smart Government Scheme & Insurance Portal (Educational Project)",
-  105,
-  y,
-  { align: "center", maxWidth: 180 }
-);
-
-// Divider line
-y += 6;
-doc.line(15, y, 195, y);
-y += 8;
-
-    /* ===============================
-       SCHEME INFORMATION
-    ============================== */
+doc.addImage(logo, "PNG", 20, y - 9, 18, 18);
+
+
+    doc.setFont("Times", "Bold");
+    doc.setFontSize(16);
+    doc.text("Eligible Government Scheme Report", 105, y, { align: "center" });
+
+    y += 8;
+    doc.setFont("Times", "Normal");
+    doc.setFontSize(11);
+    doc.text(
+      "AgriNext – Smart Government Scheme & Insurance Portal (Educational Project)",
+      105,
+      y,
+      { align: "center", maxWidth: 180 }
+    );
+
+    y += 6;
+    doc.line(15, y, 195, y);
+    y += 10;
+
+    // ===============================
+    // SCHEME INFORMATION
+    // ===============================
     doc.setFont("Times", "Bold");
     doc.setFontSize(13);
     doc.text("1. Scheme Information", 15, y);
@@ -534,17 +403,127 @@ y += 8;
 
     doc.setFont("Times", "Normal");
     doc.setFontSize(12);
+
     doc.text(`Crop : ${crop.value}`, 20, y); y += 7;
     doc.text(`Irrigation Type : ${irrigation.value}`, 20, y); y += 7;
     doc.text(`Scheme Name : ${irrigationSubsidy[irrigation.value].scheme}`, 20, y); y += 7;
     doc.text(`Subsidy : ${irrigationSubsidy[irrigation.value].percent}%`, 20, y); y += 7;
-    doc.text(`Scheme Type : Centrally Sponsored Scheme`, 20, y);
+    doc.text("Scheme Type : Centrally Sponsored Scheme", 20, y);
 
     y += 12;
 
-    /* ===============================
-       ELIGIBILITY CONDITIONS
-    ============================== */
+/* ===============================
+   2. Crop Insurance (PMFBY)
+============================== */
+// 🔴 IMPORTANT FIX FOR NUMBER SPACING
+// doc.setCharSpace(0);        // reset character spacing
+// doc.setFont("Helvetica");   // keep safe font
+// doc.setFont("Times", "Bold");
+// doc.setFontSize(13);
+// doc.text("2. Crop Insurance (PMFBY)", 15, y);
+// y += 10;
+
+// // Values
+// const d = district.value || "Pune";
+// const sum = Number(sumInsured.value) || 10000;
+// const rate = districtPremiumRates[d] || 2;
+// const premiumAmt = (sum * rate / 100).toFixed(0);
+
+// // Label column X & Value column X
+// const labelX = 20;
+// const valueX = 75;
+
+// doc.setFont("Times", "Normal");
+// doc.setFontSize(12);
+
+// // Row 1
+// doc.text("District", labelX, y);
+// doc.text(`: ${d}`, valueX, y);
+// y += 7;
+
+// // Row 2
+// doc.text("Sum Insured", labelX, y);
+// doc.text(`: ₹${sum}`, valueX, y);
+// y += 7;
+
+// // Row 3
+// doc.text("Premium Rate", labelX, y);
+// doc.text(`: ${rate}%`, valueX, y);
+// y += 7;
+
+// // Row 4
+// doc.text("Farmer Premium", labelX, y);
+// doc.text(`: ₹${premiumAmt}`, valueX, y);
+// y += 8;
+
+// // Note
+// doc.setFontSize(10);
+// doc.text(
+//   "* Premium amount is indicative. Final premium may vary as per government notification.",
+//   labelX,
+//   y,
+//   { maxWidth: 170 }
+// );
+
+// y += 10;
+
+
+/* ===============================
+   2. Crop Insurance (PMFBY)
+============================== */
+
+// 🔥 HARD RESET (IMPORTANT)
+doc.setFont("Helvetica", "Bold");
+doc.setFontSize(13);
+doc.setCharSpace(0);
+
+doc.text("2. Crop Insurance (PMFBY)", 15, y, { charSpace: 0 });
+y += 10;
+
+// Data (force plain strings)
+const d = String(district.value || "Pune");
+const sum = String(Number(sumInsured.value) || 10000);
+const rate = String(districtPremiumRates[district.value] || 2);
+const premiumAmt = String(
+  ((Number(sumInsured.value) || 10000) *
+    (districtPremiumRates[district.value] || 2) / 100).toFixed(0)
+);
+
+// Normal text
+doc.setFont("Helvetica", "Normal");
+doc.setFontSize(12);
+
+// ❌ DO NOT USE ₹
+// ✅ USE Rs.
+
+doc.text("District : " + d, 20, y, { charSpace: 0 });
+y += 7;
+
+doc.text("Sum Insured : Rs. " + sum, 20, y, { charSpace: 0 });
+y += 7;
+
+doc.text("Premium Rate : " + rate + " %", 20, y, { charSpace: 0 });
+y += 7;
+
+doc.text("Farmer Premium : Rs. " + premiumAmt, 20, y, { charSpace: 0 });
+y += 8;
+
+// Note
+doc.setFontSize(10);
+doc.text(
+  "* Premium amount is indicative. Final premium may vary as per government notification.",
+  20,
+  y,
+  { maxWidth: 170, charSpace: 0 }
+);
+
+y += 10;
+
+
+
+    // ===============================
+    // ELIGIBILITY
+    // ===============================
     doc.setFont("Times", "Bold");
     doc.setFontSize(13);
     doc.text("2. Eligibility Conditions", 15, y);
@@ -553,23 +532,23 @@ y += 8;
     doc.setFont("Times", "Normal");
     doc.setFontSize(12);
 
-    const eligibilityList = [
+    const eligibility = [
       "Farmer must be Small / Marginal / Medium",
       "Minimum 0.5 Acre agricultural land required",
       "Valid land record (7/12 Extract or Patta)",
-      "Bank account must be linked with Aadhaar"
+      "Bank account linked with Aadhaar"
     ];
 
-    eligibilityList.forEach(item => {
-      doc.text(`• ${item}`, 20, y);
+    eligibility.forEach(e => {
+      doc.text(`• ${e}`, 20, y);
       y += 7;
     });
 
     y += 8;
 
-    /* ===============================
-       REQUIRED DOCUMENTS
-    ============================== */
+    // ===============================
+    // DOCUMENTS
+    // ===============================
     doc.setFont("Times", "Bold");
     doc.setFontSize(13);
     doc.text("3. Required Documents", 15, y);
@@ -578,23 +557,23 @@ y += 8;
     doc.setFont("Times", "Normal");
     doc.setFontSize(12);
 
-    const documents = [
+    const docs = [
       "Aadhaar Card",
       "Land Record (7/12 Extract / Patta)",
-      "Bank Passbook (First Page)",
+      "Bank Passbook",
       "Passport Size Photograph"
     ];
 
-    documents.forEach(docItem => {
-      doc.text(`• ${docItem}`, 20, y);
+    docs.forEach(d => {
+      doc.text(`• ${d}`, 20, y);
       y += 7;
     });
 
     y += 8;
 
-    /* ===============================
-       ADVISORY NOTE
-    ============================== */
+    // ===============================
+    // ADVISORY
+    // ===============================
     doc.setFont("Times", "Bold");
     doc.setFontSize(13);
     doc.text("4. Advisory Note", 15, y);
@@ -603,15 +582,15 @@ y += 8;
     doc.setFont("Times", "Normal");
     doc.setFontSize(12);
     doc.text(
-      `${irrigation.value} irrigation is recommended for ${crop.value} crop to conserve water and maximize government benefits.`,
+      `${crop.value} crop with ${irrigation.value} irrigation is recommended to maximize subsidy and water efficiency.`,
       20,
       y,
       { maxWidth: 170 }
     );
 
-    /* ===============================
-       FOOTER
-    ============================== */
+    // ===============================
+    // FOOTER
+    // ===============================
     doc.setFontSize(10);
     doc.text(
       "Generated by AgriNext | For Academic & Educational Use Only",
@@ -620,12 +599,11 @@ y += 8;
       { align: "center" }
     );
 
-    /* ===============================
-       SAVE
-    ============================== */
-    doc.save("AgriNext_Eligible_Government_Scheme_Report.pdf");
-
-  }, 10); // ⚡ MAGIC LINE
+    // ===============================
+    // SAVE PDF
+    // ===============================
+    doc.save("AgriNext_Government_Scheme_Report.pdf");
+  };
 }
 
 /* ===============================
