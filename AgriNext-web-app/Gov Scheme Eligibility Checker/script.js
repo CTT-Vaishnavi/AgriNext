@@ -740,7 +740,7 @@ function checkEligibility() {
 
       <!-- Actions -->
       <div class="result-actions">
-        <a href="https://pmksy.gov.in" target="_blank" class="gov-btn">
+        <a href="https://pmfby.gov.in/" target="_blank" class="gov-btn">
           Apply on Government Portal
         </a>
       </div>
