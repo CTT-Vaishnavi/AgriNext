@@ -1363,36 +1363,11 @@ function printPDF() {
         <style>
           body { font-family: Arial, sans-serif; margin: 20px; }
           h1 { text-align: center; color: #2c5f2d;font-size: 28px; }
-          .logo {
-  display: flex;
-  align-items: center;
-  justify-content: center; 
-  gap: 100px;padding: 10px 20px;background-color: #f9f9f9;}
-
-.logo img {
-  width: auto;
-  height: 80px;
-}
-
-.logo h1 {
-  margin: 10px;
-  font-size: 34px;
-  color: #2c3e50;
-  font-weight: 600;
-}
-
-.logo p {
-  margin: 4px 0 8px 0;
-  font-size: 20px;
-  color: #555;
-}
-
-.hr {
-  width: 100%;
-  height: 3px;
-  background-color: #4caf50;
-  border: none;
-}
+          .logo {display: flex;align-items: center;justify-content: center; gap: 100px;padding: 10px 20px;background-color: #f9f9f9;}
+          .logo img {width: auto;height: 80px;}
+          .logo h1 {margin: 10px;font-size: 34px;color: #2c3e50;font-weight: 600;}
+          .logo p { margin: 4px 0 8px 0; font-size: 20px;color: #555;}
+          .hr { width: 100%;height: 3px;background-color: #4caf50; border: none;}
 
           h3{text-align: center; color: #2c5f2d;}
           p{text-align: center;}
@@ -1406,7 +1381,45 @@ function printPDF() {
           .dealer-name { font-weight: bold; font-size: 16px; color: #2c5f2d; }
           .dealer-info { margin-top: 8px; line-height: 1.6; }
           .label { font-weight: bold; color: #555; }
-          // .page-break { page-break-after: always; }
+//           .watermark {
+//   position: fixed;
+//   top: 50%;
+//   left: 50%;
+//   transform: translate(-50%, -50%) rotate(-30deg);
+//   font-size: 80px;
+//   font-weight: bold;
+//   color: rgba(0, 128, 0, 0.2); /* light green */
+//   z-index: 0;
+//   pointer-events: none;
+//   white-space: nowrap;
+// }
+
+// @media print {
+//   body {
+//     position: relative;
+//   }
+
+//   .watermark {
+//     display: block;
+//   }
+// }
+.watermark {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(-30deg);
+  z-index: 0;
+  pointer-events: none;
+}
+
+.watermark img {
+  height: 400px;
+  width: auto;
+  opacity: 0.15; /* faint watermark */
+}
+
+
+
         </style>
       </head>
       <body>
@@ -1417,6 +1430,8 @@ function printPDF() {
         <p>AgriNext – Fertilizer Dealers List Portal (Educational Project)</p> 
         </div>  
       </div>
+      <div class="watermark"><img src="../images/output-onlinepngtools (1).png" alt="logo"></div>
+
       <hr class="hr">
         <h1>${st} - ${di} - ${ta}</h1>
         <h2>Fertilizer Dealers List</h2>
@@ -1451,6 +1466,8 @@ function printPDF() {
   printWindow.document.close();
   setTimeout(() => printWindow.print(), 250);
 }
+
+
 /* -----------------------------
    Map initialization (safe)
 ----------------------------- */
@@ -1461,7 +1478,7 @@ function initMapIfAvailable() {
     // optionally add sample markers for visible dealers
   } else {
     // google maps not loaded or API key missing — show fallback message
-    document.getElementById('map').innerHTML += '<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3867615.203633482!2d74.12786929511361!3d18.79958061586077!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bcfc41e9c9cd6f9%3A0x1b2f22924be04fb6!2sMaharashtra!5e0!3m2!1sen!2sin!4v1766759901858!5m2!1sen!2sin" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>';
+    document.getElementById('map').innerHTML += '<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3867615.203633482!2d74.12786929511361!3d18.79958061586077!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bcfc41e9c9cd6f9%3A0x1b2f22924be04fb6!2sMaharashtra!5e0!3m2!1sen!2sin!4v1766759901858!5m2!1sen!2sin" width="800" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>';
   }
 }
 
