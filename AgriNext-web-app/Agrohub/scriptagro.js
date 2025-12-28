@@ -1381,28 +1381,6 @@ function printPDF() {
           .dealer-name { font-weight: bold; font-size: 16px; color: #2c5f2d; }
           .dealer-info { margin-top: 8px; line-height: 1.6; }
           .label { font-weight: bold; color: #555; }
-//           .watermark {
-//   position: fixed;
-//   top: 50%;
-//   left: 50%;
-//   transform: translate(-50%, -50%) rotate(-30deg);
-//   font-size: 80px;
-//   font-weight: bold;
-//   color: rgba(0, 128, 0, 0.2); /* light green */
-//   z-index: 0;
-//   pointer-events: none;
-//   white-space: nowrap;
-// }
-
-// @media print {
-//   body {
-//     position: relative;
-//   }
-
-//   .watermark {
-//     display: block;
-//   }
-// }
 .watermark {
   position: fixed;
   top: 50%;
@@ -1415,7 +1393,7 @@ function printPDF() {
 .watermark img {
   height: 400px;
   width: auto;
-  opacity: 0.15; /* faint watermark */
+  opacity: 0.11; /* faint watermark */
 }
 
 
