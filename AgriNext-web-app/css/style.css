@@ -909,6 +909,7 @@ form {
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
 
 body {
+  width: fit-content;
   font-family: "Poppins", sans-serif;
   margin: 0;
   background: linear-gradient(to bottom right, #fffdf8, #f3ede8);
