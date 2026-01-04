@@ -178,6 +178,29 @@ body{
     margin: 0;
   }
 
+  
+  .home-btn {
+    position: absolute;
+    left: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    text-decoration: none;
+    color: #fff;
+    background: rgba(255,255,255,0.15);
+    padding: 8px 14px;
+    border-radius: 8px;
+    font-size: 14px;
+    transition: 0.3s ease;
+  }
+  
+  .home-btn i {
+    margin-right: 6px;
+  }
+  
+  .home-btn:hover {
+    background: #fff;
+    color: #1e3c72;
+  }
   @media only screen and (min-width: 320px) and (max-width: 480px) {
     .container {
       width: 90%;
@@ -185,9 +208,24 @@ body{
     }
   
     .header-title {
-      font-size: 20px;
+      font-size: 1rem;
     }
-  
+
+     .home-btn {
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    padding: 6px 10px;
+    font-size: 12px;
+    border-radius: 6px;
+  }
+
+  .home-btn i {
+    margin-right: 4px;
+    font-size: 12px;
+  }
+
     .search-box input {
       font-size: 16px;
     }
@@ -215,28 +253,25 @@ body{
     .footer-text {
       font-size: 12px;
     }
+    
   }
 
-
+@media only screen and (max-width: 320px) {
   .home-btn {
     position: absolute;
-    left: 20px;
+    left: 6px;
     top: 50%;
     transform: translateY(-50%);
-    text-decoration: none;
-    color: #fff;
-    background: rgba(255,255,255,0.15);
-    padding: 8px 14px;
-    border-radius: 8px;
-    font-size: 14px;
-    transition: 0.3s ease;
-}
+    padding: 4px 8px;
+    font-size: 11px;
+    border-radius: 5px;
+  }
 
-.home-btn i {
-    margin-right: 6px;
-}
-
-.home-btn:hover {
-    background: #fff;
-    color: #1e3c72;
+  .home-btn i {
+    margin-right: 3px;
+    font-size: 11px;
+  }
+  .header-title{
+    font-size: 1rem;
+  }
 }

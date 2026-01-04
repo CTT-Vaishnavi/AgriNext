@@ -598,14 +598,6 @@ const videos = [
   },
 
   {
-    title: "Organic vs Chemical Fertilizer",
-    cat: "fertilizer",
-    link: "https://youtu.be/5msgiBeoKjI",
-    desc: "सेंद्रिय vs रासायनिक खत — तुलना.",
-    img: "https://image.pollinations.ai/prompt/3D%20organic%20vs%20chemical%20fertilizer%20comparison%20plant%20growth"
-  },
-
-  {
     title: "Phosphorus Management",
     cat: "fertilizer",
     link: "https://youtu.be/x35p0r6i8hI",
@@ -613,13 +605,7 @@ const videos = [
     img: "https://image.pollinations.ai/prompt/3D%20phosphorus%20fertilizer%20granules%20roots%20absorption"
   },
 
-  {
-    title: "Potassium Deficiency Solutions",
-    cat: "fertilizer",
-    link: "https://youtu.be/ZMZah-Xj0R4",
-    desc: "पोटॅशियम अभाव ओळख आणि उपाय.",
-    img: "https://image.pollinations.ai/prompt/3D%20potassium%20deficiency%20leaf%20yellow%20brown%20edges%20realistic%20animated%20loop.webm"
-  },
+ 
   {
     title: "Slow-Release Fertilizers",
     cat: "fertilizer",
@@ -634,7 +620,7 @@ const videos = [
     img: "https://image.pollinations.ai/prompt/3D%20soil%20pH%20testing%20kit%20fertilizer%20application%20agriculture"
   },
   {
-    title: "Calcium and Magnesium in Soil",
+    title: "Calcium & Magnesium in Soil",
     cat: "fertilizer",
     link: "https://youtu.be/YFC20mm9ZfQ",
     desc: "मातीतील कॅल्शियम आणि मॅग्नेशियमचे महत्त्व.",
@@ -647,6 +633,20 @@ const videos = [
     desc: "अमोनियम vs नायट्रेट नायट्रोजन — काय फरक?",
     img: "https://image.pollinations.ai/prompt/3D%20ammonium%20nitrate%20nitrogen%20comparison%20plant%20nutrition"
   }, 
+  {
+    title: "Organic vs Chemical Fertilizer",
+    cat: "fertilizer",
+    link: "https://youtu.be/5msgiBeoKjI",
+    desc: "सेंद्रिय vs रासायनिक खत — तुलना.",
+    img: "https://image.pollinations.ai/prompt/3D%20organic%20vs%20chemical%20fertilizer%20comparison%20plant%20growth"
+  },
+   {
+    title: "Potassium Deficiency Solutions",
+    cat: "fertilizer",
+    link: "https://youtu.be/ZMZah-Xj0R4",
+    desc: "पोटॅशियम अभाव ओळख आणि उपाय.",
+    img: "https://image.pollinations.ai/prompt/3D%20potassium%20deficiency%20leaf%20yellow%20brown%20edges%20realistic%20animated%20loop.webm"
+  },
 
 ];
 
@@ -751,3 +751,20 @@ document.getElementById("callSupport").addEventListener("click", () => {
     window.location.href = `tel:${phoneNumber}`;
   }
 });
+
+
+
+  const btn = document.getElementById("scrollBtn");
+  let atBottom = true;
+
+  btn.addEventListener("click", () => {
+    if (atBottom) {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+      btn.innerHTML = '<i class="fa-solid fa-arrow-down"></i>';
+    } else {
+      window.scrollTo({ top: document.body.scrollHeight, behavior: "smooth" });
+      btn.innerHTML = '<i class="fa-solid fa-arrow-up"></i>';
+    }
+    atBottom = !atBottom;
+  });
+
