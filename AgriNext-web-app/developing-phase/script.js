@@ -258,3 +258,8 @@ document.getElementById("callSupport").addEventListener("click", () => {
   }
 });
 
+
+function toggleMenu() {
+    document.querySelector("nav ul").classList.toggle("show");
+}
+

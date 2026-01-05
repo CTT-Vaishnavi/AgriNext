@@ -816,3 +816,9 @@ function showGovAlert(message) {
 function closeGovAlert() {
   document.getElementById("govAlert").style.display = "none";
 }
+
+
+function toggleMenu(){
+  document.getElementById("navMenu").classList.toggle("show");
+}
+

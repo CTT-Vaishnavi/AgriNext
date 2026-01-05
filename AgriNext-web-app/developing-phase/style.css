@@ -253,8 +253,8 @@ button:hover {
 
 /* Info Cards */
 .infoCard, .distCard {
-    margin-top: 12px;
-    padding: 15px;
+    margin-top: 18px;
+    padding: 6px;
     border-radius: 12px;
     background: var(--card);
     border: 1px solid var(--muted);
@@ -322,4 +322,119 @@ button:hover {
 .tipItem b {
     color: var(--text);
     font-size: 16px;
+}
+
+/* ============================================================
+   NAVBAR RESPONSIVENESS
+============================================================ */
+
+/* Mobile menu icon */
+.menu-toggle {
+    display: none;
+    font-size: 26px;
+    cursor: pointer;
+    color: var(--accent);
+}
+
+/* =========================
+   TABLET & MOBILE
+========================= */
+@media (max-width: 992px) {
+
+    nav {
+        padding: 14px 20px;
+    }
+
+    /* Hide nav links initially */
+    nav ul {
+        position: absolute;
+        top: 75px;
+        left: 0;
+        width: 100%;
+        background: var(--card);
+        flex-direction: column;
+        gap: 20px;
+        padding: 20px 0;
+        display: none;
+        border-top: 1px solid var(--muted);
+    }
+
+    nav ul.show {
+        display: flex;
+    }
+
+    nav ul li {
+        text-align: center;
+    }
+
+    /* Hide buttons & phone on mobile */
+    .btns,
+    .phone {
+        display: none;
+    }
+
+    /* Show menu icon */
+    .menu-toggle {
+        display: block;
+    }
+}
+
+/* =========================
+   SMALL MOBILE
+========================= */
+@media (max-width: 480px) {
+
+    .logo-area img {
+        height: 36px;
+    }
+
+    .logo-area h1 {
+        font-size: 18px;
+    }
+}
+/* =====================================
+   MOBILE VIEW – STACK CONTAINERS
+===================================== */
+@media (max-width: 900px) {
+
+    .container {
+        flex-direction: column;   /* ek ke niche ek */
+        padding: 15px;
+    }
+
+    .sidebar {
+        width: 100%;               /* full width */
+    }
+
+    .output {
+        width: 100%;               /* full width */
+    }
+
+    /* Crop image height fix for mobile */
+    #cropImage {
+        height: 250px;
+    }
+}
+
+/* EXTRA SMALL MOBILE */
+@media (max-width: 480px) {
+
+    .container {
+        gap: 15px;
+    }
+
+    .sidebar,
+    .output {
+        padding: 15px;
+    }
+
+    h2 {
+        font-size: 20px;
+    }
+}
+
+
+.fa-moon:before {
+    content: "\f186";
+    margin-left: 84px;
 }
