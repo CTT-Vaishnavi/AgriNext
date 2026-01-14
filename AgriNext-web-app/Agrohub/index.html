@@ -1,103 +1,157 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>AgriNext — Dealer Finder (Fixed)</title>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-    <link rel="shortcut icon" href="../images/output-onlinepngtools (1).png" type="image/x-icon">
-<link rel="stylesheet" href="./styleagro.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="styleagro.css">
+    
 </head>
 <body>
-<nav>
-    <!-- LOGO -->
-    <div class="logo-area">
-        <img src="../images/output-onlinepngtools (1).png" alt="logo">
-        <h1>Agri<i class="fas fa-seedling plant-icon" style="color: green;"></i>Next</h1>
+    <nav>
+  <div class="logo-area">
+    <img src="../images/output-onlinepngtools (1).png">
+    <h2>Agri<span style="color:green">🌱</span>Next</h2>
+  </div>
 
-    </div>
+  <div class="phone" id="callSupport">📞 1800-180-1551</div>
 
-    <!-- PHONE -->
-    <div class="phone" id="callSupport"><i>📞</i> 1800-180-1551</div>
-    <!-- NAV LINKS -->
-    <ul>
-        <li><a href="../index.html">HOME</a></li>
-        <li><a href="../index.html#features">FEATURES</a></li>
-        <li><a href="../index.html#about">ABOUT</a></li>
-        <li><a href="../index.html#contact">CONTACT</a></li>
-    </ul>
+  <ul>
+    <li><a href="../index.html">HOME</a></li>
+    <li><a href="../index.html#features">FEATURES</a></li>
+    <li><a href="../index.html#about">ABOUT</a></li>
+    <li><a href="../index.html#contact">CONTACT</a></li>
+  </ul>
 
-    <!-- BUTTONS -->
-    <div class="btns">
-        <a href="../index.html#explore" class="btn">EXPLORE NOW</a>
-        <!-- <a href="./index.html" class="btn">SIGNOUT</a> -->
-    </div>
-      <!-- 🌙 DARK MODE BUTTON -->
-    <div class="theme-toggle" onclick="toggleTheme()">
-        <i class="fas fa-moon"></i>
-    </div>
+  <a class="btn" href="#">EXPLORE NOW</a>
+
+  <button class="filter-btn" onclick="togglePanel()">☰ Filters</button>
+
+  <div class="menu-toggle" onclick="document.querySelector('nav').classList.toggle('active')">☰</div>
 </nav>
 
 <div class="wrap">
-  <aside class="panel" id="leftPanel" aria-label="controls">
+
+  <aside class="panel" id="leftPanel">
     <label>Language</label>
-    <select id="lang">
-      <option value="en">English</option>
-      <option value="hi">हिंदी</option>
-      <option value="mr">मराठी</option>
-    </select>
+    <select><option>English</option></select>
 
-    <label style="margin-top:10px">State</label>
-    <select id="state"></select>
+    <label style="margin-top:12px" for="state">State</label>
+  <select id="state">
+    <option value="en">English</option>
+    <option value="hi">हिंदी</option>
+    <option value="mr">मराठी</option>
+    <option value="">Select State</option>
+  </select>
 
-    <label style="margin-top:10px">District</label>
-    <select id="district"></select>
+  <label style="margin-top:10px" for="district">District</label>
+  <select id="district">
+    <option value="">Select District</option>
+  </select>
 
-    <label style="margin-top:10px">Taluka</label>
-    <select id="taluka"></select>
+  <label style="margin-top:10px" for="taluka">Taluka</label>
+  <select id="taluka">
+    <option value="">Select Taluka</option>
+  </select>
 
-    <button id="autoDetect" style="margin-top:12px" class="btn-small">Auto Detect Location</button>
+  <!-- <button id="autoDetect" style="margin-top:14px" class="btn-small">
+    📍 Auto Detect Location
+  </button> -->
 
-    <label style="margin-top:12px">Search Dealer</label>
-    <input id="searchFarm" type="text" placeholder="Type name or crop">
-    <div style="display:flex;gap:8px;margin-top:8px">
-      <button id="micBtn" class="btn-small" style="flex:1">🎤 Speak</button>
-      <button id="showDealers" class="btn-small" style="flex:1;background:var(--accent);color:#fff">Show Dealers</button>
-    </div>
+  <!-- SEARCH -->
+  <label style="margin-top:14px" for="searchFarm">Search Dealer / Crop</label>
+  <input
+    id="searchFarm"
+    type="text"
+    placeholder="Dealer name, fertilizer or crop"
+  >
 
-    <div style="display:flex;gap:8px;margin-top:10px">
-      <button id="downloadPDF" class="btn-small" style="flex:1">⬇ PDF</button>
-      <button id="downloadCSV" class="btn-small" style="flex:1">⬇ CSV</button>
-    </div>
-    <div class="small-muted" style="margin-top:10px">Tip: Use Auto Detect or choose state/district/taluka. Click 'Show Dealers'.</div>
+  <div style="display:flex;gap:8px;margin-top:10px">
+    <!-- <button id="micBtn" class="btn-small" style="flex:1">
+      🎤 Voice Search
+    </button> -->
+    <button
+      id="showDealers"
+      class="btn-small"
+      style="flex:1;"
+    >
+      🔍 Show Dealers
+    </button>
+  </div>
+
+  <!-- DOWNLOAD -->
+  <div style="display:flex;gap:8px;margin-top:12px">
+    <button id="downloadPDF" class="btn-small" style="flex:1">
+      ⬇ Download PDF
+    </button>
+    <button id="downloadCSV" class="btn-small" style="flex:1">
+      ⬇ Download CSV
+    </button>
+  </div>
+
+  <!-- HELP TEXT -->
+  <div class="small-muted" style="margin-top:12px">
+    Tip: Use auto detect for quick results or manually select state, district and taluka.
+    Then click <b>Show Dealers</b>.
+  </div>
+
   </aside>
 
   <main>
-    <div class="hero">
-      <div class="card3d" id="card3d">
-        <div style="flex:1;padding:16px">
-          <h2 id="heroTitle" style="margin:0">Smart Fertilizer Dealer Recommendations</h2>
-          <p id="heroSub" class="small-muted" style="margin:6px 0 0">Select region to find fertilizer dealer list.</p>
-          <div class="stars" style="margin-top:8px">⭐ ⭐ ⭐ ⭐ ☆</div>
+  <!-- HERO SECTION -->
+  <div class="hero">
+    <div class="card3d" id="card3d">
+      <div style="flex:1;padding:16px">
+        <h2 id="heroTitle" style="margin:0">
+          Find Trusted Fertilizer Dealers Near You
+        </h2>
+
+        <p id="heroSub" class="small-muted" style="margin:6px 0 0">
+          Choose your state, district and taluka to get verified fertilizer dealer information with contact details.
+        </p>
+
+        <div class="stars" style="margin-top:10px">
+          ⭐ ⭐ ⭐ ⭐ ⭐
+          <span class="small-muted">(Farmer Rated)</span>
         </div>
-        <div class="visual" aria-hidden="true"></div>
+
+        <ul style="margin-top:10px;padding-left:18px">
+          <li>✔ Government approved dealers</li>
+          <li>✔ Location-based recommendations</li>
+          <li>✔ Support for multiple languages</li>
+        </ul>
       </div>
+
+      <div class="visual" aria-hidden="true"></div>
+    </div>
+  </div>
+
+  <!-- RESULTS SECTION -->
+  <section class="results" style="margin-top:16px">
+    <h3 id="resultHeader">Available Dealers</h3>
+
+    <div id="resultSub" class="small-muted" style="margin-bottom:8px">
+      Use filters on the left and click <b>Show Dealers</b> to see results.
     </div>
 
-    <section class="results" style="margin-top:12px">
-      <h3 id="resultHeader">Dealers (0)</h3>
-      <div id="resultSub" class="small-muted">Select location and click show dealers</div>
-      <div id="dealerList" class="dealer-list" aria-live="polite"></div>
-    </section>
+    <div id="dealerList" class="dealer-list" aria-live="polite">
+      <!-- Dealer cards will be injected here via JS -->
+    </div>
+  </section>
 
-    <div id="map" role="region" aria-label="Map showing dealer locations"> </div>
-  </main>
+  <!-- MAP SECTION -->
+  <section style="margin-top:20px">
+    <h3 style="margin-bottom:6px">Dealer Locations on Map</h3>
+    <p class="small-muted" style="margin-bottom:10px">
+      View nearby fertilizer dealers on the map for easy navigation.
+    </p>
+
+    <div id="map" role="region" aria-label="Map showing dealer locations"></div>
+  </section>
+</main>
+
 </div>
-
-<!-- Put your Google Maps API key below or remove this script line if you don't use Google Maps -->
-<!-- <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_MAP_API_KEY"></script> -->
-<script src="./scriptagro.js"></script>
+<script src="scriptagro.js"></script>
 <!-- chatbot section ends --> 
 <script src="/AgriNext-web-app/script.js"></script>
  <!-- Start of Tawk.to Script -->
@@ -113,5 +167,6 @@
     })();
     </script>
     <!-- End of Tawk.to Script -->
+
 </body>
 </html>

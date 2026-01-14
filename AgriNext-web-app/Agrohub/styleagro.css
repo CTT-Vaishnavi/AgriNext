@@ -1,120 +1,449 @@
-:root {
-  --bg:#f4f7f8; --card:#fff; --text:#1b1b1b; --muted:#888; --accent:#23cf6b;
-  --input-bg:#fff; --input-text:#000;
+* {
+  box-sizing: border-box;
+  font-family: Poppins, sans-serif;
 }
-.dark-mode {
-  --bg:#0b1116; --card:#121a21; --text:#e8eef1; --muted:#aab4bd; --accent:#00c4ac;
-  --input-bg:#0f1820; --input-text:#fff;
+
+body {
+  margin: 0;
+  background: #f6f8f7;
 }
-* { margin:0; padding:0; box-sizing:border-box; font-family:'Poppins', sans-serif; }
-body { background:var(--bg); color:var(--text); transition:.25s; }
-/* ============================================================
-   NAVBAR FINAL DESIGN (Fully Theme Compatible)
-============================================================ */
+
+img { max-width: 100%; }
+
+/* ================= NAVBAR ================= */
 nav {
-    width: 100%;
-    background: var(--card);
-    color: var(--text);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 16px 40px;
-    border-bottom: 1px solid var(--muted);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 20px;
+  background: #fff;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
 }
 
-/* Logo */
 .logo-area {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-}
-.logo-area img {
-    height: 55px;
-}
-.logo-area h2 {
-    font-size: 28px;
-    font-weight: 600;
-    color: var(--text);
-}
-.logo-area h2 span {
-    color: var(--accent);
+  display: flex;
+  align-items: center;
+  gap: 8px;
 }
 
-/* Phone Number */
+.logo-area img { width: 68px; }
+
+nav ul {
+  display: flex;
+  list-style: none;
+  gap: 22px;
+}
+
+nav ul li a {
+  text-decoration: none;
+  color: #333;
+}
+
 .phone {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    font-size: 18px;
-    font-weight: 500;
-    cursor: pointer;
-    color: var(--text);
-}
-.phone:hover{
-    color: #23cf6b;
-}
-.phone i {
-    font-size: 22px;
-    color: var(--accent);
+  color: #2e7d32;
+  font-weight: 600;
 }
 
-/* Nav Links */
-ul {
-    display: flex;
-    gap: 40px;
-    list-style: none;
-}
-ul li a {
-    text-decoration: none;
-    font-size: 17px;
-    font-weight: 500;
-    color: var(--text);
-    opacity: 0.8;
-    transition: 0.3s;
-}
-ul li a:hover {
-    opacity: 1;
-    color: var(--accent);
-}
-
-/* Buttons (Explore / Signout) */
-.btns {
-    display: flex;
-    gap: 20px;
-}
 .btn {
-    background: var(--accent);
-    padding: 10px 22px;
-    border-radius: 25px;
-    color: #fff;
-    font-weight: 600;
-    text-decoration: none;
-    transition: 0.3s;
-}
-.btn:hover {
-    opacity: 0.8;
+  background: #2ecc71;
+  color: #fff;
+  padding: 8px 16px;
+  border-radius: 20px;
+  text-decoration: none;
 }
 
-/* Dark Mode Toggle */
-.theme-toggle {
-    font-size: 22px;
-    cursor: pointer;
+.menu-toggle {
+  display: none;
+  font-size: 26px;
+  cursor: pointer;
 }
-.theme-toggle i {
-    color: var(--accent);
+
+.filter-btn {
+  display: none;
+  padding: 6px 14px;
+  border-radius: 20px;
+  background: #2ecc71;
+  color: #fff;
+  border: none;
+  cursor: pointer;
 }
-.wrap { max-width:1200px; margin:16px auto; padding:10px; display:grid; grid-template-columns:320px 1fr; gap:14px; }
-.panel, .results { background:var(--card); border-radius:12px; padding:14px; }
-select,input,button { width:100%; padding:10px; border-radius:8px; border:1px solid var(--muted); background:var(--input-bg); color:var(--input-text); }
-.hero { height:220px; border-radius:12px; background:rgba(255,255,255,0.2); overflow:hidden; display:flex; justify-content:center; align-items:center; perspective:1000px;}
-.card3d { width:85%; height:78%; border-radius:12px; background:var(--card); box-shadow:0 14px 30px rgba(0,0,0,0.12); display:flex; transition:.15s; }
+
+/* ================= LAYOUT ================= */
+.wrap {
+  display: flex;
+  gap: 20px;
+  padding: 20px;
+}
+
+main {
+  flex: 1;
+}
+
+/* ================= ASIDE PANEL ================= */
+aside.panel {
+  width: 320px;
+  background: #fff;
+  padding: 16px;
+  border-radius: 12px;
+}
+
+/* Desktop sticky */
+@media (min-width: 1025px) {
+  aside.panel {
+    position: sticky;
+    top: 90px;
+    height: fit-content;
+  }
+}
+
+/* ================= HERO ================= */
+.card3d {
+  display: flex;
+  gap: 12px;
+  background: #fff;
+  border-radius: 16px;
+  padding: 10px;
+}
+
+.visual {
+  width: 260px;
+  background: #e74c3c;
+  border-radius: 12px;
+}
+
+/* ================= MAP ================= */
+#map {
+  /* height: 420px; */
+  background: #ddd;
+  border-radius: 14px;
+  margin-top: 16px;
+}
+
+/* ================= TABLET & MOBILE ================= */
+@media (max-width: 1024px) {
+  .wrap {
+    flex-direction: column;
+  }
+
+  /* Sidebar slide */
+  aside.panel {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    max-width: 320px;
+    width: 85%;
+    z-index: 1200;
+    transform: translateX(-100%);
+    transition: transform 0.35s ease;
+    border-radius: 0;
+    box-shadow: 4px 0 25px rgba(0,0,0,0.25);
+  }
+
+  aside.panel.active {
+    transform: translateX(0);
+  }
+
+  .filter-btn {
+    display: block;
+  }
+}
+
+/* ================= MOBILE NAV ================= */
+@media (max-width: 768px) {
+  .phone,
+  .btn {
+    display: none;
+  }
+
+  nav ul {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    flex-direction: column;
+    background: #fff;
+    overflow: hidden;
+    max-height: 0;
+    transition: max-height 0.35s ease;
+  }
+
+  nav.active ul {
+    max-height: 300px;
+  }
+
+  .menu-toggle {
+    display: block;
+  }
+
+  .card3d {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .visual {
+    width: 100%;
+    height: 160px;
+  }
+
+  #map {
+    height: 300px;
+  }
+}
+.map-responsive {
+  position: relative;
+  width: 100%;
+  height: 40vh;
+  min-height: 280px;
+  border-radius: 14px;
+  overflow: hidden;
+}
+
+.map-responsive iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+/* ===== FILTER PANEL BASE ===== */
+aside.panel {
+  width: 320px;
+  background: #ffffff;
+  padding: 16px;
+  border-radius: 14px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+  height: fit-content;
+}
+
+/* Labels */
+aside.panel label {
+  display: block;
+  font-size: 14px;
+  font-weight: 500;
+  color: #333;
+}
+
+/* Inputs & Selects */
+aside.panel select,
+aside.panel input {
+  width: 100%;
+  padding: 8px 10px;
+  margin-top: 4px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 14px;
+}
+
+aside.panel select:focus,
+aside.panel input:focus {
+  outline: none;
+  border-color: #2ecc71;
+}
+
+/* Buttons */
+aside.panel button {
+  border-radius: 10px;
+  padding: 10px;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+/* Small muted text */
+.small-muted {
+  font-size: 13px;
+  color: #666;
+  line-height: 1.4;
+}
+
+/* ===== DESKTOP STICKY ===== */
+@media (min-width: 1025px) {
+  aside.panel {
+    position: sticky;
+    top: 90px;
+    max-height: calc(100vh - 120px);
+    overflow-y: auto;
+  }
+}
+
+/* ===== TABLET & MOBILE SLIDE-IN ===== */
+@media (max-width: 1024px) {
+  aside.panel {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    max-height: 100vh;
+    width: 85%;
+    max-width: 320px;
+    z-index: 1200;
+    transform: translateX(-100%);
+    transition: transform 0.35s ease;
+    border-radius: 0;
+    box-shadow: 4px 0 25px rgba(0,0,0,0.25);
+  }
+
+  aside.panel.active {
+    transform: translateX(0);
+  }
+}
+
+/* ===== SMALL MOBILE ===== */
+@media (max-width: 480px) {
+  aside.panel {
+    width: 92%;
+    padding: 14px;
+  }
+
+  aside.panel label {
+    font-size: 13px;
+  }
+
+  aside.panel button {
+    font-size: 13px;
+    padding: 9px;
+  }
+}
 .visual { flex:1; background:url('https://img.freepik.com/free-photo/high-angle-agriculture-fields_23-2149238114.jpg') center/cover; border-radius:12px; }
-.name { font-size:16px; font-weight:700; color:var(--accent); }
-.addr { font-size:13px; opacity:0.85; margin-top:6px; }
-.btn-small { background:#e6f7ec; color:#0b6b3f; padding:6px 10px; border:none; border-radius:8px; cursor:pointer; }
+
+.dealer-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* Single dealer row */
+.dealer-card {
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 8px 10px;
+  background: #fff;
+  font-size: 14px;
+}
+
+/* Dealer name */
+.dealer-card h4 {
+  margin: 0;
+  font-size: 15px;
+  font-weight: 600;
+  color: #000;
+}
+
+/* Rating */
+.dealer-card .rating {
+  font-size: 13px;
+  color: #f4b400; /* star color */
+  margin: 2px 0;
+}
+
+/* Address */
+.dealer-card .address {
+  font-size: 13px;
+  color: #333;
+  margin-bottom: 6px;
+}
+
+/* Call button row */
+.dealer-card .call-btn {
+  display: block;
+  width: 100%;
+  text-align: center;
+  padding: 6px;
+  border: 1px solid #bbb;
+  border-radius: 3px;
+  background: #f7f7f7;
+  color: #000;
+  text-decoration: none;
+  font-size: 13px;
+}
+
+.dealer-card .call-btn:hover {
+  background: #eaeaea;
+}
+
+/* Mobile small spacing */
+@media (max-width: 480px) {
+  .dealer-card {
+    padding: 6px 8px;
+  }
+}
 .dealer-list { display:grid; gap:10px; margin-top:12px; }
-.dealer { padding:12px; border:1px solid #e6efe9; border-radius:10px; display:flex; justify-content:space-between; align-items:center; gap:10px; }
-.stars { color:#ffd23b; font-size:15px; margin:4px 0; }
-#map { width:73%; border-radius:12px; margin-top:12px; background:#f2f2f2; display:block; }
-.small-muted { font-size:13px; color:var(--muted); margin-top:6px;}
-@media (max-width:920px) { .wrap{grid-template-columns:1fr; padding:8px} .hero{height:180px} .card3d{width:94%} nav {padding:12px} }
+/* Dealer list wrapper */
+#dealerList {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* Dealer card */
+.dealer {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 10px;
+  background: #fff;
+  border: 1px solid #dcdcdc;
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+/* Dealer name */
+.dealer .name {
+  font-weight: 600;
+  font-size: 15px;
+  color: #000;
+}
+
+/* Rating stars */
+.dealer .stars {
+  font-size: 13px;
+  color: #f4b400;
+  margin: 2px 0;
+}
+
+/* Address */
+.dealer .addr {
+  font-size: 13px;
+  color: #333;
+}
+
+/* Action buttons */
+.dealer .btn-small {
+  padding: 6px 8px;
+  font-size: 13px;
+  border: 1px solid #bbb;
+  background: #f7f7f7;
+  border-radius: 3px;
+  cursor: pointer;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.dealer .btn-small:hover {
+  background: #eaeaea;
+}
+
+/* WhatsApp button */
+.dealer a.btn-small {
+  text-decoration: none;
+  color: #000;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 520px) {
+  .dealer {
+    flex-direction: column;
+  }
+
+  .dealer > div:last-child {
+    flex-direction: row;
+  }
+
+  .dealer .btn-small {
+    flex: 1;
+  }
+}
+

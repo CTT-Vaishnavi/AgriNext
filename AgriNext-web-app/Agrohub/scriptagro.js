@@ -1196,17 +1196,17 @@ const searchInput = document.getElementById('searchFarm');
 const dealerList = document.getElementById('dealerList');
 const resultHeader = document.getElementById('resultHeader');
 const resultSub = document.getElementById('resultSub');
-const micBtn = document.getElementById('micBtn');
+// const micBtn = document.getElementById('micBtn');
 const showBtn = document.getElementById('showDealers');
-const autoBtn = document.getElementById('autoDetect');
+// const autoBtn = document.getElementById('autoDetect');
 const downloadCSV = document.getElementById('downloadCSV');
 const downloadPDF = document.getElementById('downloadPDF');
 const themeBtn = document.getElementById('themeBtn');
 
 // Disable mic button early if SpeechRecognition API not available
-if (!(window.SpeechRecognition || window.webkitSpeechRecognition)) {
-  micBtn && (micBtn.disabled = true);
-}
+// if (!(window.SpeechRecognition || window.webkitSpeechRecognition)) {
+//   micBtn && (micBtn.disabled = true);
+// }
 
 let map = null;
 let mapMarkers = [];
@@ -1450,68 +1450,89 @@ function printPDF() {
    Map initialization (safe)
 ----------------------------- */
 function initMapIfAvailable() {
-  // Only initialize if google maps script loaded
-  if (typeof google !== 'undefined' && google.maps) {
-    map = new google.maps.Map(document.getElementById('map'), { center:{ lat:20.53, lng:75.18 }, zoom:10 });
-    // optionally add sample markers for visible dealers
+  const mapContainer = document.getElementById("map");
+
+  // Safety check
+  if (!mapContainer) return;
+
+  // If Google Maps JS API is available
+  if (typeof google !== "undefined" && google.maps) {
+    const map = new google.maps.Map(mapContainer, {
+      center: { lat: 20.5937, lng: 78.9629 }, // India center
+      zoom: 6,
+    });
+
+    // Example marker (optional)
+    // new google.maps.Marker({ position: { lat: 19.076, lng: 72.8777 }, map });
+
   } else {
-    // google maps not loaded or API key missing — show fallback message
-    document.getElementById('map').innerHTML += '<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3867615.203633482!2d74.12786929511361!3d18.79958061586077!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bcfc41e9c9cd6f9%3A0x1b2f22924be04fb6!2sMaharashtra!5e0!3m2!1sen!2sin!4v1766759901858!5m2!1sen!2sin" width="800" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>';
+    // Fallback to embedded Google Map
+    mapContainer.innerHTML = `
+      <div class="map-responsive">
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3867615.203633482!2d74.12786929511361!3d18.79958061586077!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bcfc41e9c9cd6f9%3A0x1b2f22924be04fb6!2sMaharashtra!5e0!3m2!1sen!2sin!4v1766759901858!5m2!1sen!2sin"
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+          allowfullscreen>
+        </iframe>
+      </div>
+    `;
   }
 }
+
 
 /* -----------------------------
    Auto-detect location
 ----------------------------- */
-function autoDetectLocation() {
-  if (!navigator.geolocation) return alert('Geolocation not supported by browser');
-  autoBtn.disabled = true; autoBtn.textContent = 'Detecting...';
-  navigator.geolocation.getCurrentPosition(pos => {
-    const lat = pos.coords.latitude, lon = pos.coords.longitude;
-    if (map) {
-      map.setCenter({ lat, lng: lon }); map.setZoom(12);
-      addMarker(lat, lon, 'You are here');
-    } else {
-      alert(`Your location: ${lat.toFixed(4)}, ${lon.toFixed(4)}`);
-    }
-    autoBtn.disabled = false; autoBtn.textContent = 'Auto Detect Location';
-  }, err => {
-    autoBtn.disabled = false; autoBtn.textContent = 'Auto Detect Location';
-    alert('Permission denied or unable to get location');
-  }, { timeout: 10000 });
-}
+// function autoDetectLocation() {
+//   if (!navigator.geolocation) return alert('Geolocation not supported by browser');
+//   autoBtn.disabled = true; autoBtn.textContent = 'Detecting...';
+//   navigator.geolocation.getCurrentPosition(pos => {
+//     const lat = pos.coords.latitude, lon = pos.coords.longitude;
+//     if (map) {
+//       map.setCenter({ lat, lng: lon }); map.setZoom(12);
+//       addMarker(lat, lon, 'You are here');
+//     } else {
+//       alert(`Your location: ${lat.toFixed(4)}, ${lon.toFixed(4)}`);
+//     }
+//     autoBtn.disabled = false; autoBtn.textContent = 'Auto Detect Location';
+//   }, err => {
+//     autoBtn.disabled = false; autoBtn.textContent = 'Auto Detect Location';
+//     alert('Permission denied or unable to get location');
+//   }, { timeout: 10000 });
+// }
 
 /* -----------------------------
    Voice search (guarded)
 ----------------------------- */
-function startVoiceSearch() {
-  const Speech = window.SpeechRecognition || window.webkitSpeechRecognition;
-  if (!Speech) {
-    micBtn && (micBtn.disabled = true);
-    return alert('SpeechRecognition not supported in this browser or insecure origin. Use Chrome/Edge on HTTPS or localhost.');
-  }
-  try {
-    const rec = new Speech();
-    rec.lang = 'en-IN';
-    rec.interimResults = false;
-    rec.maxAlternatives = 1;
-    rec.onresult = (e) => {
-      const text = (e.results && e.results[0] && e.results[0][0] && e.results[0][0].transcript) ? e.results[0][0].transcript : '';
-      searchInput.value = text;
-      showDealers();
-    };
-    rec.onerror = (ev) => {
-      console.error('SpeechRecognition error', ev);
-      const detail = ev && (ev.error || ev.message) ? (ev.error || ev.message) : JSON.stringify(ev);
-      alert('Voice recognition error: ' + detail);
-    };
-    rec.onend = () => { console.log('SpeechRecognition ended'); };
-    rec.start();
-  } catch (err) {
-    console.error('Failed to start SpeechRecognition', err);
-    alert('Unable to start voice recognition: ' + (err && (err.message || err.name) ? (err.message || err.name) : 'unknown error'));
-  }
-}
+// function startVoiceSearch() {
+//   const Speech = window.SpeechRecognition || window.webkitSpeechRecognition;
+//   if (!Speech) {
+//     micBtn && (micBtn.disabled = true);
+//     return alert('SpeechRecognition not supported in this browser or insecure origin. Use Chrome/Edge on HTTPS or localhost.');
+//   }
+//   try {
+//     const rec = new Speech();
+//     rec.lang = 'en-IN';
+//     rec.interimResults = false;
+//     rec.maxAlternatives = 1;
+//     rec.onresult = (e) => {
+//       const text = (e.results && e.results[0] && e.results[0][0] && e.results[0][0].transcript) ? e.results[0][0].transcript : '';
+//       searchInput.value = text;
+//       showDealers();
+//     };
+//     rec.onerror = (ev) => {
+//       console.error('SpeechRecognition error', ev);
+//       const detail = ev && (ev.error || ev.message) ? (ev.error || ev.message) : JSON.stringify(ev);
+//       alert('Voice recognition error: ' + detail);
+//     };
+//     rec.onend = () => { console.log('SpeechRecognition ended'); };
+//     rec.start();
+//   } catch (err) {
+//     console.error('Failed to start SpeechRecognition', err);
+//     alert('Unable to start voice recognition: ' + (err && (err.message || err.name) ? (err.message || err.name) : 'unknown error'));
+//   }
+// }
 
 /* -----------------------------
    3D card parallax
@@ -1544,8 +1565,8 @@ document.addEventListener('DOMContentLoaded', () => {
   districtSel.addEventListener('change', () => { populateTalukas(); showDealers(); });
   talukaSel.addEventListener('change', showDealers);
   showBtn.addEventListener('click', showDealers);
-  micBtn.addEventListener('click', startVoiceSearch);
-  autoBtn.addEventListener('click', autoDetectLocation);
+  // micBtn.addEventListener('click', startVoiceSearch);
+  // autoBtn.addEventListener('click', autoDetectLocation);
   downloadCSV.addEventListener('click', downloadCSVFile);
   downloadPDF.addEventListener('click', printPDF);
   themeBtn.addEventListener('click', () => document.body.classList.toggle('dark-mode'));
@@ -1587,5 +1608,22 @@ document.getElementById("callSupport").addEventListener("click", () => {
   const confirmCall = confirm("Do you want to call Farmer Support?");
   if (confirmCall) {
     window.location.href = `tel:${phoneNumber}`;
+  }
+});
+
+
+function togglePanel() {
+  document.getElementById("leftPanel").classList.toggle("active");
+}
+
+document.addEventListener("click", function (e) {
+  const panel = document.getElementById("leftPanel");
+  const btn = document.querySelector(".filter-btn");
+  if (!btn) return;
+
+  if (panel.classList.contains("active") &&
+      !panel.contains(e.target) &&
+      !btn.contains(e.target)) {
+    panel.classList.remove("active");
   }
 });

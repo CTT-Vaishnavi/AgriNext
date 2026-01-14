@@ -48,10 +48,10 @@
           <button id="loginBtn2">Login</button>
           <p class="orb">or</p>
           <!-- GOOGLE LOGIN -->
-<button id="googleLoginBtn" class="google-btn">
-  <img src="https://developers.google.com/identity/images/g-logo.png" alt="">
-  Continue with Google
-</button>
+          <button id="googleLoginBtn" class="google-btn">
+            <img src="https://developers.google.com/identity/images/g-logo.png" alt="">
+            Continue with Google
+          </button>
 
         </div>
 
@@ -71,10 +71,10 @@
 
         <!-- SIGNUP FORM -->
         <div id="signupBox" style="display:none;">
-          <input type="email" id="signupEmail" placeholder="Enter Email">
-          <input type="text" id="signupPhone" placeholder="Enter Phone Number">
-          <input type="password" id="signupPassword" placeholder="Enter Password">
-          <input type="password" id="signupConfirm" placeholder="Confirm Password">
+          <input type="email" id="signupEmail" required placeholder="Enter Email">
+          <!-- <input type="text" id="signupPhone" placeholder="Enter Phone Number"> -->
+          <input type="password" id="signupPassword" placeholder="Enter Password" required>
+          <input type="password" id="signupConfirm" placeholder="Confirm Password" required>
 
           <button id="createAccountBtn">Create Account</button>
           <p id="signupMsg"></p>
@@ -127,6 +127,7 @@
         <!-- <i class="fa-solid fa-user"></i> -->
         <img src="./images/Farmer (2).png" class="profile-img" alt="profile" />
       </a>
+      
       <div class="fas fa-bars" id="menu-btn"></div>
       
     </header>
@@ -344,10 +345,11 @@
 
       <div class="box-container">
         <div class="box">
-          <img src="images/vaishnavi.jpg" alt="member-1" />
+          <img src="images/Vaishnavi.jpeg" alt="member-1 Vaishnavi Shinde" />
 
           <h3>Vaishnavi Shinde</h3>
           <p>
+            Backend Developer <br /><br>
             BE | CSE <br />
             SGBA UNIVERSITY
           </p>
@@ -363,9 +365,10 @@
         </div>
         
         <div class="box">
-          <img src="images/Rahul2.jpg" alt="member-3" />
+          <img src="images/Rahul2.jpg" alt="member-3 Rahul Patil" />
           <h3>Rahul Patil</h3>
           <p>
+            Machine learning Module <br><br>
             BE | CSE <br />
             SGBA UNIVERSITY
           </p>
@@ -384,10 +387,11 @@
         </div>
 
   <div class="box">
-          <img src="./images/Viju.jpg" alt="member-4" />
+          <img src="./images/Viju.jpg" alt="member-4 Vijiya Dhoke" />
 
           <h3>Vijaya Dhoke</h3>
           <p>
+            Research & Documentation <br /><br>
             BE | CSE <br />
             SGBA UNIVERSITY
           </p>
@@ -409,11 +413,12 @@
         </div>
 
         <div class="box">
-          <img src="images/Ujjwala.jpg" alt="member-2" />
+          <img src="images/Ujjwala.jpg" alt="member-2 Ujjwala Tekade" />
 
 
           <h3>Ujjwala Tekade</h3>
           <p>
+            Frontend Developer <br /><br>
             BE | CSE <br />
             SGBA UNIVERSITY
           </p>
@@ -468,7 +473,7 @@
 
         <div class="inputBox">
             <input type="hidden" name="access_key" value="ced1b7a1-4ccf-47df-a750-d36761ef15a8">
-            <input type="text" name="first_name" required="required" placeholder="Full Name" autocomplete="off">
+            <input type="text" name="first_name" required="required" placeholder="Full Name" autocomplete="off"minlength="7">
             <span>Full Name</span>
         </div>
 
@@ -478,7 +483,7 @@
         </div>
 
         <div class="inputBox">
-            <textarea name="message" required="required" autocomplete="off"></textarea>
+            <textarea name="message" required="required" autocomplete="off" minlength="5"></textarea>
             <span>Type your message.....</span>
         </div>
 
