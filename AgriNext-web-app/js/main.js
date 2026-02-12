@@ -122,6 +122,44 @@ loginBtn2.onclick = () => {
     .catch(err => showToast(err.message, "error"));
 };
 
+/// ======================
+// FORGOT PASSWORD (FINAL SMART)
+// ======================
+
+forgotPasswordBtn.onclick = (e) => {
+
+  e.preventDefault();
+
+  const userEmail = email.value.trim().toLowerCase();
+
+  if (userEmail === "") {
+    showToast("Please enter your email first 📧", "error");
+    return;
+  }
+
+  // Check email exists
+  auth.fetchSignInMethodsForEmail(userEmail)
+    .then((methods) => {
+
+      if (methods.length === 0) {
+        showToast("Email not registered ❌", "error");
+        return;
+      }
+
+      // Send reset link
+      auth.sendPasswordResetEmail(userEmail)
+        .then(() => {
+          showToast("Password reset link sent ✅ Check email", "success");
+        });
+
+    })
+    .catch((error) => {
+      showToast(error.message, "error");
+    });
+
+};
+
+
 // ======================
 // SIGNUP
 // ======================
