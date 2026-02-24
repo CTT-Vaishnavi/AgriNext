@@ -132,32 +132,22 @@ forgotPasswordBtn.onclick = (e) => {
 
   const userEmail = email.value.trim().toLowerCase();
 
-  if (userEmail === "") {
-    showToast("Please enter your email first 📧", "error");
+  if (!userEmail) {
+    showToast("Enter email first 📧", "error");
     return;
   }
 
-  // Check email exists
-  auth.fetchSignInMethodsForEmail(userEmail)
-    .then((methods) => {
-
-      if (methods.length === 0) {
-        showToast("Email not registered ❌", "error");
-        return;
-      }
-
-      // Send reset link
-      auth.sendPasswordResetEmail(userEmail)
-        .then(() => {
-          showToast("Password reset link sent ✅ Check email", "success");
-        });
-
+  auth.sendPasswordResetEmail(userEmail)
+    .then(() => {
+      showToast("Reset link sent ✅ Check email", "success");
     })
     .catch((error) => {
       showToast(error.message, "error");
     });
 
 };
+
+
 
 
 // ======================
