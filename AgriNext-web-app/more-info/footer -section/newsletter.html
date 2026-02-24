@@ -9,6 +9,35 @@
   <!-- Icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <link rel="stylesheet" href="newsletter.css">
+  <style>
+  a{
+display:inline-block;
+padding:18px 60px;
+font-size:18px;
+font-weight:600;
+color:white;
+text-decoration:none;
+border-radius:50px;
+
+/* Attractive Gradient */
+background:linear-gradient(135deg,#f9a825,#66bb6a);
+
+transition:0.4s ease;
+box-shadow:0 8px 20px rgba(0,0,0,0.25);
+}
+
+/* Hover Effect */
+a:hover{
+background:linear-gradient(135deg,#ffb300,#43a047);
+transform:translateY(-4px);
+box-shadow:0 12px 30px rgba(0,0,0,0.35);
+}
+
+/* Click Effect */
+a:active{
+transform:scale(0.95);
+}
+  </style>
 </head>
 
 <body>
@@ -55,12 +84,17 @@
     <div class="nl-right">
       <h2>Subscribe Now</h2>
       <p>No spam. Only useful agriculture updates.</p>
-
+      
       <form id="newsletterForm">
-        <input type="email" placeholder="Enter your email address" required>
-        <button type="submit">
-          <i class="fa-solid fa-paper-plane"></i> Subscribe
-        </button>
+        <!-- <button><a href="/AgriNext-web-app/subscribe/crop.html">Subscribe</a></button> -->
+        <a href="/AgriNext-web-app/subscribe/crop.html" class="subscribe-btn">
+  Subscribe
+</a>
+        <!-- <input type="email" placeholder="Enter your email address" required> -->
+        <!-- <button type="submit"><a href=".../AgriNext-web-app/subscribe/crop.html">
+          <i class="fa-solid fa-paper-plane"></i> Subscribe</a>
+        </button> -->
+       
       </form>
       <div class="success-box" id="successBox">
       <i class="fa-solid fa-seedling"></i>

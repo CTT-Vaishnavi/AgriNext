@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Agri Next Subscription</title>
+
+<style>
+
+body{
+margin:0;
+font-family:Arial;
+background:#f2f6f2;
+}
+
+/* FORM OVERLAY */
+
+/* .overlay{
+display:none;
+position:fixed;
+inset:0;
+background:rgba(0,0,0,0.5);
+justify-content:center;
+align-items:center;
+}
+
+.form-box{
+background:white;
+padding:25px;
+width:360px;
+border-radius:8px;
+}
+
+.form-box input{
+width:100%;
+padding:10px;
+margin-bottom:12px;
+} */
+
+/* SUCCESS POPUP */
+
+/* .success-box{
+display:none;
+position:fixed;
+inset:0;
+background:rgba(0,0,0,0.5);
+justify-content:center;
+align-items:center;
+z-index:999;
+}
+
+.success-card{
+background:white;
+padding:30px;
+border-radius:12px;
+text-align:center;
+width:320px;
+animation:popupAnim 0.4s ease;
+}
+
+.success-card h2{
+color:#2e7d32;
+margin-bottom:10px;
+}
+
+.success-card button{
+margin-top:15px;
+padding:10px 20px;
+background:#2e7d32;
+color:white;
+border:none;
+border-radius:6px;
+cursor:pointer;
+}
+
+button{
+padding:12px 24px;
+background:#2e7d32;
+color:white;
+border:none;
+border-radius:5px;
+cursor:pointer;
+}
+
+@keyframes popupAnim{
+from{transform:scale(0.7);opacity:0;}
+to{transform:scale(1);opacity:1;}
+} */
+
+
+
+
+
+
+
+body{
+margin:0;
+font-family:'Segoe UI', Arial;
+background:linear-gradient(135deg,#2e7d32,#66bb6a);
+height:100vh;
+}
+
+/* FORM OVERLAY */
+
+.overlay{
+display:none;
+position:fixed;
+inset:0;
+background:rgba(0,0,0,0.4);
+backdrop-filter:blur(6px);
+justify-content:center;
+align-items:center;
+}
+
+/* FORM CARD */
+
+.form-box{
+background:rgba(255,255,255,0.95);
+padding:35px;
+width:380px;
+border-radius:18px;
+box-shadow:0 10px 30px rgba(0,0,0,0.3);
+animation:fadeUp 0.5s ease;
+}
+
+/* TITLE */
+
+.form-box h2{
+text-align:center;
+color:#2e7d32;
+margin-bottom:20px;
+}
+
+/* INPUT STYLE */
+
+.form-box input{
+width:100%;
+padding:12px;
+margin-bottom:14px;
+border-radius:8px;
+border:1px solid #ddd;
+font-size:15px;
+transition:0.3s;
+}
+
+/* INPUT FOCUS ANIMATION */
+
+.form-box input:focus{
+outline:none;
+border-color:#2e7d32;
+box-shadow:0 0 8px rgba(46,125,50,0.4);
+transform:scale(1.02);
+}
+
+/* BUTTON STYLE */
+
+button{
+width:100%;
+padding:14px;
+background:linear-gradient(135deg,#2e7d32,#4caf50);
+color:white;
+border:none;
+border-radius:30px;
+font-size:16px;
+font-weight:bold;
+cursor:pointer;
+transition:0.3s;
+}
+
+/* BUTTON HOVER */
+
+button:hover{
+transform:translateY(-3px);
+box-shadow:0 6px 15px rgba(0,0,0,0.3);
+background:linear-gradient(135deg,#1b5e20,#43a047);
+}
+
+/* SUCCESS POPUP */
+
+.success-box{
+display:none;
+position:fixed;
+inset:0;
+background:rgba(0,0,0,0.5);
+justify-content:center;
+align-items:center;
+z-index:999;
+}
+
+.success-card{
+background:white;
+padding:30px;
+border-radius:18px;
+text-align:center;
+width:320px;
+animation:popupAnim 0.4s ease;
+box-shadow:0 10px 30px rgba(0,0,0,0.3);
+}
+
+.success-card h2{
+color:#2e7d32;
+}
+
+/* ANIMATIONS */
+
+@keyframes popupAnim{
+from{transform:scale(0.6);opacity:0;}
+to{transform:scale(1);opacity:1;}
+}
+
+@keyframes fadeUp{
+from{transform:translateY(30px);opacity:0;}
+to{transform:translateY(0);opacity:1;}
+}
+
+</style>
+
+</head>
+
+<body>
+
+<!-- FIRST FORM -->
+<div class="overlay" id="overlay1">
+<div class="form-box">
+
+<h2>Subscribe</h2>
+
+<form id="form1">
+
+<input name="name" placeholder="Full Name" required>
+<input name="email" placeholder="Email" required>
+<input name="phone" placeholder="Phone">
+<input name="location" placeholder="City">
+<input name="crop" placeholder="Crop">
+
+<button type="submit">Next</button>
+
+</form>
+
+</div>
+</div>
+
+<!-- SECOND FORM -->
+<div class="overlay" id="overlay2">
+<div class="form-box">
+
+<h2>More Details</h2>
+
+<form id="form2">
+
+<input name="farm_size" placeholder="Farm Size">
+<input name="soil_type" placeholder="Soil Type">
+
+<button type="submit">Submit</button>
+
+</form>
+
+</div>
+</div>
+
+<!-- SUCCESS POPUP -->
+<div id="successBox" class="success-box">
+<div class="success-card">
+<h2>🌱 Thank You!</h2>
+<p>Subscription successful.<br>Admin + Thank You email sent successfully.</p>
+<button onclick="closeSuccess()">OK</button>
+</div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+
+<script>
+
+emailjs.init("qs3Z7U8ufcBzCqV1N");
+
+const overlay1=document.getElementById("overlay1");
+const overlay2=document.getElementById("overlay2");
+
+// 🔥 DIRECT FORM OPEN ON PAGE LOAD
+window.onload=function(){
+overlay1.style.display="flex";
+};
+
+let firstFormData={};
+
+// FIRST FORM
+
+document.getElementById("form1").addEventListener("submit",function(e){
+
+e.preventDefault();
+
+firstFormData=Object.fromEntries(new FormData(this).entries());
+
+overlay1.style.display="none";
+overlay2.style.display="flex";
+
+});
+
+// SECOND FORM
+
+document.getElementById("form2").addEventListener("submit",function(e){
+
+e.preventDefault();
+
+let secondFormData=Object.fromEntries(new FormData(this).entries());
+
+let finalData={...firstFormData,...secondFormData};
+
+// ADMIN EMAIL
+
+emailjs.send("service_flcuz5a","template_u1drs1f",finalData)
+
+.then(function(){
+
+// USER AUTO THANK YOU EMAIL
+
+emailjs.send(
+"service_flcuz5a",
+"template_uusjo2h",
+{
+name: finalData.name,
+to_email: finalData.email
+});
+
+overlay2.style.display="none";
+document.getElementById("successBox").style.display="flex";
+
+},
+
+function(error){
+console.log(error);
+alert("Email failed. Check console.");
+});
+
+});
+
+// SUCCESS CLOSE + REDIRECT
+
+function closeSuccess(){
+document.getElementById("successBox").style.display="none";
+window.location.href="../index.html";
+}
+
+</script>
+
+</body>
+</html>
