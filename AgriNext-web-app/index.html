@@ -13,21 +13,46 @@
     />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   </head>
+  <style>
+    /* Scroll To Top Button */
+    .scroll-btn {
+      position: fixed;
+      bottom: 20px;
+      left: 20px;
+      background: linear-gradient(135deg, #a5d6a7, #81c784);
+     color: #1b5e20;
+      border: none;
+      border-radius: 50%;
+      width: 60px;
+      height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+    }
+    .scroll-btn i {
+      font-size: 24px;
+    }
+    .scroll-btn:hover {
+      transform: scale(1.15);
+  box-shadow: 0 8px 25px rgba(0,0,0,0.4);
+    }
+  </style>
   <body>
 
      <!-- LOGIN POPUP SYSTEM START -->
-<div id="loginPopup" class="popup" style="display:none;">
-  <div class="popup-box">
+      <div id="loginPopup" class="popup" style="display:none;">
+        <div class="popup-box">
 
-    <span id="closePopup" class="close-btn">×</span>
+          <span id="closePopup" class="close-btn">×</span>
 
-    <!-- 🔁 NEW WRAPPER -->
-    <div class="popup-inner">
+          <!-- 🔁 NEW WRAPPER -->
+          <div class="popup-inner">
 
-      <!-- ✅ LEFT IMAGE SIDE -->
-     <div class="popup-image">
-  <img id="popupImage" src="./images/login1.png" alt="Farmer">
-</div>
+            <!-- ✅ LEFT IMAGE SIDE -->
+          <div class="popup-image">
+        <img id="popupImage" src="./images/login1.png" alt="Farmer">
+      </div>
 
 
       <!-- ✅ RIGHT FORM SIDE (YOUR OLD CODE) -->
@@ -64,26 +89,21 @@
           <input type="text" id="phone" placeholder="+91XXXXXXXXXX">
           <div id="recaptcha-container"></div>
           <button id="sendOtpBtn">Send OTP</button>
-
           <div id="otpSection" style="display:none;">
             <input type="text" id="otp" placeholder="Enter OTP">
             <button id="verifyOtpBtn">Verify OTP</button>
           </div>
-
           <p id="otpMsg"></p>
         </div>
-
         <!-- SIGNUP FORM -->
         <div id="signupBox" style="display:none;">
           <input type="email" id="signupEmail" required placeholder="Enter Email">
           <!-- <input type="text" id="signupPhone" placeholder="Enter Phone Number"> -->
           <input type="password" id="signupPassword" placeholder="Enter Password" required>
           <input type="password" id="signupConfirm" placeholder="Confirm Password" required>
-
           <button id="createAccountBtn">Create Account</button>
           <p id="signupMsg"></p>
         </div>
-
       </div>
     </div>
 <p class="footerlogin">Support by || Agri🌾Next Team</p>
@@ -95,8 +115,6 @@
         <h2>👨‍🌾 Farmer Dashboard</h2>
         <button id="logoutBtn">Logout</button>
       </div>
-
-
       <!-- SMALL PROFILE POPUP -->
       <div id="profilePopup" class="profile-popup">
           <div class="profile-box">
@@ -390,7 +408,7 @@
           </a>
         </div>
 
-  <div class="box">
+        <div class="box">
           <img src="./images/Viju.jpg" alt="member-4 Vijiya Dhoke" />
 
           <h3>Vijaya Dhoke</h3>
@@ -442,9 +460,6 @@
             <i class="fab fa-github"></i>
           </a>
         </div>
-
-
-      
       </div>
     </section>
 
@@ -502,6 +517,7 @@
     </form>
 </div>
     </section>
+        
 
     <!-- footer section starts  -->
 
@@ -544,14 +560,81 @@
 
     </section>
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+   
+
+
+
     <!-- footer section ends -->
-  <a href="https://wa.me/918698829253?text=Hello%0AThank%20you%20for%20connecting%20with%20AgriNext.%0A%0AWe%20help%20farmers%20with:%0A-%20Crop%20Recommendation%0A-%20Government%20Scheme%20and%20Insurance%20Eligibility%0A-%20Weather%20and%20Market%20Advisory%0A-%20Crop%20Disease%20Guidance%0A-%20Smart%20Farming%20Solutions%0A%0AThis%20is%20an%20educational%20and%20advisory%20platform%20created%20to%20support%20Indian%20farmers%20with%20reliable%20information.%0A%0APlease%20type%20your%20question%20or%20select%20a%20service%20to%20get%20started."
+    <a href="https://wa.me/918698829253?text=Hello%0AThank%20you%20for%20connecting%20with%20AgriNext.%0A%0AWe%20help%20farmers%20with:%0A-%20Crop%20Recommendation%0A-%20Government%20Scheme%20and%20Insurance%20Eligibility%0A-%20Weather%20and%20Market%20Advisory%0A-%20Crop%20Disease%20Guidance%0A-%20Smart%20Farming%20Solutions%0A%0AThis%20is%20an%20educational%20and%20advisory%20platform%20created%20to%20support%20Indian%20farmers%20with%20reliable%20information.%0A%0APlease%20type%20your%20question%20or%20select%20a%20service%20to%20get%20started."
    target="_blank"
    class="whatsapp_float">
    <i class="fab fa-whatsapp"></i>
-</a>
+    </a>
+    <!-- Scroll To Top Button -->
+    <div class="scroll-btn" id="scrollBtn">
+      <i class="fas fa-arrow-down" id="scrollIcon"></i>
+    </div>
+    
+    <script>
+      // scrollbar toggle arrow
+      const scrollBtn = document.getElementById("scrollBtn");
+      const scrollIcon = document.getElementById("scrollIcon");
 
+      scrollBtn.addEventListener("click", function () {
 
+        const isAtBottom =
+          window.innerHeight + window.scrollY >= document.body.offsetHeight - 10;
+
+        if (isAtBottom) {
+          // Go To Top
+          window.scrollTo({
+            top: 0,
+            behavior: "smooth"
+          });
+        } else {
+          // Go To Bottom
+          window.scrollTo({
+            top: document.body.scrollHeight,
+            behavior: "smooth"
+          });
+        }
+
+      });
+
+      // Change icon automatically on scroll
+      window.addEventListener("scroll", function () {
+
+        const isAtBottom =
+          window.innerHeight + window.scrollY >= document.body.offsetHeight - 10;
+
+        if (isAtBottom) {
+          scrollIcon.classList.remove("fa-arrow-down");
+          scrollIcon.classList.add("fa-arrow-up");
+        } else {
+          scrollIcon.classList.remove("fa-arrow-up");
+          scrollIcon.classList.add("fa-arrow-down");
+        }
+
+      });
+    </script>
 
     <!-- chatbot section ends -->
     <script src="script.js"></script>
@@ -639,6 +722,6 @@ function setActive(activeBtn){
 </script>
 <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
 <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
-    <script src="js/main.js"></script>
+<script src="js/main.js"></script>
   </body>
 </html>
