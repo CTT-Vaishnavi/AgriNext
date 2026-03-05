@@ -488,19 +488,39 @@ function showToast(message, type = "info") {
 // ======================
 // GOOGLE LOGIN / SIGNUP
 // ======================
-const googleProvider = new firebase.auth.GoogleAuthProvider();
+// GOOGLE LOGIN
+document.addEventListener("DOMContentLoaded", function () {
 
-document.getElementById("googleLoginBtn").onclick = () => {
-  auth.signInWithPopup(googleProvider)
-    .then((result) => {
-      const user = result.user;
+  const googleProvider = new firebase.auth.GoogleAuthProvider();
 
-      loginPopup.style.display = "none";
-      showToast("Google Login Successful 👨‍🌾", "success");
+  const googleBtn = document.getElementById("googleLoginBtn");
 
-      console.log("Google User:", user.email);
-    })
-    .catch((error) => {
-      showToast(error.message, "error");
+  if (googleBtn) {
+
+    googleBtn.addEventListener("click", function () {
+
+      auth.signInWithPopup(googleProvider)
+        .then((result) => {
+
+          const user = result.user;
+
+          loginPopup.style.display = "none";
+
+          showToast("Google Login Successful 👨‍🌾", "success");
+
+          console.log(user);
+
+        })
+        .catch((error) => {
+
+          console.error(error);
+
+          showToast(error.message, "error");
+
+        });
+
     });
-};
+
+  }
+
+});
