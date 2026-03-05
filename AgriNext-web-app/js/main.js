@@ -59,6 +59,22 @@ document.getElementById("contactForm").addEventListener("submit", function () {
   setTimeout(() => this.reset(), 1000);
 });
 
+// // ======================
+// // FIREBASE CONFIG
+// // ======================
+// const firebaseConfig = {
+//   apiKey: "AIzaSyBQ_cUOvn7gB2kq6R85V5WKqja4s-tCZjo",
+//   authDomain: "agrinext-smart-farming.firebaseapp.com",
+//   projectId: "agrinext-smart-farming",
+//   storageBucket: "agrinext-smart-farming.firebasestorage.app",
+//   messagingSenderId: "685958519850",
+//   appId: "1:685958519850:web:3bafe3a5de1282a2547753",
+//   measurementId: "G-6DY3X4ZRZ3",
+// };
+// firebase.initializeApp(firebaseConfig);
+// const auth = firebase.auth();
+
+
 // ======================
 // FIREBASE CONFIG
 // ======================
@@ -69,9 +85,15 @@ const firebaseConfig = {
   storageBucket: "agrinext-smart-farming.firebasestorage.app",
   messagingSenderId: "685958519850",
   appId: "1:685958519850:web:3bafe3a5de1282a2547753",
-  measurementId: "G-6DY3X4ZRZ3",
+  measurementId: "G-6DY3X4ZRZ3"
 };
-firebase.initializeApp(firebaseConfig);
+
+// Initialize Firebase safely
+if (!firebase.apps.length) {
+  firebase.initializeApp(firebaseConfig);
+}
+
+// Firebase Authentication
 const auth = firebase.auth();
 
 // ======================
