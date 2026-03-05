@@ -1,4 +1,3 @@
-
 // ======================
 // NAVBAR TOGGLE
 // ======================
@@ -74,26 +73,23 @@ document.getElementById("contactForm").addEventListener("submit", function () {
 // firebase.initializeApp(firebaseConfig);
 // const auth = firebase.auth();
 
-
 // ======================
 // FIREBASE CONFIG
 // ======================
 const firebaseConfig = {
   apiKey: "AIzaSyBQ_cUOvn7gB2kq6R85V5WKqja4s-tCZjo",
- authDomain: "agrinextplant-68852.firebaseapp.com",
-projectId: "agrinextplant-68852",
-  storageBucket: "agrinext-smart-farming.firebasestorage.app",
+  authDomain: "agrinextplant-68852.firebaseapp.com",
+  projectId: "agrinextplant-68852",
+  storageBucket: "agrinextplant-68852.appspot.com",
   messagingSenderId: "685958519850",
   appId: "1:685958519850:web:3bafe3a5de1282a2547753",
-  measurementId: "G-6DY3X4ZRZ3"
 };
 
-// Initialize Firebase safely
+// Initialize Firebase
 if (!firebase.apps.length) {
   firebase.initializeApp(firebaseConfig);
 }
 
-// Firebase Authentication
 const auth = firebase.auth();
 
 // ======================
@@ -103,53 +99,62 @@ const loginPopup = document.getElementById("loginPopup");
 const openLoginBtn = document.getElementById("openLogin");
 const closePopup = document.getElementById("closePopup");
 
-openLoginBtn.onclick = () => loginPopup.style.display = "flex";
-closePopup.onclick = () => loginPopup.style.display = "none";
+openLoginBtn.onclick = () => (loginPopup.style.display = "flex");
+closePopup.onclick = () => (loginPopup.style.display = "none");
 
+/// ======================
+// SIGNUP
 // ======================
-// LOGIN / SIGNUP TABS
-// ======================
-emailTab.onclick = () => {
-  toggleTab(emailTab, [phoneTab, signupTab]);
-  showBox(emailBox, [phoneBox, signupBox]);
+createAccountBtn.onclick = () => {
+  const userEmail = signupEmail.value.trim().toLowerCase();
+  const userPassword = signupPassword.value.trim();
+  const confirmPassword = signupConfirm.value.trim();
+
+  if (userPassword !== confirmPassword) {
+    showSignupMsg("Passwords do not match ❌", "red");
+    return;
+  }
+
+  auth
+    .createUserWithEmailAndPassword(userEmail, userPassword)
+
+    .then(() => {
+      showSignupMsg("Account Created Successfully ✔", "green");
+
+      setTimeout(() => {
+        signupBox.style.display = "none";
+        emailBox.style.display = "block";
+      }, 1500);
+    })
+
+    .catch((error) => {
+      showSignupMsg(error.message, "red");
+    });
 };
-
-phoneTab.onclick = () => {
-  toggleTab(phoneTab, [emailTab, signupTab]);
-  showBox(phoneBox, [emailBox, signupBox]);
-};
-
-signupTab.onclick = () => {
-  toggleTab(signupTab, [emailTab, phoneTab]);
-  showBox(signupBox, [emailBox, phoneBox]);
-};
-
-function toggleTab(active, others) {
-  active.classList.add("active");
-  others.forEach(btn => btn.classList.remove("active"));
-}
-
-function showBox(show, hideBoxes) {
-  show.style.display = "block";
-  hideBoxes.forEach(box => box.style.display = "none");
-}
-
 // ======================
 // EMAIL LOGIN
 // ======================
 loginBtn2.onclick = () => {
-  auth.signInWithEmailAndPassword(email.value, password.value)
-    .then(() => successLogin())
-    // .catch(err => alert(err.message));
-    .catch(err => showToast(err.message, "error"));
-};
+  const userEmail = email.value.trim().toLowerCase();
+  const userPassword = password.value.trim();
 
+  auth
+    .signInWithEmailAndPassword(userEmail, userPassword)
+
+    .then(() => {
+      loginPopup.style.display = "none";
+      showToast("Login Successful 👨‍🌾", "success");
+    })
+
+    .catch((error) => {
+      showToast(error.message, "error");
+    });
+};
 /// ======================
 // FORGOT PASSWORD (FINAL SMART)
 // ======================
 
 forgotPasswordBtn.onclick = (e) => {
-
   e.preventDefault();
 
   const userEmail = email.value.trim().toLowerCase();
@@ -159,18 +164,15 @@ forgotPasswordBtn.onclick = (e) => {
     return;
   }
 
-  auth.sendPasswordResetEmail(userEmail)
+  auth
+    .sendPasswordResetEmail(userEmail)
     .then(() => {
       showToast("Reset link sent ✅ Check email", "success");
     })
     .catch((error) => {
       showToast(error.message, "error");
     });
-
 };
-
-
-
 
 // ======================
 // SIGNUP
@@ -180,14 +182,12 @@ function validateEmail(email) {
 }
 
 createAccountBtn.onclick = () => {
-
   let email = signupEmail.value.trim();
   let phone = signupPhone.value.trim();
   let password = signupPassword.value.trim();
   let confirm = signupConfirm.value.trim();
 
-  if (!validateEmail(email))
-    return showSignupMsg("Invalid Email", "red");
+  if (!validateEmail(email)) return showSignupMsg("Invalid Email", "red");
 
   if (phone.length !== 10)
     return showSignupMsg("Phone Number must be 10 digits", "red");
@@ -198,7 +198,8 @@ createAccountBtn.onclick = () => {
   if (password !== confirm)
     return showSignupMsg("Passwords do not match", "red");
 
-  auth.createUserWithEmailAndPassword(email, password)
+  auth
+    .createUserWithEmailAndPassword(email, password)
     .then(() => {
       showSignupMsg("Account Created Successfully ✔", "green");
 
@@ -208,7 +209,7 @@ createAccountBtn.onclick = () => {
         showBox(emailBox, [signupBox, phoneBox]);
       }, 1500);
     })
-    .catch(err => showSignupMsg(err.message, "red"));
+    .catch((err) => showSignupMsg(err.message, "red"));
 };
 
 function showSignupMsg(msg, color) {
@@ -222,31 +223,41 @@ function showSignupMsg(msg, color) {
 let recaptcha = new firebase.auth.RecaptchaVerifier("recaptcha-container");
 
 sendOtpBtn.onclick = () => {
-  auth.signInWithPhoneNumber(phone.value, recaptcha)
-    .then(res => {
+  auth
+    .signInWithPhoneNumber(phone.value, recaptcha)
+    .then((res) => {
       window.confirmationResult = res;
       otpSection.style.display = "block";
       otpMsg.innerText = "OTP Sent ✔";
       otpMsg.style.color = "green";
     })
     // .catch(err => alert(err.message));
-    .catch(err => showToast(err.message, "error"));
+    .catch((err) => showToast(err.message, "error"));
 };
 
 verifyOtpBtn.onclick = () => {
-  confirmationResult.confirm(otp.value)
+  confirmationResult
+    .confirm(otp.value)
     .then(() => successLogin())
     // .catch(() => alert("Invalid OTP ❌"));
     .catch(() => showToast("Invalid OTP ❌", "error"));
 };
 
 // ======================
-// SUCCESS LOGIN
+// LOGOUT
 // ======================
-function successLogin() {
-  loginPopup.style.display = "none";
-  showToast("Login Successful 👨‍🌾");
-}
+logoutFromProfile.onclick = () => {
+
+  auth.signOut().then(() => {
+
+    showToast("Logged Out Successfully 👨‍🌾", "success");
+
+    profilePopup.style.display = "none";
+
+  });
+
+};
+
 
 // =====================================================
 // LOGIN UI TOGGLE SYSTEM
@@ -256,16 +267,23 @@ const profileBtn = document.getElementById("profileBtn");
 // MAKE PROFILE HIDDEN BY DEFAULT
 profileBtn.style.display = "none";
 
+// ======================
+// AUTH STATE CHECK
+// ======================
 auth.onAuthStateChanged(user => {
+
   if (user) {
-    // LOGIN → PROFILE SHOW, LOGIN BUTTON HIDE
+
     profileBtn.style.display = "block";
     openLoginBtn.style.display = "none";
+
   } else {
-    // LOGOUT → PROFILE HIDE, LOGIN BUTTON SHOW
+
     profileBtn.style.display = "none";
-    // openLoginBtn.style.display = "block";
+    openLoginBtn.style.display = "block";
+
   }
+
 });
 
 // ======================
@@ -280,7 +298,7 @@ const profileName = document.getElementById("profileName");
 profileBtn.onclick = () => {
   profilePopup.style.display = "block";
 
-  auth.onAuthStateChanged(user => {
+  auth.onAuthStateChanged((user) => {
     if (user) {
       profileName.innerHTML = "👨‍🌾 " + user.email;
       openLoginFromProfile.style.display = "none";
@@ -314,20 +332,19 @@ logoutFromProfile.onclick = () => {
 // LOGIN REQUIRED ON FEATURES
 // ======================
 function requireLogin(callback) {
-  auth.onAuthStateChanged(user => {
+  auth.onAuthStateChanged((user) => {
     if (user) callback();
     else loginPopup.style.display = "flex";
   });
 }
 
-
 // ======================
 // UNIVERSAL LOGIN PROTECTION FOR ALL FEATURE BUTTONS
 // ======================
-document.querySelectorAll("a.btn, a.buttonn").forEach(link => {
+document.querySelectorAll("a.btn, a.buttonn").forEach((link) => {
   link.addEventListener("click", function (e) {
     const target = this.getAttribute("href");
-    
+
     // Prevent opening link
     e.preventDefault();
 
@@ -336,7 +353,6 @@ document.querySelectorAll("a.btn, a.buttonn").forEach(link => {
     });
   });
 });
-
 
 // // EXPLORE NOW
 // document.querySelector("a.btn[href='explore/index.html']").onclick = (e) => {
@@ -405,7 +421,6 @@ document.querySelectorAll("a.btn, a.buttonn").forEach(link => {
 // AGRINEXT PREMIUM FARMER ASSIST 🌾
 // =======================================
 function showToast(message, type = "info") {
-
   // remove old assist card
   const old = document.getElementById("agrinext-assist");
   if (old) old.remove();
@@ -413,10 +428,7 @@ function showToast(message, type = "info") {
   const toast = document.createElement("div");
   toast.id = "agrinext-assist";
 
-  const icon =
-    type === "error" ? "🙆" :
-    type === "success" ? "🌱" :
-    "🌿";
+  const icon = type === "error" ? "🙆" : type === "success" ? "🌱" : "🌿";
 
   toast.innerHTML = `
     <div class="agri-card">
@@ -443,7 +455,7 @@ function showToast(message, type = "info") {
     zIndex: "99999999",
     opacity: "0",
     transform: "translateY(-15px)",
-    transition: "all 0.5s ease"
+    transition: "all 0.5s ease",
   });
 
   document.body.appendChild(toast);
@@ -461,7 +473,6 @@ function showToast(message, type = "info") {
     setTimeout(() => toast.remove(), 500);
   }, 3800);
 }
-
 
 // function showToast(message, type = "success") {
 //   const toast = document.getElementById("toast");
@@ -484,23 +495,27 @@ function showToast(message, type = "info") {
 //   }, 3000);
 // }
 
-
 // ======================
-// GOOGLE LOGIN / SIGNUP
+// GOOGLE LOGIN
 // ======================
 const googleProvider = new firebase.auth.GoogleAuthProvider();
 
-document.getElementById("googleLoginBtn").onclick = () => {
-  auth.signInWithPopup(googleProvider)
+document.getElementById("googleLoginBtn").addEventListener("click", () => {
+  auth
+    .signInWithPopup(googleProvider)
+
     .then((result) => {
       const user = result.user;
 
       loginPopup.style.display = "none";
+
       showToast("Google Login Successful 👨‍🌾", "success");
 
       console.log("Google User:", user.email);
     })
+
     .catch((error) => {
+      console.error(error);
       showToast(error.message, "error");
     });
-};
+});
