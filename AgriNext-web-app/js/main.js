@@ -1,4 +1,3 @@
-
 // ======================
 // NAVBAR TOGGLE
 // ======================
@@ -24,8 +23,7 @@ document.getElementById("callButton").addEventListener("click", function (e) {
   if (/Mobi|Android/i.test(navigator.userAgent)) {
     window.location.href = "tel:" + phone;
   } else {
-    showToast("📲Please use a mobile device to make this call", "error");
-    // alert("Please use a mobile device to make this call.");
+    showToast("📲 Please use a mobile device to make this call", "error");
   }
 });
 
@@ -37,16 +35,13 @@ const body = document.body;
 document.getElementById("sun").onclick = () => {
   body.style.background = "linear-gradient(to bottom right, #ffeb99, #ffcc00)";
 };
-
 document.getElementById("forest").onclick = () => {
   body.style.background = "linear-gradient(to bottom right, #b7ffb7, #07a63a)";
 };
-
 document.getElementById("ocean").onclick = () => {
   body.style.background = "linear-gradient(to bottom right, #b3e5ff, #0077ff)";
   body.style.color = "#fff";
 };
-
 document.getElementById("white").onclick = () => {
   body.style.background = "#ffffff";
   body.style.color = "#000";
@@ -59,41 +54,22 @@ document.getElementById("contactForm").addEventListener("submit", function () {
   setTimeout(() => this.reset(), 1000);
 });
 
-// // ======================
-// // FIREBASE CONFIG
-// // ======================
-// const firebaseConfig = {
-//   apiKey: "AIzaSyBQ_cUOvn7gB2kq6R85V5WKqja4s-tCZjo",
-//   authDomain: "agrinext-smart-farming.firebaseapp.com",
-//   projectId: "agrinext-smart-farming",
-//   storageBucket: "agrinext-smart-farming.firebasestorage.app",
-//   messagingSenderId: "685958519850",
-//   appId: "1:685958519850:web:3bafe3a5de1282a2547753",
-//   measurementId: "G-6DY3X4ZRZ3",
-// };
-// firebase.initializeApp(firebaseConfig);
-// const auth = firebase.auth();
-
-
 // ======================
 // FIREBASE CONFIG
 // ======================
 const firebaseConfig = {
   apiKey: "AIzaSyBQ_cUOvn7gB2kq6R85V5WKqja4s-tCZjo",
- authDomain: "agrinextplant-68852.firebaseapp.com",
-projectId: "agrinextplant-68852",
+  authDomain: "agrinextplant-68852.firebaseapp.com",
+  projectId: "agrinextplant-68852",
   storageBucket: "agrinext-smart-farming.firebasestorage.app",
   messagingSenderId: "685958519850",
   appId: "1:685958519850:web:3bafe3a5de1282a2547753",
   measurementId: "G-6DY3X4ZRZ3"
 };
 
-// Initialize Firebase safely
 if (!firebase.apps.length) {
   firebase.initializeApp(firebaseConfig);
 }
-
-// Firebase Authentication
 const auth = firebase.auth();
 
 // ======================
@@ -103,8 +79,21 @@ const loginPopup = document.getElementById("loginPopup");
 const openLoginBtn = document.getElementById("openLogin");
 const closePopup = document.getElementById("closePopup");
 
-openLoginBtn.onclick = () => loginPopup.style.display = "flex";
-closePopup.onclick = () => loginPopup.style.display = "none";
+openLoginBtn.onclick = () => (loginPopup.style.display = "flex");
+closePopup.onclick = () => (loginPopup.style.display = "none");
+
+// ======================
+// TAB ELEMENTS
+// ======================
+const emailTab = document.getElementById("emailTab");
+const phoneTab = document.getElementById("phoneTab");
+const signupTab = document.getElementById("signupTab");
+
+const emailBox = document.getElementById("emailBox");
+const phoneBox = document.getElementById("phoneBox");
+const signupBox = document.getElementById("signupBox");
+
+const popupImage = document.getElementById("popupImage");
 
 // ======================
 // LOGIN / SIGNUP TABS
@@ -112,106 +101,152 @@ closePopup.onclick = () => loginPopup.style.display = "none";
 emailTab.onclick = () => {
   toggleTab(emailTab, [phoneTab, signupTab]);
   showBox(emailBox, [phoneBox, signupBox]);
+  popupImage.src = "./images/login1.png";
 };
 
 phoneTab.onclick = () => {
   toggleTab(phoneTab, [emailTab, signupTab]);
   showBox(phoneBox, [emailBox, signupBox]);
+  popupImage.src = "./images/login1.png";
 };
 
 signupTab.onclick = () => {
   toggleTab(signupTab, [emailTab, phoneTab]);
   showBox(signupBox, [emailBox, phoneBox]);
+  popupImage.src = "./images/sing1.png";
 };
 
 function toggleTab(active, others) {
   active.classList.add("active");
-  others.forEach(btn => btn.classList.remove("active"));
+  others.forEach((btn) => btn.classList.remove("active"));
 }
 
 function showBox(show, hideBoxes) {
   show.style.display = "block";
-  hideBoxes.forEach(box => box.style.display = "none");
+  hideBoxes.forEach((box) => (box.style.display = "none"));
 }
 
 // ======================
 // EMAIL LOGIN
 // ======================
-loginBtn2.onclick = () => {
-  auth.signInWithEmailAndPassword(email.value, password.value)
-    .then(() => successLogin())
-    // .catch(err => alert(err.message));
-    .catch(err => showToast(err.message, "error"));
-};
+document.getElementById("loginBtn2").onclick = () => {
+  const emailVal = document.getElementById("email").value.trim();
+  const passwordVal = document.getElementById("password").value.trim();
 
-/// ======================
-// FORGOT PASSWORD (FINAL SMART)
-// ======================
-
-forgotPasswordBtn.onclick = (e) => {
-
-  e.preventDefault();
-
-  const userEmail = email.value.trim().toLowerCase();
-
-  if (!userEmail) {
-    showToast("Enter email first 📧", "error");
+  if (!emailVal || !passwordVal) {
+    showToast("Please enter email and password 📧", "error");
     return;
   }
 
-  auth.sendPasswordResetEmail(userEmail)
-    .then(() => {
-      showToast("Reset link sent ✅ Check email", "success");
-    })
-    .catch((error) => {
-      showToast(error.message, "error");
+  auth
+    .signInWithEmailAndPassword(emailVal, passwordVal)
+    .then(() => successLogin())
+    .catch((err) => {
+      // Show friendly messages
+      if (err.code === "auth/user-not-found") {
+        showToast("No account found with this email ❌", "error");
+      } else if (err.code === "auth/wrong-password") {
+        showToast("Wrong password ❌ Try again", "error");
+      } else if (err.code === "auth/invalid-email") {
+        showToast("Invalid email format 📧", "error");
+      } else {
+        showToast(err.message, "error");
+      }
     });
-
 };
 
+// ======================
+// FORGOT PASSWORD
+// ======================
+document.getElementById("forgotPasswordBtn").onclick = (e) => {
+  e.preventDefault();
+  const userEmail = document.getElementById("email").value.trim().toLowerCase();
 
+  if (!userEmail) {
+    showToast("Enter your email first 📧", "error");
+    return;
+  }
 
+  auth
+    .sendPasswordResetEmail(userEmail)
+    .then(() => showToast("Reset link sent ✅ Check your email", "success"))
+    .catch((error) => showToast(error.message, "error"));
+};
 
 // ======================
-// SIGNUP
+// SIGNUP  ← MAIN FIX HERE
 // ======================
 function validateEmail(email) {
   return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
 }
 
-createAccountBtn.onclick = () => {
+document.getElementById("createAccountBtn").onclick = () => {
+  // Use unique variable names to avoid conflict with global input elements
+  const newEmail = document.getElementById("signupEmail").value.trim().toLowerCase();
+  const newPassword = document.getElementById("signupPassword").value.trim();
+  const confirmPass = document.getElementById("signupConfirm").value.trim();
+  const signupMsg = document.getElementById("signupMsg");
 
-  let email = signupEmail.value.trim();
-  let phone = signupPhone.value.trim();
-  let password = signupPassword.value.trim();
-  let confirm = signupConfirm.value.trim();
+  // ✅ Validation (phone field removed — it's commented out in HTML)
+  if (!newEmail) {
+    showSignupMsg("Please enter your email 📧", "red");
+    return;
+  }
 
-  if (!validateEmail(email))
-    return showSignupMsg("Invalid Email", "red");
+  if (!validateEmail(newEmail)) {
+    showSignupMsg("Invalid email format ❌", "red");
+    return;
+  }
 
-  if (phone.length !== 10)
-    return showSignupMsg("Phone Number must be 10 digits", "red");
+  if (newPassword.length < 6) {
+    showSignupMsg("Password must be at least 6 characters 🔒", "red");
+    return;
+  }
 
-  if (password.length < 6)
-    return showSignupMsg("Password must be at least 6 characters", "red");
+  if (newPassword !== confirmPass) {
+    showSignupMsg("Passwords do not match ❌", "red");
+    return;
+  }
 
-  if (password !== confirm)
-    return showSignupMsg("Passwords do not match", "red");
-
-  auth.createUserWithEmailAndPassword(email, password)
-    .then(() => {
+  // ✅ Firebase create account
+  auth
+    .createUserWithEmailAndPassword(newEmail, newPassword)
+    .then((userCredential) => {
+      console.log("Account created:", userCredential.user.email);
       showSignupMsg("Account Created Successfully ✔", "green");
+      showToast("Welcome to AgriNext 🌱 Account created!", "success");
 
+      // Switch to email login tab after 1.5s
       setTimeout(() => {
-        signupTab.classList.remove("active");
-        emailTab.classList.add("active");
+        toggleTab(emailTab, [signupTab, phoneTab]);
         showBox(emailBox, [signupBox, phoneBox]);
+        popupImage.src = "./images/login1.png";
+        document.getElementById("signupEmail").value = "";
+        document.getElementById("signupPassword").value = "";
+        document.getElementById("signupConfirm").value = "";
+        showSignupMsg("", "");
       }, 1500);
     })
-    .catch(err => showSignupMsg(err.message, "red"));
+    .catch((err) => {
+      console.error("Signup error:", err.code, err.message);
+
+      // Friendly error messages
+      if (err.code === "auth/email-already-in-use") {
+        showSignupMsg("Email already registered. Try logging in ✉️", "orange");
+      } else if (err.code === "auth/invalid-email") {
+        showSignupMsg("Invalid email format ❌", "red");
+      } else if (err.code === "auth/weak-password") {
+        showSignupMsg("Password too weak. Use 6+ characters 🔒", "red");
+      } else if (err.code === "auth/network-request-failed") {
+        showSignupMsg("Network error. Check your internet 🌐", "red");
+      } else {
+        showSignupMsg(err.message, "red");
+      }
+    });
 };
 
 function showSignupMsg(msg, color) {
+  const signupMsg = document.getElementById("signupMsg");
   signupMsg.innerText = msg;
   signupMsg.style.color = color;
 }
@@ -221,22 +256,24 @@ function showSignupMsg(msg, color) {
 // ======================
 let recaptcha = new firebase.auth.RecaptchaVerifier("recaptcha-container");
 
-sendOtpBtn.onclick = () => {
-  auth.signInWithPhoneNumber(phone.value, recaptcha)
-    .then(res => {
+document.getElementById("sendOtpBtn").onclick = () => {
+  const phoneVal = document.getElementById("phone").value.trim();
+  auth
+    .signInWithPhoneNumber(phoneVal, recaptcha)
+    .then((res) => {
       window.confirmationResult = res;
-      otpSection.style.display = "block";
-      otpMsg.innerText = "OTP Sent ✔";
-      otpMsg.style.color = "green";
+      document.getElementById("otpSection").style.display = "block";
+      document.getElementById("otpMsg").innerText = "OTP Sent ✔";
+      document.getElementById("otpMsg").style.color = "green";
     })
-    // .catch(err => alert(err.message));
-    .catch(err => showToast(err.message, "error"));
+    .catch((err) => showToast(err.message, "error"));
 };
 
-verifyOtpBtn.onclick = () => {
-  confirmationResult.confirm(otp.value)
+document.getElementById("verifyOtpBtn").onclick = () => {
+  const otpVal = document.getElementById("otp").value.trim();
+  confirmationResult
+    .confirm(otpVal)
     .then(() => successLogin())
-    // .catch(() => alert("Invalid OTP ❌"));
     .catch(() => showToast("Invalid OTP ❌", "error"));
 };
 
@@ -245,26 +282,22 @@ verifyOtpBtn.onclick = () => {
 // ======================
 function successLogin() {
   loginPopup.style.display = "none";
-  showToast("Login Successful 👨‍🌾");
+  showToast("Login Successful 👨‍🌾", "success");
 }
 
-// =====================================================
-// LOGIN UI TOGGLE SYSTEM
-// =====================================================
+// ======================
+// AUTH STATE & PROFILE
+// ======================
 const profileBtn = document.getElementById("profileBtn");
-
-// MAKE PROFILE HIDDEN BY DEFAULT
 profileBtn.style.display = "none";
 
-auth.onAuthStateChanged(user => {
+auth.onAuthStateChanged((user) => {
   if (user) {
-    // LOGIN → PROFILE SHOW, LOGIN BUTTON HIDE
     profileBtn.style.display = "block";
     openLoginBtn.style.display = "none";
   } else {
-    // LOGOUT → PROFILE HIDE, LOGIN BUTTON SHOW
     profileBtn.style.display = "none";
-    // openLoginBtn.style.display = "block";
+    openLoginBtn.style.display = "block";
   }
 });
 
@@ -279,23 +312,19 @@ const profileName = document.getElementById("profileName");
 
 profileBtn.onclick = () => {
   profilePopup.style.display = "block";
-
-  auth.onAuthStateChanged(user => {
-    if (user) {
-      profileName.innerHTML = "👨‍🌾 " + user.email;
-      openLoginFromProfile.style.display = "none";
-      logoutFromProfile.style.display = "block";
-    } else {
-      profileName.innerHTML = "You are not logged in";
-      openLoginFromProfile.style.display = "block";
-      logoutFromProfile.style.display = "none";
-    }
-  });
+  const user = auth.currentUser;
+  if (user) {
+    profileName.innerHTML = "👨‍🌾 " + user.email;
+    openLoginFromProfile.style.display = "none";
+    logoutFromProfile.style.display = "block";
+  } else {
+    profileName.innerHTML = "You are not logged in";
+    openLoginFromProfile.style.display = "block";
+    logoutFromProfile.style.display = "none";
+  }
 };
 
-closeProfile.onclick = () => {
-  profilePopup.style.display = "none";
-};
+closeProfile.onclick = () => (profilePopup.style.display = "none");
 
 openLoginFromProfile.onclick = () => {
   profilePopup.style.display = "none";
@@ -304,8 +333,7 @@ openLoginFromProfile.onclick = () => {
 
 logoutFromProfile.onclick = () => {
   auth.signOut().then(() => {
-    // alert("Logged Out Successfully!");
-    showToast("Logged Out Successfully 👨‍🌾");
+    showToast("Logged Out Successfully 👨‍🌾", "success");
     profilePopup.style.display = "none";
   });
 };
@@ -314,99 +342,52 @@ logoutFromProfile.onclick = () => {
 // LOGIN REQUIRED ON FEATURES
 // ======================
 function requireLogin(callback) {
-  auth.onAuthStateChanged(user => {
-    if (user) callback();
-    else loginPopup.style.display = "flex";
-  });
+  const user = auth.currentUser;
+  if (user) {
+    callback();
+  } else {
+    loginPopup.style.display = "flex";
+  }
 }
 
-
-// ======================
-// UNIVERSAL LOGIN PROTECTION FOR ALL FEATURE BUTTONS
-// ======================
-document.querySelectorAll("a.btn, a.buttonn").forEach(link => {
+document.querySelectorAll("a.btn, a.buttonn").forEach((link) => {
   link.addEventListener("click", function (e) {
     const target = this.getAttribute("href");
-    
-    // Prevent opening link
     e.preventDefault();
-
     requireLogin(() => {
       window.location.href = target;
     });
   });
 });
 
+// ======================
+// GOOGLE LOGIN
+// ======================
+document.addEventListener("DOMContentLoaded", function () {
+  const googleProvider = new firebase.auth.GoogleAuthProvider();
+  const googleBtn = document.getElementById("googleLoginBtn");
 
-// // EXPLORE NOW
-// document.querySelector("a.btn[href='explore/index.html']").onclick = (e) => {
-//   e.preventDefault();
-//   requireLogin(() => {
-//     window.location.href = "explore/index.html";
-//   });
-// };
-
-// // WEATHER FORECAST
-// document.querySelector("a.buttonn[href='weather-forecast/index.html']").onclick = (e) => {
-//   e.preventDefault();
-//   requireLogin(() => {
-//     window.location.href = "weather-forecast/index.html";
-//   });
-// };
-
-// // CROP RECOMMENDATION
-// document.querySelector("a.buttonn[href='https://crop-recomm.streamlit.app/']").onclick = (e) => {
-//   e.preventDefault();
-//   requireLogin(() => {
-//     window.location.href = "https://crop-recomm.streamlit.app/";
-//   });
-// };
-
-// // DISEASE DETECTION
-// document.querySelector("a.buttonn[href='https://agrisens-crop-disease-pred.streamlit.app/']").onclick = (e) => {
-//   e.preventDefault();
-//   requireLogin(() => {
-//     window.location.href = "https://agrisens-crop-disease-pred.streamlit.app/";
-//   });
-// };
-
-// document.querySelector("a.buttonn[href='Agriculture Learning Hub/index.html']").onclick = (e) => {
-//   e.preventDefault();
-//   requireLogin(() => {
-//     window.location.href = "Agriculture Learning Hub/index.html";
-//   });
-// };
-
-// document.querySelector("a.buttonn[href='developing-phase/index.html']").onclick = (e) => {
-//   e.preventDefault();
-//   requireLogin(() => {
-//     window.location.href = "developing-phase/index.html";
-//   });
-// };
-
-// document.querySelector("a.buttonn[href='guide/index.html']").onclick = (e) => {
-//   e.preventDefault();
-//   requireLogin(() => {
-//     window.location.href = "guide/index.html";
-//   });
-// };
-
-// document.querySelector("a.buttonn[href='Agrohub/index.html']").onclick = (e) => {
-//   e.preventDefault();
-//   requireLogin(() => {
-//     window.location.href = "Agrohub/index.html";
-//   });
-// };
+  if (googleBtn) {
+    googleBtn.addEventListener("click", function () {
+      auth
+        .signInWithPopup(googleProvider)
+        .then((result) => {
+          loginPopup.style.display = "none";
+          showToast("Google Login Successful 👨‍🌾", "success");
+          console.log(result.user);
+        })
+        .catch((error) => {
+          console.error(error);
+          showToast(error.message, "error");
+        });
+    });
+  }
+});
 
 // ======================
-// FORCE TOAST (NO HTML REQUIRED)
+// TOAST NOTIFICATION
 // ======================
-// =======================================
-// AGRINEXT PREMIUM FARMER ASSIST 🌾
-// =======================================
 function showToast(message, type = "info") {
-
-  // remove old assist card
   const old = document.getElementById("agrinext-assist");
   if (old) old.remove();
 
@@ -414,9 +395,7 @@ function showToast(message, type = "info") {
   toast.id = "agrinext-assist";
 
   const icon =
-    type === "error" ? "🙆" :
-    type === "success" ? "🌱" :
-    "🌿";
+    type === "error" ? "🙆" : type === "success" ? "🌱" : "🌿";
 
   toast.innerHTML = `
     <div class="agri-card">
@@ -443,84 +422,19 @@ function showToast(message, type = "info") {
     zIndex: "99999999",
     opacity: "0",
     transform: "translateY(-15px)",
-    transition: "all 0.5s ease"
+    transition: "all 0.5s ease",
   });
 
   document.body.appendChild(toast);
 
-  // animate in
   setTimeout(() => {
     toast.style.opacity = "1";
     toast.style.transform = "translateY(0)";
   }, 60);
 
-  // animate out
   setTimeout(() => {
     toast.style.opacity = "0";
     toast.style.transform = "translateY(-15px)";
     setTimeout(() => toast.remove(), 500);
   }, 3800);
 }
-
-
-// function showToast(message, type = "success") {
-//   const toast = document.getElementById("toast");
-//   const toastMsg = document.getElementById("toastMsg");
-
-//   if (!toast || !toastMsg) {
-//     console.error("Toast HTML missing");
-//     return;
-//   }
-
-//   toastMsg.innerText = message;
-
-//   toast.classList.remove("error");
-//   if (type === "error") toast.classList.add("error");
-
-//   toast.classList.add("show");
-
-//   setTimeout(() => {
-//     toast.classList.remove("show");
-//   }, 3000);
-// }
-
-
-// ======================
-// GOOGLE LOGIN / SIGNUP
-// ======================
-// GOOGLE LOGIN
-document.addEventListener("DOMContentLoaded", function () {
-
-  const googleProvider = new firebase.auth.GoogleAuthProvider();
-
-  const googleBtn = document.getElementById("googleLoginBtn");
-
-  if (googleBtn) {
-
-    googleBtn.addEventListener("click", function () {
-
-      auth.signInWithPopup(googleProvider)
-        .then((result) => {
-
-          const user = result.user;
-
-          loginPopup.style.display = "none";
-
-          showToast("Google Login Successful 👨‍🌾", "success");
-
-          console.log(user);
-
-        })
-        .catch((error) => {
-
-          console.error(error);
-
-          showToast(error.message, "error");
-
-        });
-
-    });
-
-  }
-
-});
