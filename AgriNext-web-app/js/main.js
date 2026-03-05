@@ -80,8 +80,8 @@ document.getElementById("contactForm").addEventListener("submit", function () {
 // ======================
 const firebaseConfig = {
   apiKey: "AIzaSyBQ_cUOvn7gB2kq6R85V5WKqja4s-tCZjo",
-  authDomain: "agrinext-smart-farming.firebaseapp.com",
-  projectId: "agrinext-smart-farming",
+ authDomain: "agrinextplant-68852.firebaseapp.com",
+projectId: "agrinextplant-68852",
   storageBucket: "agrinext-smart-farming.firebasestorage.app",
   messagingSenderId: "685958519850",
   appId: "1:685958519850:web:3bafe3a5de1282a2547753",
