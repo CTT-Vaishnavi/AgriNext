@@ -5,6 +5,9 @@
 <title>Privacy Policy & Terms | AgriNext</title>
 <link rel="shortcut icon" href="/AgriNext-web-app/images/output-onlinepngtools (1).png" type="image/x-icon">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+  integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+  crossorigin="anonymous" referrerpolicy="no-referrer" />
 
 <style>
 /* ------------------ BASE ------------------ */
@@ -38,13 +41,47 @@ header p {
   opacity: 0.9;
 }
 
-.home-btn {
-  position: absolute;
-  left: 20px;
-  top: 25px;
-  color: white;
-  text-decoration: none;
-  font-weight: 600;
+ .home-btn {
+    position: absolute;
+    left: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    text-decoration: none;
+    color: #fff;
+    background: rgba(255,255,255,0.15);
+    padding: 8px 14px;
+    border-radius: 8px;
+    font-size: 14px;
+    transition: 0.3s ease;
+  }
+  
+  .home-btn i {
+    margin-right: 6px;
+  }
+  
+  .home-btn:hover {
+    background: #fff;
+    color: #1e3c72;
+  }
+  /* ===============================
+   HOME BUTTON MOBILE RESPONSIVE
+================================ */
+
+@media (max-width:768px){
+
+  .home-btn{
+    left:10px;
+    top:12px;
+    transform:none;
+    padding:6px 10px;
+    font-size:12px;
+    border-radius:6px;
+  }
+
+  .home-btn i{
+    margin-right:4px;
+  }
+
 }
 
 /* ------------------ LANGUAGE SWITCH ------------------ */
@@ -139,7 +176,8 @@ footer {
 <body>
 
 <header>
-  <a href="../index.html" class="home-btn"> Home</a>
+  <!-- <a href="../index.html" class="home-btn"> Home</a> -->
+<a href="../index.html" class="home-btn"><i class="fa-solid fa-house"></i> Home</a>
   <h1>Privacy Policy & Terms of Use</h1>
   <p>AgriNext – Smart Farming Advisory Platform</p>
 </header>
