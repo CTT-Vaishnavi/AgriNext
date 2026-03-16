@@ -385,11 +385,11 @@ button:hover {
 @media (max-width: 480px) {
 
     .logo-area img {
-        height: 36px;
+        height: 2em;
     }
 
     .logo-area h1 {
-        font-size: 18px;
+        font-size: 1.5em;
     }
 }
 /* =====================================
