@@ -13,15 +13,9 @@
   text-decoration: none;
 }
 
-
-#profileBtn {
-  display: none;
-}
 #profileBtn{
   display: inline;
 }
-
-
 
 ::selection {
   background-color: var(--Soft-Red);
@@ -226,35 +220,6 @@ html {
   color: #ffffff;
 }
 
-/* Keyframes for the blink animation */
-/* @keyframes blink {
-  0%,
-  100% {
-    transform: scale(1);
-  }
-  50% {
-    transform: scale(1.2);
-  }
-} */
-
-/* .home-btn {
-  display: inline-block;
-  padding: 10px 20px;
-  text-decoration: none;
-  text-transform: uppercase;
-  font-size: 1.5em;
-  font-weight: bold;
-  background-color: #3498db;
-  color: #fff;
-  border-radius: 50px;
-  transition: background-color 0.3s ease;
-  animation: blink 1.8s infinite;
-}
-
-.home-btn:hover {
-  background-color: #2980b9;
-} */
-
 /* Style for the image within the home section */
 .home img {
   position: absolute;
@@ -350,7 +315,7 @@ html {
 }
 
 /* Media query for min-width: 768px, max-width: 1024px, and landscape orientation */
-@media (min-width: 768px) and (max-width: 1024px) and (orientation: landscape) {
+/*@media (min-width: 768px) and (max-width: 1024px) and (orientation: landscape) {
   .home h1 {
     font-size: 3.5em;
   }
@@ -375,19 +340,18 @@ html {
 
   .rounded-corner-image {
     border-radius: 8px;
-    /* Adjust the level of curvature for this screen size range and orientation */
+
   }
 
   .about .box img {
     border-radius: 6px;
-    /* Adjust border-radius for about section images */
+    
   }
 
   .footer .box img {
     border-radius: 6px;
-    /* Adjust border-radius for footer section images */
   }
-}
+}*/
 
 /* Media query for min-width: 481px and max-width: 767px */
 @media (min-width: 481px) and (max-width: 767px) {
@@ -598,32 +562,8 @@ html {
   }
 }
 
-/*Button-0 container end*/
 
-/* features section ends */
-
-/* about section starts  */
-
-/* .about .box-container {
-  display: grid;
-  gap: 2rem;
-  grid-template-columns: repeat(4, 1fr);
-  padding-top: 5rem;
-  padding-bottom: 5rem;
-}
-
-@media (min-width: 481px) and (max-width: 767px) {
-  .about .box-container {
-    grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
-  }
-}
-
-@media (min-width: 320px) and (max-width: 480px) {
-  .about .box-container {
-    grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
-  }
-} */
- .about .box-container {
+.about .box-container {
    display: grid;
    gap: 2rem;
    grid-template-columns: repeat(4, 1fr);
@@ -925,8 +865,6 @@ form {
     padding: 25px;
   }
 }
-
-
 
 
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
@@ -1304,23 +1242,6 @@ button:hover {
   to   { opacity: 1; }
 }
 
-/* 3D GLASS CARD */
-/* .popup-box {
-  width: 370px;
-  padding: 30px;
-  border-radius: 22px;
-  background: rgba(255, 255, 255, 0.15);
-  backdrop-filter: blur(25px);
-  border: 1.5px solid rgba(255, 255, 255, 0.3);
-  box-shadow: 
-      0 10px 30px rgba(0,0,0,0.25),
-      0 0 25px rgba(0,168,89,0.6); green glow */
-
-  /* 3D transform */
-  /* transform-style: preserve-3d;
-  transform: perspective(900px) translateZ(20px);
-  animation: popupEnter .6s cubic-bezier(0.23, 1, 0.32, 1);
-} */
 
 @keyframes popupEnter {
   0%   { opacity: 0; transform: perspective(900px) translateZ(-120px) rotateX(15deg); }
@@ -1454,8 +1375,6 @@ button:hover {
 }
 
 
-
-
 /* ============================
    3D TABS (Smaller + Gap Added)
    ============================ */
@@ -1502,10 +1421,6 @@ button:hover {
   box-shadow: 0 2px 0 #006b34;
 }
 
-
-
-
-
 /* ============================
    3D ANIMATION FOR TABS BUTTONS
    ============================ */
@@ -1543,9 +1458,6 @@ button:hover {
   transform: translateY(2px) scale(0.95);
   box-shadow: 0 3px 0 #006b34;
 }
-
-
-
 
 /* =======================
    FEATURE LOCK UI (BLUR)
@@ -1758,14 +1670,12 @@ button:hover {
   width:20px;
 }
 
-
 .orb{
   margin: 10px;
     margin-left: 112px;
     color: white;
     font-size: 12px;
 }
-
 
 /* =========================
    reCAPTCHA FIX
@@ -1784,7 +1694,6 @@ button:hover {
     transform: scale(0.85);
   }
 }
-
 
 /* =========================
    MOBILE RESPONSIVE (≤768px)
@@ -1865,5 +1774,3 @@ button:hover {
     width: 90%;
   }
 }
-
-
